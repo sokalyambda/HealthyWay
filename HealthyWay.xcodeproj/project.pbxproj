@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
 		5802061E1D1D368400349B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061D1D1D368400349B32 /* AppDelegate.m */; };
-		580206211D1D368400349B32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206201D1D368400349B32 /* ViewController.m */; };
 		580206241D1D368400349B32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206221D1D368400349B32 /* Main.storyboard */; };
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
 		580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206271D1D368400349B32 /* LaunchScreen.storyboard */; };
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
+		58104A0C1D1D3D240082FF4B /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A0B1D1D3D240082FF4B /* HWBaseViewController.m */; };
+		58104A121D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A111D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m */; };
+		58104A151D1D3DF70082FF4B /* HWSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A141D1D3DF70082FF4B /* HWSignInViewController.m */; };
+		58104A181D1D3E090082FF4B /* HWSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A171D1D3E090082FF4B /* HWSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,12 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
+		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
 		580206161D1D368400349B32 /* HealthyWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5802061A1D1D368400349B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5802061C1D1D368400349B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5802061D1D1D368400349B32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5802061F1D1D368400349B32 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		580206201D1D368400349B32 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		580206231D1D368400349B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		580206251D1D368400349B32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		580206281D1D368400349B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,15 @@
 		5802062F1D1D368400349B32 /* HealthyWayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthyWayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		580206331D1D368400349B32 /* HealthyWayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthyWayTests.m; sourceTree = "<group>"; };
 		580206351D1D368400349B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58104A0A1D1D3D240082FF4B /* HWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseViewController.h; path = Classes/MVVM/Views/BaseViewController/HWBaseViewController.h; sourceTree = "<group>"; };
+		58104A0B1D1D3D240082FF4B /* HWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseViewController.m; path = Classes/MVVM/Views/BaseViewController/HWBaseViewController.m; sourceTree = "<group>"; };
+		58104A101D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAuthenticationViewController.h; path = Classes/MVVM/Views/Authentication/BaseAuthenticationViewController/HWBaseAuthenticationViewController.h; sourceTree = "<group>"; };
+		58104A111D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAuthenticationViewController.m; path = Classes/MVVM/Views/Authentication/BaseAuthenticationViewController/HWBaseAuthenticationViewController.m; sourceTree = "<group>"; };
+		58104A131D1D3DF70082FF4B /* HWSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignInViewController.h; path = Classes/MVVM/Views/Authentication/SignInViewController/HWSignInViewController.h; sourceTree = "<group>"; };
+		58104A141D1D3DF70082FF4B /* HWSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignInViewController.m; path = Classes/MVVM/Views/Authentication/SignInViewController/HWSignInViewController.m; sourceTree = "<group>"; };
+		58104A161D1D3E090082FF4B /* HWSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpViewController.h; path = Classes/MVVM/Views/Authentication/SignUpViewController/HWSignUpViewController.h; sourceTree = "<group>"; };
+		58104A171D1D3E090082FF4B /* HWSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpViewController.m; path = Classes/MVVM/Views/Authentication/SignUpViewController/HWSignUpViewController.m; sourceTree = "<group>"; };
+		BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthyWay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +74,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0275D4CAB2CD3ED857631359 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */,
+				0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5802060D1D1D368300349B32 = {
 			isa = PBXGroup;
 			children = (
 				580206181D1D368400349B32 /* HealthyWay */,
 				580206321D1D368400349B32 /* HealthyWayTests */,
 				580206171D1D368400349B32 /* Products */,
+				0275D4CAB2CD3ED857631359 /* Pods */,
+				76BEEEF084423C44EC460BE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +106,9 @@
 		580206181D1D368400349B32 /* HealthyWay */ = {
 			isa = PBXGroup;
 			children = (
+				581049FC1D1D3A4A0082FF4B /* Classes */,
 				5802061C1D1D368400349B32 /* AppDelegate.h */,
 				5802061D1D1D368400349B32 /* AppDelegate.m */,
-				5802061F1D1D368400349B32 /* ViewController.h */,
-				580206201D1D368400349B32 /* ViewController.m */,
 				580206221D1D368400349B32 /* Main.storyboard */,
 				580206251D1D368400349B32 /* Assets.xcassets */,
 				580206271D1D368400349B32 /* LaunchScreen.storyboard */,
@@ -97,6 +121,7 @@
 		580206191D1D368400349B32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58104A0D1D1D3D400082FF4B /* PrecompiledHeader */,
 				5802061A1D1D368400349B32 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -111,6 +136,148 @@
 			path = HealthyWayTests;
 			sourceTree = "<group>";
 		};
+		581049FC1D1D3A4A0082FF4B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				58104A051D1D3AAE0082FF4B /* Services */,
+				58104A041D1D3AA00082FF4B /* Protocols */,
+				58104A031D1D3A9C0082FF4B /* Categories */,
+				58104A021D1D3A970082FF4B /* Networking */,
+				58104A011D1D3A900082FF4B /* CoreData */,
+				581049FD1D1D3A550082FF4B /* MVVM */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		581049FD1D1D3A550082FF4B /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				58104A001D1D3A740082FF4B /* ViewModels */,
+				581049FF1D1D3A6F0082FF4B /* Views */,
+				581049FE1D1D3A6A0082FF4B /* Models */,
+			);
+			name = MVVM;
+			sourceTree = "<group>";
+		};
+		581049FE1D1D3A6A0082FF4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		581049FF1D1D3A6F0082FF4B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58104A091D1D3CF70082FF4B /* BaseViewController */,
+				58104A061D1D3CBB0082FF4B /* Authentication */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		58104A001D1D3A740082FF4B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		58104A011D1D3A900082FF4B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		58104A021D1D3A970082FF4B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		58104A031D1D3A9C0082FF4B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		58104A041D1D3AA00082FF4B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		58104A051D1D3AAE0082FF4B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		58104A061D1D3CBB0082FF4B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				58104A0F1D1D3DA30082FF4B /* SignUpViewController */,
+				58104A0E1D1D3D9C0082FF4B /* SignInViewController */,
+				58104A081D1D3CCC0082FF4B /* BaseAuthenticationViewController */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		58104A081D1D3CCC0082FF4B /* BaseAuthenticationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58104A101D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.h */,
+				58104A111D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m */,
+			);
+			name = BaseAuthenticationViewController;
+			sourceTree = "<group>";
+		};
+		58104A091D1D3CF70082FF4B /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58104A0A1D1D3D240082FF4B /* HWBaseViewController.h */,
+				58104A0B1D1D3D240082FF4B /* HWBaseViewController.m */,
+			);
+			name = BaseViewController;
+			sourceTree = "<group>";
+		};
+		58104A0D1D1D3D400082FF4B /* PrecompiledHeader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PrecompiledHeader;
+			sourceTree = "<group>";
+		};
+		58104A0E1D1D3D9C0082FF4B /* SignInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58104A131D1D3DF70082FF4B /* HWSignInViewController.h */,
+				58104A141D1D3DF70082FF4B /* HWSignInViewController.m */,
+			);
+			name = SignInViewController;
+			sourceTree = "<group>";
+		};
+		58104A0F1D1D3DA30082FF4B /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58104A161D1D3E090082FF4B /* HWSignUpViewController.h */,
+				58104A171D1D3E090082FF4B /* HWSignUpViewController.m */,
+			);
+			name = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		76BEEEF084423C44EC460BE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 580206381D1D368400349B32 /* Build configuration list for PBXNativeTarget "HealthyWay" */;
 			buildPhases = (
+				9550D4007643155BE19F09F5 /* [CP] Check Pods Manifest.lock */,
 				580206121D1D368400349B32 /* Sources */,
 				580206131D1D368400349B32 /* Frameworks */,
 				580206141D1D368400349B32 /* Resources */,
+				495676B634E6C60E7975E1CE /* [CP] Embed Pods Frameworks */,
+				5AFFAB00482334AFE2D86CAE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,6 +325,7 @@
 		5802060E1D1D368300349B32 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HW;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Eugenity;
 				TargetAttributes = {
@@ -206,14 +377,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		495676B634E6C60E7975E1CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AFFAB00482334AFE2D86CAE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9550D4007643155BE19F09F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		580206121D1D368400349B32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				580206211D1D368400349B32 /* ViewController.m in Sources */,
+				58104A151D1D3DF70082FF4B /* HWSignInViewController.m in Sources */,
+				58104A121D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
+				58104A0C1D1D3D240082FF4B /* HWBaseViewController.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
+				58104A181D1D3E090082FF4B /* HWSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +561,7 @@
 		};
 		580206391D1D368400349B32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HealthyWay/Info.plist;
@@ -350,6 +573,7 @@
 		};
 		5802063A1D1D368400349B32 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HealthyWay/Info.plist;
@@ -402,6 +626,7 @@
 				5802063A1D1D368400349B32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5802063B1D1D368400349B32 /* Build configuration list for PBXNativeTarget "HealthyWayTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +635,7 @@
 				5802063D1D1D368400349B32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

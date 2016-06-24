@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseViewController.h
 //  HealthyWay
 //
 //  Created by Eugenity on 24.06.16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface HWBaseViewController : UIViewController
 
 @end
-
