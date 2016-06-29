@@ -1,0 +1,23 @@
+//
+//  HealthyWay-PrefixHeader.pch
+//  HealthyWay
+//
+//  Created by Eugenity on 28.06.16.
+//  Copyright © 2016 Eugenity. All rights reserved.
+//
+
+#ifndef HealthyWay_PrefixHeader_pch
+#define HealthyWay_PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import <Firebase.h>
+#import <AFNetworking.h>
+#import <MBProgressHUD.h>
+
+#import "HWBaseAppManager.h"
+#import "HWMacros.h"
+
+#import "HWAlertService.h"
+#import "HWValidator.h"
+
+#endif /* HealthyWay_PrefixHeader_pch */

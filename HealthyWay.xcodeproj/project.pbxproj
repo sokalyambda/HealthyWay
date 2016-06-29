@@ -10,7 +10,6 @@
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
 		5802061E1D1D368400349B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061D1D1D368400349B32 /* AppDelegate.m */; };
-		580206241D1D368400349B32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206221D1D368400349B32 /* Main.storyboard */; };
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
 		580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206271D1D368400349B32 /* LaunchScreen.storyboard */; };
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
@@ -18,6 +17,21 @@
 		58104A121D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A111D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m */; };
 		58104A151D1D3DF70082FF4B /* HWSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A141D1D3DF70082FF4B /* HWSignInViewController.m */; };
 		58104A181D1D3E090082FF4B /* HWSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58104A171D1D3E090082FF4B /* HWSignUpViewController.m */; };
+		58C727691D23D13400F5F85D /* HWAlertService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727681D23D13400F5F85D /* HWAlertService.m */; };
+		58C7276D1D23D17300F5F85D /* HWBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7276C1D23D17300F5F85D /* HWBaseNavigationController.m */; };
+		58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7276F1D23D30A00F5F85D /* HWErrorHandler.m */; };
+		58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727741D23D37E00F5F85D /* NSString+JSONRepresentation.m */; };
+		58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727771D23D3BD00F5F85D /* HWValidator.m */; };
+		58C7277D1D23D71600F5F85D /* HWAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7277C1D23D71600F5F85D /* HWAuthService.m */; };
+		58C727831D23D8A200F5F85D /* HWUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727811D23D8A200F5F85D /* HWUserProfileController.m */; };
+		58C727841D23D8A200F5F85D /* HWUserProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C727821D23D8A200F5F85D /* HWUserProfileController.xib */; };
+		58C727871D23DA8F00F5F85D /* UserProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C727861D23DA8F00F5F85D /* UserProfileStoryboard.storyboard */; };
+		58C7278B1D23DAEE00F5F85D /* HWCreateUserProfileContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7278A1D23DAEE00F5F85D /* HWCreateUserProfileContainerController.m */; };
+		58C7278F1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7278E1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.m */; };
+		58C727931D23DED300F5F85D /* HWAutologinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727921D23DED300F5F85D /* HWAutologinViewController.m */; };
+		58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D774231D22C83B00CEE186 /* GoogleService-Info.plist */; };
+		58E337BE1D22EF5F00B3A280 /* AuthStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E337BD1D22EF5F00B3A280 /* AuthStoryBoard.storyboard */; };
+		58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +51,6 @@
 		5802061A1D1D368400349B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5802061C1D1D368400349B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5802061D1D1D368400349B32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		580206231D1D368400349B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		580206251D1D368400349B32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		580206281D1D368400349B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5802062A1D1D368400349B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +65,34 @@
 		58104A141D1D3DF70082FF4B /* HWSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignInViewController.m; path = Classes/MVVM/Views/Authentication/SignInViewController/HWSignInViewController.m; sourceTree = "<group>"; };
 		58104A161D1D3E090082FF4B /* HWSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpViewController.h; path = Classes/MVVM/Views/Authentication/SignUpViewController/HWSignUpViewController.h; sourceTree = "<group>"; };
 		58104A171D1D3E090082FF4B /* HWSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpViewController.m; path = Classes/MVVM/Views/Authentication/SignUpViewController/HWSignUpViewController.m; sourceTree = "<group>"; };
+		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
+		58C727621D23D0C000F5F85D /* HWMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMacros.h; path = Macros/HWMacros.h; sourceTree = "<group>"; };
+		58C727671D23D13400F5F85D /* HWAlertService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAlertService.h; path = Classes/Services/AlertService/HWAlertService.h; sourceTree = "<group>"; };
+		58C727681D23D13400F5F85D /* HWAlertService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAlertService.m; path = Classes/Services/AlertService/HWAlertService.m; sourceTree = "<group>"; };
+		58C7276B1D23D17300F5F85D /* HWBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseNavigationController.h; path = Classes/MVVM/Views/BaseNavigationController/HWBaseNavigationController.h; sourceTree = "<group>"; };
+		58C7276C1D23D17300F5F85D /* HWBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseNavigationController.m; path = Classes/MVVM/Views/BaseNavigationController/HWBaseNavigationController.m; sourceTree = "<group>"; };
+		58C7276E1D23D30A00F5F85D /* HWErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWErrorHandler.h; path = Classes/Services/ErrorHandler/HWErrorHandler.h; sourceTree = "<group>"; };
+		58C7276F1D23D30A00F5F85D /* HWErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWErrorHandler.m; path = Classes/Services/ErrorHandler/HWErrorHandler.m; sourceTree = "<group>"; };
+		58C727731D23D37E00F5F85D /* NSString+JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+JSONRepresentation.h"; path = "Classes/Categories/NSString/NSString+JSONRepresentation/NSString+JSONRepresentation.h"; sourceTree = "<group>"; };
+		58C727741D23D37E00F5F85D /* NSString+JSONRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+JSONRepresentation.m"; path = "Classes/Categories/NSString/NSString+JSONRepresentation/NSString+JSONRepresentation.m"; sourceTree = "<group>"; };
+		58C727761D23D3BD00F5F85D /* HWValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWValidator.h; path = Classes/Services/Validator/HWValidator.h; sourceTree = "<group>"; };
+		58C727771D23D3BD00F5F85D /* HWValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWValidator.m; path = Classes/Services/Validator/HWValidator.m; sourceTree = "<group>"; };
+		58C7277B1D23D71600F5F85D /* HWAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthService.h; path = Classes/MVVM/ModelsServices/AuthService/HWAuthService.h; sourceTree = "<group>"; };
+		58C7277C1D23D71600F5F85D /* HWAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthService.m; path = Classes/MVVM/ModelsServices/AuthService/HWAuthService.m; sourceTree = "<group>"; };
+		58C727801D23D8A200F5F85D /* HWUserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileController.h; path = Classes/MVVM/Views/UserAccountInformation/UserProfileController/HWUserProfileController.h; sourceTree = "<group>"; };
+		58C727811D23D8A200F5F85D /* HWUserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileController.m; path = Classes/MVVM/Views/UserAccountInformation/UserProfileController/HWUserProfileController.m; sourceTree = "<group>"; };
+		58C727821D23D8A200F5F85D /* HWUserProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWUserProfileController.xib; path = Classes/MVVM/Views/UserAccountInformation/UserProfileController/HWUserProfileController.xib; sourceTree = "<group>"; };
+		58C727861D23DA8F00F5F85D /* UserProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserProfileStoryboard.storyboard; path = Classes/MVVM/Views/UserAccountInformation/UserProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		58C727891D23DAEE00F5F85D /* HWCreateUserProfileContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCreateUserProfileContainerController.h; path = Classes/MVVM/Views/UserAccountInformation/CreateUserProfileContainerController/HWCreateUserProfileContainerController.h; sourceTree = "<group>"; };
+		58C7278A1D23DAEE00F5F85D /* HWCreateUserProfileContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCreateUserProfileContainerController.m; path = Classes/MVVM/Views/UserAccountInformation/CreateUserProfileContainerController/HWCreateUserProfileContainerController.m; sourceTree = "<group>"; };
+		58C7278D1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseKeyboardHandlerViewController.h; path = Classes/MVVM/Views/BaseKeyboardHandlerViewController/HWBaseKeyboardHandlerViewController.h; sourceTree = "<group>"; };
+		58C7278E1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseKeyboardHandlerViewController.m; path = Classes/MVVM/Views/BaseKeyboardHandlerViewController/HWBaseKeyboardHandlerViewController.m; sourceTree = "<group>"; };
+		58C727911D23DED300F5F85D /* HWAutologinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAutologinViewController.h; path = Classes/MVVM/Views/Authentication/AutologinViewController/HWAutologinViewController.h; sourceTree = "<group>"; };
+		58C727921D23DED300F5F85D /* HWAutologinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAutologinViewController.m; path = Classes/MVVM/Views/Authentication/AutologinViewController/HWAutologinViewController.m; sourceTree = "<group>"; };
+		58D774231D22C83B00CEE186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		58E337BD1D22EF5F00B3A280 /* AuthStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AuthStoryBoard.storyboard; path = Classes/MVVM/Views/Authentication/AuthStoryBoard.storyboard; sourceTree = "<group>"; };
+		58E337C11D22F42E00B3A280 /* HWBaseAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAppManager.h; path = Classes/Managers/BaseAppManager/HWBaseAppManager.h; sourceTree = "<group>"; };
+		58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAppManager.m; path = Classes/Managers/BaseAppManager/HWBaseAppManager.m; sourceTree = "<group>"; };
 		BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthyWay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,10 +150,10 @@
 				581049FC1D1D3A4A0082FF4B /* Classes */,
 				5802061C1D1D368400349B32 /* AppDelegate.h */,
 				5802061D1D1D368400349B32 /* AppDelegate.m */,
-				580206221D1D368400349B32 /* Main.storyboard */,
 				580206251D1D368400349B32 /* Assets.xcassets */,
 				580206271D1D368400349B32 /* LaunchScreen.storyboard */,
 				5802062A1D1D368400349B32 /* Info.plist */,
+				58D774231D22C83B00CEE186 /* GoogleService-Info.plist */,
 				580206191D1D368400349B32 /* Supporting Files */,
 			);
 			path = HealthyWay;
@@ -121,6 +162,7 @@
 		580206191D1D368400349B32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58C727611D23D0B200F5F85D /* Macros */,
 				58104A0D1D1D3D400082FF4B /* PrecompiledHeader */,
 				5802061A1D1D368400349B32 /* main.m */,
 			);
@@ -139,6 +181,8 @@
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				58E337C41D22F64800B3A280 /* HelperClasses */,
+				58E337BF1D22F3E200B3A280 /* Managers */,
 				58104A051D1D3AAE0082FF4B /* Services */,
 				58104A041D1D3AA00082FF4B /* Protocols */,
 				58104A031D1D3A9C0082FF4B /* Categories */,
@@ -152,6 +196,7 @@
 		581049FD1D1D3A550082FF4B /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				58C727791D23D6EC00F5F85D /* ModelsServices */,
 				58104A001D1D3A740082FF4B /* ViewModels */,
 				581049FF1D1D3A6F0082FF4B /* Views */,
 				581049FE1D1D3A6A0082FF4B /* Models */,
@@ -169,6 +214,9 @@
 		581049FF1D1D3A6F0082FF4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58C7278C1D23DE0100F5F85D /* BaseKeyboardHandlerViewController */,
+				58C7277E1D23D86500F5F85D /* UserAccountInformation */,
+				58C7276A1D23D15A00F5F85D /* BaseNavigationController */,
 				58104A091D1D3CF70082FF4B /* BaseViewController */,
 				58104A061D1D3CBB0082FF4B /* Authentication */,
 			);
@@ -199,6 +247,7 @@
 		58104A031D1D3A9C0082FF4B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				58C727711D23D36900F5F85D /* NSString */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -213,6 +262,10 @@
 		58104A051D1D3AAE0082FF4B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				58C727661D23D10A00F5F85D /* Keychain */,
+				58C727651D23D10600F5F85D /* Validator */,
+				58C727641D23D0FF00F5F85D /* ErrorHandler */,
+				58C727631D23D0F800F5F85D /* AlertService */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -220,9 +273,11 @@
 		58104A061D1D3CBB0082FF4B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				58C727901D23DEAE00F5F85D /* AutologinViewController */,
 				58104A0F1D1D3DA30082FF4B /* SignUpViewController */,
 				58104A0E1D1D3D9C0082FF4B /* SignInViewController */,
 				58104A081D1D3CCC0082FF4B /* BaseAuthenticationViewController */,
+				58E337BD1D22EF5F00B3A280 /* AuthStoryBoard.storyboard */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -248,6 +303,7 @@
 		58104A0D1D1D3D400082FF4B /* PrecompiledHeader */ = {
 			isa = PBXGroup;
 			children = (
+				587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */,
 			);
 			name = PrecompiledHeader;
 			sourceTree = "<group>";
@@ -268,6 +324,170 @@
 				58104A171D1D3E090082FF4B /* HWSignUpViewController.m */,
 			);
 			name = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		58C727611D23D0B200F5F85D /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				58C727621D23D0C000F5F85D /* HWMacros.h */,
+			);
+			name = Macros;
+			sourceTree = "<group>";
+		};
+		58C727631D23D0F800F5F85D /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				58C727671D23D13400F5F85D /* HWAlertService.h */,
+				58C727681D23D13400F5F85D /* HWAlertService.m */,
+			);
+			name = AlertService;
+			sourceTree = "<group>";
+		};
+		58C727641D23D0FF00F5F85D /* ErrorHandler */ = {
+			isa = PBXGroup;
+			children = (
+				58C7276E1D23D30A00F5F85D /* HWErrorHandler.h */,
+				58C7276F1D23D30A00F5F85D /* HWErrorHandler.m */,
+			);
+			name = ErrorHandler;
+			sourceTree = "<group>";
+		};
+		58C727651D23D10600F5F85D /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				58C727761D23D3BD00F5F85D /* HWValidator.h */,
+				58C727771D23D3BD00F5F85D /* HWValidator.m */,
+			);
+			name = Validator;
+			sourceTree = "<group>";
+		};
+		58C727661D23D10A00F5F85D /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
+		58C7276A1D23D15A00F5F85D /* BaseNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				58C7276B1D23D17300F5F85D /* HWBaseNavigationController.h */,
+				58C7276C1D23D17300F5F85D /* HWBaseNavigationController.m */,
+			);
+			name = BaseNavigationController;
+			sourceTree = "<group>";
+		};
+		58C727711D23D36900F5F85D /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				58C727721D23D36C00F5F85D /* NSString+JSONRepresentation */,
+			);
+			name = NSString;
+			sourceTree = "<group>";
+		};
+		58C727721D23D36C00F5F85D /* NSString+JSONRepresentation */ = {
+			isa = PBXGroup;
+			children = (
+				58C727731D23D37E00F5F85D /* NSString+JSONRepresentation.h */,
+				58C727741D23D37E00F5F85D /* NSString+JSONRepresentation.m */,
+			);
+			name = "NSString+JSONRepresentation";
+			sourceTree = "<group>";
+		};
+		58C727791D23D6EC00F5F85D /* ModelsServices */ = {
+			isa = PBXGroup;
+			children = (
+				58C7277A1D23D6F300F5F85D /* AuthService */,
+			);
+			name = ModelsServices;
+			sourceTree = "<group>";
+		};
+		58C7277A1D23D6F300F5F85D /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				58C7277B1D23D71600F5F85D /* HWAuthService.h */,
+				58C7277C1D23D71600F5F85D /* HWAuthService.m */,
+			);
+			name = AuthService;
+			sourceTree = "<group>";
+		};
+		58C7277E1D23D86500F5F85D /* UserAccountInformation */ = {
+			isa = PBXGroup;
+			children = (
+				58C727881D23DACB00F5F85D /* CreateUserProfileContainerController */,
+				58C7277F1D23D87400F5F85D /* UserProfileController */,
+				58C727861D23DA8F00F5F85D /* UserProfileStoryboard.storyboard */,
+			);
+			name = UserAccountInformation;
+			sourceTree = "<group>";
+		};
+		58C7277F1D23D87400F5F85D /* UserProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				58C727801D23D8A200F5F85D /* HWUserProfileController.h */,
+				58C727811D23D8A200F5F85D /* HWUserProfileController.m */,
+				58C727821D23D8A200F5F85D /* HWUserProfileController.xib */,
+			);
+			name = UserProfileController;
+			sourceTree = "<group>";
+		};
+		58C727881D23DACB00F5F85D /* CreateUserProfileContainerController */ = {
+			isa = PBXGroup;
+			children = (
+				58C727891D23DAEE00F5F85D /* HWCreateUserProfileContainerController.h */,
+				58C7278A1D23DAEE00F5F85D /* HWCreateUserProfileContainerController.m */,
+			);
+			name = CreateUserProfileContainerController;
+			sourceTree = "<group>";
+		};
+		58C7278C1D23DE0100F5F85D /* BaseKeyboardHandlerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58C7278D1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.h */,
+				58C7278E1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.m */,
+			);
+			name = BaseKeyboardHandlerViewController;
+			sourceTree = "<group>";
+		};
+		58C727901D23DEAE00F5F85D /* AutologinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58C727911D23DED300F5F85D /* HWAutologinViewController.h */,
+				58C727921D23DED300F5F85D /* HWAutologinViewController.m */,
+			);
+			name = AutologinViewController;
+			sourceTree = "<group>";
+		};
+		58E337BF1D22F3E200B3A280 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				58E337C01D22F41E00B3A280 /* BaseAppManager */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		58E337C01D22F41E00B3A280 /* BaseAppManager */ = {
+			isa = PBXGroup;
+			children = (
+				58E337C11D22F42E00B3A280 /* HWBaseAppManager.h */,
+				58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */,
+			);
+			name = BaseAppManager;
+			sourceTree = "<group>";
+		};
+		58E337C41D22F64800B3A280 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				58E337C51D22F64F00B3A280 /* ErrorHandler */,
+			);
+			name = HelperClasses;
+			sourceTree = "<group>";
+		};
+		58E337C51D22F64F00B3A280 /* ErrorHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ErrorHandler;
 			sourceTree = "<group>";
 		};
 		76BEEEF084423C44EC460BE6 /* Frameworks */ = {
@@ -363,8 +583,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */,
+				58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */,
+				58C727871D23DA8F00F5F85D /* UserProfileStoryboard.storyboard in Resources */,
 				580206261D1D368400349B32 /* Assets.xcassets in Resources */,
-				580206241D1D368400349B32 /* Main.storyboard in Resources */,
+				58C727841D23D8A200F5F85D /* HWUserProfileController.xib in Resources */,
+				58E337BE1D22EF5F00B3A280 /* AuthStoryBoard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,12 +653,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
+				58C727831D23D8A200F5F85D /* HWUserProfileController.m in Sources */,
+				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58104A151D1D3DF70082FF4B /* HWSignInViewController.m in Sources */,
+				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
+				58C7276D1D23D17300F5F85D /* HWBaseNavigationController.m in Sources */,
 				58104A121D1D3DDB0082FF4B /* HWBaseAuthenticationViewController.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
+				58C7278F1D23DE1A00F5F85D /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58104A0C1D1D3D240082FF4B /* HWBaseViewController.m in Sources */,
+				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
+				58C7277D1D23D71600F5F85D /* HWAuthService.m in Sources */,
 				58104A181D1D3E090082FF4B /* HWSignUpViewController.m in Sources */,
+				58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */,
+				58C7278B1D23DAEE00F5F85D /* HWCreateUserProfileContainerController.m in Sources */,
+				58C727931D23DED300F5F85D /* HWAutologinViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,14 +692,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		580206221D1D368400349B32 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				580206231D1D368400349B32 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		580206271D1D368400349B32 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -564,6 +790,8 @@
 			baseConfigurationReference = 3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HealthyWay/PrecompiledHeader/HealthyWay-PrefixHeader.pch";
 				INFOPLIST_FILE = HealthyWay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eugenity.HealthyWay;
@@ -576,6 +804,8 @@
 			baseConfigurationReference = 0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HealthyWay/PrecompiledHeader/HealthyWay-PrefixHeader.pch";
 				INFOPLIST_FILE = HealthyWay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eugenity.HealthyWay;

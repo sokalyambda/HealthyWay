@@ -1033,3 +1033,29 @@ Pods/Target Support Files/libextobjc/libextobjc.xcconfig
 Pods/Target Support Files/NODE_/NODE_-dummy.m
 Pods/Target Support Files/NODE_/NODE_-prefix.pch
 Pods/Target Support Files/NODE_/NODE_.xcconfig
+Pods/FirebaseAuth/README.md
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/FirebaseAuth
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuth.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthCredential.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRAuthErrors.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FirebaseAuth.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIREmailPasswordAuthProvider.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRFacebookAuthProvider.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRGitHubAuthProvider.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRGoogleAuthProvider.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRTwitterAuthProvider.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRUser.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Headers/FIRUserInfo.h
+Pods/FirebaseAuth/Frameworks/FirebaseAuth.framework/Modules/module.modulemap
+Pods/GoogleNetworkingUtilities/Frameworks/GoogleNetworkingUtilities.framework/GoogleNetworkingUtilities
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRAuth.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRAuthCredential.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRAuthErrors.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FirebaseAuth.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIREmailPasswordAuthProvider.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRFacebookAuthProvider.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRGitHubAuthProvider.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRGoogleAuthProvider.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRTwitterAuthProvider.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRUser.h
+Pods/Headers/Public/FirebaseAuth/FirebaseAuth/FIRUserInfo.h
