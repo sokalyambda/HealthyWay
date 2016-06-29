@@ -29,14 +29,18 @@
 
 - (void)checkForAutologin
 {
-    [[HWBaseAppManager sharedManager].currentUser getTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
-        if (error) {
-            [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
-        }
-        if (token.length) {
-            [self performSegueWithIdentifier:@"ToProfileSegue" sender:self];
-        }
-    }];
+    FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
+    if (user) {
+        [[HWBaseAppManager sharedManager].currentUser getTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
+            if (token.length) {
+                [self performSegueWithIdentifier:@"ToProfileSegue" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
+            }
+        }];
+    } else {
+        [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
+    }
 }
 
 @end
