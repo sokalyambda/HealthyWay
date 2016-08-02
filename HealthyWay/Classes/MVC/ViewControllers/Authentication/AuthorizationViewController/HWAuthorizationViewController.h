@@ -1,5 +1,5 @@
 //
-//  HWBaseAuthenticationViewController.h
+//  HWSignInViewController.h
 //  HealthyWay
 //
 //  Created by Eugenity on 24.06.16.
@@ -8,6 +8,6 @@
 
 #import "HWBaseKeyboardHandlerViewController.h"
 
-@interface HWBaseAuthenticationViewController : HWBaseKeyboardHandlerViewController
+@interface HWAuthorizationViewController : HWBaseKeyboardHandlerViewController
 
 @end

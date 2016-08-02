@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Mobindustry. All rights reserved.
 //
 
-@interface ALKeychainHandler : NSObject
+@interface HWKeychainHandler : NSObject
 
 + (void)storeCredentialsWithUsername:(NSString*)username andPassword:(NSString*)password forService:(NSString *)serviceName;
 + (NSDictionary*)getStoredCredentialsForService:(NSString *)serviceName;

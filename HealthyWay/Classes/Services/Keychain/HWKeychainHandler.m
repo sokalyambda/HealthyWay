@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Mobindustry. All rights reserved.
 //
 
-#import "ALKeychainHandler.h"
+#import "HWKeychainHandler.h"
 
 #import <SSKeychain/SSKeychain.h>
 
-@implementation ALKeychainHandler
+@implementation HWKeychainHandler
 
 /**
  *  Store user private data to keychain, using the KeychainItemWrapper
