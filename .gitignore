@@ -19,8 +19,6 @@ Breakpoints.xcbkptlist
 
 *.psd
 
-Podfile
-Podfile.lock
 Pods/Manifest.lock
 Pods/AFNetworking/LICENSE
 Pods/AFNetworking/README.md
