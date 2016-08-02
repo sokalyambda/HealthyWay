@@ -47,7 +47,7 @@
 
 #pragma mark - HWSignInViewDelegate
 
-- (void)signInView:(HWSignInView *)signInView shouldSignInWithEmail:(NSString *)email andPassword:(NSString *)password
+- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password
 {
     FIRAuth *auth = [HWBaseAppManager sharedManager].currentAuth;
     
