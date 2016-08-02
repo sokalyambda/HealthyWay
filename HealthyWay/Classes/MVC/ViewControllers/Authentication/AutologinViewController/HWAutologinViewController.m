@@ -27,6 +27,9 @@
 
 #pragma mark - Actions
 
+/*
+ This methos checks up whether the autologin is needed
+ */
 - (void)checkForAutologin
 {
     FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
