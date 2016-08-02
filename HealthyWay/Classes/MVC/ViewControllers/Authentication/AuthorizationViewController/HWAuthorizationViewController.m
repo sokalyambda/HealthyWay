@@ -37,6 +37,9 @@
 
 #pragma mark - Actions
 
+/*
+ Create and setup the sign in view from .xib
+ */
 - (void)setupSignInView
 {
     self.signInView = [HWSignInView makeFromXib];
