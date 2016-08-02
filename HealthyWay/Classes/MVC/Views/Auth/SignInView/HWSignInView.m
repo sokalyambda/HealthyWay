@@ -30,8 +30,8 @@
     WEAK_SELF;
     [HWValidator validateEmailField:self.emailField andPasswordField:self.passwordField onSuccess:^{
         
-        if ([weakSelf.delegate respondsToSelector:@selector(signInView:shouldSignInWithEmail:andPassword:)]) {
-            [weakSelf.delegate signInView:weakSelf shouldSignInWithEmail:weakSelf.emailField.text andPassword:weakSelf.passwordField.text];
+        if ([weakSelf.delegate respondsToSelector:@selector(signInView:didPrepareForSignInWithEmail:password:)]) {
+            [weakSelf.delegate signInView:weakSelf didPrepareForSignInWithEmail:self.emailField.text password:self.passwordField.text];
         }
         
     } onFailure:^(NSMutableArray *errorArray) {
@@ -49,8 +49,8 @@
 }
 
 - (IBAction)toSignUpFlowClick:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(signInViewShouldBeExchangedWithForgotPasswordView:)]) {
-        [self.delegate signInViewShouldBeExchangedWithForgotPasswordView:self];
+    if ([self.delegate respondsToSelector:@selector(signInViewDidPrepareForExchangingWithForgotPasswordView:)]) {
+        [self.delegate signInViewDidPrepareForExchangingWithForgotPasswordView:self];
     }
 }
 

@@ -1,6 +1,6 @@
 target ‘HealthyWay’ do
 
-pod 'MBProgressHUD', '~> 0.9.1'
+pod 'MBProgressHUD'
 pod 'SDWebImage', '~> 3.7'
 pod 'AFNetworking', '~> 3.0'
 

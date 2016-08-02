@@ -69,7 +69,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase
   - Firebase/Auth
-  - MBProgressHUD (~> 0.9.1)
+  - MBProgressHUD
   - SDWebImage (~> 3.7)
   - SSKeychain
 
@@ -92,6 +92,6 @@ SPEC CHECKSUMS:
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
 
-PODFILE CHECKSUM: 6c1d1ce514816c241ae147353676b1ad846b5a66
+PODFILE CHECKSUM: 6d282ff3115bcbf161336bdc1216d6a2a5485f7b
 
 COCOAPODS: 1.0.1

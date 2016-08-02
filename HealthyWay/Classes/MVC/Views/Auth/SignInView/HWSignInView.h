@@ -20,7 +20,7 @@
 @protocol HWSignInViewDelegate <NSObject, UITextFieldDelegate>
 
 @optional
-- (void)signInView:(HWSignInView *)signInView shouldSignInWithEmail:(NSString *)email andPassword:(NSString *)password;
-- (void)signInViewShouldBeExchangedWithForgotPasswordView:(HWSignInView *)signInView;
+- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password;
+- (void)signInViewDidPrepareForExchangingWithForgotPasswordView:(HWSignInView *)signInView;
 
 @end
