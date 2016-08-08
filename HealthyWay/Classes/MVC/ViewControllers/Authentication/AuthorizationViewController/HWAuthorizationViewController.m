@@ -17,6 +17,8 @@
 #import "CAAnimation+CompletionBlock.h"
 #import "NSString+ErrorString.h"
 
+static const NSInteger kUserDoesNotExist = 17011;
+
 @interface HWAuthorizationViewController ()<HWAuthViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *authViewContainer;
@@ -167,7 +169,8 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
                         if (error) {
-                            if (error.code == 17011) {
+                            if (error.code == kUserDoesNotExist) {
+                                // Move to sign up flow if user doesn't exist;
                                 [weakSelf setupAuthViewWithType:HWAuthViewTypeSignUp];
                                 HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
                                 [signUpView setEmail:view.email];
@@ -175,6 +178,7 @@
                                 return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
                             }
                         } else {
+                            [view didCompleteAuthAction];
                             [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
                             DLog(@"User: %@", user);
                         }
@@ -194,6 +198,8 @@
                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                         if (!error) {
                             DLog(@"User is: %@", user);
+                            [view didCompleteAuthAction];
+                            [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
                         } else {
                             [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
                         }
@@ -213,6 +219,11 @@
                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                         if (error) {
                             [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                        } else {
+                            [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
+                                [view didCompleteAuthAction];
+                                [weakSelf setupAuthViewWithType:HWAuthViewTypeSignIn];
+                            }];
                         }
                     });
                 }];

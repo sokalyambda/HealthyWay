@@ -27,4 +27,11 @@
     }
 }
 
+- (void)didCompleteAuthAction
+{
+    [self.textFields enumerateObjectsUsingBlock:^(UITextField  *_Nonnull field, NSUInteger idx, BOOL * _Nonnull stop) {
+        field.text = @"";
+    }];
+}
+
 @end

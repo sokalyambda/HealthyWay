@@ -29,6 +29,8 @@ typedef enum : NSUInteger {
 
 @property (strong, nonatomic, readonly, nullable) IBOutletCollection(UITextField) NSArray *textFields;
 
+- (void)didCompleteAuthAction;
+
 @end
 
 @protocol HWAuthViewDelegate <NSObject, UITextFieldDelegate>
