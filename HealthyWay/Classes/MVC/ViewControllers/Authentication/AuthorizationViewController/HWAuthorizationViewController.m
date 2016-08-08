@@ -7,7 +7,8 @@
 //
 
 #import "HWAuthorizationViewController.h"
-#import "HWSignInView.h"
+
+#import "HWAuthViews.h"
 
 #import "HWBaseAppManager.h"
 
@@ -15,15 +16,30 @@
 
 #import "UIView+MakeFromXib.h"
 
-@interface HWAuthorizationViewController ()<HWSignInViewDelegate>
+@interface HWAuthorizationViewController ()<HWAuthViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *authViewContainer;
 
-@property (strong, nonatomic) HWSignInView *signInView;
+@property (strong, nonatomic) NSArray<HWBaseAuthView *> *authViews;
 
 @end
 
 @implementation HWAuthorizationViewController
+
+#pragma mark - Accessors
+
+- (NSArray<HWBaseAuthView *> *)authViews
+{
+    if (!_authViews) {
+        HWForgotPasswordView *forgotPasswordView = [HWForgotPasswordView makeFromXib];
+        HWSignInView *signInView = [HWSignInView makeFromXib];
+        HWSignUpView *signUpView = [HWSignUpView makeFromXib];
+        _authViews = @[forgotPasswordView, signInView, signUpView];
+        
+        [_authViews setValue:self forKeyPath:@"delegate"];
+    }
+    return _authViews;
+}
 
 #pragma mark - View Lifecycle
 
@@ -32,7 +48,9 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self setupSignInView];
+    
+    //self.authViews;
+//    [self setupAuthViews];
 }
 
 #pragma mark - Actions
@@ -42,40 +60,89 @@
  */
 - (void)setupSignInView
 {
-    self.signInView = [HWSignInView makeFromXib];
-    self.signInView.delegate = self;
-    self.signInView.frame = self.authViewContainer.bounds;
-    [self.authViewContainer addSubview:self.signInView];
+//    self.signInView = [HWSignInView makeFromXib];
+//    self.signInView.delegate = self;
+//    self.signInView.frame = self.authViewContainer.bounds;
+//    [self.authViewContainer addSubview:self.signInView];
+    
+    
 }
 
-#pragma mark - HWSignInViewDelegate
+#pragma mark - HWAuthViewDelegate
 
-- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password
+- (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type
 {
     FIRAuth *auth = [HWBaseAppManager sharedManager].currentAuth;
-    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [auth signInWithEmail:email password:password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (error) {
-            return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-            /*
-             if (error.code == 17011) {
-             [auth createUserWithEmail:self.emailField.text password:self.passwordField.text completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-             if (!error) {
-             DLog(@"User is: %@", user);
-             } else {
-             [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-             }
-             }];
-             }
-             */
+    switch (type) {
+        case HWAuthViewTypeSignIn: {
+            HWSignInView *signInView = (HWSignInView *)view;
+            [auth signInWithEmail:signInView.email password:signInView.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                if (error) {
+                    return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                    /*
+                     if (error.code == 17011) {
+                     [auth createUserWithEmail:self.emailField.text password:self.passwordField.text completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+                     if (!error) {
+                     DLog(@"User is: %@", user);
+                     } else {
+                     [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                     }
+                     }];
+                     }
+                     */
+                }
+                [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                DLog(@"User: %@", user);
+            }];
         }
-        [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-        DLog(@"User: %@", user);
-    }];
+            
+        default:
+            break;
+    }
+}
+
+//#pragma mark - HWSignInViewDelegate
+//
+//- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password
+//{
+//    FIRAuth *auth = [HWBaseAppManager sharedManager].currentAuth;
+//    
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    
+//    [auth signInWithEmail:email password:password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+//        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//        if (error) {
+//            return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+//            /*
+//             if (error.code == 17011) {
+//             [auth createUserWithEmail:self.emailField.text password:self.passwordField.text completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+//             if (!error) {
+//             DLog(@"User is: %@", user);
+//             } else {
+//             [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+//             }
+//             }];
+//             }
+//             */
+//        }
+//        [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+//        DLog(@"User: %@", user);
+//    }];
+//    
+//}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    if (textField == self.signInView.emailField) {
+//        [self.signInView.passwordField becomeFirstResponder];
+//    } else {
+//        [textField resignFirstResponder];
+//    }
     
+    return YES;
 }
 
 @end

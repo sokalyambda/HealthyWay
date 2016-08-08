@@ -6,6 +6,8 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@interface HWForgotPasswordView : UIView
+#import "HWBaseAuthView.h"
+
+@interface HWForgotPasswordView : HWBaseAuthView
 
 @end

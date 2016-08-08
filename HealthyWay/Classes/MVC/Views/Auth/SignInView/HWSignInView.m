@@ -12,13 +12,34 @@
 
 @property (strong, nonatomic) HWSignInView *signInView;
 
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
 @end
 
 @implementation HWSignInView
 
+@synthesize delegate = _delegate;
+@synthesize password = _password;
+
 #pragma mark - Accessors
 
-- (void)setDelegate:(id<HWSignInViewDelegate>)delegate
+- (HWAuthViewType)authViewType
+{
+    return HWAuthViewTypeSignIn;
+}
+
+- (NSString *)email
+{
+    return self.emailField.text;
+}
+
+- (NSString *)password
+{
+    return self.passwordField.text;
+}
+
+- (void)setDelegate:(id<HWAuthViewDelegate>)delegate
 {
     _delegate = delegate;
     self.emailField.delegate = self.passwordField.delegate = _delegate;
@@ -26,12 +47,13 @@
 
 #pragma mark - Actions
 
-- (IBAction)signInClick:(id)sender {
+- (IBAction)signInClick:(id)sender
+{
     WEAK_SELF;
     [HWValidator validateEmailField:self.emailField andPasswordField:self.passwordField onSuccess:^{
         
-        if ([weakSelf.delegate respondsToSelector:@selector(signInView:didPrepareForSignInWithEmail:password:)]) {
-            [weakSelf.delegate signInView:weakSelf didPrepareForSignInWithEmail:self.emailField.text password:self.passwordField.text];
+        if ([weakSelf.delegate respondsToSelector:@selector(authView:didPrepareForAuthWithType:)]) {
+            [weakSelf.delegate authView:weakSelf didPrepareForAuthWithType:weakSelf.authViewType];
         }
         
     } onFailure:^(NSMutableArray *errorArray) {
@@ -48,10 +70,11 @@
     
 }
 
-- (IBAction)toSignUpFlowClick:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(signInViewDidPrepareForExchangingWithForgotPasswordView:)]) {
-        [self.delegate signInViewDidPrepareForExchangingWithForgotPasswordView:self];
-    }
+- (IBAction)toSignUpFlowClick:(id)sender
+{
+//    if ([self.delegate respondsToSelector:@selector(signInViewDidPrepareForExchangingWithSignUpView:)]) {
+//        [self.delegate signInViewDidPrepareForExchangingWithSignUpView:self];
+//    }
 }
 
 @end

@@ -2,10 +2,15 @@
 //  HWSignUpView.h
 //  HealthyWay
 //
-//  Created by Eugenity on 01.08.16.
+//  Created by Eugene Sokolenko on 05.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@interface HWSignUpView : UIView
+#import "HWBaseAuthView.h"
+
+@interface HWSignUpView : HWBaseAuthView
+
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end

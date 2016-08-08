@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
+		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
+		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
 		5802061E1D1D368400349B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061D1D1D368400349B32 /* AppDelegate.m */; };
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
@@ -27,7 +29,6 @@
 		58B305601D508DA60011F405 /* HWUserProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B3055E1D508DA60011F405 /* HWUserProfileController.xib */; };
 		58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305621D508DC40011F405 /* HWForgotPasswordView.m */; };
 		58B305651D508DC40011F405 /* HWForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B305631D508DC40011F405 /* HWForgotPasswordView.xib */; };
-		58B305691D508DD10011F405 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305671D508DD10011F405 /* HWSignUpView.m */; };
 		58B3056A1D508DD10011F405 /* HWSignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B305681D508DD10011F405 /* HWSignUpView.xib */; };
 		58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3056C1D508DE00011F405 /* HWSignInView.m */; };
 		58B3056F1D508DE00011F405 /* HWSignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B3056D1D508DE00011F405 /* HWSignInView.xib */; };
@@ -54,6 +55,11 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
+		44930B471D54C0FD007A4D41 /* HWBaseAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAuthView.h; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.h; sourceTree = "<group>"; };
+		44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAuthView.m; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.m; sourceTree = "<group>"; };
+		44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
+		44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpView.m; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.m; sourceTree = "<group>"; };
+		44930B4E1D54FAC8007A4D41 /* HWAuthViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthViews.h; path = Classes/MVC/Views/Auth/HWAuthViews.h; sourceTree = "<group>"; };
 		580206161D1D368400349B32 /* HealthyWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5802061A1D1D368400349B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5802061C1D1D368400349B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,8 +96,6 @@
 		58B305611D508DC40011F405 /* HWForgotPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWForgotPasswordView.h; path = Classes/MVC/Views/Auth/ForgotPasswordView/HWForgotPasswordView.h; sourceTree = "<group>"; };
 		58B305621D508DC40011F405 /* HWForgotPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWForgotPasswordView.m; path = Classes/MVC/Views/Auth/ForgotPasswordView/HWForgotPasswordView.m; sourceTree = "<group>"; };
 		58B305631D508DC40011F405 /* HWForgotPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWForgotPasswordView.xib; path = Classes/MVC/Views/Auth/ForgotPasswordView/HWForgotPasswordView.xib; sourceTree = "<group>"; };
-		58B305661D508DD10011F405 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
-		58B305671D508DD10011F405 /* HWSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpView.m; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.m; sourceTree = "<group>"; };
 		58B305681D508DD10011F405 /* HWSignUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWSignUpView.xib; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.xib; sourceTree = "<group>"; };
 		58B3056B1D508DE00011F405 /* HWSignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignInView.h; path = Classes/MVC/Views/Auth/SignInView/HWSignInView.h; sourceTree = "<group>"; };
 		58B3056C1D508DE00011F405 /* HWSignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignInView.m; path = Classes/MVC/Views/Auth/SignInView/HWSignInView.m; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 				0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		44930B461D54C098007A4D41 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				44930B471D54C0FD007A4D41 /* HWBaseAuthView.h */,
+				44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */,
+			);
+			name = AuthView;
 			sourceTree = "<group>";
 		};
 		5802060D1D1D368300349B32 = {
@@ -330,8 +343,8 @@
 		58A2A7861D4F5462006DBC38 /* SignUpView */ = {
 			isa = PBXGroup;
 			children = (
-				58B305661D508DD10011F405 /* HWSignUpView.h */,
-				58B305671D508DD10011F405 /* HWSignUpView.m */,
+				44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */,
+				44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */,
 				58B305681D508DD10011F405 /* HWSignUpView.xib */,
 			);
 			name = SignUpView;
@@ -396,6 +409,8 @@
 		58B305451D508C170011F405 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				44930B4E1D54FAC8007A4D41 /* HWAuthViews.h */,
+				44930B461D54C098007A4D41 /* AuthView */,
 				58A2A7871D4F5467006DBC38 /* ForgotPasswordView */,
 				58A2A7861D4F5462006DBC38 /* SignUpView */,
 				58A2A7851D4F5454006DBC38 /* SignInView */,
@@ -744,10 +759,10 @@
 				58B305531D508D550011F405 /* HWAutologinViewController.m in Sources */,
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
+				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
-				58B305691D508DD10011F405 /* HWSignUpView.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
@@ -756,6 +771,7 @@
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
+				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,21 +6,20 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@protocol HWSignInViewDelegate;
+#import "HWBaseAuthView.h"
 
-@interface HWSignInView : UIView
+//@protocol HWSignInViewDelegate;
 
-@property (weak, nonatomic) id<HWSignInViewDelegate> delegate;
+@interface HWSignInView : HWBaseAuthView
 
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-
-@end
-
-@protocol HWSignInViewDelegate <NSObject, UITextFieldDelegate>
-
-@optional
-- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password;
-- (void)signInViewDidPrepareForExchangingWithForgotPasswordView:(HWSignInView *)signInView;
+//@property (weak, nonatomic) id<HWSignInViewDelegate> delegate;
 
 @end
+
+//@protocol HWSignInViewDelegate <NSObject, UITextFieldDelegate>
+//
+//@optional
+//- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password;
+//- (void)signInViewDidPrepareForExchangingWithSignUpView:(HWSignInView *)signInView;
+//
+//@end
