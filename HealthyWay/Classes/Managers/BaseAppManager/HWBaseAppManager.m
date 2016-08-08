@@ -36,4 +36,21 @@
     return manager;
 }
 
+#pragma mark - Actions
+
+- (void)signOutIfFirstLaunch
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults.dictionaryRepresentation.allKeys containsObject:IsFirstLaunch]) {
+        if (self.currentUser) {
+            NSError *error;
+            [self.currentAuth signOut:&error];
+            if (error) {
+                DLog(@"Error: %@", error.localizedDescription);
+            }
+        }
+        [defaults setBool:NO forKey:IsFirstLaunch];
+    }
+}
+
 @end
