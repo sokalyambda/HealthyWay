@@ -124,7 +124,6 @@
         [rightImageView setContentMode:UIViewContentModeScaleAspectFit];
         
         self.passwordField.rightView = rightImageView;
-        [self.passwordField setContentMode:UIViewContentModeScaleAspectFit];
         
         self.passwordField.rightViewMode = UITextFieldViewModeAlways;
     }
