@@ -21,11 +21,13 @@ typedef enum : NSUInteger {
 
 @property (weak, nonatomic, nullable) id<HWAuthViewDelegate> delegate;
 
-@property (strong, nonatomic, nonnull) NSString *email;
-@property (strong, nonatomic, nullable) NSString *password;
-@property (strong, nonatomic, nullable) NSString *confirmedPassword;
+@property (strong, nonatomic, readonly, nonnull) NSString *email;
+@property (strong, nonatomic, readonly, nullable) NSString *password;
+@property (strong, nonatomic, readonly, nullable) NSString *confirmedPassword;
 
-@property (assign, nonatomic) HWAuthViewType authViewType;
+@property (assign, nonatomic, readonly) HWAuthViewType authViewType;
+
+@property (strong, nonatomic, readonly, nullable) IBOutletCollection(UITextField) NSArray *textFields;
 
 @end
 

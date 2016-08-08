@@ -6,8 +6,7 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWSignInView.h"
+#import "HWBaseAuthView.h"
 
-@interface HWSignUpView : HWSignInView
-
+@interface HWSignUpView : HWBaseAuthView
 @end

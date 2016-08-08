@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) NSArray<HWBaseAuthView *> *authViews;
 
+@property (strong, nonatomic) HWBaseAuthView *currentAuthView;
+
 @end
 
 @implementation HWAuthorizationViewController
@@ -88,6 +90,9 @@
     
     neededAuthView.frame = self.authViewContainer.bounds;
     [self.authViewContainer addSubview:neededAuthView];
+    
+    // Set the current auth view:
+    self.currentAuthView = neededAuthView;
     
     CATransition *transition = [self showView:neededAuthView insteadOfView:currentAuthView];
     
@@ -174,13 +179,19 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-//    if (textField == self.signInView.emailField) {
-//        [self.signInView.passwordField becomeFirstResponder];
-//    } else {
-//        [textField resignFirstResponder];
-//    }
-    
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.currentAuthView.textFields enumerateObjectsUsingBlock:^(UITextField  *_Nonnull authTextField, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([authTextField isEqual:textField]) {
+            if (idx != self.currentAuthView.textFields.count - 1) {
+                NSInteger nextIndex = idx + 1;
+                UITextField *nextFirstResponder = self.currentAuthView.textFields[nextIndex];
+                [nextFirstResponder becomeFirstResponder];
+            } else {
+                [textField resignFirstResponder];
+            }
+        }
+    }];
     return YES;
 }
 

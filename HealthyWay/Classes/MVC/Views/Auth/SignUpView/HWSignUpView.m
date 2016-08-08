@@ -10,6 +10,8 @@
 
 @interface HWSignUpView ()
 
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 
 @end
@@ -23,10 +25,19 @@
     return HWAuthViewTypeSignUp;
 }
 
-- (void)setDelegate:(id<HWAuthViewDelegate>)delegate
+- (NSString *)email
 {
-    [super setDelegate:delegate];
-    self.confirmPasswordField.delegate = delegate;
+    return self.emailField.text;
+}
+
+- (NSString *)password
+{
+    return self.passwordField.text;
+}
+
+- (NSString *)confirmedPassword
+{
+    return self.confirmPasswordField.text;
 }
 
 #pragma mark - Actions
@@ -37,6 +48,5 @@
         [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignIn];
     }
 }
-
 
 @end

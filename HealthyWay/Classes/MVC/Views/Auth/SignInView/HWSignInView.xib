@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,12 +18,12 @@
                         <constraint firstAttribute="height" constant="30" id="yIx-Lj-h6n"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ihW-ro-UVu">
                     <rect key="frame" x="225" y="46" width="150" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAv-JM-vXh">
                     <rect key="frame" x="272" y="84" width="55" height="30"/>
@@ -54,8 +54,10 @@
                 <constraint firstItem="ihW-ro-UVu" firstAttribute="leading" secondItem="8G7-bX-kLX" secondAttribute="leading" id="vTE-zc-RM5"/>
             </constraints>
             <connections>
-                <outlet property="emailField" destination="8G7-bX-kLX" id="lZx-xa-2ay"/>
-                <outlet property="passwordField" destination="ihW-ro-UVu" id="l3G-Fe-lts"/>
+                <outlet property="emailField" destination="8G7-bX-kLX" id="MeX-2S-TPD"/>
+                <outlet property="passwordField" destination="ihW-ro-UVu" id="TeI-Ni-5JK"/>
+                <outletCollection property="textFields" destination="8G7-bX-kLX" id="Oez-XE-qcC"/>
+                <outletCollection property="textFields" destination="ihW-ro-UVu" id="bKu-RT-GUl"/>
             </connections>
         </view>
     </objects>

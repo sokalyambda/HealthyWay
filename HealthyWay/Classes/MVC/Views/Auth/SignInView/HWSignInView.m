@@ -10,16 +10,12 @@
 
 @interface HWSignInView ()
 
-@property (strong, nonatomic) HWSignInView *signInView;
-
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 
 @implementation HWSignInView
-
-@synthesize delegate = _delegate;
 
 #pragma mark - Lifecycle
 
@@ -63,12 +59,6 @@
 - (NSString *)password
 {
     return self.passwordField.text;
-}
-
-- (void)setDelegate:(id<HWAuthViewDelegate>)delegate
-{
-    _delegate = delegate;
-    self.emailField.delegate = self.passwordField.delegate = _delegate;
 }
 
 #pragma mark - Actions

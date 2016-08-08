@@ -18,7 +18,7 @@
                         <constraint firstAttribute="height" constant="30" id="zbo-yQ-ePL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-Vj-nET">
                     <rect key="frame" x="273" y="122" width="55" height="30"/>
@@ -34,12 +34,12 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tWH-NP-7Rt">
                     <rect key="frame" x="225" y="46" width="150" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2N-o0-in3">
                     <rect key="frame" x="225" y="84" width="150" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -61,8 +61,11 @@
             </constraints>
             <connections>
                 <outlet property="confirmPasswordField" destination="C2N-o0-in3" id="SM3-dC-yjt"/>
-                <outlet property="emailField" destination="GZR-b8-msk" id="7eb-GN-RFH"/>
-                <outlet property="passwordField" destination="tWH-NP-7Rt" id="Uv6-qq-H3T"/>
+                <outlet property="emailField" destination="GZR-b8-msk" id="6Aq-qb-l4b"/>
+                <outlet property="passwordField" destination="tWH-NP-7Rt" id="2sf-kk-sW2"/>
+                <outletCollection property="textFields" destination="GZR-b8-msk" id="V7F-ts-f4z"/>
+                <outletCollection property="textFields" destination="tWH-NP-7Rt" id="gy5-Si-7Lm"/>
+                <outletCollection property="textFields" destination="C2N-o0-in3" id="DiS-kg-bxC"/>
             </connections>
         </view>
     </objects>

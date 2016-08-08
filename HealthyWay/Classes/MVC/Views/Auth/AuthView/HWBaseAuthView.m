@@ -9,4 +9,11 @@
 #import "HWBaseAuthView.h"
 
 @implementation HWBaseAuthView
+
+- (void)setDelegate:(id<HWAuthViewDelegate>)delegate
+{
+    _delegate = delegate;
+    [self.textFields setValue:_delegate forKey:@"delegate"];
+}
+
 @end

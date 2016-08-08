@@ -8,7 +8,32 @@
 
 #import "HWForgotPasswordView.h"
 
+@interface HWForgotPasswordView ()
+
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+
+@end
+
 @implementation HWForgotPasswordView
 
+#pragma mark - Accessors
+
+- (HWAuthViewType)authViewType
+{
+    return HWAuthViewTypeForgotPassword;
+}
+
+#pragma mark - Actions
+
+- (IBAction)forgotPasswordClick:(id)sender
+{
+}
+
+- (IBAction)backToSignInFlowClick:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignIn];
+    }
+}
 
 @end

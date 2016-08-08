@@ -9,5 +9,4 @@
 #import "HWBaseAuthView.h"
 
 @interface HWSignInView : HWBaseAuthView
-
 @end
