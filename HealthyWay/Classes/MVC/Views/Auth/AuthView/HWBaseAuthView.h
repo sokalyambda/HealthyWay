@@ -14,12 +14,16 @@ typedef enum : NSUInteger {
 
 @protocol HWAuthViewDelegate;
 
+/**
+ *  This is the base class for authentication views: HWSignInView, HWSignUpView, HWForgotPasswordView;
+ */
 @interface HWBaseAuthView : UIView
 
-@property (weak, nonatomic) id<HWAuthViewDelegate> delegate;
+@property (weak, nonatomic, nullable) id<HWAuthViewDelegate> delegate;
 
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic, nonnull) NSString *email;
+@property (strong, nonatomic, nullable) NSString *password;
+@property (strong, nonatomic, nullable) NSString *confirmedPassword;
 
 @property (assign, nonatomic) HWAuthViewType authViewType;
 
@@ -28,7 +32,7 @@ typedef enum : NSUInteger {
 @protocol HWAuthViewDelegate <NSObject, UITextFieldDelegate>
 
 @optional
-- (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type;
-- (void)auhtView:(HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthViewType)destinationType;
+- (void)authView:(nullable HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type;
+- (void)authView:(nullable HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthViewType)destinationType;
 
 @end

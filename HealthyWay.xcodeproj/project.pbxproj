@@ -15,6 +15,8 @@
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
 		580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206271D1D368400349B32 /* LaunchScreen.storyboard */; };
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
+		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
+		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -70,6 +72,10 @@
 		5802062F1D1D368400349B32 /* HealthyWayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthyWayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		580206331D1D368400349B32 /* HealthyWayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthyWayTests.m; sourceTree = "<group>"; };
 		580206351D1D368400349B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
+		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
+		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
+		5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+CompletionBlock.m"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.m"; sourceTree = "<group>"; };
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 		58104A031D1D3A9C0082FF4B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5810FF0C1D58A99800AF5C96 /* CAAnimation */,
 				58A2A7A71D4F932E006DBC38 /* UIView */,
 				58C727711D23D36900F5F85D /* NSString */,
 			);
@@ -324,10 +331,37 @@
 		58104A0E1D1D3D9C0082FF4B /* AuthorizationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5810FF081D589FA800AF5C96 /* AuthorizationViewController+AuthViewTransitionSubtype */,
 				58B305541D508D690011F405 /* HWAuthorizationViewController.h */,
 				58B305551D508D690011F405 /* HWAuthorizationViewController.m */,
 			);
 			name = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
+		5810FF081D589FA800AF5C96 /* AuthorizationViewController+AuthViewTransitionSubtype */ = {
+			isa = PBXGroup;
+			children = (
+				5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */,
+				5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */,
+			);
+			name = "AuthorizationViewController+AuthViewTransitionSubtype";
+			sourceTree = "<group>";
+		};
+		5810FF0C1D58A99800AF5C96 /* CAAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				5810FF0D1D58A99C00AF5C96 /* CAAnimation+CompletionBlock */,
+			);
+			name = CAAnimation;
+			sourceTree = "<group>";
+		};
+		5810FF0D1D58A99C00AF5C96 /* CAAnimation+CompletionBlock */ = {
+			isa = PBXGroup;
+			children = (
+				5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */,
+				5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */,
+			);
+			name = "CAAnimation+CompletionBlock";
 			sourceTree = "<group>";
 		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
@@ -752,7 +786,9 @@
 			files = (
 				58B305751D508E330011F405 /* HWAuthService.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
+				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
+				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,

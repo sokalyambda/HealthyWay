@@ -20,7 +20,33 @@
 @implementation HWSignInView
 
 @synthesize delegate = _delegate;
-@synthesize password = _password;
+
+#pragma mark - Lifecycle
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self commonInit];
+}
 
 #pragma mark - Accessors
 
@@ -72,9 +98,31 @@
 
 - (IBAction)toSignUpFlowClick:(id)sender
 {
-//    if ([self.delegate respondsToSelector:@selector(signInViewDidPrepareForExchangingWithSignUpView:)]) {
-//        [self.delegate signInViewDidPrepareForExchangingWithSignUpView:self];
-//    }
+    if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignUp];
+    }
+}
+
+- (void)rightViewTapped:(UITapGestureRecognizer *)tap
+{
+    if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeForgotPassword];
+    }
+}
+
+- (void)commonInit
+{
+    if ([self isMemberOfClass:[HWSignInView class]]) {
+        UIImageView *rightImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"question_mark_icon"]];
+        
+        rightImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *rightViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightViewTapped:)];
+        [rightImageView addGestureRecognizer:rightViewTap];
+        [rightImageView setContentMode:UIViewContentModeScaleAspectFit];
+        
+        self.passwordField.rightView = rightImageView;
+        self.passwordField.rightViewMode = UITextFieldViewModeAlways;
+    }
 }
 
 @end

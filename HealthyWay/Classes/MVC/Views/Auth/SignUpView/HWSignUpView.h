@@ -6,11 +6,8 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWBaseAuthView.h"
+#import "HWSignInView.h"
 
-@interface HWSignUpView : HWBaseAuthView
-
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@interface HWSignUpView : HWSignInView
 
 @end

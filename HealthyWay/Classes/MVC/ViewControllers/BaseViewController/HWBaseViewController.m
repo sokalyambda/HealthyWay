@@ -19,6 +19,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self performAdditionalViewControllerAdjustments];
+}
+
+#pragma mark - Actions
+
+/**
+ *  Abstract method
+ */
+- (void)performAdditionalViewControllerAdjustments
+{
+    return;
 }
 
 @end

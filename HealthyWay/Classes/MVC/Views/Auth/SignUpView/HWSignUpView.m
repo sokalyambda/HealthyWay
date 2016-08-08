@@ -10,25 +10,33 @@
 
 @interface HWSignUpView ()
 
-
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 
 @end
 
 @implementation HWSignUpView
 
-@synthesize delegate = _delegate;
-
 #pragma mark - Accessors
+
+- (HWAuthViewType)authViewType
+{
+    return HWAuthViewTypeSignUp;
+}
 
 - (void)setDelegate:(id<HWAuthViewDelegate>)delegate
 {
-    _delegate = delegate;
-    self.emailField.delegate = self.passwordField.delegate = delegate;
+    [super setDelegate:delegate];
+    self.confirmPasswordField.delegate = delegate;
 }
 
-- (void)setEmail:(NSString *)email
+#pragma mark - Actions
+
+- (IBAction)toSignInFlowClick:(id)sender
 {
-//    super.email = 
+    if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignIn];
+    }
 }
+
 
 @end

@@ -9,6 +9,4 @@
 #import "HWBaseAuthView.h"
 
 @implementation HWBaseAuthView
-
-
 @end

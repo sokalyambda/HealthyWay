@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,35 +21,48 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-Vj-nET">
-                    <rect key="frame" x="273" y="84" width="55" height="30"/>
+                    <rect key="frame" x="273" y="122" width="55" height="30"/>
                     <state key="normal" title="Confirm"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZi-O5-9mq">
                     <rect key="frame" x="265" y="555" width="71" height="30"/>
                     <state key="normal" title="..to sing in"/>
+                    <connections>
+                        <action selector="toSignInFlowClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="q7h-Cj-B8P"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tWH-NP-7Rt">
                     <rect key="frame" x="225" y="46" width="150" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2N-o0-in3">
+                    <rect key="frame" x="225" y="84" width="150" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="FSn-Vj-nET" firstAttribute="top" secondItem="C2N-o0-in3" secondAttribute="bottom" constant="8" id="12F-AO-M7k"/>
                 <constraint firstItem="tWH-NP-7Rt" firstAttribute="top" secondItem="GZR-b8-msk" secondAttribute="bottom" constant="8" id="4Z2-dd-hy1"/>
+                <constraint firstItem="C2N-o0-in3" firstAttribute="height" secondItem="tWH-NP-7Rt" secondAttribute="height" id="BKV-oo-KAL"/>
                 <constraint firstItem="FSn-Vj-nET" firstAttribute="centerX" secondItem="KZi-O5-9mq" secondAttribute="centerX" id="Lak-77-yEG"/>
                 <constraint firstItem="GZR-b8-msk" firstAttribute="height" secondItem="tWH-NP-7Rt" secondAttribute="height" id="LyC-Qn-jTs"/>
-                <constraint firstItem="FSn-Vj-nET" firstAttribute="top" secondItem="tWH-NP-7Rt" secondAttribute="bottom" constant="8" id="RqI-D4-TL0"/>
+                <constraint firstItem="C2N-o0-in3" firstAttribute="trailing" secondItem="tWH-NP-7Rt" secondAttribute="trailing" id="VpN-Js-Zyd"/>
                 <constraint firstItem="GZR-b8-msk" firstAttribute="leading" secondItem="tWH-NP-7Rt" secondAttribute="leading" id="XdD-Bw-Lvo"/>
                 <constraint firstAttribute="bottom" secondItem="KZi-O5-9mq" secondAttribute="bottom" constant="15" id="anx-Fz-nHx"/>
                 <constraint firstItem="GZR-b8-msk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="fMR-mO-6Mh"/>
                 <constraint firstItem="GZR-b8-msk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="k8y-X2-jum"/>
+                <constraint firstItem="C2N-o0-in3" firstAttribute="top" secondItem="tWH-NP-7Rt" secondAttribute="bottom" constant="8" id="mb9-Mo-GWy"/>
                 <constraint firstItem="GZR-b8-msk" firstAttribute="trailing" secondItem="tWH-NP-7Rt" secondAttribute="trailing" id="oX6-65-yEX"/>
+                <constraint firstItem="C2N-o0-in3" firstAttribute="leading" secondItem="tWH-NP-7Rt" secondAttribute="leading" id="ubh-pF-eFL"/>
                 <constraint firstItem="tWH-NP-7Rt" firstAttribute="centerX" secondItem="FSn-Vj-nET" secondAttribute="centerX" id="yjd-YK-2an"/>
             </constraints>
             <connections>
-                <outlet property="emailField" destination="GZR-b8-msk" id="0I9-C5-nii"/>
-                <outlet property="passwordField" destination="tWH-NP-7Rt" id="kat-se-7Gv"/>
+                <outlet property="confirmPasswordField" destination="C2N-o0-in3" id="SM3-dC-yjt"/>
+                <outlet property="emailField" destination="GZR-b8-msk" id="7eb-GN-RFH"/>
+                <outlet property="passwordField" destination="tWH-NP-7Rt" id="Uv6-qq-H3T"/>
             </connections>
         </view>
     </objects>

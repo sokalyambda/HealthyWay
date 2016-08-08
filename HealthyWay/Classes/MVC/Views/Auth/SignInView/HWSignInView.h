@@ -8,18 +8,6 @@
 
 #import "HWBaseAuthView.h"
 
-//@protocol HWSignInViewDelegate;
-
 @interface HWSignInView : HWBaseAuthView
 
-//@property (weak, nonatomic) id<HWSignInViewDelegate> delegate;
-
 @end
-
-//@protocol HWSignInViewDelegate <NSObject, UITextFieldDelegate>
-//
-//@optional
-//- (void)signInView:(HWSignInView *)signInView didPrepareForSignInWithEmail:(NSString *)email password:(NSString *)password;
-//- (void)signInViewDidPrepareForExchangingWithSignUpView:(HWSignInView *)signInView;
-//
-//@end
