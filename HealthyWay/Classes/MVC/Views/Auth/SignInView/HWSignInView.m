@@ -113,7 +113,10 @@
 - (void)commonInit
 {
     if ([self isMemberOfClass:[HWSignInView class]]) {
-        UIImageView *rightImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"question_mark_icon"]];
+
+        CGFloat neededHeight = CGRectGetHeight(self.passwordField.frame) * .8f;
+        UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, neededHeight, neededHeight)];
+        rightImageView.image = [UIImage imageNamed:@"question_mark_icon"];
         
         rightImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *rightViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightViewTapped:)];
@@ -121,6 +124,8 @@
         [rightImageView setContentMode:UIViewContentModeScaleAspectFit];
         
         self.passwordField.rightView = rightImageView;
+        [self.passwordField setContentMode:UIViewContentModeScaleAspectFit];
+        
         self.passwordField.rightViewMode = UITextFieldViewModeAlways;
     }
 }
