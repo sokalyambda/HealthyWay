@@ -8,6 +8,14 @@
 
 #import "HWAuthService.h"
 
+#import "HWSignInOperation.h"
+
 @implementation HWAuthService
+
++ (HWSignInOperation *)signInOperationForEmail:(NSString *)email
+                                      password:(NSString *)password
+{
+    return nil;
+}
 
 @end

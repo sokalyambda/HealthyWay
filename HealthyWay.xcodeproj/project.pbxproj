@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
+		44190E8B1D59282B00A8A4C1 /* HWSignInOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44190E8A1D59282B00A8A4C1 /* HWSignInOperation.m */; };
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
@@ -58,6 +59,8 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
+		44190E891D59282B00A8A4C1 /* HWSignInOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignInOperation.h; path = Classes/Operations/SignInOperation/HWSignInOperation.h; sourceTree = "<group>"; };
+		44190E8A1D59282B00A8A4C1 /* HWSignInOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignInOperation.m; path = Classes/Operations/SignInOperation/HWSignInOperation.m; sourceTree = "<group>"; };
 		44930B471D54C0FD007A4D41 /* HWBaseAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAuthView.h; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.h; sourceTree = "<group>"; };
 		44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAuthView.m; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.m; sourceTree = "<group>"; };
 		44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
@@ -156,6 +159,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		44190E871D59273A00A8A4C1 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				44190E881D59274100A8A4C1 /* SignInOperation */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		44190E881D59274100A8A4C1 /* SignInOperation */ = {
+			isa = PBXGroup;
+			children = (
+				44190E891D59282B00A8A4C1 /* HWSignInOperation.h */,
+				44190E8A1D59282B00A8A4C1 /* HWSignInOperation.m */,
+			);
+			name = SignInOperation;
+			sourceTree = "<group>";
+		};
 		44930B461D54C098007A4D41 /* AuthView */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +243,7 @@
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				44190E871D59273A00A8A4C1 /* Operations */,
 				58E337C41D22F64800B3A280 /* HelperClasses */,
 				58E337BF1D22F3E200B3A280 /* Managers */,
 				58104A051D1D3AAE0082FF4B /* Services */,
@@ -805,6 +826,7 @@
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
+				44190E8B1D59282B00A8A4C1 /* HWSignInOperation.m in Sources */,
 				58B305531D508D550011F405 /* HWAutologinViewController.m in Sources */,
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
