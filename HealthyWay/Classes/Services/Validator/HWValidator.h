@@ -9,7 +9,6 @@
 typedef void(^ValidationSuccessBlock)(void);
 typedef void(^ValidationFailureBlock)(NSMutableArray *errorArray);
 
-extern NSString *const kValidationErrorField;
 extern NSString *const kValidationErrorMessage;
 
 @interface HWValidator : NSObject
@@ -17,31 +16,31 @@ extern NSString *const kValidationErrorMessage;
 + (NSMutableArray *)validationErrorArray;
 + (void)setValidationErrorArray:(NSMutableArray *)validationErrorArray;
 
-+ (void)validateEmailField:(UITextField *)emailField
++ (void)validateEmail:(NSString *)email
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
 
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
 
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
-         andFirstNameField:(UITextField *)firstNameField
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
+         andFirstName:(NSString *)firstName
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
 
-+ (void)validatePhoneField:(UITextField *)phoneField
++ (void)validatePhone:(NSString *)phone
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
-+ (void)validateFirstNameField:(UITextField *)firstNameField
++ (void)validateFirstName:(NSString *)firstName
                      onSuccess:(ValidationSuccessBlock)success
                      onFailure:(ValidationFailureBlock)failure;
 
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
-   andConfirmPasswordField:(UITextField *)confirmPassword
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
+   andConfirmPassword:(NSString *)confirmPassword
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
 

@@ -63,29 +63,6 @@
 
 #pragma mark - Actions
 
-- (IBAction)signInClick:(id)sender
-{
-    WEAK_SELF;
-    [HWValidator validateEmailField:self.emailField andPasswordField:self.passwordField onSuccess:^{
-        
-        if ([weakSelf.delegate respondsToSelector:@selector(authView:didPrepareForAuthWithType:)]) {
-            [weakSelf.delegate authView:weakSelf didPrepareForAuthWithType:weakSelf.authViewType];
-        }
-        
-    } onFailure:^(NSMutableArray *errorArray) {
-        
-        if ([weakSelf.delegate isKindOfClass:[UIViewController class]]) {
-            UIViewController *viewControllerForPresentingAlert = (UIViewController *)weakSelf.delegate;
-            [errorArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull errDict, NSUInteger idx, BOOL * _Nonnull stop) {
-                NSString *message = errDict[kValidationErrorMessage];
-                [HWAlertService showAlertWithMessage:message forController:viewControllerForPresentingAlert withCompletion:nil];
-            }];
-        }
-        [HWValidator cleanValidationErrorArray];
-    }];
-    
-}
-
 - (IBAction)toSignUpFlowClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {

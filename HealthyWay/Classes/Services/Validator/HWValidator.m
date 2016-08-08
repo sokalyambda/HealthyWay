@@ -15,7 +15,6 @@ static const NSInteger kMaxNameCharacters = 30.f;
 static NSString *const kEmailErrorImageName = @"";
 static NSString *const kPasswordErrorImageName = @"";
 
-NSString *const kValidationErrorField = @"validationErrorField";
 NSString *const kValidationErrorMessage = @"validationErrorMessage";
 
 @implementation HWValidator
@@ -44,24 +43,24 @@ static NSMutableArray *_errorArray;
 #pragma mark - Private methods
 
 /**
- *  Validation of email field
+ *  Validation of email 
  *
- *  @param emailField Current email field
+ *  @param email Current email 
  *
  *  @return Returns 'YES' if email is valid
  */
-+ (BOOL)validateEmailField:(UITextField *)emailField
++ (BOOL)validateEmail:(NSString *)email
 {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     
-    if (!emailField.text.length) {
-        [self setErrorField:emailField andMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+    if (!email.length) {
+        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
         return NO;
-    } else if (![emailTest evaluateWithObject:emailField.text]) {
-        [self setErrorField:emailField andMessage:LOCALIZED(@"Пожалуйста, введите действительный адрес электронной почты. Например johndoe@domain.com.\n")];
+    } else if (![emailTest evaluateWithObject:email]) {
+        [self setErrorMessage:LOCALIZED(@"Пожалуйста, введите действительный адрес электронной почты. Например johndoe@domain.com.\n")];
         /*
-        [emailField shakeView];
+        [email shakeView];
          */
         return NO;
     }
@@ -69,75 +68,57 @@ static NSMutableArray *_errorArray;
 }
 
 /**
- *  Validation of password field
+ *  Validation of password 
  *
- *  @param passwordField Current password field
+ *  @param password Current password 
  *
  *  @return Returns 'YES' if password is valid
  */
-+ (BOOL)validatePasswordField:(UITextField *)passwordField
++ (BOOL)validatePassword:(NSString *)password
 {
     NSString *passwordRegex = [NSString stringWithFormat:@"^.{%li,%li}$", (long)kMinPasswordSymbols, (long)kMaxPasswordSymbols];
     NSPredicate *passwordTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passwordRegex];
-    BOOL isMatchSuccess = [passwordTest evaluateWithObject:passwordField.text];
+    BOOL isMatchSuccess = [passwordTest evaluateWithObject:password];
     
-    if (!passwordField.text.length) {
-        
-        [self setErrorField:passwordField andMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+    if (!password.length) {
+        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
         return NO;
     } else if (!isMatchSuccess) {
-        
-        [self setErrorField:passwordField andMessage:LOCALIZED(@"Количество символов не менее 6.\n")];
-        /*
-        [passwordField shakeView];
-         */
+        [self setErrorMessage:LOCALIZED(@"Количество символов не менее 6.\n")];
         return NO;
     }
     
     return YES;
 }
 
-+ (BOOL)validateFirstNameField:(UITextField *)firstNameField
++ (BOOL)validateFirstName:(NSString *)firstName
 {
-    if (!firstNameField.text.length || firstNameField.text.length > kMaxNameCharacters) {
-        /*
-        [firstNameField shakeView];
-         */
-        [self setErrorField:firstNameField andMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
-        
+    if (!firstName.length || firstName.length > kMaxNameCharacters) {
+        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
         return NO;
     }
     return YES;
 }
 
-+ (BOOL)validatePhoneField:(UITextField *)phoneField
++ (BOOL)validatePhone:(NSString *)phone
 {
-    NSString *text = [[[[phoneField.text stringByReplacingOccurrencesOfString:@"(" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
+    NSString *text = [[[[phone stringByReplacingOccurrencesOfString:@"(" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (!text) {
-        [self setErrorField:phoneField andMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
         return NO;
     }
     return YES;
 }
 
-+ (BOOL)validatePasswordField:(UITextField *)passwordField andConfirmPasswordField:(UITextField *)confirmPasswordField
++ (BOOL)validatePassword:(NSString *)password andConfirmPassword:(NSString *)confirmPassword
 {
     BOOL isValid = YES;
     
-    if (![self validatePasswordField:passwordField]) {
+    if (![self validatePassword:password]) {
         return NO;
     }
-    
-    if (![passwordField.text isEqualToString:confirmPasswordField.text]) {
-
-        [self setErrorField:confirmPasswordField andMessage:LOCALIZED(@"Password does not match the confirm password\n")];
-        [self setErrorField:passwordField andMessage:LOCALIZED(@"Password does not match the confirm password\n")];
-        
-        /*
-        [confirmPasswordField shakeView];
-         */
-        
+    if (![password isEqualToString:confirmPassword]) {
+        [self setErrorMessage:LOCALIZED(@"Password does not match the confirm password\n")];
         isValid = NO;
     }
     return isValid;
@@ -148,17 +129,26 @@ static NSMutableArray *_errorArray;
 /**
  *  Public Validation Methods
  *
- *  @param currentField Current field for validation
  *  @param success      Success Block
  *  @param failure      Failure Block
  */
-
-+ (void)validateFirstNameField:(UITextField *)firstNameField
++ (void)validateFirstName:(NSString *)firstName
                      onSuccess:(ValidationSuccessBlock)success
                      onFailure:(ValidationFailureBlock)failure
 {
-    if (![self validateFirstNameField:firstNameField] && failure) {
-        
+    if (![self validateFirstName:firstName] && failure) {
+        failure([self validationErrorArray]);
+    } else if (success) {
+        success();
+    }
+}
+
++ (void)validateEmail:(NSString *)email
+                 onSuccess:(ValidationSuccessBlock)success
+                 onFailure:(ValidationFailureBlock)failure
+{
+    if (![self validateEmail:email] && failure) {
+
         failure([self validationErrorArray]);
         
     } else if (success) {
@@ -166,31 +156,18 @@ static NSMutableArray *_errorArray;
     }
 }
 
-+ (void)validateEmailField:(UITextField *)emailField
-                 onSuccess:(ValidationSuccessBlock)success
-                 onFailure:(ValidationFailureBlock)failure
-{
-    if (![self validateEmailField:emailField] && failure) {
-
-        failure([self validationErrorArray]);
-        
-    } else if (success) {
-        success();
-    }
-}
-
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure
 {
     BOOL isValid = YES;
     
-    if (![self validateEmailField:emailField]) {
+    if (![self validateEmail:email]) {
         isValid = NO;
     }
     
-    if (![self validatePasswordField:passwordField]) {
+    if (![self validatePassword:password]) {
         isValid = NO;
     }
     
@@ -201,23 +178,23 @@ static NSMutableArray *_errorArray;
     }
 }
 
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
-         andFirstNameField:(UITextField *)firstNameField
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
+         andFirstName:(NSString *)firstName
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure
 {
     BOOL isValid = YES;
     
-    if (![self validateEmailField:emailField]) {
+    if (![self validateEmail:email]) {
         isValid = NO;
     }
     
-    if (![self validatePasswordField:passwordField]) {
+    if (![self validatePassword:password]) {
         isValid = NO;
     }
     
-    if (![self validateFirstNameField:firstNameField]) {
+    if (![self validateFirstName:firstName]) {
         isValid = NO;
     }
     
@@ -228,18 +205,18 @@ static NSMutableArray *_errorArray;
     }
 }
 
-+ (void)validateEmailField:(UITextField *)emailField
-          andPasswordField:(UITextField *)passwordField
-   andConfirmPasswordField:(UITextField *)confirmPassword
++ (void)validateEmail:(NSString *)email
+          andPassword:(NSString *)password
+   andConfirmPassword:(NSString *)confirmPassword
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure
 {
     BOOL isValid = YES;
     
-    if (![self validateEmailField:emailField]) {
+    if (![self validateEmail:email]) {
         isValid = NO;
     }
-    if (![self validatePasswordField:passwordField andConfirmPasswordField:confirmPassword]) {
+    if (![self validatePassword:password andConfirmPassword:confirmPassword]) {
         isValid = NO;
     }
     
@@ -250,21 +227,21 @@ static NSMutableArray *_errorArray;
     }
 }
 
-+ (void)validateEmailField:(UITextField *)emailField
-                phoneField:(UITextField *)phoneField
-         andFirstNameField:(UITextField *)firstNameField
++ (void)validateEmail:(NSString *)email
+                phone:(NSString *)phone
+         andFirstName:(NSString *)firstName
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure
 {
     BOOL isValid = YES;
     
-    if (![self validateEmailField:emailField]) {
+    if (![self validateEmail:email]) {
         isValid = NO;
     }
-    if (![self validateFirstNameField:firstNameField]) {
+    if (![self validateFirstName:firstName]) {
         isValid = NO;
     }
-    if (![self validatePhoneField:phoneField]) {
+    if (![self validatePhone:phone]) {
         isValid = NO;
     }
     
@@ -275,13 +252,13 @@ static NSMutableArray *_errorArray;
     }
 }
 
-+ (void)validatePhoneField:(UITextField *)phoneField
++ (void)validatePhone:(NSString *)phone
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure
 {
     BOOL isValid = YES;
 
-    if (![self validatePhoneField:phoneField]) {
+    if (![self validatePhone:phone]) {
         isValid = NO;
     }
     
@@ -302,10 +279,9 @@ static NSMutableArray *_errorArray;
     [self setValidationErrorArray:[@[] mutableCopy]];
 }
 
-+ (void)setErrorField:(id)errorField andMessage:(NSString *)message
++ (void)setErrorMessage:(NSString *)message
 {
     NSDictionary *errorDict = @{
-                                kValidationErrorField: errorField,
                                 kValidationErrorMessage: message
                                 };
     [[self validationErrorArray] addObject:errorDict];

@@ -23,6 +23,11 @@
     return HWAuthViewTypeForgotPassword;
 }
 
+- (NSString *)email
+{
+    return self.emailField.text;
+}
+
 #pragma mark - Actions
 
 - (IBAction)forgotPasswordClick:(id)sender

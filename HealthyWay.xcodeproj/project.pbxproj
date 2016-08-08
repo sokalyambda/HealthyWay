@@ -17,6 +17,7 @@
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
+		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -76,6 +77,8 @@
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
 		5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+CompletionBlock.m"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.m"; sourceTree = "<group>"; };
+		5810FF131D58CCC300AF5C96 /* NSString+ErrorString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ErrorString.h"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.h"; sourceTree = "<group>"; };
+		5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ErrorString.m"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.m"; sourceTree = "<group>"; };
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
@@ -364,6 +367,15 @@
 			name = "CAAnimation+CompletionBlock";
 			sourceTree = "<group>";
 		};
+		5810FF121D58CC9700AF5C96 /* NSString+ErrorString */ = {
+			isa = PBXGroup;
+			children = (
+				5810FF131D58CCC300AF5C96 /* NSString+ErrorString.h */,
+				5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */,
+			);
+			name = "NSString+ErrorString";
+			sourceTree = "<group>";
+		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +520,7 @@
 		58C727711D23D36900F5F85D /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				5810FF121D58CC9700AF5C96 /* NSString+ErrorString */,
 				58C727721D23D36C00F5F85D /* NSString+JSONRepresentation */,
 			);
 			name = NSString;
@@ -800,6 +813,7 @@
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
+				5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
 				58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */,

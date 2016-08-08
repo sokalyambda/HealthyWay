@@ -8,7 +8,6 @@
 
 #import "HWAlertService.h"
 #import "HWErrorHandler.h"
-#import "HWValidator.h"
 
 #import "HWBaseNavigationController.h"
 
@@ -224,50 +223,6 @@ NSString *const kErrorAlertMessage = @"AlertMessage";
     [alertController addAction:cancelAction];
     
     [self showCurrentAlertController:alertController forController:controller];
-}
-
-/**
- *  If there is no email from social networks response - user should enter it to text field
- */
-static id observer = nil;
-+ (void)showAlertForEmailEnteringForController:(UIViewController *)controller
-                                withCompletion:(void(^)(NSString *email, NSError *error))completion
-{
-    UIAlertController *emailAlertController = [UIAlertController alertControllerWithTitle:LOCALIZED(@"Введите адрес электронной почты (email)") message:LOCALIZED(@"К сожалению, адрес электронной почты (email) не удалось получить, используя Ваш социальный аккаунт. Введите email, который Вы хотите использовать для авторизации") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:LOCALIZED(@"Подтвердить") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *emailField = emailAlertController.textFields.firstObject;
-        [[NSNotificationCenter defaultCenter] removeObserver:observer];
-        if (completion) {
-            completion(emailField.text, nil);
-        }
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LOCALIZED(@"Отмена") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSError *error = [NSError errorWithDomain:@"com.mobindustry" code:-9999 userInfo:@{@"error": LOCALIZED(@"Невозможно авторизироваться без адреса электронной почты (email)")}];
-        if (completion) {
-            completion(nil, error);
-        }
-    }];
-    
-    confirmAction.enabled = NO;
-    [emailAlertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = LOCALIZED(@"*E-mail");
-        textField.keyboardType = UIKeyboardTypeEmailAddress;
-        observer = [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-            [HWValidator validateEmailField:textField onSuccess:^{
-                confirmAction.enabled = YES;
-            } onFailure:^(NSMutableArray *errorArray) {
-                confirmAction.enabled = NO;
-                [HWValidator cleanValidationErrorArray];
-            }];
-        }];
-    }];
-    
-    [emailAlertController addAction:confirmAction];
-    [emailAlertController addAction:cancelAction];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showCurrentAlertController:emailAlertController forController:controller];
-    });
 }
 
 @end

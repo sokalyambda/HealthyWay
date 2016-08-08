@@ -29,7 +29,7 @@
                     <rect key="frame" x="272" y="84" width="55" height="30"/>
                     <state key="normal" title="Confirm"/>
                     <connections>
-                        <action selector="signInClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="yFf-bW-DPf"/>
+                        <action selector="performAuthAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="85t-xU-dLR"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FU1-0L-bxm">

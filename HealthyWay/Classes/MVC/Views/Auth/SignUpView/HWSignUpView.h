@@ -9,4 +9,7 @@
 #import "HWBaseAuthView.h"
 
 @interface HWSignUpView : HWBaseAuthView
+
+- (void)setEmail:(NSString *)email;
+
 @end

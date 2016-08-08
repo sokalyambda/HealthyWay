@@ -30,6 +30,11 @@
     return self.emailField.text;
 }
 
+- (void)setEmail:(NSString *)email
+{
+    self.emailField.text = email;
+}
+
 - (NSString *)password
 {
     return self.passwordField.text;

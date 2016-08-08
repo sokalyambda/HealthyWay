@@ -37,7 +37,5 @@ extern NSString *const kErrorAlertMessage;
                      forController:(UIViewController *)controller
                     withCompletion:(void(^)(BOOL cancel))completion;
 + (void)showDialogAlertWithTitle:(NSString *)title message:(NSString *)message forController:(UIViewController *)controller withCompletion:(void(^)(BOOL cancel))completion;
-+ (void)showAlertForEmailEnteringForController:(UIViewController *)controller
-                                withCompletion:(void(^)(NSString *email, NSError *error))completion;
 
 @end

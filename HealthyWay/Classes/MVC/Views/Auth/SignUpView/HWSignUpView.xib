@@ -23,6 +23,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-Vj-nET">
                     <rect key="frame" x="273" y="122" width="55" height="30"/>
                     <state key="normal" title="Confirm"/>
+                    <connections>
+                        <action selector="performAuthAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="MNG-9u-Bpm"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZi-O5-9mq">
                     <rect key="frame" x="265" y="555" width="71" height="30"/>
