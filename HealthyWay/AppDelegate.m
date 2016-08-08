@@ -20,7 +20,7 @@
 {
     [FIRApp configure];
 
-    // If it is the first launch - check whether the user exists and it so - sign out it;
+    // If it is the first launch - check whether the user exists and if so - sign out it;
     [[HWBaseAppManager sharedManager] signOutIfFirstLaunch];
     
     return YES;

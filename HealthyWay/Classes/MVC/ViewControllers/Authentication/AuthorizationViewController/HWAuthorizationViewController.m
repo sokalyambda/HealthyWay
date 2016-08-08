@@ -27,11 +27,18 @@ static const NSInteger kUserDoesNotExist = 17011;
 
 @property (strong, nonatomic) HWBaseAuthView *currentAuthView;
 
+@property (strong, nonatomic) FIRAuth *currentAuth;
+
 @end
 
 @implementation HWAuthorizationViewController
 
 #pragma mark - Accessors
+
+- (FIRAuth *)currentAuth
+{
+    return [HWBaseAppManager sharedManager].currentAuth;
+}
 
 - (NSArray<HWBaseAuthView *> *)authViews
 {
@@ -138,7 +145,7 @@ static const NSInteger kUserDoesNotExist = 17011;
 /**
  *  Show the alert view for array of errors
  *
- *  @param errors Array of dictionaries which contain error messages.
+ *  @param errors Array of dictionaries which contains error messages.
  */
 - (void)showAlertViewForErrors:(NSArray *)errors
 {
@@ -150,86 +157,104 @@ static const NSInteger kUserDoesNotExist = 17011;
     }];
 }
 
+- (void)performSignInWithDataFromView:(HWSignInView *)view
+{
+    WEAK_SELF;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HWValidator validateEmail:view.email andPassword:view.password onSuccess:^{
+        [self.currentAuth signInWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+            
+            /**
+             *  We have to guarantee that UI things will be performed on the main thread;
+             */
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                if (error) {
+                    if (error.code == kUserDoesNotExist) {
+                        // Move to sign up flow if user doesn't exist;
+                        [weakSelf setupAuthViewWithType:HWAuthViewTypeSignUp];
+                        HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
+                        [signUpView setEmail:view.email];
+                        [view didCompleteAuthAction];
+                    } else {
+                        return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                    }
+                } else {
+                    [view didCompleteAuthAction];
+                    [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                    DLog(@"User: %@", user);
+                }
+            });
+        }];
+    } onFailure:^(NSMutableArray *errorArray) {
+        [self showAlertViewForErrors:errorArray];
+    }];
+}
+
+- (void)performResetPasswordWithDataFromView:(HWForgotPasswordView *)view
+{
+    WEAK_SELF;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HWValidator validateEmail:view.email onSuccess:^{
+        [self.currentAuth sendPasswordResetWithEmail:view.email completion:^(NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                if (error) {
+                    [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                } else {
+                    [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
+                        [view didCompleteAuthAction];
+                        [weakSelf setupAuthViewWithType:HWAuthViewTypeSignIn];
+                    }];
+                }
+            });
+        }];
+    } onFailure:^(NSMutableArray *errorArray) {
+        [self showAlertViewForErrors:errorArray];
+    }];
+}
+
+- (void)performSignUpWithDataFromView:(HWSignUpView *)view
+{
+    WEAK_SELF;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HWValidator validateEmail:view.email andPassword:view.password andConfirmPassword:view.confirmedPassword onSuccess:^{
+        
+        [self.currentAuth createUserWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                if (!error) {
+                    DLog(@"User is: %@", user);
+                    [view didCompleteAuthAction];
+                    [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                } else {
+                    [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
+                }
+            });
+            
+        }];
+        
+    } onFailure:^(NSMutableArray *errorArray) {
+        [self showAlertViewForErrors:errorArray];
+    }];
+}
+
 #pragma mark - HWAuthViewDelegate
 
 - (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type
 {
-    FIRAuth *auth = [HWBaseAppManager sharedManager].currentAuth;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    WEAK_SELF;
-    
     switch (type) {
         case HWAuthViewTypeSignIn: {
-            [HWValidator validateEmail:view.email andPassword:view.password onSuccess:^{
-                [auth signInWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-                    
-                    /**
-                     *  We have to guarantee that UI things will be performed on the main thread;
-                     */
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                        if (error) {
-                            if (error.code == kUserDoesNotExist) {
-                                // Move to sign up flow if user doesn't exist;
-                                [weakSelf setupAuthViewWithType:HWAuthViewTypeSignUp];
-                                HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
-                                [signUpView setEmail:view.email];
-                            } else {
-                                return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                            }
-                        } else {
-                            [view didCompleteAuthAction];
-                            [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                            DLog(@"User: %@", user);
-                        }
-                    });
-                }];
-            } onFailure:^(NSMutableArray *errorArray) {
-                [self showAlertViewForErrors:errorArray];
-            }];
+            [self performSignInWithDataFromView:(HWSignInView *)view];
             break;
         }
         case HWAuthViewTypeSignUp: {
-            [HWValidator validateEmail:view.email andPassword:view.password andConfirmPassword:view.confirmedPassword onSuccess:^{
-                
-                [auth createUserWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                        if (!error) {
-                            DLog(@"User is: %@", user);
-                            [view didCompleteAuthAction];
-                            [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                        } else {
-                            [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                        }
-                    });
-                    
-                }];
-                
-            } onFailure:^(NSMutableArray *errorArray) {
-                [self showAlertViewForErrors:errorArray];
-            }];
+            [self performSignUpWithDataFromView:(HWSignUpView *)view];
             break;
         }
         case HWAuthViewTypeForgotPassword: {
-            [HWValidator validateEmail:view.email onSuccess:^{
-                [auth sendPasswordResetWithEmail:view.email completion:^(NSError * _Nullable error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                        if (error) {
-                            [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                        } else {
-                            [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
-                                [view didCompleteAuthAction];
-                                [weakSelf setupAuthViewWithType:HWAuthViewTypeSignIn];
-                            }];
-                        }
-                    });
-                }];
-            } onFailure:^(NSMutableArray *errorArray) {
-                [self showAlertViewForErrors:errorArray];
-            }];
+            [self performResetPasswordWithDataFromView:(HWForgotPasswordView *)view];
             break;
         }
     }

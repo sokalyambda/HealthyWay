@@ -30,10 +30,6 @@
 
 #pragma mark - Actions
 
-- (IBAction)forgotPasswordClick:(id)sender
-{
-}
-
 - (IBAction)backToSignInFlowClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {

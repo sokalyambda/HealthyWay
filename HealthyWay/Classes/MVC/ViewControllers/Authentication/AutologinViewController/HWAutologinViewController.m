@@ -8,8 +8,6 @@
 
 #import "HWAutologinViewController.h"
 
-#import "HWBaseAppManager.h"
-
 @interface HWAutologinViewController ()
 
 @end
