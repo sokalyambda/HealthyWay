@@ -172,6 +172,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
+        [HWValidator cleanValidationErrorArray];
         [weakSelf completeTheExecution];
     }];
 }
@@ -203,6 +204,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
+        [HWValidator cleanValidationErrorArray];
         
         [weakSelf completeTheExecution];
     }];
@@ -237,6 +239,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
+        [HWValidator cleanValidationErrorArray];
         
         [weakSelf completeTheExecution];
     }];

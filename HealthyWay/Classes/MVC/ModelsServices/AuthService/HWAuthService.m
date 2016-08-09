@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) NSOperationQueue *authOperations;
 
+@property (strong, nonatomic) HWCredentials *credentials;
+
 @end
 
 @implementation HWAuthService
@@ -32,15 +34,31 @@
     return _authOperations;
 }
 
-- (HWAuthorizationOperation *)authorizationOperationForCredentials:(HWCredentials *)credentials
-                                                    withCompletion:(HWAuthorizationCompletion)completion
+#pragma mark - Lifecycle
+
+- (instancetype)initWithEmail:(NSString *)email
+                     password:(NSString *)password
+            confirmedPassword:(NSString *)confirmedPassword
+                     authType:(HWAuthType)authType
+{
+    self = [super init];
+    if (self) {
+        _credentials = [HWCredentials credentialsWithEmail:email
+                                                  password:password
+                                         confirmedPassword:confirmedPassword
+                                                  authType:authType];
+    }
+    return self;
+}
+
+- (HWAuthorizationOperation *)authorizationOperationWithCompletion:(HWAuthorizationCompletion)completion
 {
     /**
      Create the auth operation
      
      - returns: Current authorization operation
      */
-    HWAuthorizationOperation *operation = [[HWAuthorizationOperation alloc] initWithCredentials:credentials];
+    HWAuthorizationOperation *operation = [[HWAuthorizationOperation alloc] initWithCredentials:self.credentials];
     [self.authOperations addOperation:operation];
     
     __block HWAuthorizationOperation *weakOperation = operation;

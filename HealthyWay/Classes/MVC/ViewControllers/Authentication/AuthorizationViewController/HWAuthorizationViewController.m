@@ -14,8 +14,6 @@
 
 #import "HWAuthorizationOperation.h"
 
-#import "HWCredentials.h"
-
 #import "HWAuthService.h"
 
 #import "UIView+MakeFromXib.h"
@@ -29,22 +27,15 @@ static const NSInteger kUserDoesNotExist = 17011;
 
 @property (weak, nonatomic) IBOutlet UIView *authViewContainer;
 
-@property (strong, nonatomic, readwrite) HWBaseAuthView *currentAuthView;
+@property (strong, nonatomic) HWBaseAuthView *currentAuthView;
 
 @property (strong, nonatomic) NSArray<HWBaseAuthView *> *authViews;
-
-@property (strong, nonatomic) FIRAuth *currentAuth;
 
 @end
 
 @implementation HWAuthorizationViewController
 
 #pragma mark - Accessors
-
-- (FIRAuth *)currentAuth
-{
-    return [HWBaseAppManager sharedManager].currentAuth;
-}
 
 - (NSArray<HWBaseAuthView *> *)authViews
 {
@@ -156,30 +147,19 @@ static const NSInteger kUserDoesNotExist = 17011;
 - (void)showAlertViewForErrors:(NSArray *)errors
 {
     NSString *message = [NSString errorStringFromErrorsArray:errors];
-    [HWAlertService showAlertWithMessage:message forController:self withCompletion:^{
-        [HWValidator cleanValidationErrorArray];
-    }];
+    [HWAlertService showAlertWithMessage:message forController:self withCompletion:nil];
 }
 
 #pragma mark - HWAuthViewDelegate
 
 - (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthType)type
 {
-    /**
-     Create a credentials based on current auth view
-     */
-    HWCredentials *credentials = [HWCredentials credentialsWithEmail:view.email
-                                                            password:view.password
-                                                   confirmedPassword:view.confirmedPassword
-                                                            authType:view.authViewType];
-    
-    HWAuthService *authService = [[HWAuthService alloc] init];
+    HWAuthService *authService = [[HWAuthService alloc] initWithEmail:view.email password:view.password confirmedPassword:view.confirmedPassword authType:type];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     WEAK_SELF;
-    HWAuthorizationOperation *operation = [authService authorizationOperationForCredentials:credentials withCompletion:^(NSError *error) {
-        __block HWAuthorizationOperation *weakOperation = operation;
+    [authService authorizationOperationWithCompletion:^(NSError *error) {
+
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
 
         if (!error) {
@@ -192,7 +172,7 @@ static const NSInteger kUserDoesNotExist = 17011;
                 case HWAuthTypeForgotPassword: {
                     [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
                         [weakSelf setupAuthViewWithType:HWAuthTypeSignIn];
-                        [weakSelf.currentAuthView setEmail:weakOperation.credentials.email];
+                        [weakSelf.currentAuthView setEmail:view.email];
                         return [view didCompleteAuthAction];
                     }];
                 }
@@ -202,7 +182,7 @@ static const NSInteger kUserDoesNotExist = 17011;
                 // Move to sign up flow if user doesn't exist;
                 [weakSelf setupAuthViewWithType:HWAuthTypeSignUp];
                 HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
-                [signUpView setEmail:weakOperation.credentials.email];
+                [signUpView setEmail:view.email];
                 [view didCompleteAuthAction];
             } else if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
                 [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
