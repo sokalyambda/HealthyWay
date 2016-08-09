@@ -10,6 +10,4 @@
 
 @interface HWSignUpView : HWBaseAuthView
 
-- (void)setEmail:(NSString *)email;
-
 @end

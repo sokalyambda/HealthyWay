@@ -12,17 +12,25 @@
 
 #pragma mark - Lifecycle
 
-+ (instancetype)credentialsWithEmail:(NSString *)email andPassword:(NSString *)password
++ (instancetype)credentialsWithEmail:(NSString *)email
+                            password:(NSString *)password
+                   confirmedPassword:(NSString *)confirmedPassword
+                            authType:(HWAuthType)authType
 {
-    return [[self alloc] initWithEmail:email andPassword:password];
+    return [[self alloc] initWithEmail:email password:password confirmedPassword:confirmedPassword authType:authType];
 }
 
-- (instancetype)initWithEmail:(NSString *)email andPassword:(NSString *)password
+- (instancetype)initWithEmail:(NSString *)email
+                     password:(NSString *)password
+            confirmedPassword:(NSString *)confirmedPassword
+                     authType:(HWAuthType)authType
 {
     self = [super init];
     if (self) {
         _email = email;
         _password = password;
+        _confirmedPassword = confirmedPassword;
+        _authType = authType;
     }
     return self;
 }

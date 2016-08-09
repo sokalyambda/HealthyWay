@@ -18,9 +18,9 @@
 
 #pragma mark - Accessors
 
-- (HWAuthViewType)authViewType
+- (HWAuthType)authViewType
 {
-    return HWAuthViewTypeForgotPassword;
+    return HWAuthTypeForgotPassword;
 }
 
 - (NSString *)email
@@ -28,12 +28,17 @@
     return self.emailField.text;
 }
 
+- (void)setEmail:(NSString *)email
+{
+    self.emailField.text = email;
+}
+
 #pragma mark - Actions
 
 - (IBAction)backToSignInFlowClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
-        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignIn];
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthTypeSignIn];
     }
 }
 

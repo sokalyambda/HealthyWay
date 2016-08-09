@@ -12,7 +12,7 @@
 
 @interface HWAuthorizationViewController (AuthViewTransitionSubtype)
 
-- (NSString *)authViewTransitionSubtypeForSourceAuthViewType:(HWAuthViewType)sourceType
-                                             destinationType:(HWAuthViewType)destinationType;
+- (NSString *)authViewTransitionSubtypeForSourceAuthViewType:(HWAuthType)sourceType
+                                             destinationType:(HWAuthType)destinationType;
 
 @end

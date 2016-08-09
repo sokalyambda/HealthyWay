@@ -6,11 +6,14 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@class HWSignInOperation;
+typedef void(^HWAuthorizationCompletion)(NSError *error);
+
+@class HWAuthorizationOperation;
+@class HWCredentials;
 
 @interface HWAuthService : NSObject
 
-+ (HWSignInOperation *)signInOperationForEmail:(NSString *)email
-                                      password:(NSString *)password;
+- (HWAuthorizationOperation *)authorizationOperationForCredentials:(HWCredentials *)credentials
+                                                    withCompletion:(HWAuthorizationCompletion)completion;
 
 @end

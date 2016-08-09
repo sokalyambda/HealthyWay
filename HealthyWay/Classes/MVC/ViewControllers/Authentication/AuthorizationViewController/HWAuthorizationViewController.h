@@ -8,6 +8,12 @@
 
 #import "HWBaseKeyboardHandlerViewController.h"
 
+#import "HWBaseAuthView.h"
+
 @interface HWAuthorizationViewController : HWBaseKeyboardHandlerViewController
+
+@property (strong, nonatomic, readonly) HWBaseAuthView *currentAuthView;
+
+- (void)setupAuthViewWithType:(HWAuthType)authViewType;
 
 @end

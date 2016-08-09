@@ -20,9 +20,9 @@
 
 #pragma mark - Accessors
 
-- (HWAuthViewType)authViewType
+- (HWAuthType)authViewType
 {
-    return HWAuthViewTypeSignUp;
+    return HWAuthTypeSignUp;
 }
 
 - (NSString *)email
@@ -50,7 +50,7 @@
 - (IBAction)toSignInFlowClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
-        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignIn];
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthTypeSignIn];
     }
 }
 

@@ -46,14 +46,19 @@
 
 #pragma mark - Accessors
 
-- (HWAuthViewType)authViewType
+- (HWAuthType)authViewType
 {
-    return HWAuthViewTypeSignIn;
+    return HWAuthTypeSignIn;
 }
 
 - (NSString *)email
 {
     return self.emailField.text;
+}
+
+- (void)setEmail:(NSString *)email
+{
+    self.emailField.text = email;
 }
 
 - (NSString *)password
@@ -66,14 +71,14 @@
 - (IBAction)toSignUpFlowClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
-        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeSignUp];
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthTypeSignUp];
     }
 }
 
 - (void)rightViewTapped:(UITapGestureRecognizer *)tap
 {
     if ([self.delegate respondsToSelector:@selector(authView:didPrepareForExchangingWithType:)]) {
-        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthViewTypeForgotPassword];
+        [self.delegate authView:self didPrepareForExchangingWithType:HWAuthTypeForgotPassword];
     }
 }
 

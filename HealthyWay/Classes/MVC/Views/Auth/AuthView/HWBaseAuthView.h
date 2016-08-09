@@ -6,11 +6,7 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef enum : NSUInteger {
-    HWAuthViewTypeSignIn,
-    HWAuthViewTypeSignUp,
-    HWAuthViewTypeForgotPassword,
-} HWAuthViewType;
+#import "HWAuthTypes.h"
 
 @protocol HWAuthViewDelegate;
 
@@ -22,10 +18,12 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic, nullable) id<HWAuthViewDelegate> delegate;
 
 @property (strong, nonatomic, readonly, nonnull) NSString *email;
+- (void)setEmail:(NSString *_Nonnull)email;
+
 @property (strong, nonatomic, readonly, nullable) NSString *password;
 @property (strong, nonatomic, readonly, nullable) NSString *confirmedPassword;
 
-@property (assign, nonatomic, readonly) HWAuthViewType authViewType;
+@property (assign, nonatomic, readonly) HWAuthType authViewType;
 
 @property (strong, nonatomic, readonly, nullable) IBOutletCollection(UITextField) NSArray *textFields;
 
@@ -36,7 +34,7 @@ typedef enum : NSUInteger {
 @protocol HWAuthViewDelegate <NSObject, UITextFieldDelegate>
 
 @optional
-- (void)authView:(nullable HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type;
-- (void)authView:(nullable HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthViewType)destinationType;
+- (void)authView:(nullable HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthType)type;
+- (void)authView:(nullable HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthType)destinationType;
 
 @end

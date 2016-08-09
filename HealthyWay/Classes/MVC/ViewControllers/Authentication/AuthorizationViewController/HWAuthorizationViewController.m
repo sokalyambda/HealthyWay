@@ -12,6 +12,12 @@
 
 #import <FirebaseAuth/FirebaseAuth.h>
 
+#import "HWAuthorizationOperation.h"
+
+#import "HWCredentials.h"
+
+#import "HWAuthService.h"
+
 #import "UIView+MakeFromXib.h"
 #import "HWAuthorizationViewController+AuthViewTransitionSubtype.h"
 #import "CAAnimation+CompletionBlock.h"
@@ -23,9 +29,9 @@ static const NSInteger kUserDoesNotExist = 17011;
 
 @property (weak, nonatomic) IBOutlet UIView *authViewContainer;
 
-@property (strong, nonatomic) NSArray<HWBaseAuthView *> *authViews;
+@property (strong, nonatomic, readwrite) HWBaseAuthView *currentAuthView;
 
-@property (strong, nonatomic) HWBaseAuthView *currentAuthView;
+@property (strong, nonatomic) NSArray<HWBaseAuthView *> *authViews;
 
 @property (strong, nonatomic) FIRAuth *currentAuth;
 
@@ -62,7 +68,7 @@ static const NSInteger kUserDoesNotExist = 17011;
     [super viewDidLoad];
     
     // By default, the first visible view is sign in view. Show it.
-    [self setupAuthViewWithType:HWAuthViewTypeSignIn];
+    [self setupAuthViewWithType:HWAuthTypeSignIn];
 }
 
 #pragma mark - Private
@@ -75,7 +81,7 @@ static const NSInteger kUserDoesNotExist = 17011;
 /*
  Create and setup the sign in view from .xib
  */
-- (void)setupAuthViewWithType:(HWAuthViewType)authViewType
+- (void)setupAuthViewWithType:(HWAuthType)authViewType
 {
     HWBaseAuthView *neededAuthView;
     HWBaseAuthView *currentAuthView;
@@ -86,15 +92,15 @@ static const NSInteger kUserDoesNotExist = 17011;
     }
 
     switch (authViewType) {
-        case HWAuthViewTypeSignIn: {
+        case HWAuthTypeSignIn: {
             neededAuthView = self.authViews[1]; //In out auth views stack the sign in view placed in the middle
             break;
         }
-        case HWAuthViewTypeSignUp: {
+        case HWAuthTypeSignUp: {
             neededAuthView = self.authViews[2]; //Sign up view is the last view in stack
             break;
         }
-        case HWAuthViewTypeForgotPassword: {
+        case HWAuthTypeForgotPassword: {
             neededAuthView = self.authViews[0]; //Forgot password view is the first view in stack
             break;
         }
@@ -149,126 +155,74 @@ static const NSInteger kUserDoesNotExist = 17011;
  */
 - (void)showAlertViewForErrors:(NSArray *)errors
 {
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     NSString *message = [NSString errorStringFromErrorsArray:errors];
-    
     [HWAlertService showAlertWithMessage:message forController:self withCompletion:^{
         [HWValidator cleanValidationErrorArray];
     }];
 }
 
-- (void)performSignInWithDataFromView:(HWSignInView *)view
-{
-    WEAK_SELF;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [HWValidator validateEmail:view.email andPassword:view.password onSuccess:^{
-        [self.currentAuth signInWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-            
-            /**
-             *  We have to guarantee that UI things will be performed on the main thread;
-             */
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                if (error) {
-                    if (error.code == kUserDoesNotExist) {
-                        // Move to sign up flow if user doesn't exist;
-                        [weakSelf setupAuthViewWithType:HWAuthViewTypeSignUp];
-                        HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
-                        [signUpView setEmail:view.email];
-                        [view didCompleteAuthAction];
-                    } else {
-                        return [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                    }
-                } else {
-                    [view didCompleteAuthAction];
-                    [self performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                    DLog(@"User: %@", user);
-                }
-            });
-        }];
-    } onFailure:^(NSMutableArray *errorArray) {
-        [self showAlertViewForErrors:errorArray];
-    }];
-}
-
-- (void)performResetPasswordWithDataFromView:(HWForgotPasswordView *)view
-{
-    WEAK_SELF;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [HWValidator validateEmail:view.email onSuccess:^{
-        [self.currentAuth sendPasswordResetWithEmail:view.email completion:^(NSError * _Nullable error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                if (error) {
-                    [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                } else {
-                    [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
-                        [view didCompleteAuthAction];
-                        [weakSelf setupAuthViewWithType:HWAuthViewTypeSignIn];
-                    }];
-                }
-            });
-        }];
-    } onFailure:^(NSMutableArray *errorArray) {
-        [self showAlertViewForErrors:errorArray];
-    }];
-}
-
-- (void)performSignUpWithDataFromView:(HWSignUpView *)view
-{
-    WEAK_SELF;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [HWValidator validateEmail:view.email andPassword:view.password andConfirmPassword:view.confirmedPassword onSuccess:^{
-        
-        [self.currentAuth createUserWithEmail:view.email password:view.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                if (!error) {
-                    DLog(@"User is: %@", user);
-                    [view didCompleteAuthAction];
-                    [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                } else {
-                    [HWAlertService showErrorAlert:error forController:self withCompletion:nil];
-                }
-            });
-            
-        }];
-        
-    } onFailure:^(NSMutableArray *errorArray) {
-        [self showAlertViewForErrors:errorArray];
-    }];
-}
-
 #pragma mark - HWAuthViewDelegate
 
-- (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthViewType)type
+- (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthType)type
 {
-    switch (type) {
-        case HWAuthViewTypeSignIn: {
-            [self performSignInWithDataFromView:(HWSignInView *)view];
-            break;
+    /**
+     Create a credentials based on current auth view
+     */
+    HWCredentials *credentials = [HWCredentials credentialsWithEmail:view.email
+                                                            password:view.password
+                                                   confirmedPassword:view.confirmedPassword
+                                                            authType:view.authViewType];
+    
+    HWAuthService *authService = [[HWAuthService alloc] init];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    WEAK_SELF;
+    HWAuthorizationOperation *operation = [authService authorizationOperationForCredentials:credentials withCompletion:^(NSError *error) {
+        __block HWAuthorizationOperation *weakOperation = operation;
+        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+
+        if (!error) {
+            switch (type) {
+                case HWAuthTypeSignIn:
+                case HWAuthTypeSignUp: {
+                    [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                    return [view didCompleteAuthAction];
+                }
+                case HWAuthTypeForgotPassword: {
+                    [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
+                        [weakSelf setupAuthViewWithType:HWAuthTypeSignIn];
+                        [weakSelf.currentAuthView setEmail:weakOperation.credentials.email];
+                        return [view didCompleteAuthAction];
+                    }];
+                }
+            }
+        } else if (error) {
+            if (error.code == kUserDoesNotExist) {
+                // Move to sign up flow if user doesn't exist;
+                [weakSelf setupAuthViewWithType:HWAuthTypeSignUp];
+                HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
+                [signUpView setEmail:weakOperation.credentials.email];
+                [view didCompleteAuthAction];
+            } else if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
+                [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
+            } else {
+                [HWAlertService showErrorAlert:error forController:weakSelf withCompletion:nil];
+            }
         }
-        case HWAuthViewTypeSignUp: {
-            [self performSignUpWithDataFromView:(HWSignUpView *)view];
-            break;
-        }
-        case HWAuthViewTypeForgotPassword: {
-            [self performResetPasswordWithDataFromView:(HWForgotPasswordView *)view];
-            break;
-        }
-    }
+        
+    }];
 }
 
-- (void)authView:(nullable HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthViewType)destinationType
+- (void)authView:(nullable HWBaseAuthView *)view didPrepareForExchangingWithType:(HWAuthType)destinationType
 {
     switch (destinationType) {
-        case HWAuthViewTypeSignUp:
-            return [self setupAuthViewWithType:HWAuthViewTypeSignUp];
-        case HWAuthViewTypeSignIn:
-            return [self setupAuthViewWithType:HWAuthViewTypeSignIn];
-        case HWAuthViewTypeForgotPassword:
-            return [self setupAuthViewWithType:HWAuthViewTypeForgotPassword];
+        case HWAuthTypeSignUp:
+            return [self setupAuthViewWithType:HWAuthTypeSignUp];
+        case HWAuthTypeSignIn:
+            return [self setupAuthViewWithType:HWAuthTypeSignIn];
+        case HWAuthTypeForgotPassword:
+            return [self setupAuthViewWithType:HWAuthTypeForgotPassword];
     }
 }
 

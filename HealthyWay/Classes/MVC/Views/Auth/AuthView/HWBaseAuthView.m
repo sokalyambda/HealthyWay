@@ -12,6 +12,9 @@
 
 #pragma mark - Accessors
 
+- (void)setEmail:(NSString *)email
+{}
+
 - (void)setDelegate:(id<HWAuthViewDelegate>)delegate
 {
     _delegate = delegate;

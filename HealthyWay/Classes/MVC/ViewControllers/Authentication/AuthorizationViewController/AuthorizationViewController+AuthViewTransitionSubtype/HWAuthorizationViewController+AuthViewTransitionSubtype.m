@@ -10,21 +10,21 @@
 
 @implementation HWAuthorizationViewController (AuthViewTransitionSubtype)
 
-- (NSString *)authViewTransitionSubtypeForSourceAuthViewType:(HWAuthViewType)sourceType
-                                             destinationType:(HWAuthViewType)destinationType
+- (NSString *)authViewTransitionSubtypeForSourceAuthViewType:(HWAuthType)sourceType
+                                             destinationType:(HWAuthType)destinationType
 {
     switch (sourceType) {
-        case HWAuthViewTypeSignIn:
+        case HWAuthTypeSignIn:
             switch (destinationType) {
-                case HWAuthViewTypeForgotPassword:
+                case HWAuthTypeForgotPassword:
                     return kCATransitionFromLeft;
-                case HWAuthViewTypeSignUp:
+                case HWAuthTypeSignUp:
                     return kCATransitionFromRight;
                 default: break;
         }
-        case HWAuthViewTypeSignUp:
+        case HWAuthTypeSignUp:
             return kCATransitionFromLeft;
-        case HWAuthViewTypeForgotPassword:
+        case HWAuthTypeForgotPassword:
             return kCATransitionFromRight;
     }
 }

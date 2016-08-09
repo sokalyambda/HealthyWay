@@ -18,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Configure the current Firebase app;
     [FIRApp configure];
 
     // If it is the first launch - check whether the user exists and if so - sign out it;
