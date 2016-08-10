@@ -14,4 +14,6 @@ typedef void(^PhotoSelectionCompletion)(UIImage *chosenImage);
 
 @property (copy, nonatomic) PhotoSelectionCompletion photoCompletion;
 
+- (void)performCreateUpdateUser;
+
 @end

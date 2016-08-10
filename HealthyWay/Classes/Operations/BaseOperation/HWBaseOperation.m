@@ -32,6 +32,19 @@
     return YES;
 }
 
+#pragma mark - Lifecycle
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _isExecuting = NO;
+        _isFinished = NO;
+        _isReady = NO;
+    }
+    return self;
+}
+
 #pragma mark - Actions
 
 /**

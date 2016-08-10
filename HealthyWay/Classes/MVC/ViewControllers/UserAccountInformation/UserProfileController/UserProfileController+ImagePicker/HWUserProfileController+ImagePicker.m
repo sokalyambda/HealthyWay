@@ -25,7 +25,7 @@
     
     if (image) {
         
-        UIImage *resizedImage = [image imageByScalingAndCroppingForSize:CGSizeMake(600.f, 600.f)];
+        UIImage *resizedImage = [image imageByScalingAndCroppingForSize:CGSizeMake(300.f, 300.f)];
         
         if (self.photoCompletion) {
             [picker dismissViewControllerAnimated:YES completion:nil];

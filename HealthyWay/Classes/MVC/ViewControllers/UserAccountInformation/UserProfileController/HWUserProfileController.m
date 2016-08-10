@@ -12,8 +12,11 @@
 
 #import "HWCommonDateFormatter.h"
 
+#import "HWUserProfileService.h"
+
 #import "UIView+MakeFromXib.h"
 #import "HWUserProfileController+ImagePicker.h"
+#import "UIImage+EncodeToBase64.h"
 
 @interface HWUserProfileController ()<HWBirthDatePickerDelegate>
 
@@ -24,9 +27,19 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextField *birthDateField;
 
+@property (strong, nonatomic) NSDate *dateOfBirth;
+
 @end
 
 @implementation HWUserProfileController
+
+#pragma mark - Accessors
+
+- (void)setDateOfBirth:(NSDate *)dateOfBirth
+{
+    _dateOfBirth = dateOfBirth;
+    self.birthDateField.text = [[HWCommonDateFormatter commonDateFormatter] stringFromDate:dateOfBirth];
+}
 
 #pragma mark - View Lifecycle
 
@@ -68,11 +81,27 @@
     [self.userAvatarImageView addGestureRecognizer:avatarTap];
 }
 
+- (void)performCreateUpdateUser
+{
+    HWUserProfileService *userProfileService = [[HWUserProfileService alloc] initWithFirstName:self.firstNameField.text
+                                                                                      lastName:self.lastNameField.text
+                                                                                      nickName:self.nickNameField.text
+                                                                                   dateOfBirth:self.dateOfBirth
+                                                                                  avatarBase64:[self.userAvatarImageView.image encodeToBase64String]
+                                                                                        isMale:self.genderSegmentedControl.selectedSegmentIndex];
+    WEAK_SELF;
+    [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
+    [userProfileService createUpdateUserWithCompletion:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:weakSelf.parentViewController.view animated:YES];
+        [HWAlertService showErrorAlert:error forController:weakSelf.parentViewController withCompletion:nil];
+    }];
+}
+
 #pragma mark - HWBirthDatePickerDelegate
 
 - (void)birthDatePicker:(HWBirthDatePicker *)picker didSelectDate:(NSDate *)aDate
 {
-    self.birthDateField.text = [[HWCommonDateFormatter commonDateFormatter] stringFromDate:aDate];
+    self.dateOfBirth = aDate;
 }
 
 - (void)birthDatePickerDidClickDoneButton:(HWBirthDatePicker *)picker

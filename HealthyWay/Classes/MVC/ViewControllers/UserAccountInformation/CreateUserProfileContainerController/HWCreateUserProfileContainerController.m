@@ -55,4 +55,9 @@
     }
 }
 
+- (IBAction)doneClick:(id)sender
+{
+    [self.userProfileController performCreateUpdateUser];
+}
+
 @end

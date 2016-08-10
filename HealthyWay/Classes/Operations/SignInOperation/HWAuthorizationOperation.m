@@ -65,10 +65,6 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
 {
     self = [super init];
     if (self) {
-        _isExecuting = NO;
-        _isFinished = NO;
-        _isReady = NO;
-        
         /**
          *  Call the mutator
          */

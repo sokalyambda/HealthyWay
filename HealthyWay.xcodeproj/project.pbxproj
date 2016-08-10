@@ -10,7 +10,6 @@
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
 		44190E8B1D59282B00A8A4C1 /* HWAuthorizationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */; };
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
-		4490E4261D5B550100DFF882 /* ChooseFlowBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4490E4251D5B550100DFF882 /* ChooseFlowBoard.storyboard */; };
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
@@ -26,6 +25,10 @@
 		580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */; };
 		580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C296C1D5B42A2009B5118 /* UIImage+Scale.m */; };
 		580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29701D5B50F1009B5118 /* HWUserProfileData.m */; };
+		580C29731D5B5B84009B5118 /* ChooseFlowBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580C29721D5B5B84009B5118 /* ChooseFlowBoard.storyboard */; };
+		580C29771D5B624D009B5118 /* HWUserProfileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29761D5B624D009B5118 /* HWUserProfileService.m */; };
+		580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */; };
+		580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -73,7 +76,6 @@
 		44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationOperation.m; path = Classes/Operations/SignInOperation/HWAuthorizationOperation.m; sourceTree = "<group>"; };
 		4490E4221D5B42AF00DFF882 /* HWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWTabBarController.h; path = Classes/MVC/ViewControllers/ChooseFlowBoard/TabBarController/HWTabBarController.h; sourceTree = "<group>"; };
 		4490E4231D5B42AF00DFF882 /* HWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWTabBarController.m; path = Classes/MVC/ViewControllers/ChooseFlowBoard/TabBarController/HWTabBarController.m; sourceTree = "<group>"; };
-		4490E4251D5B550100DFF882 /* ChooseFlowBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseFlowBoard.storyboard; sourceTree = "<group>"; };
 		44930B471D54C0FD007A4D41 /* HWBaseAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAuthView.h; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.h; sourceTree = "<group>"; };
 		44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAuthView.m; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.m; sourceTree = "<group>"; };
 		44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
@@ -105,6 +107,13 @@
 		580C296C1D5B42A2009B5118 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "Classes/Categories/UIImage/UIImage+Scale/UIImage+Scale.m"; sourceTree = "<group>"; };
 		580C296F1D5B50F1009B5118 /* HWUserProfileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileData.h; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.h; sourceTree = "<group>"; };
 		580C29701D5B50F1009B5118 /* HWUserProfileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileData.m; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.m; sourceTree = "<group>"; };
+		580C29721D5B5B84009B5118 /* ChooseFlowBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ChooseFlowBoard.storyboard; path = Classes/MVC/ViewControllers/ChooseFlowBoard/ChooseFlowBoard.storyboard; sourceTree = "<group>"; };
+		580C29751D5B624D009B5118 /* HWUserProfileService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileService.h; path = Classes/MVC/ModelsServices/UserProfileService/HWUserProfileService.h; sourceTree = "<group>"; };
+		580C29761D5B624D009B5118 /* HWUserProfileService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileService.m; path = Classes/MVC/ModelsServices/UserProfileService/HWUserProfileService.m; sourceTree = "<group>"; };
+		580C29791D5B7865009B5118 /* UIImage+EncodeToBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+EncodeToBase64.h"; path = "Classes/Categories/UIImage/UIImage+EncodeToBase64/UIImage+EncodeToBase64.h"; sourceTree = "<group>"; };
+		580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+EncodeToBase64.m"; path = "Classes/Categories/UIImage/UIImage+EncodeToBase64/UIImage+EncodeToBase64.m"; sourceTree = "<group>"; };
+		580C297D1D5B78AF009B5118 /* NSString+DecodeFromBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+DecodeFromBase64.h"; path = "Classes/Categories/NSString/NSString+DecodeFromBase64/NSString+DecodeFromBase64.h"; sourceTree = "<group>"; };
+		580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+DecodeFromBase64.m"; path = "Classes/Categories/NSString/NSString+DecodeFromBase64/NSString+DecodeFromBase64.m"; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -210,7 +219,7 @@
 		4490E41E1D5B376100DFF882 /* ChooseFlowBoard */ = {
 			isa = PBXGroup;
 			children = (
-				4490E4251D5B550100DFF882 /* ChooseFlowBoard.storyboard */,
+				580C29721D5B5B84009B5118 /* ChooseFlowBoard.storyboard */,
 				4490E4211D5B421A00DFF882 /* TabBarController */,
 			);
 			name = ChooseFlowBoard;
@@ -354,6 +363,7 @@
 		580C29691D5B4279009B5118 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				580C29781D5B7848009B5118 /* UIImage+EncodeToBase64 */,
 				580C296A1D5B427C009B5118 /* UIImage+Scale */,
 			);
 			name = UIImage;
@@ -375,6 +385,33 @@
 				580C29701D5B50F1009B5118 /* HWUserProfileData.m */,
 			);
 			name = UserProfileData;
+			sourceTree = "<group>";
+		};
+		580C29741D5B622E009B5118 /* UserProfileService */ = {
+			isa = PBXGroup;
+			children = (
+				580C29751D5B624D009B5118 /* HWUserProfileService.h */,
+				580C29761D5B624D009B5118 /* HWUserProfileService.m */,
+			);
+			name = UserProfileService;
+			sourceTree = "<group>";
+		};
+		580C29781D5B7848009B5118 /* UIImage+EncodeToBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				580C29791D5B7865009B5118 /* UIImage+EncodeToBase64.h */,
+				580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */,
+			);
+			name = "UIImage+EncodeToBase64";
+			sourceTree = "<group>";
+		};
+		580C297C1D5B788F009B5118 /* NSString+DecodeFromBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				580C297D1D5B78AF009B5118 /* NSString+DecodeFromBase64.h */,
+				580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */,
+			);
+			name = "NSString+DecodeFromBase64";
 			sourceTree = "<group>";
 		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
@@ -682,6 +719,7 @@
 		58C727711D23D36900F5F85D /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				580C297C1D5B788F009B5118 /* NSString+DecodeFromBase64 */,
 				5810FF121D58CC9700AF5C96 /* NSString+ErrorString */,
 				58C727721D23D36C00F5F85D /* NSString+JSONRepresentation */,
 			);
@@ -700,6 +738,7 @@
 		58C727791D23D6EC00F5F85D /* ModelsServices */ = {
 			isa = PBXGroup;
 			children = (
+				580C29741D5B622E009B5118 /* UserProfileService */,
 				58C7277A1D23D6F300F5F85D /* AuthService */,
 			);
 			name = ModelsServices;
@@ -891,13 +930,13 @@
 				58B305601D508DA60011F405 /* HWUserProfileController.xib in Resources */,
 				58B305501D508D460011F405 /* AuthStoryBoard.storyboard in Resources */,
 				580C295F1D5B3D3E009B5118 /* HWBirthDatePicker.xib in Resources */,
+				580C29731D5B5B84009B5118 /* ChooseFlowBoard.storyboard in Resources */,
 				580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */,
 				58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */,
 				58B305651D508DC40011F405 /* HWForgotPasswordView.xib in Resources */,
 				58B3056A1D508DD10011F405 /* HWSignUpView.xib in Resources */,
 				580206261D1D368400349B32 /* Assets.xcassets in Resources */,
 				58B3056F1D508DE00011F405 /* HWSignInView.xib in Resources */,
-				4490E4261D5B550100DFF882 /* ChooseFlowBoard.storyboard in Resources */,
 				58B305581D508D840011F405 /* UserProfileStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -989,12 +1028,15 @@
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */,
+				580C29771D5B624D009B5118 /* HWUserProfileService.m in Sources */,
+				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
 				58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */,
 				58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */,
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
+				580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,

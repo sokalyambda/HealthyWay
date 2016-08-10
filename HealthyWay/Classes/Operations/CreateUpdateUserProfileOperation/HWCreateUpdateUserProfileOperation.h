@@ -8,6 +8,12 @@
 
 #import "HWBaseOperation.h"
 
+@class HWUserProfileData;
+
 @interface HWCreateUpdateUserProfileOperation : HWBaseOperation
+
+@property (strong, nonatomic, readonly) HWUserProfileData *userProfileData;
+
+- (instancetype)initWithUserProfileData:(HWUserProfileData *)userProfileData;
 
 @end

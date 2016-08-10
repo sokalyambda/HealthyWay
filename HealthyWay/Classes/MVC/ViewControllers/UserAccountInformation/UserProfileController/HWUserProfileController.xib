@@ -82,11 +82,11 @@
                                         <constraint firstAttribute="bottom" secondItem="hvv-8t-K55" secondAttribute="bottom" id="uJW-hU-xV6"/>
                                     </constraints>
                                 </view>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xK6-de-zQi">
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="xK6-de-zQi">
                                     <rect key="frame" x="8" y="158" width="584" height="29"/>
                                     <segments>
-                                        <segment title="Male"/>
                                         <segment title="Female"/>
+                                        <segment title="Male"/>
                                     </segments>
                                 </segmentedControl>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="..date of birth" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwG-Ci-d78">
