@@ -14,7 +14,10 @@
 
 @implementation HWTabBarController
 
-- (void)viewDidLoad {
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
 }
