@@ -10,6 +10,7 @@
 
 @property (strong, nonatomic, readonly) FIRUser *currentUser;
 @property (strong, nonatomic, readonly) FIRAuth *currentAuth;
+@property (strong, nonatomic, readonly) FIRDatabaseReference *dataBaseReference;
 
 + (instancetype)sharedManager;
 

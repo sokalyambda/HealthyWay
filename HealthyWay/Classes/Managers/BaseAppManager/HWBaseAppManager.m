@@ -22,6 +22,11 @@
     return [FIRAuth authWithApp:[FIRApp defaultApp]];
 }
 
+- (FIRDatabaseReference *)dataBaseReference
+{
+    return [[FIRDatabase database] reference];
+}
+
 #pragma mark - Lifecycle
 
 + (instancetype)sharedManager

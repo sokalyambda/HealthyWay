@@ -23,6 +23,7 @@
 		580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29621D5B400A009B5118 /* HWCommonDateFormatter.m */; };
 		580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */; };
 		580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C296C1D5B42A2009B5118 /* UIImage+Scale.m */; };
+		580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29701D5B50F1009B5118 /* HWUserProfileData.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -97,6 +98,8 @@
 		580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWUserProfileController+ImagePicker.m"; path = "Classes/MVC/ViewControllers/UserAccountInformation/UserProfileController/UserProfileController+ImagePicker/HWUserProfileController+ImagePicker.m"; sourceTree = "<group>"; };
 		580C296B1D5B42A2009B5118 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "Classes/Categories/UIImage/UIImage+Scale/UIImage+Scale.h"; sourceTree = "<group>"; };
 		580C296C1D5B42A2009B5118 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "Classes/Categories/UIImage/UIImage+Scale/UIImage+Scale.m"; sourceTree = "<group>"; };
+		580C296F1D5B50F1009B5118 /* HWUserProfileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileData.h; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.h; sourceTree = "<group>"; };
+		580C29701D5B50F1009B5118 /* HWUserProfileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileData.m; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.m; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -342,6 +345,15 @@
 			name = "UIImage+Scale";
 			sourceTree = "<group>";
 		};
+		580C296E1D5B50DC009B5118 /* UserProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				580C296F1D5B50F1009B5118 /* HWUserProfileData.h */,
+				580C29701D5B50F1009B5118 /* HWUserProfileData.m */,
+			);
+			name = UserProfileData;
+			sourceTree = "<group>";
+		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +384,7 @@
 		581049FE1D1D3A6A0082FF4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				580C296E1D5B50DC009B5118 /* UserProfileData */,
 				58A2A79A1D4F83BE006DBC38 /* Credentials */,
 			);
 			name = Models;
@@ -935,6 +948,7 @@
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
+				580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
