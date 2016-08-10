@@ -6,8 +6,8 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWBaseViewController.h"
+#import "HWBaseKeyboardHandlerViewController.h"
 
-@interface HWUserProfileController : HWBaseViewController
+@interface HWUserProfileController : HWBaseKeyboardHandlerViewController
 
 @end

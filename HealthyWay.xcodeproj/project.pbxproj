@@ -16,6 +16,7 @@
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
 		580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206271D1D368400349B32 /* LaunchScreen.storyboard */; };
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
+		580C29541D5B25CE009B5118 /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29531D5B25CE009B5118 /* HWBaseOperation.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -77,6 +78,8 @@
 		580206331D1D368400349B32 /* HealthyWayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthyWayTests.m; sourceTree = "<group>"; };
 		580206351D1D368400349B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		580B40951D59E39D00B8D41D /* HWAuthTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HWAuthTypes.h; path = Classes/MVC/ModelsServices/AuthService/AuthTypes/HWAuthTypes.h; sourceTree = "<group>"; };
+		580C29521D5B25CE009B5118 /* HWBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseOperation.h; path = Classes/Operations/BaseOperation/HWBaseOperation.h; sourceTree = "<group>"; };
+		580C29531D5B25CE009B5118 /* HWBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseOperation.m; path = Classes/Operations/BaseOperation/HWBaseOperation.m; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		44190E871D59273A00A8A4C1 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				580C29511D5B2530009B5118 /* BaseOperation */,
 				44190E881D59274100A8A4C1 /* SignInOperation */,
 			);
 			name = Operations;
@@ -247,6 +251,15 @@
 				580B40951D59E39D00B8D41D /* HWAuthTypes.h */,
 			);
 			name = AuthTypes;
+			sourceTree = "<group>";
+		};
+		580C29511D5B2530009B5118 /* BaseOperation */ = {
+			isa = PBXGroup;
+			children = (
+				580C29521D5B25CE009B5118 /* HWBaseOperation.h */,
+				580C29531D5B25CE009B5118 /* HWBaseOperation.m */,
+			);
+			name = BaseOperation;
 			sourceTree = "<group>";
 		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
@@ -828,6 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580C29541D5B25CE009B5118 /* HWBaseOperation.m in Sources */,
 				58B305751D508E330011F405 /* HWAuthService.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
