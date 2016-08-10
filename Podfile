@@ -13,5 +13,6 @@ pod 'EasyMapping', '~> 0.15.5'
 
 pod 'Firebase'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
 
 end

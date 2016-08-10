@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Create User Profile Container Controller-->
+        <!--Create Profile-->
         <scene sceneID="p4u-nT-eKi">
             <objects>
                 <viewController storyboardIdentifier="HWCreateUserProfileContainerController" automaticallyAdjustsScrollViewInsets="NO" id="662-as-42r" customClass="HWCreateUserProfileContainerController" sceneMemberID="viewController">
@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="R4I-aH-EmF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rtG-uS-CdK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leV-8l-3eo">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -30,7 +30,8 @@
                             <constraint firstItem="leV-8l-3eo" firstAttribute="top" secondItem="ec8-wR-FWb" secondAttribute="bottom" id="gOd-9l-hvw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ely-bH-4SQ"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Create Profile" id="Ely-bH-4SQ"/>
                     <connections>
                         <outlet property="containerView" destination="leV-8l-3eo" id="XW4-GG-je5"/>
                     </connections>

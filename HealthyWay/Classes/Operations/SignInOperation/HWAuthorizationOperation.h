@@ -8,15 +8,15 @@
 
 #import "HWAuthTypes.h"
 
+#import "HWBaseOperation.h"
+
 @class HWCredentials;
 
 extern NSString *const ErrorsArrayKey;
 
-@interface HWAuthorizationOperation : NSOperation
+@interface HWAuthorizationOperation : HWBaseOperation
 
 @property (strong, nonatomic, readonly) HWCredentials *credentials;
-
-@property (strong, nonatomic, readonly) NSError *error;
 
 - (instancetype)initWithCredentials:(HWCredentials *)credentials;
 

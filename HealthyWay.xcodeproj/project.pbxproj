@@ -18,6 +18,14 @@
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
 		580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580206271D1D368400349B32 /* LaunchScreen.storyboard */; };
 		580206341D1D368400349B32 /* HealthyWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 580206331D1D368400349B32 /* HealthyWayTests.m */; };
+		580C29541D5B25CE009B5118 /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29531D5B25CE009B5118 /* HWBaseOperation.m */; };
+		580C29581D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29571D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m */; };
+		580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C295C1D5B3D2C009B5118 /* HWBirthDatePicker.m */; };
+		580C295F1D5B3D3E009B5118 /* HWBirthDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580C295E1D5B3D3E009B5118 /* HWBirthDatePicker.xib */; };
+		580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29621D5B400A009B5118 /* HWCommonDateFormatter.m */; };
+		580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */; };
+		580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C296C1D5B42A2009B5118 /* UIImage+Scale.m */; };
+		580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29701D5B50F1009B5118 /* HWUserProfileData.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -82,6 +90,21 @@
 		580206331D1D368400349B32 /* HealthyWayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthyWayTests.m; sourceTree = "<group>"; };
 		580206351D1D368400349B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		580B40951D59E39D00B8D41D /* HWAuthTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HWAuthTypes.h; path = Classes/MVC/ModelsServices/AuthService/AuthTypes/HWAuthTypes.h; sourceTree = "<group>"; };
+		580C29521D5B25CE009B5118 /* HWBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseOperation.h; path = Classes/Operations/BaseOperation/HWBaseOperation.h; sourceTree = "<group>"; };
+		580C29531D5B25CE009B5118 /* HWBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseOperation.m; path = Classes/Operations/BaseOperation/HWBaseOperation.m; sourceTree = "<group>"; };
+		580C29561D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCreateUpdateUserProfileOperation.h; path = Classes/Operations/CreateUpdateUserProfileOperation/HWCreateUpdateUserProfileOperation.h; sourceTree = "<group>"; };
+		580C29571D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCreateUpdateUserProfileOperation.m; path = Classes/Operations/CreateUpdateUserProfileOperation/HWCreateUpdateUserProfileOperation.m; sourceTree = "<group>"; };
+		580C295B1D5B3D2C009B5118 /* HWBirthDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBirthDatePicker.h; path = Classes/MVC/Views/UserProfile/HWBirthDatePicker.h; sourceTree = "<group>"; };
+		580C295C1D5B3D2C009B5118 /* HWBirthDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBirthDatePicker.m; path = Classes/MVC/Views/UserProfile/HWBirthDatePicker.m; sourceTree = "<group>"; };
+		580C295E1D5B3D3E009B5118 /* HWBirthDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWBirthDatePicker.xib; path = Classes/MVC/Views/UserProfile/HWBirthDatePicker.xib; sourceTree = "<group>"; };
+		580C29611D5B400A009B5118 /* HWCommonDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCommonDateFormatter.h; path = Classes/HelperClasses/CommonDateFormatter/HWCommonDateFormatter.h; sourceTree = "<group>"; };
+		580C29621D5B400A009B5118 /* HWCommonDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCommonDateFormatter.m; path = Classes/HelperClasses/CommonDateFormatter/HWCommonDateFormatter.m; sourceTree = "<group>"; };
+		580C29651D5B421A009B5118 /* HWUserProfileController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWUserProfileController+ImagePicker.h"; path = "Classes/MVC/ViewControllers/UserAccountInformation/UserProfileController/UserProfileController+ImagePicker/HWUserProfileController+ImagePicker.h"; sourceTree = "<group>"; };
+		580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWUserProfileController+ImagePicker.m"; path = "Classes/MVC/ViewControllers/UserAccountInformation/UserProfileController/UserProfileController+ImagePicker/HWUserProfileController+ImagePicker.m"; sourceTree = "<group>"; };
+		580C296B1D5B42A2009B5118 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "Classes/Categories/UIImage/UIImage+Scale/UIImage+Scale.h"; sourceTree = "<group>"; };
+		580C296C1D5B42A2009B5118 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "Classes/Categories/UIImage/UIImage+Scale/UIImage+Scale.m"; sourceTree = "<group>"; };
+		580C296F1D5B50F1009B5118 /* HWUserProfileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileData.h; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.h; sourceTree = "<group>"; };
+		580C29701D5B50F1009B5118 /* HWUserProfileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileData.m; path = Classes/MVC/Models/UserProfileData/HWUserProfileData.m; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -168,18 +191,20 @@
 		44190E871D59273A00A8A4C1 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				44190E881D59274100A8A4C1 /* SignInOperation */,
+				580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */,
+				580C29511D5B2530009B5118 /* BaseOperation */,
+				44190E881D59274100A8A4C1 /* AuthorizationOperation */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
 		};
-		44190E881D59274100A8A4C1 /* SignInOperation */ = {
+		44190E881D59274100A8A4C1 /* AuthorizationOperation */ = {
 			isa = PBXGroup;
 			children = (
 				44190E891D59282B00A8A4C1 /* HWAuthorizationOperation.h */,
 				44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */,
 			);
-			name = SignInOperation;
+			name = AuthorizationOperation;
 			sourceTree = "<group>";
 		};
 		4490E41E1D5B376100DFF882 /* ChooseFlowBoard */ = {
@@ -272,6 +297,86 @@
 			name = AuthTypes;
 			sourceTree = "<group>";
 		};
+		580C29511D5B2530009B5118 /* BaseOperation */ = {
+			isa = PBXGroup;
+			children = (
+				580C29521D5B25CE009B5118 /* HWBaseOperation.h */,
+				580C29531D5B25CE009B5118 /* HWBaseOperation.m */,
+			);
+			name = BaseOperation;
+			sourceTree = "<group>";
+		};
+		580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				580C29561D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.h */,
+				580C29571D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m */,
+			);
+			name = CreateUpdateUserProfileOperation;
+			sourceTree = "<group>";
+		};
+		580C29591D5B3D0A009B5118 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				580C295A1D5B3D10009B5118 /* BirthDatePicker */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		580C295A1D5B3D10009B5118 /* BirthDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				580C295B1D5B3D2C009B5118 /* HWBirthDatePicker.h */,
+				580C295C1D5B3D2C009B5118 /* HWBirthDatePicker.m */,
+				580C295E1D5B3D3E009B5118 /* HWBirthDatePicker.xib */,
+			);
+			name = BirthDatePicker;
+			sourceTree = "<group>";
+		};
+		580C29601D5B3FE3009B5118 /* CommonDateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				580C29611D5B400A009B5118 /* HWCommonDateFormatter.h */,
+				580C29621D5B400A009B5118 /* HWCommonDateFormatter.m */,
+			);
+			name = CommonDateFormatter;
+			sourceTree = "<group>";
+		};
+		580C29641D5B41E3009B5118 /* UserProfileController+ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				580C29651D5B421A009B5118 /* HWUserProfileController+ImagePicker.h */,
+				580C29661D5B421A009B5118 /* HWUserProfileController+ImagePicker.m */,
+			);
+			name = "UserProfileController+ImagePicker";
+			sourceTree = "<group>";
+		};
+		580C29691D5B4279009B5118 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				580C296A1D5B427C009B5118 /* UIImage+Scale */,
+			);
+			name = UIImage;
+			sourceTree = "<group>";
+		};
+		580C296A1D5B427C009B5118 /* UIImage+Scale */ = {
+			isa = PBXGroup;
+			children = (
+				580C296B1D5B42A2009B5118 /* UIImage+Scale.h */,
+				580C296C1D5B42A2009B5118 /* UIImage+Scale.m */,
+			);
+			name = "UIImage+Scale";
+			sourceTree = "<group>";
+		};
+		580C296E1D5B50DC009B5118 /* UserProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				580C296F1D5B50F1009B5118 /* HWUserProfileData.h */,
+				580C29701D5B50F1009B5118 /* HWUserProfileData.m */,
+			);
+			name = UserProfileData;
+			sourceTree = "<group>";
+		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +407,7 @@
 		581049FE1D1D3A6A0082FF4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				580C296E1D5B50DC009B5118 /* UserProfileData */,
 				58A2A79A1D4F83BE006DBC38 /* Credentials */,
 			);
 			name = Models;
@@ -310,6 +416,7 @@
 		581049FF1D1D3A6F0082FF4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				580C29591D5B3D0A009B5118 /* UserProfile */,
 				58B305451D508C170011F405 /* Auth */,
 			);
 			name = Views;
@@ -332,6 +439,7 @@
 		58104A031D1D3A9C0082FF4B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				580C29691D5B4279009B5118 /* UIImage */,
 				5810FF0C1D58A99800AF5C96 /* CAAnimation */,
 				58A2A7A71D4F932E006DBC38 /* UIView */,
 				58C727711D23D36900F5F85D /* NSString */,
@@ -620,6 +728,7 @@
 		58C7277F1D23D87400F5F85D /* UserProfileController */ = {
 			isa = PBXGroup;
 			children = (
+				580C29641D5B41E3009B5118 /* UserProfileController+ImagePicker */,
 				58B3055C1D508DA60011F405 /* HWUserProfileController.h */,
 				58B3055D1D508DA60011F405 /* HWUserProfileController.m */,
 				58B3055E1D508DA60011F405 /* HWUserProfileController.xib */,
@@ -674,6 +783,7 @@
 		58E337C41D22F64800B3A280 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				580C29601D5B3FE3009B5118 /* CommonDateFormatter */,
 				58E337C51D22F64F00B3A280 /* ErrorHandler */,
 			);
 			name = HelperClasses;
@@ -780,6 +890,7 @@
 			files = (
 				58B305601D508DA60011F405 /* HWUserProfileController.xib in Resources */,
 				58B305501D508D460011F405 /* AuthStoryBoard.storyboard in Resources */,
+				580C295F1D5B3D3E009B5118 /* HWBirthDatePicker.xib in Resources */,
 				580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */,
 				58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */,
 				58B305651D508DC40011F405 /* HWForgotPasswordView.xib in Resources */,
@@ -853,12 +964,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580C29541D5B25CE009B5118 /* HWBaseOperation.m in Sources */,
+				580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */,
 				58B305751D508E330011F405 /* HWAuthService.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
+				580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */,
+				580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */,
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
 				4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */,
+				580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
@@ -867,6 +983,7 @@
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
+				580C29581D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
@@ -879,6 +996,7 @@
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
+				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

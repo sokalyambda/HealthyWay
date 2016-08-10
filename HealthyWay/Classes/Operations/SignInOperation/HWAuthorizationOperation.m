@@ -16,11 +16,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
 
 NSString *const ErrorsArrayKey = @"ErrorsArray";
 
-@interface HWAuthorizationOperation () {
-    BOOL _isFinished;
-    BOOL _isExecuting;
-    BOOL _isReady;
-}
+@interface HWAuthorizationOperation () 
 
 @property (strong, nonatomic, readwrite) NSError *error;
 
@@ -33,27 +29,9 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
 
 @implementation HWAuthorizationOperation
 
+@synthesize error = _error;
+
 #pragma mark - Accessors
-
-- (BOOL)isExecuting
-{
-    return _isExecuting;
-}
-
-- (BOOL)isFinished
-{
-    return _isFinished;
-}
-
-- (BOOL)isReady
-{
-    return _isReady;
-}
-
-- (BOOL)isAsynchronous
-{
-    return YES;
-}
 
 - (NSString *)email
 {
@@ -99,9 +77,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         /**
          *  The operation is ready when all parameters have been set
          */
-        [self willChangeValueForKey:@"isReady"];
-        _isReady = YES;
-        [self didChangeValueForKey:@"isReady"];
+        [self makeReady];
     }
     return self;
 }
@@ -113,18 +89,13 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
     }
     
     if (self.isCancelled) {
-        [self willChangeValueForKey:@"isFinished"];
-        _isFinished = YES;
-        [self didChangeValueForKey:@"isFinished"];
-        return;
+        return [self finish:YES];
     }
     
     /**
      *  The operation begins executing now
      */
-    [self willChangeValueForKey:@"isExecuting"];
-    _isExecuting = YES;
-    [self didChangeValueForKey:@"isExecuting"];
+    [self execute];
     
     switch (self.authType) {
         case HWAuthTypeSignIn: {
@@ -243,21 +214,6 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         
         [weakSelf completeTheExecution];
     }];
-}
-
-/**
- *  Finish the current operation
- */
-- (void)completeTheExecution
-{
-    [self willChangeValueForKey:@"isExecuting"];
-    [self willChangeValueForKey:@"isFinished"];
-    
-    _isExecuting = NO;
-    _isFinished = YES;
-    
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
 }
 
 @end
