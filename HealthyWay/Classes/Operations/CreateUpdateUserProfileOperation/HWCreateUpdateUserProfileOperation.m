@@ -14,8 +14,8 @@ static NSString *const kFirstName           = @"firstName";
 static NSString *const kLastName            = @"lastName";
 static NSString *const kNickName            = @"nickName";
 static NSString *const kIsMale              = @"isMale";
-static NSString *const kDateOfBirth         = @"birthDate";
-static NSString *const kAvatarBase64String  = @"avatarBase64String";
+static NSString *const kDateOfBirth         = @"dateOfBirth";
+static NSString *const kAvatarBase64String  = @"avatarBase64";
 
 @interface HWCreateUpdateUserProfileOperation ()
 
@@ -24,7 +24,7 @@ static NSString *const kAvatarBase64String  = @"avatarBase64String";
 @property (strong, nonatomic) NSString *nickName;
 @property (strong, nonatomic) NSDate *dateOfBirth;
 @property (strong, nonatomic) NSString *avatarBase64String;
-@property (assign, nonatomic) BOOL isMale;
+@property (assign, nonatomic) NSNumber * isMale;
 
 @property (strong, nonatomic, readwrite) NSError *error;
 
@@ -56,7 +56,7 @@ static NSString *const kAvatarBase64String  = @"avatarBase64String";
     return self.userProfileData.dateOfBirth;
 }
 
-- (BOOL)isMale
+- (NSNumber *)isMale
 {
     return self.userProfileData.isMale;
 }
@@ -108,26 +108,51 @@ static NSString *const kAvatarBase64String  = @"avatarBase64String";
     }
     
     FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
-    /**
-     *  Set the current user by his uid (it should be obtained after authorization)
-     */
-    [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] setValue:@{
-                                                                                                    kFirstName: self.firstName,
-                                                                                                    kLastName: self.lastName,
-                                                                                                    kNickName: self.nickName,
-                                                                                                    kIsMale: @(self.isMale),
-                                                                                                    kDateOfBirth: @([self.dateOfBirth timeIntervalSince1970]),
-                                                                                                    kAvatarBase64String: self.avatarBase64String
-                                                                                                    }];
-    FIRUserProfileChangeRequest *changeRequest = [user profileChangeRequest];
-    changeRequest.displayName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
-//    changeRequest.photoURL = [NSURL URLWithString:kAvatarBase64String];
+    FIRDatabaseReference *userReference = [[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid];
     
-    WEAK_SELF;
-    [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
-        weakSelf.error = error;
-        [weakSelf completeTheExecution];
-    }];    
+    [userReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    
+        if (self.isCancelled) {
+            return;
+        }
+        
+        NSDictionary *parameters = @{
+                                     kFirstName: self.firstName,
+                                     kLastName: self.lastName,
+                                     kNickName: self.nickName,
+                                     kIsMale: self.isMale,
+                                     kDateOfBirth: @([self.dateOfBirth timeIntervalSince1970]),
+                                     kAvatarBase64String: self.avatarBase64String
+                                     };
+        
+        FIRUserProfileChangeRequest *changeRequest = [user profileChangeRequest];
+        changeRequest.displayName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+        
+        if (snapshot.exists) {
+            /**
+             *  Update current user because we already have one created
+             */
+            [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] updateChildValues:parameters];
+        } else {
+            /**
+             *  Set the current user by his uid (it should be obtained after authorization)
+             */
+            [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] setValue:parameters];
+        }
+        
+        if (self.isCancelled) {
+            return;
+        }
+        
+        WEAK_SELF;
+        [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
+            weakSelf.error = error;
+            
+            [weakSelf completeTheExecution];
+        }];
+        
+    }];
+    
 }
 
 @end

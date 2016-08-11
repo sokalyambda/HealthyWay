@@ -27,6 +27,11 @@
     return [[FIRDatabase database] reference];
 }
 
+- (void)setUserProfileData:(HWUserProfileData *)userProfileData
+{
+    _userProfileData = userProfileData;
+}
+
 #pragma mark - Lifecycle
 
 + (instancetype)sharedManager

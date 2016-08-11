@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wc1-KX-1XQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wc1-KX-1XQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,12 +21,21 @@
                     <navigationItem key="navigationItem" id="TUo-GU-rvg"/>
                     <connections>
                         <segue destination="YEA-rU-gKz" kind="show" identifier="ToLoginZoneSegue" id="4st-cc-hSw"/>
-                        <segue destination="xj5-Jr-gU2" kind="show" identifier="ToProfileSegue" id="hvi-Ee-UZe"/>
+                        <segue destination="xj5-Jr-gU2" kind="show" identifier="ToUserProfileSegue" id="hvi-Ee-UZe"/>
+                        <segue destination="UJ6-KH-khh" kind="show" identifier="ChooseFlowSegue" id="ujK-ut-iQu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obq-Qd-mUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="927" y="-418"/>
+        </scene>
+        <!--ChooseFlowBoard-->
+        <scene sceneID="Ukn-gR-9yk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChooseFlowBoard" id="UJ6-KH-khh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yqR-OT-d0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1590.5" y="-418"/>
         </scene>
         <!--Authorization-->
         <scene sceneID="nRD-9W-OSX">
@@ -106,6 +115,7 @@
                         <outlet property="authViewContainer" destination="CtM-Od-uA7" id="yqX-4I-Aup"/>
                         <outlet property="scrollView" destination="pAt-l2-JdU" id="XC9-eM-Hq5"/>
                         <segue destination="xj5-Jr-gU2" kind="show" identifier="ToUserProfileSegue" id="Lt0-Ns-KcG"/>
+                        <segue destination="UJ6-KH-khh" kind="show" identifier="ChooseFlowSegue" id="RdX-CF-vI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kf-Vn-Mci" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,6 +168,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lt0-Ns-KcG"/>
+        <segue reference="hvi-Ee-UZe"/>
+        <segue reference="RdX-CF-vI4"/>
     </inferredMetricsTieBreakers>
 </document>

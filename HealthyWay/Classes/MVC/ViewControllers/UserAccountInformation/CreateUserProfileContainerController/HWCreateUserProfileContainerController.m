@@ -9,7 +9,7 @@
 #import "HWCreateUserProfileContainerController.h"
 #import "HWUserProfileController.h"
 
-@interface HWCreateUserProfileContainerController ()
+@interface HWCreateUserProfileContainerController ()<HWUserProfileControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
@@ -25,6 +25,7 @@
 {
     if (!_userProfileController) {
         _userProfileController = [[HWUserProfileController alloc] init];
+        _userProfileController.delegate = self;
     }
     return _userProfileController;
 }
@@ -58,6 +59,13 @@
 - (IBAction)doneClick:(id)sender
 {
     [self.userProfileController performCreateUpdateUser];
+}
+
+#pragma mark - HWUserProfileControllerDelegate
+
+- (void)userProfileControllerDidUpdateUser:(HWUserProfileController *)controller
+{
+    [self performSegueWithIdentifier:@"ChooseFlowSegue" sender:self];
 }
 
 @end

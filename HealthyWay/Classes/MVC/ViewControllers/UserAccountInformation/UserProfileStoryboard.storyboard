@@ -40,11 +40,20 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="leV-8l-3eo" id="XW4-GG-je5"/>
+                        <segue destination="R1Q-JE-Vwk" kind="show" identifier="ChooseFlowSegue" id="aPy-wV-MKa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gX6-F4-yQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="726" y="332"/>
+        </scene>
+        <!--ChooseFlowBoard-->
+        <scene sceneID="9zt-nE-bEr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChooseFlowBoard" id="R1Q-JE-Vwk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q7G-MS-p60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217.5" y="155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GRe-Fb-opJ">

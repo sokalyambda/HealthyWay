@@ -8,6 +8,8 @@
 
 #import "HWAutologinViewController.h"
 
+#import "HWFetchUsersService.h"
+
 @interface HWAutologinViewController ()
 
 @end
@@ -25,6 +27,11 @@
 
 #pragma mark - Actions
 
+- (void)performAdditionalViewControllerAdjustments
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 /*
  This methos checks up whether the autologin is needed
  */
@@ -32,16 +39,33 @@
 {
     FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
     if (user) {
+        WEAK_SELF;
         [[HWBaseAppManager sharedManager].currentUser getTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
             if (token.length) {
-                [self performSegueWithIdentifier:@"ToProfileSegue" sender:self];
+                
+                [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
+                
+                HWFetchUsersService *fetchUsersService = [[HWFetchUsersService alloc] initWithFetchUsersOperationType:HWFetchUsersOperationTypeCurrent];
+                [fetchUsersService fetchUsersWithCompletion:^(NSArray *users, NSError *error) {
+                    
+                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                    if (!users.count) {
+                        return [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];;
+                    } else {
+                        // Show the initial controller of ChooseFlowBoard
+                        [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
+                    }
+                }];
+                
             } else {
                 [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
             }
         }];
+        
     } else {
         [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
     }
+    
 }
 
 @end

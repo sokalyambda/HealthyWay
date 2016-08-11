@@ -15,6 +15,7 @@
 #import "HWAuthorizationOperation.h"
 
 #import "HWAuthService.h"
+#import "HWFetchUsersService.h"
 
 #import "UIView+MakeFromXib.h"
 #import "HWAuthorizationViewController+AuthViewTransitionSubtype.h"
@@ -160,16 +161,32 @@ static const NSInteger kUserDoesNotExist = 17011;
     WEAK_SELF;
     [authService authorizationOperationWithCompletion:^(NSError *error) {
 
-        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-
         if (!error) {
             switch (type) {
-                case HWAuthTypeSignIn:
+                case HWAuthTypeSignIn: {
+                    //TODO: check user existence
+                    HWFetchUsersService *fetchUsersService = [[HWFetchUsersService alloc] initWithFetchUsersOperationType:HWFetchUsersOperationTypeCurrent];
+                    [fetchUsersService fetchUsersWithCompletion:^(NSArray *users, NSError *error) {
+                        
+                        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                        if (!users.count) {
+                            [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                            return [view didCompleteAuthAction];
+                        } else {
+                            // Show the initial controller of ChooseFlowBoard
+                            [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
+                        }
+                        
+                    }];
+                    break;
+                }
                 case HWAuthTypeSignUp: {
+                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
                     [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
                     return [view didCompleteAuthAction];
                 }
                 case HWAuthTypeForgotPassword: {
+                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
                     [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
                         [weakSelf setupAuthViewWithType:HWAuthTypeSignIn];
                         [weakSelf.currentAuthView setEmail:view.email];
@@ -178,6 +195,9 @@ static const NSInteger kUserDoesNotExist = 17011;
                 }
             }
         } else if (error) {
+            
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+            
             if (error.code == kUserDoesNotExist) {
                 // Move to sign up flow if user doesn't exist;
                 [weakSelf setupAuthViewWithType:HWAuthTypeSignUp];

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ohu-ml-Y4x">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Events-->
+        <scene sceneID="77J-iS-ATu">
+            <objects>
+                <viewController id="Dc0-4W-lko" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HV7-wd-GNC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nqh-3U-ujN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hM7-gB-T9X">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Events" id="F5f-dA-aYg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6M-H3-OGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="-44"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="soi-kE-yHr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auv-1a-XIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ohu-ml-Y4x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="events_tab_bar" id="tFv-7s-RsY"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Zf-0X-VvY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dc0-4W-lko" kind="relationship" relationship="rootViewController" id="hup-1l-DjF"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="847" y="-44"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="events_tab_bar" width="30" height="30"/>
+    </resources>
+</document>

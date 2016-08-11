@@ -10,6 +10,13 @@
 
 @implementation HWUserProfileData
 
+@synthesize firstName = _firstName;
+@synthesize lastName = _lastName;
+@synthesize nickName = _nickName;
+@synthesize dateOfBirth = _dateOfBirth;
+@synthesize avatarBase64 = _avatarBase64;
+@synthesize isMale = _isMale;
+
 #pragma mark - Lifecycle
 
 - (instancetype)initWithFirstName:(NSString *)firstName
@@ -17,7 +24,7 @@
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
                      avatarBase64:(NSString *)avatarBase64
-                           isMale:(BOOL)isMale
+                           isMale:(NSNumber *)isMale
 {
     self = [super init];
     if (self) {

@@ -29,7 +29,7 @@
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
                      avatarBase64:(NSString *)avatarBase64
-                           isMale:(BOOL)isMale
+                           isMale:(NSNumber *)isMale
 {
     self = [super init];
     if (self) {

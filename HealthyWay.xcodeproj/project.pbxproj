@@ -29,6 +29,7 @@
 		580C29771D5B624D009B5118 /* HWUserProfileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29761D5B624D009B5118 /* HWUserProfileService.m */; };
 		580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */; };
 		580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */; };
+		580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29831D5B8126009B5118 /* HWUserProfileData+Mapping.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -57,6 +58,18 @@
 		58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727771D23D3BD00F5F85D /* HWValidator.m */; };
 		58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D774231D22C83B00CEE186 /* GoogleService-Info.plist */; };
 		58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */; };
+		58FDB0691D5C6E9C00908ADC /* HWFetchUsersOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0681D5C6E9C00908ADC /* HWFetchUsersOperation.m */; };
+		58FDB0751D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */; };
+		58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */; };
+		58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */; };
+		58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */; };
+		58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */; };
+		58FDB0931D5C838200908ADC /* HWFetchUsersService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0921D5C838200908ADC /* HWFetchUsersService.m */; };
+		58FDB09B1D5C995400908ADC /* SettingsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */; };
+		58FDB09D1D5C997000908ADC /* EditProfileBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */; };
+		58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09E1D5C998100908ADC /* MapBoard.storyboard */; };
+		58FDB0A11D5C999200908ADC /* FriendsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */; };
+		58FDB0A31D5C99A400908ADC /* EventsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB0A21D5C99A400908ADC /* EventsBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +127,8 @@
 		580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+EncodeToBase64.m"; path = "Classes/Categories/UIImage/UIImage+EncodeToBase64/UIImage+EncodeToBase64.m"; sourceTree = "<group>"; };
 		580C297D1D5B78AF009B5118 /* NSString+DecodeFromBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+DecodeFromBase64.h"; path = "Classes/Categories/NSString/NSString+DecodeFromBase64/NSString+DecodeFromBase64.h"; sourceTree = "<group>"; };
 		580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+DecodeFromBase64.m"; path = "Classes/Categories/NSString/NSString+DecodeFromBase64/NSString+DecodeFromBase64.m"; sourceTree = "<group>"; };
+		580C29821D5B8126009B5118 /* HWUserProfileData+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWUserProfileData+Mapping.h"; path = "Classes/MVC/Models/UserProfileData/UserProfileData+Mapping/HWUserProfileData+Mapping.h"; sourceTree = "<group>"; };
+		580C29831D5B8126009B5118 /* HWUserProfileData+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWUserProfileData+Mapping.m"; path = "Classes/MVC/Models/UserProfileData/UserProfileData+Mapping/HWUserProfileData+Mapping.m"; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -166,6 +181,26 @@
 		58D774231D22C83B00CEE186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58E337C11D22F42E00B3A280 /* HWBaseAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAppManager.h; path = Classes/Managers/BaseAppManager/HWBaseAppManager.h; sourceTree = "<group>"; };
 		58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAppManager.m; path = Classes/Managers/BaseAppManager/HWBaseAppManager.m; sourceTree = "<group>"; };
+		58FDB0671D5C6E9C00908ADC /* HWFetchUsersOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchUsersOperation.h; path = Classes/Operations/FetchUsersOperation/HWFetchUsersOperation.h; sourceTree = "<group>"; };
+		58FDB0681D5C6E9C00908ADC /* HWFetchUsersOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchUsersOperation.m; path = Classes/Operations/FetchUsersOperation/HWFetchUsersOperation.m; sourceTree = "<group>"; };
+		58FDB06B1D5C6EC000908ADC /* HWUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfile.h; path = Classes/Protocols/UserProfile/HWUserProfile.h; sourceTree = "<group>"; };
+		58FDB0741D5C74B200908ADC /* HealthyWayDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthyWayDataModel.xcdatamodel; sourceTree = "<group>"; };
+		58FDB0761D5C756800908ADC /* HWCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCoreDataStorage.h; path = Classes/CoreData/CoreDataStorage/HWCoreDataStorage.h; sourceTree = "<group>"; };
+		58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCoreDataStorage.m; path = Classes/CoreData/CoreDataStorage/HWCoreDataStorage.m; sourceTree = "<group>"; };
+		58FDB0791D5C75BA00908ADC /* HWDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWDatabaseManager.h; path = Classes/CoreData/CoreDataManager/HWDatabaseManager.h; sourceTree = "<group>"; };
+		58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWDatabaseManager.m; path = Classes/CoreData/CoreDataManager/HWDatabaseManager.m; sourceTree = "<group>"; };
+		58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel"; sourceTree = "<group>"; };
+		58FDB08A1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ManagedUserProfileData+CoreDataProperties.h"; path = "Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData+CoreDataProperties.h"; sourceTree = "<group>"; };
+		58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ManagedUserProfileData+CoreDataProperties.m"; path = "Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData+CoreDataProperties.m"; sourceTree = "<group>"; };
+		58FDB08C1D5C7AD700908ADC /* ManagedUserProfileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedUserProfileData.h; path = Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData.h; sourceTree = "<group>"; };
+		58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedUserProfileData.m; path = Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData.m; sourceTree = "<group>"; };
+		58FDB0911D5C838200908ADC /* HWFetchUsersService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchUsersService.h; path = Classes/MVC/ModelsServices/FetchUsersService/HWFetchUsersService.h; sourceTree = "<group>"; };
+		58FDB0921D5C838200908ADC /* HWFetchUsersService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchUsersService.m; path = Classes/MVC/ModelsServices/FetchUsersService/HWFetchUsersService.m; sourceTree = "<group>"; };
+		58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsBoard.storyboard; sourceTree = "<group>"; };
+		58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditProfileBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/EditProfileFlow/EditProfileBoard.storyboard; sourceTree = "<group>"; };
+		58FDB09E1D5C998100908ADC /* MapBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MapBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/MapFlow/MapBoard.storyboard; sourceTree = "<group>"; };
+		58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsBoard.storyboard; sourceTree = "<group>"; };
+		58FDB0A21D5C99A400908ADC /* EventsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/EventsFlow/EventsBoard.storyboard; sourceTree = "<group>"; };
 		BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthyWay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,6 +235,7 @@
 		44190E871D59273A00A8A4C1 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				58FDB0661D5C6E8200908ADC /* FetchUsersOperation */,
 				580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */,
 				580C29511D5B2530009B5118 /* BaseOperation */,
 				44190E881D59274100A8A4C1 /* AuthorizationOperation */,
@@ -381,6 +417,7 @@
 		580C296E1D5B50DC009B5118 /* UserProfileData */ = {
 			isa = PBXGroup;
 			children = (
+				580C29811D5B8105009B5118 /* UserProfileData+Mapping */,
 				580C296F1D5B50F1009B5118 /* HWUserProfileData.h */,
 				580C29701D5B50F1009B5118 /* HWUserProfileData.m */,
 			);
@@ -412,6 +449,15 @@
 				580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */,
 			);
 			name = "NSString+DecodeFromBase64";
+			sourceTree = "<group>";
+		};
+		580C29811D5B8105009B5118 /* UserProfileData+Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				580C29821D5B8126009B5118 /* HWUserProfileData+Mapping.h */,
+				580C29831D5B8126009B5118 /* HWUserProfileData+Mapping.m */,
+			);
+			name = "UserProfileData+Mapping";
 			sourceTree = "<group>";
 		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
@@ -462,6 +508,10 @@
 		58104A011D1D3A900082FF4B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				58FDB06F1D5C740D00908ADC /* DataBaseModel */,
+				58FDB06E1D5C740700908ADC /* ManagedObjects */,
+				58FDB06D1D5C740300908ADC /* CoreDataStorage */,
+				58FDB06C1D5C73FF00908ADC /* CoreDataManager */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -487,6 +537,7 @@
 		58104A041D1D3AA00082FF4B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				58FDB06A1D5C6EAB00908ADC /* UserProfile */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -641,12 +692,13 @@
 		58B305441D508BD30011F405 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4490E41E1D5B376100DFF882 /* ChooseFlowBoard */,
+				58FDB0971D5C98B600908ADC /* TabBarComponents */,
 				58104A091D1D3CF70082FF4B /* BaseViewController */,
 				58C7276A1D23D15A00F5F85D /* BaseNavigationController */,
 				58C7278C1D23DE0100F5F85D /* BaseKeyboardHandlerViewController */,
 				58104A061D1D3CBB0082FF4B /* Authentication */,
 				58C7277E1D23D86500F5F85D /* UserAccountInformation */,
-				4490E41E1D5B376100DFF882 /* ChooseFlowBoard */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -738,6 +790,7 @@
 		58C727791D23D6EC00F5F85D /* ModelsServices */ = {
 			isa = PBXGroup;
 			children = (
+				58FDB0901D5C836300908ADC /* FetchUsersService */,
 				580C29741D5B622E009B5118 /* UserProfileService */,
 				58C7277A1D23D6F300F5F85D /* AuthService */,
 			);
@@ -835,6 +888,129 @@
 			name = ErrorHandler;
 			sourceTree = "<group>";
 		};
+		58FDB0661D5C6E8200908ADC /* FetchUsersOperation */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0671D5C6E9C00908ADC /* HWFetchUsersOperation.h */,
+				58FDB0681D5C6E9C00908ADC /* HWFetchUsersOperation.m */,
+			);
+			name = FetchUsersOperation;
+			sourceTree = "<group>";
+		};
+		58FDB06A1D5C6EAB00908ADC /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB06B1D5C6EC000908ADC /* HWUserProfile.h */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		58FDB06C1D5C73FF00908ADC /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0791D5C75BA00908ADC /* HWDatabaseManager.h */,
+				58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */,
+			);
+			name = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		58FDB06D1D5C740300908ADC /* CoreDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0761D5C756800908ADC /* HWCoreDataStorage.h */,
+				58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */,
+			);
+			name = CoreDataStorage;
+			sourceTree = "<group>";
+		};
+		58FDB06E1D5C740700908ADC /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0821D5C799500908ADC /* UserProfileData */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		58FDB06F1D5C740D00908ADC /* DataBaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */,
+			);
+			name = DataBaseModel;
+			sourceTree = "<group>";
+		};
+		58FDB0821D5C799500908ADC /* UserProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB08A1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.h */,
+				58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */,
+				58FDB08C1D5C7AD700908ADC /* ManagedUserProfileData.h */,
+				58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */,
+			);
+			name = UserProfileData;
+			sourceTree = "<group>";
+		};
+		58FDB0901D5C836300908ADC /* FetchUsersService */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0911D5C838200908ADC /* HWFetchUsersService.h */,
+				58FDB0921D5C838200908ADC /* HWFetchUsersService.m */,
+			);
+			name = FetchUsersService;
+			sourceTree = "<group>";
+		};
+		58FDB0941D5C989400908ADC /* EventsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0A21D5C99A400908ADC /* EventsBoard.storyboard */,
+			);
+			name = EventsFlow;
+			sourceTree = "<group>";
+		};
+		58FDB0951D5C989E00908ADC /* FriendsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */,
+			);
+			name = FriendsFlow;
+			sourceTree = "<group>";
+		};
+		58FDB0961D5C98B000908ADC /* MapFlow */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB09E1D5C998100908ADC /* MapBoard.storyboard */,
+			);
+			name = MapFlow;
+			sourceTree = "<group>";
+		};
+		58FDB0971D5C98B600908ADC /* TabBarComponents */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB0991D5C98FC00908ADC /* SettingsFlow */,
+				58FDB0981D5C98F600908ADC /* EditProfileFlow */,
+				58FDB0961D5C98B000908ADC /* MapFlow */,
+				58FDB0951D5C989E00908ADC /* FriendsFlow */,
+				58FDB0941D5C989400908ADC /* EventsFlow */,
+			);
+			name = TabBarComponents;
+			sourceTree = "<group>";
+		};
+		58FDB0981D5C98F600908ADC /* EditProfileFlow */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */,
+			);
+			name = EditProfileFlow;
+			sourceTree = "<group>";
+		};
+		58FDB0991D5C98FC00908ADC /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */,
+			);
+			name = SettingsFlow;
+			sourceTree = "<group>";
+		};
 		76BEEEF084423C44EC460BE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,11 +1104,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B305601D508DA60011F405 /* HWUserProfileController.xib in Resources */,
+				58FDB0A11D5C999200908ADC /* FriendsBoard.storyboard in Resources */,
 				58B305501D508D460011F405 /* AuthStoryBoard.storyboard in Resources */,
 				580C295F1D5B3D3E009B5118 /* HWBirthDatePicker.xib in Resources */,
 				580C29731D5B5B84009B5118 /* ChooseFlowBoard.storyboard in Resources */,
+				58FDB09B1D5C995400908ADC /* SettingsBoard.storyboard in Resources */,
+				58FDB09D1D5C997000908ADC /* EditProfileBoard.storyboard in Resources */,
 				580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */,
 				58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */,
+				58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */,
+				58FDB0A31D5C99A400908ADC /* EventsBoard.storyboard in Resources */,
 				58B305651D508DC40011F405 /* HWForgotPasswordView.xib in Resources */,
 				58B3056A1D508DD10011F405 /* HWSignUpView.xib in Resources */,
 				580206261D1D368400349B32 /* Assets.xcassets in Resources */,
@@ -1010,6 +1191,7 @@
 				580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */,
 				580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */,
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
+				58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
 				4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */,
@@ -1017,10 +1199,15 @@
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
+				58FDB0751D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld in Sources */,
 				44190E8B1D59282B00A8A4C1 /* HWAuthorizationOperation.m in Sources */,
 				58B305531D508D550011F405 /* HWAutologinViewController.m in Sources */,
+				58FDB0931D5C838200908ADC /* HWFetchUsersService.m in Sources */,
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
+				58FDB0691D5C6E9C00908ADC /* HWFetchUsersOperation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
+				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
+				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				580C29581D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
@@ -1038,7 +1225,9 @@
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
 				580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
+				58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
+				58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1238,6 +1427,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */,
+				58FDB0741D5C74B200908ADC /* HealthyWayDataModel.xcdatamodel */,
+			);
+			currentVersion = 58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */;
+			name = HealthyWayDataModel.xcdatamodeld;
+			path = Classes/CoreData/DataBaseModel/HealthyWayDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5802060E1D1D368300349B32 /* Project object */;
 }

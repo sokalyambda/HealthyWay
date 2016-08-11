@@ -10,10 +10,16 @@
 #define HealthyWay_PrefixHeader_pch
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
 #import <Firebase.h>
 #import <FirebaseDatabase/FirebaseDatabase.h>
+
 #import <AFNetworking.h>
+
 #import <MBProgressHUD.h>
+
+#import <EasyMapping/EasyMapping.h>
 
 #import "HWBaseAppManager.h"
 #import "HWMacros.h"
