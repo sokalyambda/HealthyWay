@@ -6,6 +6,10 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
+typedef NS_ENUM(NSUInteger, HWCreateUpdateUserProfileOperationErrorType) {
+    HWCreateUpdateUserProfileOperationErrorTypeValidation = -999
+};
+
 #import "HWCreateUpdateUserProfileOperation.h"
 
 #import "HWUserProfileData.h"
@@ -107,51 +111,65 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
         return;
     }
     
-    FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
-    FIRDatabaseReference *userReference = [[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid];
-    
-    [userReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-    
-        if (self.isCancelled) {
-            return;
-        }
+    WEAK_SELF;
+    [HWValidator validateFirstName:self.firstName lastName:self.lastName nickName:self.nickName dateOfBirth:self.dateOfBirth onSuccess:^{
+        FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
+        FIRDatabaseReference *userReference = [[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid];
         
-        NSDictionary *parameters = @{
-                                     kFirstName: self.firstName,
-                                     kLastName: self.lastName,
-                                     kNickName: self.nickName,
-                                     kIsMale: self.isMale,
-                                     kDateOfBirth: @([self.dateOfBirth timeIntervalSince1970]),
-                                     kAvatarBase64String: self.avatarBase64String
-                                     };
-        
-        FIRUserProfileChangeRequest *changeRequest = [user profileChangeRequest];
-        changeRequest.displayName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
-        
-        if (snapshot.exists) {
-            /**
-             *  Update current user because we already have one created
-             */
-            [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] updateChildValues:parameters];
-        } else {
-            /**
-             *  Set the current user by his uid (it should be obtained after authorization)
-             */
-            [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] setValue:parameters];
-        }
-        
-        if (self.isCancelled) {
-            return;
-        }
-        
-        WEAK_SELF;
-        [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
-            weakSelf.error = error;
+        [userReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             
-            [weakSelf completeTheExecution];
+            if (weakSelf.isCancelled) {
+                return [weakSelf finish:YES];
+            }
+            
+            NSDictionary *parameters = @{
+                                         kFirstName: weakSelf.firstName,
+                                         kLastName: weakSelf.lastName,
+                                         kNickName: weakSelf.nickName,
+                                         kIsMale: weakSelf.isMale,
+                                         kDateOfBirth: @([weakSelf.dateOfBirth timeIntervalSince1970]),
+                                         kAvatarBase64String: weakSelf.avatarBase64String
+                                         };
+            
+            FIRUserProfileChangeRequest *changeRequest = [user profileChangeRequest];
+            changeRequest.displayName = [NSString stringWithFormat:@"%@ %@", weakSelf.firstName, weakSelf.lastName];
+            
+            if (snapshot.exists) {
+                /**
+                 *  Update current user because we already have one created
+                 */
+                [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] updateChildValues:parameters];
+            } else {
+                /**
+                 *  Set the current user by his uid (it should be obtained after authorization)
+                 */
+                [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] setValue:parameters];
+            }
+            
+            if (weakSelf.isCancelled) {
+                return [weakSelf finish:YES];
+            }
+            
+            [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
+                weakSelf.error = error;
+                
+                [weakSelf completeTheExecution];
+            }];
+            
         }];
+    } onFailure:^(NSMutableArray *errorArray) {
+        if (weakSelf.isCancelled) {
+            return [weakSelf finish:YES];
+        }
         
+        NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWCreateUpdateUserProfileOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        weakSelf.error = validationError;
+        [HWValidator cleanValidationErrorArray];
+        
+        [weakSelf completeTheExecution];
     }];
+    
+    
     
 }
 

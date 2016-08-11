@@ -55,7 +55,7 @@ static NSMutableArray *_errorArray;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     
     if (!email.length) {
-        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+        [self setErrorMessage:LOCALIZED(@"This field is required for filling.\n")];
         return NO;
     } else if (![emailTest evaluateWithObject:email]) {
         [self setErrorMessage:LOCALIZED(@"Пожалуйста, введите действительный адрес электронной почты. Например johndoe@domain.com.\n")];
@@ -81,7 +81,7 @@ static NSMutableArray *_errorArray;
     BOOL isMatchSuccess = [passwordTest evaluateWithObject:password];
     
     if (!password.length) {
-        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+        [self setErrorMessage:LOCALIZED(@"This field is required for filling.\n")];
         return NO;
     } else if (!isMatchSuccess) {
         [self setErrorMessage:LOCALIZED(@"Количество символов не менее 6.\n")];
@@ -91,10 +91,13 @@ static NSMutableArray *_errorArray;
     return YES;
 }
 
-+ (BOOL)validateFirstName:(NSString *)firstName
++ (BOOL)validateName:(NSString *)name
 {
-    if (!firstName.length || firstName.length > kMaxNameCharacters) {
-        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+    if (!name.length) {
+        [self setErrorMessage:LOCALIZED(@"This field is required for filling.\n")];
+        return NO;
+    } else if (name.length > kMaxNameCharacters) {
+        [self setErrorMessage:LOCALIZED(@"Too long name. Please, make it shorter.\n")];
         return NO;
     }
     return YES;
@@ -104,7 +107,7 @@ static NSMutableArray *_errorArray;
 {
     NSString *text = [[[[phone stringByReplacingOccurrencesOfString:@"(" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (!text) {
-        [self setErrorMessage:LOCALIZED(@"Это поле обязательно для заполнения.\n")];
+        [self setErrorMessage:LOCALIZED(@"This field is required for filling.\n")];
         return NO;
     }
     return YES;
@@ -124,6 +127,17 @@ static NSMutableArray *_errorArray;
     return isValid;
 }
 
++ (BOOL)validateDateOfBirth:(NSDate *)date
+{
+    BOOL isValid = YES;
+    
+    if (!date) {
+        [self setErrorMessage:LOCALIZED(@"You have to choose date of your birth.\n")];
+        isValid = NO;
+    }
+    return isValid;
+}
+
 #pragma mark - Public methods
 
 /**
@@ -136,7 +150,7 @@ static NSMutableArray *_errorArray;
                      onSuccess:(ValidationSuccessBlock)success
                      onFailure:(ValidationFailureBlock)failure
 {
-    if (![self validateFirstName:firstName] && failure) {
+    if (![self validateName:firstName] && failure) {
         failure([self validationErrorArray]);
     } else if (success) {
         success();
@@ -194,7 +208,7 @@ static NSMutableArray *_errorArray;
         isValid = NO;
     }
     
-    if (![self validateFirstName:firstName]) {
+    if (![self validateName:firstName]) {
         isValid = NO;
     }
     
@@ -238,10 +252,39 @@ static NSMutableArray *_errorArray;
     if (![self validateEmail:email]) {
         isValid = NO;
     }
-    if (![self validateFirstName:firstName]) {
+    if (![self validateName:firstName]) {
         isValid = NO;
     }
     if (![self validatePhone:phone]) {
+        isValid = NO;
+    }
+    
+    if (!isValid && failure) {
+        failure([self validationErrorArray]);
+    } else if (success) {
+        success();
+    }
+}
+
++ (void)validateFirstName:(NSString *)firstName
+                 lastName:(NSString *)lastName
+                 nickName:(NSString *)nickName
+              dateOfBirth:(NSDate *)dateOfBirth
+                onSuccess:(ValidationSuccessBlock)success
+                onFailure:(ValidationFailureBlock)failure
+{
+    BOOL isValid = YES;
+    
+    if (![self validateName:firstName]) {
+        isValid = NO;
+    }
+    if (![self validateName:lastName]) {
+        isValid = NO;
+    }
+    if (![self validateName:nickName]) {
+        isValid = NO;
+    }
+    if (![self validateDateOfBirth:dateOfBirth]) {
         isValid = NO;
     }
     

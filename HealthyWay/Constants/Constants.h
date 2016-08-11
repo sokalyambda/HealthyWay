@@ -19,4 +19,8 @@ static NSString *const IsFirstLaunch        = @"IsFirstLaunch";
 
 static NSString *const UsersKey = @"users";
 
+// Validation
+
+static NSString *const ErrorsArrayKey = @"ErrorsArray";
+
 #endif /* Constants_h */

@@ -8,4 +8,7 @@
 
 @interface HWBaseViewController : UIViewController
 
+// For Validation Alert Purposes
+- (void)showAlertViewForErrors:(NSArray *)errors;
+
 @end

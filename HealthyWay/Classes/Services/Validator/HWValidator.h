@@ -44,6 +44,13 @@ extern NSString *const kValidationErrorMessage;
                  onSuccess:(ValidationSuccessBlock)success
                  onFailure:(ValidationFailureBlock)failure;
 
++ (void)validateFirstName:(NSString *)firstName
+                 lastName:(NSString *)lastName
+                 nickName:(NSString *)nickName
+              dateOfBirth:(NSDate *)dateOfBirth
+                onSuccess:(ValidationSuccessBlock)success
+                onFailure:(ValidationFailureBlock)failure;
+
 + (void)cleanValidationErrorArray;
 
 @end

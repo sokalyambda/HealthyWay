@@ -14,8 +14,6 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
 
 #import "HWCredentials.h"
 
-NSString *const ErrorsArrayKey = @"ErrorsArray";
-
 @interface HWAuthorizationOperation () 
 
 @property (strong, nonatomic, readwrite) NSError *error;
@@ -117,14 +115,14 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
 - (void)performResetPassword
 {
     if (self.isCancelled) {
-        return;
+        return [self finish:YES];
     }
     
     WEAK_SELF;
     [HWValidator validateEmail:self.email onSuccess:^{
         
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         [weakSelf.currentAuth sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
@@ -134,7 +132,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
     } onFailure:^(NSMutableArray *errorArray) {
         
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
@@ -150,14 +148,14 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
 - (void)performSignIn
 {
     if (self.isCancelled) {
-        return;
+        return [self finish:YES];
     }
     
     WEAK_SELF;
     [HWValidator validateEmail:self.email andPassword:self.password onSuccess:^{
         
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         [weakSelf.currentAuth signInWithEmail:weakSelf.email password:weakSelf.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
@@ -166,7 +164,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
         }];
     } onFailure:^(NSMutableArray *errorArray) {
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
@@ -183,14 +181,14 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
 - (void)performSignUp
 {
     if (self.isCancelled) {
-        return;
+        return [self finish:YES];
     }
     
     WEAK_SELF;
     [HWValidator validateEmail:self.email andPassword:self.password andConfirmPassword:self.confirmedPassword onSuccess:^{
         
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         [weakSelf.currentAuth createUserWithEmail:weakSelf.email password:weakSelf.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
@@ -201,7 +199,7 @@ NSString *const ErrorsArrayKey = @"ErrorsArray";
     } onFailure:^(NSMutableArray *errorArray) {
         
         if (weakSelf.isCancelled) {
-            return;
+            return [weakSelf finish:YES];
         }
         
         NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];

@@ -44,6 +44,12 @@
     [self addUserProfileControllerToContainer];
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
 #pragma mark - Actions
 
 - (void)addUserProfileControllerToContainer

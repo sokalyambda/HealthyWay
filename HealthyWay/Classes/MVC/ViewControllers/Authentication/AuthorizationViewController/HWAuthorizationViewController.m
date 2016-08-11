@@ -12,15 +12,12 @@
 
 #import <FirebaseAuth/FirebaseAuth.h>
 
-#import "HWAuthorizationOperation.h"
-
 #import "HWAuthService.h"
 #import "HWFetchUsersService.h"
 
 #import "UIView+MakeFromXib.h"
 #import "HWAuthorizationViewController+AuthViewTransitionSubtype.h"
 #import "CAAnimation+CompletionBlock.h"
-#import "NSString+ErrorString.h"
 
 static const NSInteger kUserDoesNotExist = 17011;
 
@@ -138,17 +135,6 @@ static const NSInteger kUserDoesNotExist = 17011;
     destinationView.hidden = !sourceView.isHidden;
     
     return transition;
-}
-
-/**
- *  Show the alert view for array of errors
- *
- *  @param errors Array of dictionaries which contains error messages.
- */
-- (void)showAlertViewForErrors:(NSArray *)errors
-{
-    NSString *message = [NSString errorStringFromErrorsArray:errors];
-    [HWAlertService showAlertWithMessage:message forController:self withCompletion:nil];
 }
 
 #pragma mark - HWAuthViewDelegate

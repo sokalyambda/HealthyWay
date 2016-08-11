@@ -8,6 +8,8 @@
 
 #import "HWBaseViewController.h"
 
+#import "NSString+ErrorString.h"
+
 @interface HWBaseViewController ()
 
 @end
@@ -31,6 +33,17 @@
 - (void)performAdditionalViewControllerAdjustments
 {
     return;
+}
+
+/**
+ *  Show the alert view for array of errors
+ *
+ *  @param errors Array of dictionaries which contains error messages.
+ */
+- (void)showAlertViewForErrors:(NSArray *)errors
+{
+    NSString *message = [NSString errorStringFromErrorsArray:errors];
+    [HWAlertService showAlertWithMessage:message forController:self withCompletion:nil];
 }
 
 @end

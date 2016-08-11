@@ -93,7 +93,13 @@
     [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
     [userProfileService createUpdateUserWithCompletion:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:weakSelf.parentViewController.view animated:YES];
-        [HWAlertService showErrorAlert:error forController:weakSelf.parentViewController withCompletion:nil];
+        
+        if (error) {
+            if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
+                return [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
+            }
+            [HWAlertService showErrorAlert:error forController:weakSelf.parentViewController withCompletion:nil];
+        }
         
         if ([weakSelf.delegate respondsToSelector:@selector(userProfileControllerDidUpdateUser:)] && !error) {
             [weakSelf.delegate userProfileControllerDidUpdateUser:weakSelf];

@@ -12,8 +12,6 @@
 
 @class HWCredentials;
 
-extern NSString *const ErrorsArrayKey;
-
 @interface HWAuthorizationOperation : HWBaseOperation
 
 @property (strong, nonatomic, readonly) HWCredentials *credentials;
