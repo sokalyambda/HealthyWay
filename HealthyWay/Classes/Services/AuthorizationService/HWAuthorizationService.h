@@ -9,6 +9,11 @@
 @interface HWAuthorizationService : NSObject
 
 /**
+ *  Call as soon as possible for app initialization
+ */
++ (void)authorizeFirebaseApp;
+
+/**
  *  Perform sign out if an app launches first time
  */
 + (void)signOutIfFirstLaunch;

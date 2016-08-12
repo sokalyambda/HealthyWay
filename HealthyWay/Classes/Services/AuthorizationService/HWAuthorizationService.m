@@ -24,6 +24,11 @@
 
 #pragma mark - Actions
 
++ (void)authorizeFirebaseApp
+{
+    [FIRApp configure];
+}
+
 + (void)signOutIfFirstLaunch
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
