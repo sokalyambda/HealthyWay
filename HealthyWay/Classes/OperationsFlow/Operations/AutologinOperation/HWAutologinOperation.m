@@ -8,6 +8,8 @@
 
 #import "HWAutologinOperation.h"
 
+#import "HWAuthorizationService.h"
+
 @interface HWAutologinOperation ()
 
 @property (strong, nonatomic, readwrite) NSError *error;
@@ -58,7 +60,7 @@
     }
     
     WEAK_SELF;
-    [[HWBaseAppManager sharedManager] getTokenWithCompletion:^(NSString *token, NSError *error) {
+    [HWAuthorizationService getTokenWithCompletion:^(NSString *token, NSError *error) {
         weakSelf.token = token;
         weakSelf.error = error;
         

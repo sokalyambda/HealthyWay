@@ -10,6 +10,8 @@
 
 #import "HWUserProfileData+Mapping.h"
 
+#import "HWUserProfileService.h"
+
 static NSString *const kFirstName = @"firstName";
 
 @interface HWFetchUsersOperation ()
@@ -80,9 +82,9 @@ static NSString *const kFirstName = @"firstName";
         }
         case HWFetchUsersOperationTypeCurrent: {
 
-            [[HWBaseAppManager sharedManager] fetchCurrentUserDataWithCompletion:^(NSArray *users, NSError *error) {
+            [HWUserProfileService fetchCurrentUserDataWithCompletion:^(NSArray *users, NSError *error) {
                 if (weakSelf.isCancelled) {
-                    return [self finish:YES];
+                    return [weakSelf finish:YES];
                 }
                 weakSelf.users = users;
                 weakSelf.error = error;

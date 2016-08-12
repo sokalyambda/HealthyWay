@@ -6,13 +6,11 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, HWCreateUpdateUserProfileOperationErrorType) {
-    HWCreateUpdateUserProfileOperationErrorTypeValidation = -999
-};
-
 #import "HWCreateUpdateUserProfileOperation.h"
 
 #import "HWUserProfileData.h"
+
+#import "HWUserProfileService.h"
 
 static NSString *const kFirstName           = @"firstName";
 static NSString *const kLastName            = @"lastName";
@@ -131,7 +129,7 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
                                      kDateOfBirth: @([weakSelf.dateOfBirth timeIntervalSince1970]),
                                      kAvatarBase64String: weakSelf.avatarBase64String
                                      };
-        [[HWBaseAppManager sharedManager] createUpdateUserProfileWithParameters:parameters onCompletion:^(NSError *error) {
+        [HWUserProfileService createUpdateUserProfileWithParameters:parameters onCompletion:^(NSError *error) {
             
             if (weakSelf.isCancelled) {
                 return [weakSelf finish:YES];
@@ -146,7 +144,7 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
             return [weakSelf finish:YES];
         }
         
-        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWCreateUpdateUserProfileOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         

@@ -61,7 +61,7 @@
             
             if (!error && success) {
                 success(weakOperation);
-            } else if (failure) {
+            } else if (error && failure) {
                 failure(weakOperation, error, weakOperation.isCancelled);
             }
         });

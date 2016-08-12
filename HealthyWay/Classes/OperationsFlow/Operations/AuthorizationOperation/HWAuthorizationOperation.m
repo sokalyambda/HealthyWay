@@ -10,6 +10,8 @@
 
 #import "HWCredentials.h"
 
+#import "HWAuthorizationService.h"
+
 @interface HWAuthorizationOperation () 
 
 @property (strong, nonatomic, readwrite) NSError *error;
@@ -120,7 +122,7 @@
             return [weakSelf finish:YES];
         }
         
-        [[HWBaseAppManager sharedManager] sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
+        [HWAuthorizationService sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];
@@ -153,7 +155,7 @@
             return [weakSelf finish:YES];
         }
         
-        [[HWBaseAppManager sharedManager] signInWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError *error) {
+        [HWAuthorizationService signInWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError *error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];
@@ -186,7 +188,7 @@
             return [weakSelf finish:YES];
         }
         
-        [[HWBaseAppManager sharedManager] signUpWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError * _Nullable error) {
+        [HWAuthorizationService signUpWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];

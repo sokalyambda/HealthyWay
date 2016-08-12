@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "HWAuthorizationService.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,7 +24,7 @@
     [FIRApp configure];
 
     // If it is the first launch - check whether the user exists and if so - sign out it;
-    [[HWBaseAppManager sharedManager] signOutIfFirstLaunch];
+    [HWAuthorizationService signOutIfFirstLaunch];
     
     return YES;
 }
