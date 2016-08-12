@@ -15,6 +15,6 @@
 
 @protocol HWModelService <NSObject>
 
-- ()
+//- ()
 
 @end
