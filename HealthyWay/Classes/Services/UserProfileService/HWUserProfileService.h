@@ -27,6 +27,13 @@
 + (void)fetchCurrentUserDataWithCompletion:(void(^)(NSArray *users, NSError *error))completion;
 
 /**
+ *  Fetch all users
+ *
+ *  @param completion CompletionBlock
+ */
++ (void)fetchAllUsersDataWithCompletion:(void(^)(NSArray *users, NSError *error))completion;
+
+/**
  *  Create or update current user profile
  *
  *  @param userProfileParameters Parameters for updation

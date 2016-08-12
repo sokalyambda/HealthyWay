@@ -8,7 +8,7 @@
         <!--Friends-->
         <scene sceneID="kYg-tk-NFv">
             <objects>
-                <viewController id="IkT-SM-uHi" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HWFriendsViewController" id="IkT-SM-uHi" customClass="HWFriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eeJ-x7-JOR"/>
                         <viewControllerLayoutGuide type="bottom" id="m4T-38-Oeh"/>
@@ -23,6 +23,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CO-Wy-fKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1696" y="-8"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bZh-up-AeT">
+            <objects>
+                <viewController id="to4-oW-uAQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lfT-xM-6yu"/>
+                        <viewControllerLayoutGuide type="bottom" id="6gw-Qs-hce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tGy-81-t3j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R6h-Er-Oqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="-8"/>
         </scene>
         <!--Friends-->
         <scene sceneID="uxe-p6-tz5">

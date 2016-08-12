@@ -69,15 +69,9 @@ static NSString *const kFirstName = @"firstName";
     WEAK_SELF;
     switch (self.fetchingType) {
         case HWFetchUsersOperationTypeAll: {
-//            FIRDatabaseQuery *allUsersSortedByFirstNameQuery = [usersReference queryOrderedByChild:kFirstName];
-//            [allUsersSortedByFirstNameQuery observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//                
-//                if (weakSelf.isCancelled) {
-//                    return [self finish:YES];
-//                }
-//                
-//                DLog(@"here is the all users");
-//            }];
+            [HWUserProfileService fetchAllUsersDataWithCompletion:^(NSArray *users, NSError *error) {
+                
+            }];
             break;
         }
         case HWFetchUsersOperationTypeCurrent: {

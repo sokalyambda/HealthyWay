@@ -56,6 +56,7 @@
 		58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3056C1D508DE00011F405 /* HWSignInView.m */; };
 		58B3056F1D508DE00011F405 /* HWSignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B3056D1D508DE00011F405 /* HWSignInView.xib */; };
 		58B305721D508DF90011F405 /* HWCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305711D508DF90011F405 /* HWCredentials.m */; };
+		58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B4572E1D5E3B87005ED79C /* HWFriendsViewController.m */; };
 		58C727691D23D13400F5F85D /* HWAlertService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727681D23D13400F5F85D /* HWAlertService.m */; };
 		58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7276F1D23D30A00F5F85D /* HWErrorHandler.m */; };
 		58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727741D23D37E00F5F85D /* NSString+JSONRepresentation.m */; };
@@ -180,6 +181,8 @@
 		58B3056D1D508DE00011F405 /* HWSignInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWSignInView.xib; path = Classes/MVC/Views/Auth/SignInView/HWSignInView.xib; sourceTree = "<group>"; };
 		58B305701D508DF90011F405 /* HWCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCredentials.h; path = Classes/MVC/Models/Credentials/HWCredentials.h; sourceTree = "<group>"; };
 		58B305711D508DF90011F405 /* HWCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCredentials.m; path = Classes/MVC/Models/Credentials/HWCredentials.m; sourceTree = "<group>"; };
+		58B4572D1D5E3B87005ED79C /* HWFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsViewController/HWFriendsViewController.h; sourceTree = "<group>"; };
+		58B4572E1D5E3B87005ED79C /* HWFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsViewController/HWFriendsViewController.m; sourceTree = "<group>"; };
 		58C727621D23D0C000F5F85D /* HWMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMacros.h; path = Macros/HWMacros.h; sourceTree = "<group>"; };
 		58C727671D23D13400F5F85D /* HWAlertService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAlertService.h; path = Classes/Services/AlertService/HWAlertService.h; sourceTree = "<group>"; };
 		58C727681D23D13400F5F85D /* HWAlertService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAlertService.m; path = Classes/Services/AlertService/HWAlertService.m; sourceTree = "<group>"; };
@@ -773,6 +776,15 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
+		58B4572C1D5E2D84005ED79C /* FriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				58B4572D1D5E3B87005ED79C /* HWFriendsViewController.h */,
+				58B4572E1D5E3B87005ED79C /* HWFriendsViewController.m */,
+			);
+			name = FriendsViewController;
+			sourceTree = "<group>";
+		};
 		58C727611D23D0B200F5F85D /* Macros */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,6 +1003,7 @@
 		58FDB0951D5C989E00908ADC /* FriendsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				58B4572C1D5E2D84005ED79C /* FriendsViewController */,
 				58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */,
 			);
 			name = FriendsFlow;
@@ -1250,6 +1263,7 @@
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
+				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,
 				58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);

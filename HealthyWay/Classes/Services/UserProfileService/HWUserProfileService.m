@@ -54,7 +54,6 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
 {
     FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
     
-    
     if (self.currentUser) {
         FIRDatabaseQuery *currentUserQuery = [[usersReference queryOrderedByKey] queryEqualToValue:self.currentUserId];
 
@@ -79,6 +78,28 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
             completion(nil, error);
         }
     }
+}
+
++ (void)fetchAllUsersDataWithCompletion:(void(^)(NSArray *users, NSError *error))completion
+{
+    FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
+    
+    [usersReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        
+        NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
+        //GET all values from this dict
+        HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
+        [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
+        
+        if (currentUserProfile && completion) {
+            completion(@[currentUserProfile], nil);
+        } else if (completion) {
+            NSError *error = [NSError errorWithDomain:@"com.user.mapping.error" code:HWErrorCodeMapping userInfo:@{
+                                                                                                                   ErrorMessage: LOCALIZED(@"Error while mapping the current user")
+                                                                                                                   }];
+            completion(nil, error);
+        }
+    }];
 }
 
 + (void)createUpdateUserProfileWithParameters:(NSDictionary *)userProfileParameters
@@ -121,6 +142,17 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
     [mappedUser setValue:dateOfBirth forKey:@"dateOfBirth"];
     
     return mappedUser;
+}
+
++ (NSArray *)mappedUserProfilesDataFromArray:(NSArray *)users
+{
+    EKObjectMapping *mapping = [HWUserProfileData defaultMapping];
+    NSArray *mappedUsers = [EKMapper arrayOfObjectsFromExternalRepresentation:users withMapping:mapping];
+    return mappedUsers;
+    
+//    NSTimeInterval dateOfBirthTimeStamp = [user[kDateOfBirth] doubleValue];
+//    NSDate *dateOfBirth = [NSDate dateWithTimeIntervalSince1970:dateOfBirthTimeStamp];
+//    [mappedUser setValue:dateOfBirth forKey:@"dateOfBirth"];
 }
 
 @end
