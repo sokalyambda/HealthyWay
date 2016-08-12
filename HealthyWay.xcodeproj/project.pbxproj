@@ -34,6 +34,7 @@
 		583F46EC1D5DAB690099C9E0 /* HWOperationsFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F46EB1D5DAB690099C9E0 /* HWOperationsFacade.m */; };
 		583F46F01D5DAB8D0099C9E0 /* HWOperationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F46EF1D5DAB8D0099C9E0 /* HWOperationsManager.m */; };
 		583F47061D5DCD7E0099C9E0 /* HWAuthorizationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47051D5DCD7E0099C9E0 /* HWAuthorizationOperation.m */; };
+		583F470D1D5DDCF70099C9E0 /* HWAutologinOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F470C1D5DDCF70099C9E0 /* HWAutologinOperation.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -137,6 +138,8 @@
 		583F47041D5DCD7E0099C9E0 /* HWAuthorizationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationOperation.h; path = Classes/Operations/AuthorizationOperation/HWAuthorizationOperation.h; sourceTree = "<group>"; };
 		583F47051D5DCD7E0099C9E0 /* HWAuthorizationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationOperation.m; path = Classes/Operations/AuthorizationOperation/HWAuthorizationOperation.m; sourceTree = "<group>"; };
 		583F47081D5DCD880099C9E0 /* HWAuthTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAuthTypes.h; sourceTree = "<group>"; };
+		583F470B1D5DDCF70099C9E0 /* HWAutologinOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAutologinOperation.h; path = Classes/Operations/AutologinOperation/HWAutologinOperation.h; sourceTree = "<group>"; };
+		583F470C1D5DDCF70099C9E0 /* HWAutologinOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAutologinOperation.m; path = Classes/Operations/AutologinOperation/HWAutologinOperation.m; sourceTree = "<group>"; };
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
@@ -230,18 +233,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		44190E871D59273A00A8A4C1 /* Operations */ = {
+		44190E871D59273A00A8A4C1 /* OperationsFlow */ = {
 			isa = PBXGroup;
 			children = (
-				583F47021D5DBC870099C9E0 /* OperationsHeader */,
+				583F47031D5DBC9F0099C9E0 /* Operations.h */,
+				583F47091D5DDCB80099C9E0 /* Operations */,
 				583F46ED1D5DAB710099C9E0 /* OperationsManager */,
 				583F46E91D5DA9BD0099C9E0 /* OperationsFacade */,
-				58FDB0661D5C6E8200908ADC /* FetchUsersOperation */,
-				580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */,
-				580C29511D5B2530009B5118 /* BaseOperation */,
-				44190E881D59274100A8A4C1 /* AuthorizationOperation */,
 			);
-			name = Operations;
+			name = OperationsFlow;
 			sourceTree = "<group>";
 		};
 		44190E881D59274100A8A4C1 /* AuthorizationOperation */ = {
@@ -456,7 +456,7 @@
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				44190E871D59273A00A8A4C1 /* Operations */,
+				44190E871D59273A00A8A4C1 /* OperationsFlow */,
 				58E337C41D22F64800B3A280 /* HelperClasses */,
 				58E337BF1D22F3E200B3A280 /* Managers */,
 				58104A051D1D3AAE0082FF4B /* Services */,
@@ -635,14 +635,6 @@
 			name = OperationsManager;
 			sourceTree = "<group>";
 		};
-		583F47021D5DBC870099C9E0 /* OperationsHeader */ = {
-			isa = PBXGroup;
-			children = (
-				583F47031D5DBC9F0099C9E0 /* Operations.h */,
-			);
-			name = OperationsHeader;
-			sourceTree = "<group>";
-		};
 		583F47071D5DCD880099C9E0 /* AuthTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +642,27 @@
 			);
 			name = AuthTypes;
 			path = Classes/Operations/AuthorizationOperation/AuthTypes;
+			sourceTree = "<group>";
+		};
+		583F47091D5DDCB80099C9E0 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				583F470A1D5DDCD00099C9E0 /* AutologinOperation */,
+				580C29511D5B2530009B5118 /* BaseOperation */,
+				58FDB0661D5C6E8200908ADC /* FetchUsersOperation */,
+				580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */,
+				44190E881D59274100A8A4C1 /* AuthorizationOperation */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		583F470A1D5DDCD00099C9E0 /* AutologinOperation */ = {
+			isa = PBXGroup;
+			children = (
+				583F470B1D5DDCF70099C9E0 /* HWAutologinOperation.h */,
+				583F470C1D5DDCF70099C9E0 /* HWAutologinOperation.m */,
+			);
+			name = AutologinOperation;
 			sourceTree = "<group>";
 		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
@@ -883,16 +896,8 @@
 			isa = PBXGroup;
 			children = (
 				580C29601D5B3FE3009B5118 /* CommonDateFormatter */,
-				58E337C51D22F64F00B3A280 /* ErrorHandler */,
 			);
 			name = HelperClasses;
-			sourceTree = "<group>";
-		};
-		58E337C51D22F64F00B3A280 /* ErrorHandler */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ErrorHandler;
 			sourceTree = "<group>";
 		};
 		58FDB0661D5C6E8200908ADC /* FetchUsersOperation */ = {
@@ -1206,6 +1211,7 @@
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				580C29581D5B3CEE009B5118 /* HWCreateUpdateUserProfileOperation.m in Sources */,
+				583F470D1D5DDCF70099C9E0 /* HWAutologinOperation.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				583F47061D5DCD7E0099C9E0 /* HWAuthorizationOperation.m in Sources */,

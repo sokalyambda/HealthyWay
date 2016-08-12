@@ -10,9 +10,6 @@
 
 #import "NSString+JSONRepresentation.h"
 
-static NSString *const kErrorMessage = @"error";
-static NSString *const kErrorCode = @"errorCode";
-
 @implementation HWErrorHandler
 
 #pragma mark - Accessors
@@ -44,7 +41,7 @@ static NSString *_errorAlertTitle = nil;
 {
     [self setErrorAlertTitle:@""];
     
-    NSString *errFromResponseString = error.userInfo[kErrorMessage];
+    NSString *errFromResponseString = error.userInfo[ErrorMessage];
     if (errFromResponseString) {
         return completion([self getErrorAlertTitle], errFromResponseString);
     }
@@ -66,7 +63,7 @@ static NSString *_errorAlertTitle = nil;
 + (void)parseSocialError:(NSError *)error withCompletion:(SocialErrorParsingCompletion)completion
 {
     BOOL isRegistered = YES;
-    if (error.code == ALErrorCodeNotRegistered || error.code == ALErrorCodeUserDoesntExist) {
+    if (error.code == HWErrorCodeNotRegistered || error.code == HWErrorCodeUserDoesntExist) {
         isRegistered = NO;
     }
     if (completion) {
@@ -125,7 +122,7 @@ static NSString *_errorAlertTitle = nil;
     
     NSDictionary *jsonErrorDict = [self getErrorsDictDataFromError:error];
     
-    NSString *errorDescriptionString = jsonErrorDict[kErrorMessage];
+    NSString *errorDescriptionString = jsonErrorDict[ErrorMessage];
     if (errorDescriptionString.length) {
         [outputErrorString appendString:errorDescriptionString];
     }

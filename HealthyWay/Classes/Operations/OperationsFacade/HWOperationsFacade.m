@@ -93,4 +93,24 @@
     return operation;
 }
 
++ (HWBaseOperation *)performAutologinOnSuccess:(void(^)(NSArray *users, NSString *token))success
+                                     onFailure:(FailureBlock)failure
+{
+    HWAutologinOperation *autologinOperation = [[HWAutologinOperation alloc] init];
+    HWFetchUsersOperation *fetchUsersOperation = [[HWFetchUsersOperation alloc] initWithFetchingType:HWFetchUsersOperationTypeCurrent];
+    [fetchUsersOperation addDependency:autologinOperation];
+    
+    [self.operationsManager enqueueOperation:autologinOperation onSuccess:nil onFailure:nil];
+    [self.operationsManager enqueueOperation:fetchUsersOperation onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success(fetchUsersOperation.users, autologinOperation.token);
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error, isCanceled);
+        }
+    }];
+    return autologinOperation;
+}
+
 @end

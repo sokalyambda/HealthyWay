@@ -71,7 +71,7 @@
         dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
         dict[NSLocalizedFailureReasonErrorKey] = failureReason;
         dict[NSUnderlyingErrorKey] = error;
-        error = [NSError errorWithDomain:@"AL_ERROR_DOMAIN" code:1000 userInfo:dict];
+        error = [NSError errorWithDomain:@"com.database.error" code:1000 userInfo:dict];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }

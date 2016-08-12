@@ -35,39 +35,20 @@
  */
 - (void)checkForAutologin
 {
-    FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
-    if (user) {
-        WEAK_SELF;
-        [[HWBaseAppManager sharedManager].currentUser getTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
-            if (token.length) {
-                
-                [weakSelf showProgressHud];
-                
-                [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersOperationTypeCurrent onSuccess:^(NSArray *users) {
-                    
-                    [weakSelf hideProgressHud];
-                    if (!users.count) {
-                        return [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];;
-                    } else {
-                        // Show the initial controller of ChooseFlowBoard
-                        [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
-                    }
-                    
-                } onFailure:^(NSError *error, BOOL isCancelled) {
-                    
-                    [weakSelf hideProgressHud];
-                    
-                }];
-                
-            } else {
-                [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
-            }
-        }];
-        
-    } else {
-        [self performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
-    }
-    
+    WEAK_SELF;
+    [self showProgressHud];
+    [HWOperationsFacade performAutologinOnSuccess:^(NSArray *users, NSString *token) {
+        [weakSelf hideProgressHud];
+        if (!users.count) {
+            return [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];;
+        } else {
+            // Show the initial controller of ChooseFlowBoard
+            [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
+        }
+    } onFailure:^(NSError *error, BOOL isCancelled) {
+        [weakSelf hideProgressHud];
+        [weakSelf performSegueWithIdentifier:@"ToLoginZoneSegue" sender:self];
+    }];
 }
 
 @end

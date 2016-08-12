@@ -6,10 +6,6 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
-    HWAuthorizationOperationErrorTypeValidation = -999
-};
-
 #import "HWAuthorizationOperation.h"
 
 #import "HWCredentials.h"
@@ -17,8 +13,6 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
 @interface HWAuthorizationOperation () 
 
 @property (strong, nonatomic, readwrite) NSError *error;
-
-@property (strong, nonatomic) FIRAuth *currentAuth;
 
 @property (strong, nonatomic) HWCredentials *credentials;
 @property (assign, nonatomic) HWAuthType authType;
@@ -44,11 +38,6 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
 - (NSString *)confirmedPassword
 {
     return self.credentials.confirmedPassword;
-}
-
-- (FIRAuth *)currentAuth
-{
-    return [HWBaseAppManager sharedManager].currentAuth;
 }
 
 - (void)setCredentials:(HWCredentials *)credentials
@@ -131,7 +120,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        [weakSelf.currentAuth sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
+        [[HWBaseAppManager sharedManager] sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];
@@ -141,7 +130,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         [weakSelf completeTheExecution];
@@ -164,7 +153,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        [weakSelf.currentAuth signInWithEmail:weakSelf.email password:weakSelf.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+        [[HWBaseAppManager sharedManager] signInWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError *error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];
@@ -173,7 +162,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
@@ -197,7 +186,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        [weakSelf.currentAuth createUserWithEmail:weakSelf.email password:weakSelf.password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+        [[HWBaseAppManager sharedManager] signUpWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
             [weakSelf completeTheExecution];
         }];
@@ -208,7 +197,7 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
             return [weakSelf finish:YES];
         }
         
-        NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWAuthorizationOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         

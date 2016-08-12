@@ -26,6 +26,7 @@
 
 #import "HWAlertService.h"
 #import "HWValidator.h"
+#import "HWErrorHandler.h"
 
 #import "HWOperationsFacade.h"
 

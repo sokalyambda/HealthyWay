@@ -123,48 +123,22 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
     
     WEAK_SELF;
     [HWValidator validateFirstName:self.firstName lastName:self.lastName nickName:self.nickName dateOfBirth:self.dateOfBirth onSuccess:^{
-        FIRUser *user = [HWBaseAppManager sharedManager].currentUser;
-        FIRDatabaseReference *userReference = [[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid];
-        
-        [userReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSDictionary *parameters = @{
+                                     kFirstName: weakSelf.firstName,
+                                     kLastName: weakSelf.lastName,
+                                     kNickName: weakSelf.nickName,
+                                     kIsMale: weakSelf.isMale,
+                                     kDateOfBirth: @([weakSelf.dateOfBirth timeIntervalSince1970]),
+                                     kAvatarBase64String: weakSelf.avatarBase64String
+                                     };
+        [[HWBaseAppManager sharedManager] createUpdateUserProfileWithParameters:parameters onCompletion:^(NSError *error) {
             
             if (weakSelf.isCancelled) {
                 return [weakSelf finish:YES];
             }
             
-            NSDictionary *parameters = @{
-                                         kFirstName: weakSelf.firstName,
-                                         kLastName: weakSelf.lastName,
-                                         kNickName: weakSelf.nickName,
-                                         kIsMale: weakSelf.isMale,
-                                         kDateOfBirth: @([weakSelf.dateOfBirth timeIntervalSince1970]),
-                                         kAvatarBase64String: weakSelf.avatarBase64String
-                                         };
-            
-            FIRUserProfileChangeRequest *changeRequest = [user profileChangeRequest];
-            changeRequest.displayName = [NSString stringWithFormat:@"%@ %@", weakSelf.firstName, weakSelf.lastName];
-            
-            if (snapshot.exists) {
-                /**
-                 *  Update current user because we already have one created
-                 */
-                [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] updateChildValues:parameters];
-            } else {
-                /**
-                 *  Set the current user by his uid (it should be obtained after authorization)
-                 */
-                [[[[HWBaseAppManager sharedManager].dataBaseReference child:UsersKey] child:user.uid] setValue:parameters];
-            }
-            
-            if (weakSelf.isCancelled) {
-                return [weakSelf finish:YES];
-            }
-            
-            [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
-                weakSelf.error = error;
-                
-                [weakSelf completeTheExecution];
-            }];
+            weakSelf.error = error;
+            [weakSelf completeTheExecution];
             
         }];
     } onFailure:^(NSMutableArray *errorArray) {
@@ -172,15 +146,12 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
             return [weakSelf finish:YES];
         }
         
-        NSError *validationError = [NSError errorWithDomain:@"com.eugenity" code:HWCreateUpdateUserProfileOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
+        NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWCreateUpdateUserProfileOperationErrorTypeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
         [weakSelf completeTheExecution];
     }];
-    
-    
-    
 }
 
 @end

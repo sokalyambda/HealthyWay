@@ -34,4 +34,7 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
                                          onSuccess:(void(^)())success
                                          onFailure:(FailureBlock)failure;
 
++ (HWBaseOperation *)performAutologinOnSuccess:(void(^)(NSArray *users, NSString *token))success
+                                     onFailure:(FailureBlock)failure;
+
 @end

@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Mobindustry. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, ALErrorCode) {
-    ALErrorCodeNotRegistered = 3001,
-    ALErrorCodeUserDoesntExist = 3010,
-    ALErrorCodeNeedPasswordForAssignToExistedAccount = 3007,
-    ALErrorCodeCustomerAlreadyExists = 3008
+typedef NS_ENUM(NSInteger, HWErrorCode) {
+    HWErrorCodeNotRegistered = -999,
+    HWErrorCodeUserDoesntExist,
+    HWErrorCodeNeedPasswordForAssignToExistedAccount,
+    HWErrorCodeCustomerAlreadyExists,
+    HWErrorCodeValidation,
+    HWErrorCodeMapping
 };
 
 typedef void(^ErrorParsingCompletion)(NSString *alertTitle, NSString *alertMessage);

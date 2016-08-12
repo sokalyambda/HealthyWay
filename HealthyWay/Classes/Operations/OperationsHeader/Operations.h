@@ -12,5 +12,6 @@
 #import "HWFetchUsersOperation.h"
 #import "HWCreateUpdateUserProfileOperation.h"
 #import "HWAuthorizationOperation.h"
+#import "HWAutologinOperation.h"
 
 #endif /* Operations_h */

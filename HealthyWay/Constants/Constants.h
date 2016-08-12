@@ -23,4 +23,7 @@ static NSString *const UsersKey = @"users";
 
 static NSString *const ErrorsArrayKey = @"ErrorsArray";
 
+static NSString *const ErrorMessage = @"Error";
+static NSString *const ErrorCode = @"ErrorCode";
+
 #endif /* Constants_h */
