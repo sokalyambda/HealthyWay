@@ -14,6 +14,11 @@
 
 @property (strong, nonatomic, readonly) HWUserProfileData *userProfileData;
 
-- (instancetype)initWithUserProfileData:(HWUserProfileData *)userProfileData;
+- (instancetype)initWithFirstName:(NSString *)firstName
+                         lastName:(NSString *)lastName
+                         nickName:(NSString *)nickName
+                      dateOfBirth:(NSDate *)dateOfBirth
+                     avatarBase64:(NSString *)avatarBase64
+                           isMale:(NSNumber *)isMalee;
 
 @end

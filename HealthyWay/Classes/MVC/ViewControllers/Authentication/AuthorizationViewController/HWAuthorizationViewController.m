@@ -12,9 +12,6 @@
 
 #import <FirebaseAuth/FirebaseAuth.h>
 
-#import "HWAuthService.h"
-#import "HWFetchUsersService.h"
-
 #import "UIView+MakeFromXib.h"
 #import "HWAuthorizationViewController+AuthViewTransitionSubtype.h"
 #import "CAAnimation+CompletionBlock.h"
@@ -141,62 +138,55 @@ static const NSInteger kUserDoesNotExist = 17011;
 
 - (void)authView:(HWBaseAuthView *)view didPrepareForAuthWithType:(HWAuthType)type
 {
-    HWAuthService *authService = [[HWAuthService alloc] initWithEmail:view.email password:view.password confirmedPassword:view.confirmedPassword authType:type];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self showProgressHud];
     WEAK_SELF;
-    [authService authorizationOperationWithCompletion:^(NSError *error) {
-
-        if (!error) {
-            switch (type) {
-                case HWAuthTypeSignIn: {
-                    //TODO: check user existence
-                    HWFetchUsersService *fetchUsersService = [[HWFetchUsersService alloc] initWithFetchUsersOperationType:HWFetchUsersOperationTypeCurrent];
-                    [fetchUsersService fetchUsersWithCompletion:^(NSArray *users, NSError *error) {
-                        
-                        [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                        if (!users.count) {
-                            [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                            return [view didCompleteAuthAction];
-                        } else {
-                            // Show the initial controller of ChooseFlowBoard
-                            [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
-                        }
-                        
-                    }];
-                    break;
-                }
-                case HWAuthTypeSignUp: {
-                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                    [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
-                    return [view didCompleteAuthAction];
-                }
-                case HWAuthTypeForgotPassword: {
-                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-                    [HWAlertService showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") forController:weakSelf withCompletion:^{
-                        [weakSelf setupAuthViewWithType:HWAuthTypeSignIn];
-                        [weakSelf.currentAuthView setEmail:view.email];
+    [HWOperationsFacade performAuthorizationProcessWithEmail:view.email password:view.password confirmedPassword:view.confirmedPassword authType:type onSuccess:^ {
+        switch (type) {
+            case HWAuthTypeSignIn: {
+                
+                [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersOperationTypeCurrent onSuccess:^(NSArray *users) {
+                    [weakSelf hideProgressHud];
+                    if (!users.count) {
+                        [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
                         return [view didCompleteAuthAction];
-                    }];
-                }
+                    } else {
+                        // Show the initial controller of ChooseFlowBoard
+                        [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
+                    }
+                } onFailure:^(NSError *error, BOOL isCancelled) {
+                    [weakSelf hideProgressHud];
+                }];
+                break;
             }
-        } else if (error) {
-            
-            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-            
-            if (error.code == kUserDoesNotExist) {
-                // Move to sign up flow if user doesn't exist;
-                [weakSelf setupAuthViewWithType:HWAuthTypeSignUp];
-                HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
-                [signUpView setEmail:view.email];
-                [view didCompleteAuthAction];
-            } else if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
-                [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
-            } else {
-                [HWAlertService showErrorAlert:error forController:weakSelf withCompletion:nil];
+            case HWAuthTypeSignUp: {
+                [weakSelf hideProgressHud];
+                [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];
+                return [view didCompleteAuthAction];
+            }
+            case HWAuthTypeForgotPassword: {
+                [weakSelf hideProgressHud];
+                
+                [weakSelf showAlertWithMessage:LOCALIZED(@"Your password has been reset successfully.\nPlease, check your email to set new password.") onCompletion:^{
+                    [weakSelf setupAuthViewWithType:HWAuthTypeSignIn];
+                    [weakSelf.currentAuthView setEmail:view.email];
+                    return [view didCompleteAuthAction];
+                }];
             }
         }
+    } onFailure:^(NSError *error, BOOL isCancelled) {
+        [weakSelf hideProgressHud];
         
+        if (error.code == kUserDoesNotExist) {
+            // Move to sign up flow if user doesn't exist;
+            [weakSelf setupAuthViewWithType:HWAuthTypeSignUp];
+            HWSignUpView *signUpView = (HWSignUpView *)weakSelf.authViews[2];
+            [signUpView setEmail:view.email];
+            [view didCompleteAuthAction];
+        } else if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
+            [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
+        } else {
+            [weakSelf showAlertWithError:error onCompletion:nil];
+        }
     }];
 }
 

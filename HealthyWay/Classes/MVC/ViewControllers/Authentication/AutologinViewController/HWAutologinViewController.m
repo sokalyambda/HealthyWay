@@ -8,8 +8,6 @@
 
 #import "HWAutologinViewController.h"
 
-#import "HWFetchUsersService.h"
-
 @interface HWAutologinViewController ()
 
 @end
@@ -43,18 +41,22 @@
         [[HWBaseAppManager sharedManager].currentUser getTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
             if (token.length) {
                 
-                [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
+                [weakSelf showProgressHud];
                 
-                HWFetchUsersService *fetchUsersService = [[HWFetchUsersService alloc] initWithFetchUsersOperationType:HWFetchUsersOperationTypeCurrent];
-                [fetchUsersService fetchUsersWithCompletion:^(NSArray *users, NSError *error) {
+                [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersOperationTypeCurrent onSuccess:^(NSArray *users) {
                     
-                    [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                    [weakSelf hideProgressHud];
                     if (!users.count) {
                         return [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];;
                     } else {
                         // Show the initial controller of ChooseFlowBoard
                         [weakSelf performSegueWithIdentifier:@"ChooseFlowSegue" sender:weakSelf];
                     }
+                    
+                } onFailure:^(NSError *error, BOOL isCancelled) {
+                    
+                    [weakSelf hideProgressHud];
+                    
                 }];
                 
             } else {

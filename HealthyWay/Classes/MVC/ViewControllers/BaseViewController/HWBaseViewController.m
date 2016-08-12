@@ -27,6 +27,16 @@
 
 #pragma mark - Actions
 
+- (void)showProgressHud
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressHud
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
 /**
  *  Abstract method
  */
@@ -44,6 +54,22 @@
 {
     NSString *message = [NSString errorStringFromErrorsArray:errors];
     [HWAlertService showAlertWithMessage:message forController:self withCompletion:nil];
+}
+
+- (void)showAlertWithMessage:(NSString *)message
+                onCompletion:(void(^)())completion
+{
+    [HWAlertService showAlertWithMessage:message
+                           forController:self
+                          withCompletion:completion];
+}
+
+- (void)showAlertWithError:(NSError *)error
+              onCompletion:(void(^)())completion
+{
+    [HWAlertService showErrorAlert:error
+                     forController:self
+                    withCompletion:completion];
 }
 
 @end

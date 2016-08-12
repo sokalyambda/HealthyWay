@@ -59,14 +59,20 @@ typedef NS_ENUM(NSUInteger, HWAuthorizationOperationErrorType) {
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithCredentials:(HWCredentials *)credentials
+- (instancetype)initWithEmail:(NSString *)email
+                     password:(NSString *)password
+            confirmedPassword:(NSString *)confirmedPassword
+                     authType:(HWAuthType)authType
 {
     self = [super init];
     if (self) {
         /**
          *  Call the mutator
          */
-        self.credentials = credentials;
+        self.credentials = [HWCredentials credentialsWithEmail:email
+                                                  password:password
+                                         confirmedPassword:confirmedPassword
+                                                  authType:authType];;
         
         /**
          *  The operation is ready when all parameters have been set

@@ -12,8 +12,6 @@
 
 + (instancetype)sharedManager;
 
-// Methods should be - (NSOperation *)enqueueSomeOperationWithParameters:(...)..
-
 - (void)enqueueOperation:(HWBaseOperation *)operation
                onSuccess:(SuccessOperationBlock)success
                onFailure:(FailureOperationBlock)failure;

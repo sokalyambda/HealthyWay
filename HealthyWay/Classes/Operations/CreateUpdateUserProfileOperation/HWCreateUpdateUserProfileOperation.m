@@ -72,11 +72,21 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithUserProfileData:(HWUserProfileData *)userProfileData
+- (instancetype)initWithFirstName:(NSString *)firstName
+                         lastName:(NSString *)lastName
+                         nickName:(NSString *)nickName
+                      dateOfBirth:(NSDate *)dateOfBirth
+                     avatarBase64:(NSString *)avatarBase64
+                           isMale:(NSNumber *)isMale
 {
     self = [super init];
     if (self) {
-        _userProfileData = userProfileData;
+        _userProfileData = [[HWUserProfileData alloc] initWithFirstName:firstName
+                                                               lastName:lastName
+                                                               nickName:nickName
+                                                            dateOfBirth:dateOfBirth
+                                                           avatarBase64:avatarBase64
+                                                                 isMale:isMale];;
         /**
          *  The operation is ready when all parameters have been set
          */

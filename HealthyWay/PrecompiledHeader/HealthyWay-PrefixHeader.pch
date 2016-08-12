@@ -27,6 +27,8 @@
 #import "HWAlertService.h"
 #import "HWValidator.h"
 
+#import "HWOperationsFacade.h"
+
 #import "Constants.h"
 
 #endif /* HealthyWay_PrefixHeader_pch */

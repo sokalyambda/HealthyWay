@@ -44,12 +44,6 @@
     [self addUserProfileControllerToContainer];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
 #pragma mark - Actions
 
 - (void)addUserProfileControllerToContainer
@@ -62,16 +56,42 @@
     }
 }
 
-- (IBAction)doneClick:(id)sender
-{
-    [self.userProfileController performCreateUpdateUser];
-}
-
 #pragma mark - HWUserProfileControllerDelegate
 
-- (void)userProfileControllerDidUpdateUser:(HWUserProfileController *)controller
+- (void)didUpdateUser
 {
+    [self.navigationController setNavigationBarHidden:YES
+                                             animated:YES];
     [self performSegueWithIdentifier:@"ChooseFlowSegue" sender:self];
+}
+
+- (void)userProfileController:(HWUserProfileController *)controller
+   didPrepareUpdWithFirstName:(NSString *)firstName
+                     lastName:(NSString *)lastName
+                     nickName:(NSString *)nickName
+                  dateOfBirth:(NSDate *)dateOfBirth
+                 avatarBase64:(NSString *)avatarBase64
+                       isMale:(NSNumber *)isMale
+{
+    WEAK_SELF;
+    [self showProgressHud];
+    
+    [HWOperationsFacade createUpdateUserWithFirstName:firstName
+                                             lastName:lastName
+                                             nickName:nickName
+                                          dateOfBirth:dateOfBirth
+                                         avatarBase64:avatarBase64
+                                               isMale:isMale onSuccess:^ {
+                                                   [weakSelf hideProgressHud];
+                                                   [weakSelf didUpdateUser];
+                                               } onFailure:^(NSError *error, BOOL isCancelled) {
+                                                   [weakSelf hideProgressHud];
+                                                   
+                                                   if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
+                                                       return [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
+                                                   }
+                                                   [weakSelf showAlertWithError:error onCompletion:nil];
+                                               }];
 }
 
 @end

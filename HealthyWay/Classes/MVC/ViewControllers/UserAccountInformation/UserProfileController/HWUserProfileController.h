@@ -18,13 +18,17 @@ typedef void(^PhotoSelectionCompletion)(UIImage *chosenImage);
 
 @property (copy, nonatomic) PhotoSelectionCompletion photoCompletion;
 
-- (void)performCreateUpdateUser;
-
 @end
 
 @protocol HWUserProfileControllerDelegate <NSObject>
 
 @optional
-- (void)userProfileControllerDidUpdateUser:(HWUserProfileController *)controller;
+- (void)userProfileController:(HWUserProfileController *)controller
+   didPrepareUpdWithFirstName:(NSString *)firstName
+                     lastName:(NSString *)lastName
+                     nickName:(NSString *)nickName
+                  dateOfBirth:(NSDate *)dateOfBirth
+                 avatarBase64:(NSString *)avatarBase64
+                       isMale:(NSNumber *)isMale;
 
 @end

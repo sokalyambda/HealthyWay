@@ -11,4 +11,14 @@
 // For Validation Alert Purposes
 - (void)showAlertViewForErrors:(NSArray *)errors;
 
+// Show hud
+- (void)showProgressHud;
+- (void)hideProgressHud;
+
+// Alerts
+- (void)showAlertWithMessage:(NSString *)message
+                onCompletion:(void(^)())completion;
+- (void)showAlertWithError:(NSError *)error
+              onCompletion:(void(^)())completion;
+
 @end

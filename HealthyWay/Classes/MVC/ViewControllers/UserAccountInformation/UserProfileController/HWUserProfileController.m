@@ -12,8 +12,6 @@
 
 #import "HWCommonDateFormatter.h"
 
-#import "HWUserProfileService.h"
-
 #import "UIView+MakeFromXib.h"
 #import "HWUserProfileController+ImagePicker.h"
 #import "UIImage+EncodeToBase64.h"
@@ -53,6 +51,12 @@
 
 #pragma mark - Actions
 
+- (void)performAdditionalViewControllerAdjustments
+{
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(performCreateUpdateUser)];
+    self.parentViewController.navigationItem.rightBarButtonItem = doneButton;
+}
+
 /**
  *  Setup the custom date picker as the input view of birthDateField
  */
@@ -83,28 +87,15 @@
 
 - (void)performCreateUpdateUser
 {
-    HWUserProfileService *userProfileService = [[HWUserProfileService alloc] initWithFirstName:self.firstNameField.text
-                                                                                      lastName:self.lastNameField.text
-                                                                                      nickName:self.nickNameField.text
-                                                                                   dateOfBirth:self.dateOfBirth
-                                                                                  avatarBase64:[self.userAvatarImageView.image encodeToBase64String]
-                                                                                        isMale:@(self.genderSegmentedControl.selectedSegmentIndex)];
-    WEAK_SELF;
-    [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
-    [userProfileService createUpdateUserWithCompletion:^(NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:weakSelf.parentViewController.view animated:YES];
-        
-        if (error) {
-            if ([error.userInfo.allKeys containsObject:ErrorsArrayKey]) {
-                return [weakSelf showAlertViewForErrors:error.userInfo[ErrorsArrayKey]];
-            }
-            [HWAlertService showErrorAlert:error forController:weakSelf.parentViewController withCompletion:nil];
-        }
-        
-        if ([weakSelf.delegate respondsToSelector:@selector(userProfileControllerDidUpdateUser:)] && !error) {
-            [weakSelf.delegate userProfileControllerDidUpdateUser:weakSelf];
-        }
-    }];
+    if ([self.delegate respondsToSelector:@selector(userProfileController:didPrepareUpdWithFirstName:lastName:nickName:dateOfBirth:avatarBase64:isMale:)]) {
+        [self.delegate userProfileController:self
+                  didPrepareUpdWithFirstName:self.firstNameField.text
+                                    lastName:self.lastNameField.text
+                                    nickName:self.nickNameField.text
+                                 dateOfBirth:self.dateOfBirth
+                                avatarBase64:[self.userAvatarImageView.image encodeToBase64String]
+                                      isMale:@(self.genderSegmentedControl.selectedSegmentIndex)];
+    }
 }
 
 #pragma mark - HWBirthDatePickerDelegate

@@ -1,24 +1,24 @@
 //
-//  HWAuthService.h
+//  HWSignInOperation.h
 //  HealthyWay
 //
-//  Created by Eugenity on 29.06.16.
+//  Created by Eugene Sokolenko on 08.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
 #import "HWAuthTypes.h"
 
-typedef void(^HWAuthorizationCompletion)(NSError *error);
+#import "HWBaseOperation.h"
 
-@class HWAuthorizationOperation;
+@class HWCredentials;
 
-@interface HWAuthService : NSObject
+@interface HWAuthorizationOperation : HWBaseOperation
+
+@property (strong, nonatomic, readonly) HWCredentials *credentials;
 
 - (instancetype)initWithEmail:(NSString *)email
                      password:(NSString *)password
             confirmedPassword:(NSString *)confirmedPassword
                      authType:(HWAuthType)authType;
-
-- (HWAuthorizationOperation *)authorizationOperationWithCompletion:(HWAuthorizationCompletion)completion;
 
 @end

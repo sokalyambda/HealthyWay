@@ -72,7 +72,7 @@
 - (void)takeNewPhotoFromCamera
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [HWAlertService showAlertWithMessage:LOCALIZED(@"Camera is not available") forController:self withCompletion:nil];
+        [self showAlertWithMessage:LOCALIZED(@"Camera is not available") onCompletion:nil];
         return;
     } else {
         [self showImagePickerWithType:UIImagePickerControllerSourceTypeCamera];

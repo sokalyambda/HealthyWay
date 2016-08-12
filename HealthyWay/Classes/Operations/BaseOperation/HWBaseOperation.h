@@ -15,8 +15,6 @@
 typedef void (^SuccessOperationBlock)(HWBaseOperation* operation);
 typedef void (^FailureOperationBlock)(HWBaseOperation* operation, NSError* error, BOOL isCanceled);
 
-//@property (strong, nonatomic, readonly)
-
 @property (strong, nonatomic, readonly) NSError *error;
 
 - (void)completeTheExecution;

@@ -31,13 +31,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Create Profile" id="Ely-bH-4SQ">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="g54-NY-FYE">
-                            <connections>
-                                <action selector="doneClick:" destination="662-as-42r" id="Itd-4I-ktA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Create Profile" id="Ely-bH-4SQ"/>
                     <connections>
                         <outlet property="containerView" destination="leV-8l-3eo" id="XW4-GG-je5"/>
                         <segue destination="R1Q-JE-Vwk" kind="show" identifier="ChooseFlowSegue" id="aPy-wV-MKa"/>
