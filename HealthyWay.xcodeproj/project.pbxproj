@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
+		44190E8B1D59282B00A8A4C1 /* HWAuthorizationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */; };
+		446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */; };
+		4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */; };
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
@@ -88,6 +91,12 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
+		44190E891D59282B00A8A4C1 /* HWAuthorizationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationOperation.h; path = Classes/Operations/SignInOperation/HWAuthorizationOperation.h; sourceTree = "<group>"; };
+		44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationOperation.m; path = Classes/Operations/SignInOperation/HWAuthorizationOperation.m; sourceTree = "<group>"; };
+		446796471D5DE77F0004DA1D /* HWSettingsFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.h; sourceTree = "<group>"; };
+		446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSettingsFlowController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.m; sourceTree = "<group>"; };
+		4467964B1D5E091D0004DA1D /* HWSettingsFlowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowTableViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowTableViewController/HWSettingsFlowTableViewController.h; sourceTree = "<group>"; };
+		4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSettingsFlowTableViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowTableViewController/HWSettingsFlowTableViewController.m; sourceTree = "<group>"; };
 		4490E4221D5B42AF00DFF882 /* HWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWTabBarController.h; path = Classes/MVC/ViewControllers/ChooseFlowBoard/TabBarController/HWTabBarController.h; sourceTree = "<group>"; };
 		4490E4231D5B42AF00DFF882 /* HWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWTabBarController.m; path = Classes/MVC/ViewControllers/ChooseFlowBoard/TabBarController/HWTabBarController.m; sourceTree = "<group>"; };
 		44930B471D54C0FD007A4D41 /* HWBaseAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAuthView.h; path = Classes/MVC/Views/Auth/AuthView/HWBaseAuthView.h; sourceTree = "<group>"; };
@@ -261,6 +270,24 @@
 				583F47071D5DCD880099C9E0 /* AuthTypes */,
 			);
 			name = AuthorizationOperation;
+			sourceTree = "<group>";
+		};
+		446796461D5DE7290004DA1D /* SettingsFlowController */ = {
+			isa = PBXGroup;
+			children = (
+				446796471D5DE77F0004DA1D /* HWSettingsFlowController.h */,
+				446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */,
+			);
+			name = SettingsFlowController;
+			sourceTree = "<group>";
+		};
+		4467964A1D5E086B0004DA1D /* SettingsFlowTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4467964B1D5E091D0004DA1D /* HWSettingsFlowTableViewController.h */,
+				4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */,
+			);
+			name = SettingsFlowTableViewController;
 			sourceTree = "<group>";
 		};
 		4490E41E1D5B376100DFF882 /* ChooseFlowBoard */ = {
@@ -1041,6 +1068,8 @@
 			isa = PBXGroup;
 			children = (
 				58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */,
+				446796461D5DE7290004DA1D /* SettingsFlowController */,
+				4467964A1D5E086B0004DA1D /* SettingsFlowTableViewController */,
 			);
 			name = SettingsFlow;
 			sourceTree = "<group>";
@@ -1239,6 +1268,7 @@
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
 				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
+				4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */,
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				583F47111D5DF90A0099C9E0 /* HWAutologinOperation.m in Sources */,
@@ -1262,6 +1292,7 @@
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */,
+				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,
 				58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */,
