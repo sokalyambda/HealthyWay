@@ -6,21 +6,17 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@interface HWBaseOperation : NSOperation {
-    BOOL _isFinished;
-    BOOL _isExecuting;
-    BOOL _isReady;
-}
+@class HWBaseTask;
+
+@interface HWBaseOperation : NSOperation
 
 typedef void (^SuccessOperationBlock)(HWBaseOperation* operation);
 typedef void (^FailureOperationBlock)(HWBaseOperation* operation, NSError* error, BOOL isCanceled);
 
+@property (strong, nonatomic, readonly) HWBaseTask *task;
+
 @property (strong, nonatomic, readonly) NSError *error;
 
-- (void)completeTheExecution;
-
-- (void)finish:(BOOL)finish;
-- (void)execute;
-- (void)makeReady;
++ (instancetype)operationWithTask:(HWBaseTask *)task;
 
 @end

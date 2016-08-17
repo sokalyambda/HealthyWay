@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersOperationTypeAll onSuccess:^(NSArray *users) {
+    [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeTypeAll onSuccess:^(NSArray *users) {
         
     } onFailure:^(NSError *error, BOOL isCancelled) {
         

@@ -144,7 +144,7 @@ static const NSInteger kUserDoesNotExist = 17011;
         switch (type) {
             case HWAuthTypeSignIn: {
                 
-                [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersOperationTypeCurrent onSuccess:^(NSArray *users) {
+                [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeCurrent onSuccess:^(NSArray *users) {
                     [weakSelf hideProgressHud];
                     if (!users.count) {
                         [weakSelf performSegueWithIdentifier:@"ToUserProfileSegue" sender:self];

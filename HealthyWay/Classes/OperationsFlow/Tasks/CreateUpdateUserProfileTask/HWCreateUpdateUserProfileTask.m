@@ -1,38 +1,38 @@
 //
-//  HWCreateUpdateUserProfileOperation.m
+//  HWCreateUpdateUserProfileTask.m
 //  HealthyWay
 //
-//  Created by Eugenity on 10.08.16.
+//  Created by Eugenity on 15.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWCreateUpdateUserProfileOperation.h"
+#import "HWCreateUpdateUserProfileTask.h"
 
 #import "HWUserProfileData.h"
 
 #import "HWUserProfileService.h"
 
-static NSString *const kFirstName           = @"firstName";
-static NSString *const kLastName            = @"lastName";
-static NSString *const kNickName            = @"nickName";
-static NSString *const kIsMale              = @"isMale";
-static NSString *const kDateOfBirth         = @"dateOfBirth";
-static NSString *const kAvatarBase64String  = @"avatarBase64";
+NSString *const kFirstName           = @"firstName";
+NSString *const kLastName            = @"lastName";
+NSString *const kNickName            = @"nickName";
+NSString *const kIsMale              = @"isMale";
+NSString *const kDateOfBirth         = @"dateOfBirth";
+NSString *const kAvatarBase64String  = @"avatarBase64";
 
-@interface HWCreateUpdateUserProfileOperation ()
+@interface HWCreateUpdateUserProfileTask ()
 
-@property (strong, nonatomic) NSString *firstName;
-@property (strong, nonatomic) NSString *lastName;
-@property (strong, nonatomic) NSString *nickName;
-@property (strong, nonatomic) NSDate *dateOfBirth;
-@property (strong, nonatomic) NSString *avatarBase64String;
-@property (assign, nonatomic) NSNumber * isMale;
+@property (nonatomic) NSString *firstName;
+@property (nonatomic) NSString *lastName;
+@property (nonatomic) NSString *nickName;
+@property (nonatomic) NSDate *dateOfBirth;
+@property (nonatomic) NSString *avatarBase64String;
+@property (nonatomic) NSNumber *isMale;
 
-@property (strong, nonatomic, readwrite) NSError *error;
+@property (strong, nonatomic) NSError *error;
 
 @end
 
-@implementation HWCreateUpdateUserProfileOperation
+@implementation HWCreateUpdateUserProfileTask
 
 @synthesize error = _error;
 
@@ -84,41 +84,16 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
                                                                nickName:nickName
                                                             dateOfBirth:dateOfBirth
                                                            avatarBase64:avatarBase64
-                                                                 isMale:isMale];;
-        /**
-         *  The operation is ready when all parameters have been set
-         */
-        [self makeReady];
+                                                                 isMale:isMale];
     }
     return self;
 }
 
-#pragma mark - Actioms
+#pragma mark - Actions
 
-- (void)start
+- (void)performCurrentTaskOnSuccess:(TaskSuccess)success
+                          onFailure:(TaskFailure)failure
 {
-    if (![NSThread isMainThread]) {
-        return [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
-    }
-    
-    if (self.isCancelled) {
-        return [self finish:YES];
-    }
-    
-    /**
-     *  The operation begins executing now
-     */
-    [self execute];
-    
-    [self createUpdateUserProfile];
-}
-
-- (void)createUpdateUserProfile
-{
-    if (self.isCancelled) {
-        return;
-    }
-    
     WEAK_SELF;
     [HWValidator validateFirstName:self.firstName lastName:self.lastName nickName:self.nickName dateOfBirth:self.dateOfBirth onSuccess:^{
         NSDictionary *parameters = @{
@@ -131,24 +106,25 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
                                      };
         [HWUserProfileService createUpdateUserProfileWithParameters:parameters onCompletion:^(NSError *error) {
             
-            if (weakSelf.isCancelled) {
-                return [weakSelf finish:YES];
-            }
-            
             weakSelf.error = error;
-            [weakSelf completeTheExecution];
+            
+            if (error && failure) {
+                return failure(error);
+            }
+            if (!error && success) {
+                return success();
+            }
             
         }];
     } onFailure:^(NSMutableArray *errorArray) {
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
         
         NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
-        [weakSelf completeTheExecution];
+        if (failure) {
+            failure(validationError);
+        }
     }];
 }
 

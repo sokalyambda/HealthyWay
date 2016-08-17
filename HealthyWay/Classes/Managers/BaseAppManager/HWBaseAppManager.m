@@ -12,8 +12,6 @@
 
 #import "HWAuthorizationService.h"
 
-
-
 @implementation HWBaseAppManager
 
 #pragma mark - Accessors

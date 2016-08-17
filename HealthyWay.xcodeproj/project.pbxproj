@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
-		44190E8B1D59282B00A8A4C1 /* HWAuthorizationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */; };
 		446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */; };
 		4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */; };
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
@@ -32,15 +31,16 @@
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
-		583F47111D5DF90A0099C9E0 /* HWAutologinOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47101D5DF90A0099C9E0 /* HWAutologinOperation.m */; };
-		583F47141D5DF9170099C9E0 /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47131D5DF9170099C9E0 /* HWBaseOperation.m */; };
-		583F47171D5DF9290099C9E0 /* HWFetchUsersOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47161D5DF9290099C9E0 /* HWFetchUsersOperation.m */; };
-		583F471A1D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47191D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.m */; };
-		583F471D1D5DF9490099C9E0 /* HWAuthorizationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F471C1D5DF9490099C9E0 /* HWAuthorizationOperation.m */; };
 		583F47211D5DF9740099C9E0 /* HWOperationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47201D5DF9740099C9E0 /* HWOperationsManager.m */; };
 		583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47231D5DF97C0099C9E0 /* HWOperationsFacade.m */; };
 		583F47281D5DF9A30099C9E0 /* HWAuthorizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47271D5DF9A30099C9E0 /* HWAuthorizationService.m */; };
 		583F472C1D5E06300099C9E0 /* HWUserProfileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F472B1D5E06300099C9E0 /* HWUserProfileService.m */; };
+		586AC89B1D61C3E200685CBA /* HWBaseTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC89A1D61C3E200685CBA /* HWBaseTask.m */; };
+		586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC89F1D61C7C000685CBA /* HWAutologinTask.m */; };
+		586AC8A41D61C9D000685CBA /* HWFetchUsersTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8A31D61C9D000685CBA /* HWFetchUsersTask.m */; };
+		586AC8AA1D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8A91D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m */; };
+		586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AC1D61E8FE00685CBA /* HWAuthorizationTask.m */; };
+		586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AF1D61F85000685CBA /* HWBaseOperation.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -91,8 +91,6 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
-		44190E891D59282B00A8A4C1 /* HWAuthorizationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationOperation.h; path = Classes/Operations/SignInOperation/HWAuthorizationOperation.h; sourceTree = "<group>"; };
-		44190E8A1D59282B00A8A4C1 /* HWAuthorizationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationOperation.m; path = Classes/Operations/SignInOperation/HWAuthorizationOperation.m; sourceTree = "<group>"; };
 		446796471D5DE77F0004DA1D /* HWSettingsFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.h; sourceTree = "<group>"; };
 		446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSettingsFlowController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.m; sourceTree = "<group>"; };
 		4467964B1D5E091D0004DA1D /* HWSettingsFlowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowTableViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowTableViewController/HWSettingsFlowTableViewController.h; sourceTree = "<group>"; };
@@ -138,18 +136,6 @@
 		5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+CompletionBlock.m"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.m"; sourceTree = "<group>"; };
 		5810FF131D58CCC300AF5C96 /* NSString+ErrorString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ErrorString.h"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.h"; sourceTree = "<group>"; };
 		5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ErrorString.m"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.m"; sourceTree = "<group>"; };
-		583F470E1D5DF8FD0099C9E0 /* Operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Operations.h; path = Classes/OperationsFlow/Operations.h; sourceTree = "<group>"; };
-		583F470F1D5DF90A0099C9E0 /* HWAutologinOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAutologinOperation.h; path = Classes/OperationsFlow/Operations/AutologinOperation/HWAutologinOperation.h; sourceTree = "<group>"; };
-		583F47101D5DF90A0099C9E0 /* HWAutologinOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAutologinOperation.m; path = Classes/OperationsFlow/Operations/AutologinOperation/HWAutologinOperation.m; sourceTree = "<group>"; };
-		583F47121D5DF9170099C9E0 /* HWBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseOperation.h; path = Classes/OperationsFlow/Operations/BaseOperation/HWBaseOperation.h; sourceTree = "<group>"; };
-		583F47131D5DF9170099C9E0 /* HWBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseOperation.m; path = Classes/OperationsFlow/Operations/BaseOperation/HWBaseOperation.m; sourceTree = "<group>"; };
-		583F47151D5DF9290099C9E0 /* HWFetchUsersOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchUsersOperation.h; path = Classes/OperationsFlow/Operations/FetchUsersOperation/HWFetchUsersOperation.h; sourceTree = "<group>"; };
-		583F47161D5DF9290099C9E0 /* HWFetchUsersOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchUsersOperation.m; path = Classes/OperationsFlow/Operations/FetchUsersOperation/HWFetchUsersOperation.m; sourceTree = "<group>"; };
-		583F47181D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCreateUpdateUserProfileOperation.h; path = Classes/OperationsFlow/Operations/CreateUpdateUserProfileOperation/HWCreateUpdateUserProfileOperation.h; sourceTree = "<group>"; };
-		583F47191D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCreateUpdateUserProfileOperation.m; path = Classes/OperationsFlow/Operations/CreateUpdateUserProfileOperation/HWCreateUpdateUserProfileOperation.m; sourceTree = "<group>"; };
-		583F471B1D5DF9490099C9E0 /* HWAuthorizationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationOperation.h; path = Classes/OperationsFlow/Operations/AuthorizationOperation/HWAuthorizationOperation.h; sourceTree = "<group>"; };
-		583F471C1D5DF9490099C9E0 /* HWAuthorizationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationOperation.m; path = Classes/OperationsFlow/Operations/AuthorizationOperation/HWAuthorizationOperation.m; sourceTree = "<group>"; };
-		583F471E1D5DF9580099C9E0 /* HWAuthTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthTypes.h; path = HealthyWay/Classes/OperationsFlow/Operations/AuthorizationOperation/AuthTypes/HWAuthTypes.h; sourceTree = SOURCE_ROOT; };
 		583F471F1D5DF9740099C9E0 /* HWOperationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOperationsManager.h; path = Classes/OperationsFlow/OperationsManager/HWOperationsManager.h; sourceTree = "<group>"; };
 		583F47201D5DF9740099C9E0 /* HWOperationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWOperationsManager.m; path = Classes/OperationsFlow/OperationsManager/HWOperationsManager.m; sourceTree = "<group>"; };
 		583F47221D5DF97C0099C9E0 /* HWOperationsFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOperationsFacade.h; path = Classes/OperationsFlow/OperationsFacade/HWOperationsFacade.h; sourceTree = "<group>"; };
@@ -158,6 +144,21 @@
 		583F47271D5DF9A30099C9E0 /* HWAuthorizationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationService.m; path = Classes/Services/AuthorizationService/HWAuthorizationService.m; sourceTree = "<group>"; };
 		583F472A1D5E06300099C9E0 /* HWUserProfileService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfileService.h; path = Classes/Services/UserProfileService/HWUserProfileService.h; sourceTree = "<group>"; };
 		583F472B1D5E06300099C9E0 /* HWUserProfileService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfileService.m; path = Classes/Services/UserProfileService/HWUserProfileService.m; sourceTree = "<group>"; };
+		586AC8991D61C3E200685CBA /* HWBaseTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseTask.h; path = Classes/OperationsFlow/Tasks/BaseTask/HWBaseTask.h; sourceTree = "<group>"; };
+		586AC89A1D61C3E200685CBA /* HWBaseTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseTask.m; path = Classes/OperationsFlow/Tasks/BaseTask/HWBaseTask.m; sourceTree = "<group>"; };
+		586AC89C1D61C64800685CBA /* HWTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWTask.h; path = Classes/OperationsFlow/Tasks/BaseTask/HWTask.h; sourceTree = "<group>"; };
+		586AC89E1D61C7C000685CBA /* HWAutologinTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAutologinTask.h; path = Classes/OperationsFlow/Tasks/AutologinTask/HWAutologinTask.h; sourceTree = "<group>"; };
+		586AC89F1D61C7C000685CBA /* HWAutologinTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAutologinTask.m; path = Classes/OperationsFlow/Tasks/AutologinTask/HWAutologinTask.m; sourceTree = "<group>"; };
+		586AC8A21D61C9D000685CBA /* HWFetchUsersTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchUsersTask.h; path = Classes/OperationsFlow/Tasks/FetchUsersTask/HWFetchUsersTask.h; sourceTree = "<group>"; };
+		586AC8A31D61C9D000685CBA /* HWFetchUsersTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchUsersTask.m; path = Classes/OperationsFlow/Tasks/FetchUsersTask/HWFetchUsersTask.m; sourceTree = "<group>"; };
+		586AC8A51D61CCB600685CBA /* HWTasks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HWTasks.h; path = Classes/OperationsFlow/HWTasks.h; sourceTree = "<group>"; };
+		586AC8A81D61DFB100685CBA /* HWCreateUpdateUserProfileTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCreateUpdateUserProfileTask.h; path = Classes/OperationsFlow/Tasks/CreateUpdateUserProfileTask/HWCreateUpdateUserProfileTask.h; sourceTree = "<group>"; };
+		586AC8A91D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCreateUpdateUserProfileTask.m; path = Classes/OperationsFlow/Tasks/CreateUpdateUserProfileTask/HWCreateUpdateUserProfileTask.m; sourceTree = "<group>"; };
+		586AC8AB1D61E8FE00685CBA /* HWAuthorizationTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationTask.h; path = Classes/OperationsFlow/Tasks/AuthorizationTask/HWAuthorizationTask.h; sourceTree = "<group>"; };
+		586AC8AC1D61E8FE00685CBA /* HWAuthorizationTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationTask.m; path = Classes/OperationsFlow/Tasks/AuthorizationTask/HWAuthorizationTask.m; sourceTree = "<group>"; };
+		586AC8AE1D61F85000685CBA /* HWBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseOperation.h; path = Classes/OperationsFlow/BaseOperation/HWBaseOperation.h; sourceTree = "<group>"; };
+		586AC8AF1D61F85000685CBA /* HWBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseOperation.m; path = Classes/OperationsFlow/BaseOperation/HWBaseOperation.m; sourceTree = "<group>"; };
+		586AC8B11D61F86800685CBA /* HWAuthTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthTypes.h; path = HealthyWay/Classes/OperationsFlow/Tasks/AuthorizationTask/AuthTypes/HWAuthTypes.h; sourceTree = SOURCE_ROOT; };
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
@@ -254,22 +255,13 @@
 		44190E871D59273A00A8A4C1 /* OperationsFlow */ = {
 			isa = PBXGroup;
 			children = (
-				583F470E1D5DF8FD0099C9E0 /* Operations.h */,
-				583F47091D5DDCB80099C9E0 /* Operations */,
+				586AC8A51D61CCB600685CBA /* HWTasks.h */,
+				580C29511D5B2530009B5118 /* BaseOperation */,
+				586AC8971D61C3AE00685CBA /* Tasks */,
 				583F46ED1D5DAB710099C9E0 /* OperationsManager */,
 				583F46E91D5DA9BD0099C9E0 /* OperationsFacade */,
 			);
 			name = OperationsFlow;
-			sourceTree = "<group>";
-		};
-		44190E881D59274100A8A4C1 /* AuthorizationOperation */ = {
-			isa = PBXGroup;
-			children = (
-				583F471B1D5DF9490099C9E0 /* HWAuthorizationOperation.h */,
-				583F471C1D5DF9490099C9E0 /* HWAuthorizationOperation.m */,
-				583F47071D5DCD880099C9E0 /* AuthTypes */,
-			);
-			name = AuthorizationOperation;
 			sourceTree = "<group>";
 		};
 		446796461D5DE7290004DA1D /* SettingsFlowController */ = {
@@ -375,19 +367,10 @@
 		580C29511D5B2530009B5118 /* BaseOperation */ = {
 			isa = PBXGroup;
 			children = (
-				583F47121D5DF9170099C9E0 /* HWBaseOperation.h */,
-				583F47131D5DF9170099C9E0 /* HWBaseOperation.m */,
+				586AC8AE1D61F85000685CBA /* HWBaseOperation.h */,
+				586AC8AF1D61F85000685CBA /* HWBaseOperation.m */,
 			);
 			name = BaseOperation;
-			sourceTree = "<group>";
-		};
-		580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */ = {
-			isa = PBXGroup;
-			children = (
-				583F47181D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.h */,
-				583F47191D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.m */,
-			);
-			name = CreateUpdateUserProfileOperation;
 			sourceTree = "<group>";
 		};
 		580C29591D5B3D0A009B5118 /* UserProfile */ = {
@@ -668,31 +651,10 @@
 		583F47071D5DCD880099C9E0 /* AuthTypes */ = {
 			isa = PBXGroup;
 			children = (
-				583F471E1D5DF9580099C9E0 /* HWAuthTypes.h */,
+				586AC8B11D61F86800685CBA /* HWAuthTypes.h */,
 			);
 			name = AuthTypes;
 			path = Classes/Operations/AuthorizationOperation/AuthTypes;
-			sourceTree = "<group>";
-		};
-		583F47091D5DDCB80099C9E0 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				583F470A1D5DDCD00099C9E0 /* AutologinOperation */,
-				580C29511D5B2530009B5118 /* BaseOperation */,
-				58FDB0661D5C6E8200908ADC /* FetchUsersOperation */,
-				580C29551D5B3CC5009B5118 /* CreateUpdateUserProfileOperation */,
-				44190E881D59274100A8A4C1 /* AuthorizationOperation */,
-			);
-			name = Operations;
-			sourceTree = "<group>";
-		};
-		583F470A1D5DDCD00099C9E0 /* AutologinOperation */ = {
-			isa = PBXGroup;
-			children = (
-				583F470F1D5DF90A0099C9E0 /* HWAutologinOperation.h */,
-				583F47101D5DF90A0099C9E0 /* HWAutologinOperation.m */,
-			);
-			name = AutologinOperation;
 			sourceTree = "<group>";
 		};
 		583F47251D5DF98A0099C9E0 /* AuthorizationService */ = {
@@ -711,6 +673,65 @@
 				583F472B1D5E06300099C9E0 /* HWUserProfileService.m */,
 			);
 			name = UserProfileService;
+			sourceTree = "<group>";
+		};
+		586AC8971D61C3AE00685CBA /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				586AC8A71D61CE6900685CBA /* CreateUpdateUserProfileTask */,
+				586AC8A61D61CE6300685CBA /* AuthorizationTask */,
+				586AC8A11D61C9B500685CBA /* FetchUsersTask */,
+				586AC89D1D61C79E00685CBA /* AutologinTask */,
+				586AC8981D61C3C700685CBA /* BaseTask */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		586AC8981D61C3C700685CBA /* BaseTask */ = {
+			isa = PBXGroup;
+			children = (
+				586AC8991D61C3E200685CBA /* HWBaseTask.h */,
+				586AC89A1D61C3E200685CBA /* HWBaseTask.m */,
+				586AC89C1D61C64800685CBA /* HWTask.h */,
+			);
+			name = BaseTask;
+			sourceTree = "<group>";
+		};
+		586AC89D1D61C79E00685CBA /* AutologinTask */ = {
+			isa = PBXGroup;
+			children = (
+				586AC89E1D61C7C000685CBA /* HWAutologinTask.h */,
+				586AC89F1D61C7C000685CBA /* HWAutologinTask.m */,
+			);
+			name = AutologinTask;
+			sourceTree = "<group>";
+		};
+		586AC8A11D61C9B500685CBA /* FetchUsersTask */ = {
+			isa = PBXGroup;
+			children = (
+				586AC8A21D61C9D000685CBA /* HWFetchUsersTask.h */,
+				586AC8A31D61C9D000685CBA /* HWFetchUsersTask.m */,
+			);
+			name = FetchUsersTask;
+			sourceTree = "<group>";
+		};
+		586AC8A61D61CE6300685CBA /* AuthorizationTask */ = {
+			isa = PBXGroup;
+			children = (
+				583F47071D5DCD880099C9E0 /* AuthTypes */,
+				586AC8AB1D61E8FE00685CBA /* HWAuthorizationTask.h */,
+				586AC8AC1D61E8FE00685CBA /* HWAuthorizationTask.m */,
+			);
+			name = AuthorizationTask;
+			sourceTree = "<group>";
+		};
+		586AC8A71D61CE6900685CBA /* CreateUpdateUserProfileTask */ = {
+			isa = PBXGroup;
+			children = (
+				586AC8A81D61DFB100685CBA /* HWCreateUpdateUserProfileTask.h */,
+				586AC8A91D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m */,
+			);
+			name = CreateUpdateUserProfileTask;
 			sourceTree = "<group>";
 		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
@@ -955,15 +976,6 @@
 				580C29601D5B3FE3009B5118 /* CommonDateFormatter */,
 			);
 			name = HelperClasses;
-			sourceTree = "<group>";
-		};
-		58FDB0661D5C6E8200908ADC /* FetchUsersOperation */ = {
-			isa = PBXGroup;
-			children = (
-				583F47151D5DF9290099C9E0 /* HWFetchUsersOperation.h */,
-				583F47161D5DF9290099C9E0 /* HWFetchUsersOperation.m */,
-			);
-			name = FetchUsersOperation;
 			sourceTree = "<group>";
 		};
 		58FDB06A1D5C6EAB00908ADC /* UserProfile */ = {
@@ -1247,6 +1259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */,
+				586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */,
 				580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
 				580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */,
@@ -1254,8 +1268,8 @@
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
 				58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */,
 				583F47211D5DF9740099C9E0 /* HWOperationsManager.m in Sources */,
+				586AC89B1D61C3E200685CBA /* HWBaseTask.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
-				583F47171D5DF9290099C9E0 /* HWFetchUsersOperation.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
 				4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */,
 				580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */,
@@ -1269,9 +1283,9 @@
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
 				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
 				4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */,
+				586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */,
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
-				583F47111D5DF90A0099C9E0 /* HWAutologinOperation.m in Sources */,
 				583F472C1D5E06300099C9E0 /* HWUserProfileService.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
@@ -1281,12 +1295,11 @@
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
+				586AC8A41D61C9D000685CBA /* HWFetchUsersTask.m in Sources */,
 				58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */,
-				583F471D1D5DF9490099C9E0 /* HWAuthorizationOperation.m in Sources */,
 				58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */,
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,
-				583F471A1D5DF9380099C9E0 /* HWCreateUpdateUserProfileOperation.m in Sources */,
-				583F47141D5DF9170099C9E0 /* HWBaseOperation.m in Sources */,
+				586AC8AA1D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m in Sources */,
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
 				580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */,
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,

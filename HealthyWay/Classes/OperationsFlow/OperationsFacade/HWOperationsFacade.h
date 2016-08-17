@@ -8,7 +8,9 @@
 
 #import "HWAuthTypes.h"
 
-#import "Operations.h"
+#import "HWTasks.h"
+
+@class HWBaseOperation;
 
 typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
 
@@ -21,7 +23,7 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
                                                 onSuccess:(void(^)())success
                                                 onFailure:(FailureBlock)failure;
 
-+ (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersOperationType)fetchType
++ (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersTaskType)fetchType
                                       onSuccess:(void(^)(NSArray *users))success
                                       onFailure:(FailureBlock)failure;
 

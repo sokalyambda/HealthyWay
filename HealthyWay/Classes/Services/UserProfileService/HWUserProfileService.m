@@ -80,9 +80,13 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
     }
 }
 
-+ (void)fetchAllUsersDataWithCompletion:(void(^)(NSArray *users, NSError *error))completion
++ (void)fetchUsersDataWithPage:(NSInteger)page
+                  searchString:(NSString *)searchString
+                  onCompletion:(void(^)(NSArray *users, NSError *error))completion
 {
     FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
+    
+//    FIRDatabaseQuery *query = [usersReference query]
     
     [usersReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         

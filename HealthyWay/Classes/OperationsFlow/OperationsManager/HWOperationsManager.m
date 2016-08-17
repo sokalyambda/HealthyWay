@@ -8,6 +8,8 @@
 
 #import "HWOperationsManager.h"
 
+#import "HWBaseTask.h"
+
 @interface HWOperationsManager ()
 
 @property (strong, nonatomic) NSOperationQueue *operations;
@@ -43,10 +45,11 @@
 
 #pragma mark - Actions
 
-- (void)enqueueOperation:(HWBaseOperation *)operation
-               onSuccess:(SuccessOperationBlock)success
-               onFailure:(FailureOperationBlock)failure
+- (HWBaseOperation *)enqueueOperationForTask:(HWBaseTask *)task
+                                   onSuccess:(SuccessOperationBlock)success
+                                   onFailure:(FailureOperationBlock)failure
 {
+    HWBaseOperation *operation = [HWBaseOperation operationWithTask:task];
     [self.operations addOperation:operation];
     
     __block HWBaseOperation *weakOperation = operation;
@@ -66,6 +69,7 @@
             }
         });
     }];
+    return operation;
 }
 
 @end

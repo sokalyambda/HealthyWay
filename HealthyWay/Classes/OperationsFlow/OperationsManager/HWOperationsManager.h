@@ -12,8 +12,8 @@
 
 + (instancetype)sharedManager;
 
-- (void)enqueueOperation:(HWBaseOperation *)operation
-               onSuccess:(SuccessOperationBlock)success
-               onFailure:(FailureOperationBlock)failure;
+- (HWBaseOperation *)enqueueOperationForTask:(HWBaseTask *)task
+                                   onSuccess:(SuccessOperationBlock)success
+                                   onFailure:(FailureOperationBlock)failure;
 
 @end

@@ -1,18 +1,16 @@
 //
-//  HWSignInOperation.h
+//  HWAuthorizationTask.h
 //  HealthyWay
 //
-//  Created by Eugene Sokolenko on 08.08.16.
+//  Created by Eugenity on 15.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWAuthTypes.h"
-
-#import "HWBaseOperation.h"
-
 @class HWCredentials;
 
-@interface HWAuthorizationOperation : HWBaseOperation
+#import "HWBaseTask.h"
+
+@interface HWAuthorizationTask : HWBaseTask
 
 @property (strong, nonatomic, readonly) HWCredentials *credentials;
 

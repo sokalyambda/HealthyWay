@@ -8,9 +8,20 @@
 
 #import "HWBaseOperation.h"
 
-@implementation HWBaseOperation
+#import "HWBaseTask.h"
+
+@implementation HWBaseOperation {
+    BOOL _isFinished;
+    BOOL _isExecuting;
+    BOOL _isReady;
+}
 
 #pragma mark - Accessors
+
+- (NSError *)error
+{
+    return self.task.error;
+}
 
 - (BOOL)isExecuting
 {
@@ -34,18 +45,48 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)init
++ (instancetype)operationWithTask:(HWBaseTask *)task
+{
+    return  [[self alloc] initWithTask:task];
+}
+
+- (instancetype)initWithTask:(HWBaseTask *)task
 {
     self = [super init];
     if (self) {
         _isExecuting = NO;
         _isFinished = NO;
         _isReady = NO;
+        
+        _task = task;
+        [self makeReady];
     }
     return self;
 }
 
 #pragma mark - Actions
+
+- (void)start
+{
+    if (![NSThread isMainThread]) {
+        return [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
+    }
+    
+    if (self.isCancelled) {
+        return [self finish:YES];
+    }
+    
+    /**
+     *  The operation begins executing now
+     */
+    [self execute];
+    WEAK_SELF;
+    [self.task performCurrentTaskOnSuccess:^{
+        [weakSelf completeTheExecution];
+    } onFailure:^(NSError *error) {
+        [weakSelf completeTheExecution];
+    }];
+}
 
 /**
  *  Finish the current operation

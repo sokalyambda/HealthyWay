@@ -1,27 +1,29 @@
 //
-//  HWSignInOperation.m
+//  HWAuthorizationTask.m
 //  HealthyWay
 //
-//  Created by Eugene Sokolenko on 08.08.16.
+//  Created by Eugenity on 15.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWAuthorizationOperation.h"
+#import "HWAuthorizationTask.h"
 
 #import "HWCredentials.h"
 
 #import "HWAuthorizationService.h"
 
-@interface HWAuthorizationOperation () 
+@interface HWAuthorizationTask ()
 
-@property (strong, nonatomic, readwrite) NSError *error;
-
-@property (strong, nonatomic) HWCredentials *credentials;
 @property (assign, nonatomic) HWAuthType authType;
+
+@property (nonatomic) NSError *error;
+
+@property (copy, nonatomic) TaskSuccess success;
+@property (copy, nonatomic) TaskFailure failure;
 
 @end
 
-@implementation HWAuthorizationOperation
+@implementation HWAuthorizationTask
 
 @synthesize error = _error;
 
@@ -61,32 +63,20 @@
          *  Call the mutator
          */
         self.credentials = [HWCredentials credentialsWithEmail:email
-                                                  password:password
-                                         confirmedPassword:confirmedPassword
-                                                  authType:authType];;
-        
-        /**
-         *  The operation is ready when all parameters have been set
-         */
-        [self makeReady];
+                                                      password:password
+                                             confirmedPassword:confirmedPassword
+                                                      authType:authType];
     }
     return self;
 }
 
-- (void)start
+#pragma mark - Actions
+
+- (void)performCurrentTaskOnSuccess:(TaskSuccess)success
+                          onFailure:(TaskFailure)failure
 {
-    if (![NSThread isMainThread]) {
-        return [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
-    }
-    
-    if (self.isCancelled) {
-        return [self finish:YES];
-    }
-    
-    /**
-     *  The operation begins executing now
-     */
-    [self execute];
+    self.success = success;
+    self.failure = failure;
     
     switch (self.authType) {
         case HWAuthTypeSignIn: {
@@ -111,31 +101,26 @@
  */
 - (void)performResetPassword
 {
-    if (self.isCancelled) {
-        return [self finish:YES];
-    }
-    
     WEAK_SELF;
     [HWValidator validateEmail:self.email onSuccess:^{
         
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
-        
         [HWAuthorizationService sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
-            [weakSelf completeTheExecution];
+            if (error && weakSelf.failure) {
+                return weakSelf.failure(error);
+            }
+            if (!error && weakSelf.success) {
+                weakSelf.success();
+            }
         }];
     } onFailure:^(NSMutableArray *errorArray) {
-        
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
         
         NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
-        [weakSelf completeTheExecution];
+        if (weakSelf.failure) {
+            weakSelf.failure(validationError);
+        }
     }];
 }
 
@@ -144,31 +129,26 @@
  */
 - (void)performSignIn
 {
-    if (self.isCancelled) {
-        return [self finish:YES];
-    }
-    
     WEAK_SELF;
     [HWValidator validateEmail:self.email andPassword:self.password onSuccess:^{
-        
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
-        
         [HWAuthorizationService signInWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError *error) {
             weakSelf.error = error;
-            [weakSelf completeTheExecution];
+            if (error && weakSelf.failure) {
+                return weakSelf.failure(error);
+            }
+            if (!error && weakSelf.success) {
+                weakSelf.success();
+            }
         }];
     } onFailure:^(NSMutableArray *errorArray) {
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
-        
+
         NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
-        [weakSelf completeTheExecution];
+        if (weakSelf.failure) {
+            weakSelf.failure(validationError);
+        }
     }];
 }
 
@@ -177,33 +157,27 @@
  */
 - (void)performSignUp
 {
-    if (self.isCancelled) {
-        return [self finish:YES];
-    }
-    
     WEAK_SELF;
     [HWValidator validateEmail:self.email andPassword:self.password andConfirmPassword:self.confirmedPassword onSuccess:^{
-        
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
-        
         [HWAuthorizationService signUpWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
-            [weakSelf completeTheExecution];
+            if (error && weakSelf.failure) {
+                return weakSelf.failure(error);
+            }
+            if (!error && weakSelf.success) {
+                weakSelf.success();
+            }
         }];
         
     } onFailure:^(NSMutableArray *errorArray) {
-        
-        if (weakSelf.isCancelled) {
-            return [weakSelf finish:YES];
-        }
         
         NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
-        [weakSelf completeTheExecution];
+        if (weakSelf.failure) {
+            weakSelf.failure(validationError);
+        }
     }];
 }
 

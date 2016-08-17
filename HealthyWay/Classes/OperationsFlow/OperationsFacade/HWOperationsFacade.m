@@ -10,6 +10,8 @@
 
 #import "HWOperationsManager.h"
 
+#import "HWBaseOperation.h"
+
 @implementation HWOperationsFacade
 
 + (HWOperationsManager *)operationsManager
@@ -24,16 +26,13 @@
                                                 onSuccess:(void(^)())success
                                                 onFailure:(FailureBlock)failure
 {
-    /**
-     Create the auth operation
-     
-     - returns: Current authorization operation
-     */
-    HWAuthorizationOperation *operation = [[HWAuthorizationOperation alloc] initWithEmail:email
-                                                                                 password:password
-                                                                        confirmedPassword:confirmedPassword
-                                                                                 authType:authType];
-    [self.operationsManager enqueueOperation:operation onSuccess:^(HWBaseOperation *operation) {
+
+    HWAuthorizationTask *task = [[HWAuthorizationTask alloc] initWithEmail:email
+                                                                  password:password
+                                                         confirmedPassword:confirmedPassword
+                                                                  authType:authType];
+    
+    return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         
         if (success) {
             success();
@@ -44,18 +43,17 @@
             failure(error, isCanceled);
         }
     }];
-    return operation;
 }
 
-+ (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersOperationType)fetchType
++ (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersTaskType)fetchType
                                       onSuccess:(void(^)(NSArray *users))success
                                       onFailure:(FailureBlock)failure
 {
-    HWFetchUsersOperation *operation = [[HWFetchUsersOperation alloc] initWithFetchingType:fetchType];
-    [self.operationsManager enqueueOperation:operation onSuccess:^(HWBaseOperation *operation) {
+    HWFetchUsersTask *task = [[HWFetchUsersTask alloc] initWithUsersFetchingType:fetchType];
+    return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         
         if (success) {
-            success(((HWFetchUsersOperation *)operation).users);
+            success(task.users);
         }
         
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
@@ -63,7 +61,6 @@
             failure(error, isCanceled);
         }
     }];
-    return operation;
 }
 
 + (HWBaseOperation *)createUpdateUserWithFirstName:(NSString *)firstName
@@ -75,13 +72,14 @@
                                          onSuccess:(void(^)())success
                                          onFailure:(FailureBlock)failure
 {
-    HWCreateUpdateUserProfileOperation *operation = [[HWCreateUpdateUserProfileOperation alloc] initWithFirstName:firstName
-                                                                                                         lastName:lastName
-                                                                                                         nickName:nickName
-                                                                                                      dateOfBirth:dateOfBirth
-                                                                                                     avatarBase64:avatarBase64
-                                                                                                           isMale:isMale];
-    [self.operationsManager enqueueOperation:operation onSuccess:^(HWBaseOperation *operation) {
+    HWCreateUpdateUserProfileTask *task = [[HWCreateUpdateUserProfileTask alloc] initWithFirstName:firstName
+                                                                                          lastName:lastName
+                                                                                          nickName:nickName
+                                                                                       dateOfBirth:dateOfBirth
+                                                                                      avatarBase64:avatarBase64
+                                                                                            isMale:isMale];
+
+    return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
             success();
         }
@@ -90,30 +88,31 @@
             failure(error, isCanceled);
         }
     }];
-    return operation;
 }
 
 + (HWBaseOperation *)performAutologinOnSuccess:(void(^)(NSArray *users, NSString *token))success
                                      onFailure:(FailureBlock)failure
 {
-    HWAutologinOperation *autologinOperation = [[HWAutologinOperation alloc] init];
-    HWFetchUsersOperation *fetchUsersOperation = [[HWFetchUsersOperation alloc] initWithFetchingType:HWFetchUsersOperationTypeCurrent];
-    [fetchUsersOperation addDependency:autologinOperation];
+    HWAutologinTask *autologinTask = [[HWAutologinTask alloc] init];
+    HWFetchUsersTask *fetchUsersTask = [[HWFetchUsersTask alloc] initWithUsersFetchingType:HWFetchUsersTaskTypeCurrent];
     
-    [self.operationsManager enqueueOperation:autologinOperation onSuccess:nil onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+    HWBaseOperation *autologinOperation = [self.operationsManager enqueueOperationForTask:autologinTask onSuccess:nil onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
             failure(error, isCanceled);
         }
     }];
-    [self.operationsManager enqueueOperation:fetchUsersOperation onSuccess:^(HWBaseOperation *operation) {
+    HWBaseOperation *fetchUsersOperation = [self.operationsManager enqueueOperationForTask:fetchUsersTask onSuccess:^(HWBaseOperation *operation) {
         if (success) {
-            success(fetchUsersOperation.users, autologinOperation.token);
+            success(fetchUsersTask.users, autologinTask.token);
         }
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
             failure(error, isCanceled);
         }
     }];
+    
+    [fetchUsersOperation addDependency:autologinOperation];
+    
     return autologinOperation;
 }
 

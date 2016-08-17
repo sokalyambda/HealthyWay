@@ -1,16 +1,16 @@
 //
-//  HWCreateUpdateUserProfileOperation.h
+//  HWCreateUpdateUserProfileTask.h
 //  HealthyWay
 //
-//  Created by Eugenity on 10.08.16.
+//  Created by Eugenity on 15.08.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-#import "HWBaseOperation.h"
-
 @class HWUserProfileData;
 
-@interface HWCreateUpdateUserProfileOperation : HWBaseOperation
+#import "HWBaseTask.h"
+
+@interface HWCreateUpdateUserProfileTask : HWBaseTask
 
 @property (strong, nonatomic, readonly) HWUserProfileData *userProfileData;
 
@@ -19,6 +19,6 @@
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
                      avatarBase64:(NSString *)avatarBase64
-                           isMale:(NSNumber *)isMalee;
+                           isMale:(NSNumber *)isMale;
 
 @end
