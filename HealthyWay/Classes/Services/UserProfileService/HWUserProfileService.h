@@ -31,9 +31,8 @@
  *
  *  @param completion CompletionBlock
  */
-+ (void)fetchUsersDataWithPage:(NSInteger)page
-                  searchString:(NSString *)searchString
-                  onCompletion:(void(^)(NSArray *users, NSError *error))completion;
++ (void)fetchUsersDataWithSearchString:(NSString *)searchString
+                          onCompletion:(void(^)(NSArray *users, NSError *error))completion;
 
 /**
  *  Create or update current user profile

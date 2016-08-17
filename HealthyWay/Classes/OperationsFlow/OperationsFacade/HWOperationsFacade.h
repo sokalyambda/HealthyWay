@@ -24,6 +24,7 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
                                                 onFailure:(FailureBlock)failure;
 
 + (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersTaskType)fetchType
+                                   searchString:(NSString *)searchedText
                                       onSuccess:(void(^)(NSArray *users))success
                                       onFailure:(FailureBlock)failure;
 

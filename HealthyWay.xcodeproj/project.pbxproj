@@ -13,6 +13,10 @@
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
+		44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */; };
+		44CE2ED81D64D0A20087FCD2 /* HWFriendsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */; };
+		44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */; };
+		44CE2EDF1D64D12A0087FCD2 /* HWFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
 		5802061E1D1D368400349B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061D1D1D368400349B32 /* AppDelegate.m */; };
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
@@ -102,6 +106,13 @@
 		44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
 		44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpView.m; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.m; sourceTree = "<group>"; };
 		44930B4E1D54FAC8007A4D41 /* HWAuthViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthViews.h; path = Classes/MVC/Views/Auth/HWAuthViews.h; sourceTree = "<group>"; };
+		44CE2ED11D64C8FD0087FCD2 /* HWAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddFriendsViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.h; sourceTree = "<group>"; };
+		44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddFriendsViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.m; sourceTree = "<group>"; };
+		44CE2ED61D64D0A20087FCD2 /* HWFriendsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsDataSource.h; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.h; sourceTree = "<group>"; };
+		44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsDataSource.m; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.m; sourceTree = "<group>"; };
+		44CE2EDB1D64D12A0087FCD2 /* HWFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendCell.h; path = Classes/Cells/FriendCell/HWFriendCell.h; sourceTree = "<group>"; };
+		44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendCell.m; path = Classes/Cells/FriendCell/HWFriendCell.m; sourceTree = "<group>"; };
+		44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFriendCell.xib; path = Classes/Cells/FriendCell/HWFriendCell.xib; sourceTree = "<group>"; };
 		580206161D1D368400349B32 /* HealthyWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5802061A1D1D368400349B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5802061C1D1D368400349B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -309,6 +320,50 @@
 			name = AuthView;
 			sourceTree = "<group>";
 		};
+		44CE2ED01D64C87A0087FCD2 /* AddFriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				44CE2ED11D64C8FD0087FCD2 /* HWAddFriendsViewController.h */,
+				44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */,
+			);
+			name = AddFriendsViewController;
+			sourceTree = "<group>";
+		};
+		44CE2ED41D64D07C0087FCD2 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				44CE2ED51D64D0810087FCD2 /* FriendsDataSource */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
+		44CE2ED51D64D0810087FCD2 /* FriendsDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				44CE2ED61D64D0A20087FCD2 /* HWFriendsDataSource.h */,
+				44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */,
+			);
+			name = FriendsDataSource;
+			sourceTree = "<group>";
+		};
+		44CE2ED91D64D1010087FCD2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				44CE2EDA1D64D1090087FCD2 /* FriendCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		44CE2EDA1D64D1090087FCD2 /* FriendCell */ = {
+			isa = PBXGroup;
+			children = (
+				44CE2EDB1D64D12A0087FCD2 /* HWFriendCell.h */,
+				44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */,
+				44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */,
+			);
+			name = FriendCell;
+			sourceTree = "<group>";
+		};
 		5802060D1D1D368300349B32 = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +522,8 @@
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				44CE2ED91D64D1010087FCD2 /* Cells */,
+				44CE2ED41D64D07C0087FCD2 /* DataSources */,
 				44190E871D59273A00A8A4C1 /* OperationsFlow */,
 				58E337C41D22F64800B3A280 /* HelperClasses */,
 				58E337BF1D22F3E200B3A280 /* Managers */,
@@ -1042,6 +1099,7 @@
 		58FDB0951D5C989E00908ADC /* FriendsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				44CE2ED01D64C87A0087FCD2 /* AddFriendsViewController */,
 				58B4572C1D5E2D84005ED79C /* FriendsViewController */,
 				58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */,
 			);
@@ -1185,6 +1243,7 @@
 				580C29731D5B5B84009B5118 /* ChooseFlowBoard.storyboard in Resources */,
 				58FDB09B1D5C995400908ADC /* SettingsBoard.storyboard in Resources */,
 				58FDB09D1D5C997000908ADC /* EditProfileBoard.storyboard in Resources */,
+				44CE2EDF1D64D12A0087FCD2 /* HWFriendCell.xib in Resources */,
 				580206291D1D368400349B32 /* LaunchScreen.storyboard in Resources */,
 				58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */,
 				58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */,
@@ -1259,6 +1318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */,
 				586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */,
 				586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */,
 				580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */,
@@ -1283,6 +1343,7 @@
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
 				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
 				4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */,
+				44CE2ED81D64D0A20087FCD2 /* HWFriendsDataSource.m in Sources */,
 				586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */,
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
@@ -1292,6 +1353,7 @@
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */,
+				44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */,
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,

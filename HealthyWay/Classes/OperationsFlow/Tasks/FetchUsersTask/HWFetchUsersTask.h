@@ -19,6 +19,11 @@ typedef NS_ENUM(NSUInteger, HWFetchUsersTaskType) {
 
 @property (nonatomic, readonly) NSArray<id<HWUserProfile>> *users;
 
+@property (nonatomic, readonly) NSString *searchedText;
+
 - (instancetype)initWithUsersFetchingType:(HWFetchUsersTaskType)fetchType;
+
+- (instancetype)initWithUsersFetchingType:(HWFetchUsersTaskType)fetchType
+                             searchString:(NSString *)searchedText;
 
 @end

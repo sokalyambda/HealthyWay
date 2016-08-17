@@ -35,6 +35,18 @@
     return self;
 }
 
+- (instancetype)initWithUsersFetchingType:(HWFetchUsersTaskType)fetchType
+                             searchString:(NSString *)searchedText
+{
+    self = [self initWithUsersFetchingType:fetchType];
+    
+    if (self) {
+        _searchedText = searchedText;
+    }
+    
+    return self;
+}
+
 #pragma mark - Actions
 
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
@@ -43,9 +55,9 @@
     WEAK_SELF;
     switch (self.taskType) {
         case HWFetchUsersTaskTypeTypeAll: {
-//            [HWUserProfileService fetchAllUsersDataWithCompletion:^(NSArray *users, NSError *error) {
-//                
-//            }];
+            [HWUserProfileService fetchUsersDataWithSearchString:self.searchedText onCompletion:^(NSArray *users, NSError *error) {
+                
+            }];
             break;
         }
         case HWFetchUsersTaskTypeCurrent: {

@@ -80,23 +80,22 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
     }
 }
 
-+ (void)fetchUsersDataWithPage:(NSInteger)page
-                  searchString:(NSString *)searchString
-                  onCompletion:(void(^)(NSArray *users, NSError *error))completion
++ (void)fetchUsersDataWithSearchString:(NSString *)searchString
+                          onCompletion:(void(^)(NSArray *users, NSError *error))completion
 {
     FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
     
-//    FIRDatabaseQuery *query = [usersReference query]
+    FIRDatabaseQuery *query = [[usersReference queryOrderedByChild:kFirstName] queryStartingAtValue:searchString];
     
-    [usersReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [query observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         
         NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
-        //GET all values from this dict
-        HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
-        [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
+        //GET all values from this dictw
+//        HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
+//        [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
         
-        if (currentUserProfile && completion) {
-            completion(@[currentUserProfile], nil);
+        if (userData && completion) {
+            completion(@[userData], nil);
         } else if (completion) {
             NSError *error = [NSError errorWithDomain:@"com.user.mapping.error" code:HWErrorCodeMapping userInfo:@{
                                                                                                                    ErrorMessage: LOCALIZED(@"Error while mapping the current user")

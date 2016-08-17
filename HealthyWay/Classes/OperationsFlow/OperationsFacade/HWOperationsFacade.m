@@ -46,10 +46,12 @@
 }
 
 + (HWBaseOperation *)fetchUsersWithFetchingType:(HWFetchUsersTaskType)fetchType
+                                   searchString:(NSString *)searchedText
                                       onSuccess:(void(^)(NSArray *users))success
                                       onFailure:(FailureBlock)failure
 {
-    HWFetchUsersTask *task = [[HWFetchUsersTask alloc] initWithUsersFetchingType:fetchType];
+    HWFetchUsersTask *task = [[HWFetchUsersTask alloc] initWithUsersFetchingType:fetchType
+                                                                    searchString:searchedText];
     return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         
         if (success) {

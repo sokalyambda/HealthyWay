@@ -16,13 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeTypeAll onSuccess:^(NSArray *users) {
-        
-    } onFailure:^(NSError *error, BOOL isCancelled) {
-        
-    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
