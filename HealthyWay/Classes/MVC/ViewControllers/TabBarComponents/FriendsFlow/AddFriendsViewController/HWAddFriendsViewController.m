@@ -8,13 +8,13 @@
 
 #import "HWAddFriendsViewController.h"
 
-#import "HWFriendsDataSource.h"
+#import "HWAddFriendsDataSource.h"
 
 @interface HWAddFriendsViewController ()<UISearchResultsUpdating>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic) HWFriendsDataSource *friendsDataSource;
+@property (nonatomic) HWAddFriendsDataSource *friendsDataSource;
 
 @end
 
@@ -22,12 +22,12 @@
 
 #pragma mark - Accessors
 
-- (HWFriendsDataSource *)friendsDataSource
+- (HWAddFriendsDataSource *)friendsDataSource
 {
     if (!_friendsDataSource) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.dimsBackgroundDuringPresentation = NO;
-        _friendsDataSource = [[HWFriendsDataSource alloc] initWithSearchController:searchController
+        _friendsDataSource = [[HWAddFriendsDataSource alloc] initWithSearchController:searchController
                                                                   resultsTableView:self.tableView];
     }
     return _friendsDataSource;

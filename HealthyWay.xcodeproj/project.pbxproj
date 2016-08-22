@@ -14,7 +14,6 @@
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
 		44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */; };
-		44CE2ED81D64D0A20087FCD2 /* HWFriendsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */; };
 		44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */; };
 		44CE2EDF1D64D12A0087FCD2 /* HWFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
@@ -36,6 +35,8 @@
 		580C3FBD1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FBC1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m */; };
 		580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FC01D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m */; };
 		580C3FC51D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */; };
+		580C3FC91D6B496000CC3BA8 /* HWFriendsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FC81D6B496000CC3BA8 /* HWFriendsDataSource.m */; };
+		580C3FCC1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FCB1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -112,8 +113,6 @@
 		44930B4E1D54FAC8007A4D41 /* HWAuthViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthViews.h; path = Classes/MVC/Views/Auth/HWAuthViews.h; sourceTree = "<group>"; };
 		44CE2ED11D64C8FD0087FCD2 /* HWAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddFriendsViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.h; sourceTree = "<group>"; };
 		44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddFriendsViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.m; sourceTree = "<group>"; };
-		44CE2ED61D64D0A20087FCD2 /* HWFriendsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsDataSource.h; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.h; sourceTree = "<group>"; };
-		44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsDataSource.m; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.m; sourceTree = "<group>"; };
 		44CE2EDB1D64D12A0087FCD2 /* HWFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendCell.h; path = Classes/Cells/FriendCell/HWFriendCell.h; sourceTree = "<group>"; };
 		44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendCell.m; path = Classes/Cells/FriendCell/HWFriendCell.m; sourceTree = "<group>"; };
 		44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFriendCell.xib; path = Classes/Cells/FriendCell/HWFriendCell.xib; sourceTree = "<group>"; };
@@ -153,6 +152,10 @@
 		580C3FC01D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchRequestingFriendsTask.m; path = Classes/OperationsFlow/Tasks/FetchRequestingFriendsTask/HWFetchRequestingFriendsTask.m; sourceTree = "<group>"; };
 		580C3FC31D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSendOrDenyFriendsRequestTask.h; path = Classes/OperationsFlow/Tasks/SendOrDenyFriendsRequestTask/HWSendOrDenyFriendsRequestTask.h; sourceTree = "<group>"; };
 		580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSendOrDenyFriendsRequestTask.m; path = Classes/OperationsFlow/Tasks/SendOrDenyFriendsRequestTask/HWSendOrDenyFriendsRequestTask.m; sourceTree = "<group>"; };
+		580C3FC71D6B496000CC3BA8 /* HWFriendsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsDataSource.h; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.h; sourceTree = "<group>"; };
+		580C3FC81D6B496000CC3BA8 /* HWFriendsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsDataSource.m; path = Classes/DataSources/FriendsDataSource/HWFriendsDataSource.m; sourceTree = "<group>"; };
+		580C3FCA1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddFriendsDataSource.h; path = Classes/DataSources/AddFriendsDataSource/HWAddFriendsDataSource.h; sourceTree = "<group>"; };
+		580C3FCB1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddFriendsDataSource.m; path = Classes/DataSources/AddFriendsDataSource/HWAddFriendsDataSource.m; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -344,18 +347,19 @@
 		44CE2ED41D64D07C0087FCD2 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				44CE2ED51D64D0810087FCD2 /* FriendsDataSource */,
+				580C3FC61D6B494200CC3BA8 /* FriendsDataSource */,
+				44CE2ED51D64D0810087FCD2 /* AddFriendsDataSource */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
 		};
-		44CE2ED51D64D0810087FCD2 /* FriendsDataSource */ = {
+		44CE2ED51D64D0810087FCD2 /* AddFriendsDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				44CE2ED61D64D0A20087FCD2 /* HWFriendsDataSource.h */,
-				44CE2ED71D64D0A20087FCD2 /* HWFriendsDataSource.m */,
+				580C3FCA1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.h */,
+				580C3FCB1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m */,
 			);
-			name = FriendsDataSource;
+			name = AddFriendsDataSource;
 			sourceTree = "<group>";
 		};
 		44CE2ED91D64D1010087FCD2 /* Cells */ = {
@@ -573,6 +577,15 @@
 				580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */,
 			);
 			name = SendOrDenyFriendsRequestTask;
+			sourceTree = "<group>";
+		};
+		580C3FC61D6B494200CC3BA8 /* FriendsDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FC71D6B496000CC3BA8 /* HWFriendsDataSource.h */,
+				580C3FC81D6B496000CC3BA8 /* HWFriendsDataSource.m */,
+			);
+			name = FriendsDataSource;
 			sourceTree = "<group>";
 		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
@@ -1388,6 +1401,7 @@
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
 				58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */,
 				583F47211D5DF9740099C9E0 /* HWOperationsManager.m in Sources */,
+				580C3FCC1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m in Sources */,
 				586AC89B1D61C3E200685CBA /* HWBaseTask.m in Sources */,
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
@@ -1404,7 +1418,6 @@
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
 				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
 				4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */,
-				44CE2ED81D64D0A20087FCD2 /* HWFriendsDataSource.m in Sources */,
 				586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */,
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
@@ -1425,6 +1438,7 @@
 				58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */,
 				58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */,
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,
+				580C3FC91D6B496000CC3BA8 /* HWFriendsDataSource.m in Sources */,
 				586AC8AA1D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m in Sources */,
 				58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */,
 				580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */,
