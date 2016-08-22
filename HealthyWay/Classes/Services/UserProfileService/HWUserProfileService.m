@@ -101,10 +101,7 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
         if (filteredArray && completion) {
             completion(filteredArray, nil);
         } else if (completion) {
-            NSError *error = [NSError errorWithDomain:@"com.user.mapping.error" code:HWErrorCodeMapping userInfo:@{
-                                                                                                                   ErrorMessage: LOCALIZED(@"Error while mapping the current user")
-                                                                                                                   }];
-            completion(nil, error);
+            completion(@[], nil);
         }
     }];
 }
