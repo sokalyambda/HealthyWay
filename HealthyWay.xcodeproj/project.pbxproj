@@ -32,6 +32,10 @@
 		580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297A1D5B7865009B5118 /* UIImage+EncodeToBase64.m */; };
 		580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */; };
 		580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C29831D5B8126009B5118 /* HWUserProfileData+Mapping.m */; };
+		580C3FB91D6B1CB800CC3BA8 /* HWCheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FB81D6B1CB800CC3BA8 /* HWCheckBoxButton.m */; };
+		580C3FBD1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FBC1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m */; };
+		580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FC01D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m */; };
+		580C3FC51D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */; };
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
@@ -141,6 +145,14 @@
 		580C297E1D5B78AF009B5118 /* NSString+DecodeFromBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+DecodeFromBase64.m"; path = "Classes/Categories/NSString/NSString+DecodeFromBase64/NSString+DecodeFromBase64.m"; sourceTree = "<group>"; };
 		580C29821D5B8126009B5118 /* HWUserProfileData+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWUserProfileData+Mapping.h"; path = "Classes/MVC/Models/UserProfileData/UserProfileData+Mapping/HWUserProfileData+Mapping.h"; sourceTree = "<group>"; };
 		580C29831D5B8126009B5118 /* HWUserProfileData+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWUserProfileData+Mapping.m"; path = "Classes/MVC/Models/UserProfileData/UserProfileData+Mapping/HWUserProfileData+Mapping.m"; sourceTree = "<group>"; };
+		580C3FB71D6B1CB800CC3BA8 /* HWCheckBoxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCheckBoxButton.h; path = Classes/MVC/Views/Friends/CheckboxButton/HWCheckBoxButton.h; sourceTree = "<group>"; };
+		580C3FB81D6B1CB800CC3BA8 /* HWCheckBoxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCheckBoxButton.m; path = Classes/MVC/Views/Friends/CheckboxButton/HWCheckBoxButton.m; sourceTree = "<group>"; };
+		580C3FBB1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchRequestedFriendsTask.h; path = Classes/OperationsFlow/Tasks/FetchRequestedFriendsTask/HWFetchRequestedFriendsTask.h; sourceTree = "<group>"; };
+		580C3FBC1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchRequestedFriendsTask.m; path = Classes/OperationsFlow/Tasks/FetchRequestedFriendsTask/HWFetchRequestedFriendsTask.m; sourceTree = "<group>"; };
+		580C3FBF1D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchRequestingFriendsTask.h; path = Classes/OperationsFlow/Tasks/FetchRequestingFriendsTask/HWFetchRequestingFriendsTask.h; sourceTree = "<group>"; };
+		580C3FC01D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchRequestingFriendsTask.m; path = Classes/OperationsFlow/Tasks/FetchRequestingFriendsTask/HWFetchRequestingFriendsTask.m; sourceTree = "<group>"; };
+		580C3FC31D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSendOrDenyFriendsRequestTask.h; path = Classes/OperationsFlow/Tasks/SendOrDenyFriendsRequestTask/HWSendOrDenyFriendsRequestTask.h; sourceTree = "<group>"; };
+		580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSendOrDenyFriendsRequestTask.m; path = Classes/OperationsFlow/Tasks/SendOrDenyFriendsRequestTask/HWSendOrDenyFriendsRequestTask.m; sourceTree = "<group>"; };
 		5810FF091D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.h"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.h"; sourceTree = "<group>"; };
 		5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HWAuthorizationViewController+AuthViewTransitionSubtype.m"; path = "Classes/MVC/ViewControllers/Authentication/AuthorizationViewController/AuthorizationViewController+AuthViewTransitionSubtype/HWAuthorizationViewController+AuthViewTransitionSubtype.m"; sourceTree = "<group>"; };
 		5810FF0E1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+CompletionBlock.h"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.h"; sourceTree = "<group>"; };
@@ -519,6 +531,50 @@
 			name = "UserProfileData+Mapping";
 			sourceTree = "<group>";
 		};
+		580C3FB51D6B1C0100CC3BA8 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FB61D6B1C0300CC3BA8 /* CheckboxButton */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		580C3FB61D6B1C0300CC3BA8 /* CheckboxButton */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FB71D6B1CB800CC3BA8 /* HWCheckBoxButton.h */,
+				580C3FB81D6B1CB800CC3BA8 /* HWCheckBoxButton.m */,
+			);
+			name = CheckboxButton;
+			sourceTree = "<group>";
+		};
+		580C3FBA1D6B1E7D00CC3BA8 /* FetchRequestedFriendsTask */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FBB1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.h */,
+				580C3FBC1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m */,
+			);
+			name = FetchRequestedFriendsTask;
+			sourceTree = "<group>";
+		};
+		580C3FBE1D6B1E9B00CC3BA8 /* FetchRequestingFriendsTask */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FBF1D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.h */,
+				580C3FC01D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m */,
+			);
+			name = FetchRequestingFriendsTask;
+			sourceTree = "<group>";
+		};
+		580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */ = {
+			isa = PBXGroup;
+			children = (
+				580C3FC31D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.h */,
+				580C3FC41D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m */,
+			);
+			name = SendOrDenyFriendsRequestTask;
+			sourceTree = "<group>";
+		};
 		581049FC1D1D3A4A0082FF4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +615,7 @@
 		581049FF1D1D3A6F0082FF4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				580C3FB51D6B1C0100CC3BA8 /* Friends */,
 				580C29591D5B3D0A009B5118 /* UserProfile */,
 				58B305451D508C170011F405 /* Auth */,
 			);
@@ -735,6 +792,9 @@
 		586AC8971D61C3AE00685CBA /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */,
+				580C3FBE1D6B1E9B00CC3BA8 /* FetchRequestingFriendsTask */,
+				580C3FBA1D6B1E7D00CC3BA8 /* FetchRequestedFriendsTask */,
 				586AC8A71D61CE6900685CBA /* CreateUpdateUserProfileTask */,
 				586AC8A61D61CE6300685CBA /* AuthorizationTask */,
 				586AC8A11D61C9B500685CBA /* FetchUsersTask */,
@@ -1334,6 +1394,7 @@
 				4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */,
 				580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */,
 				583F47281D5DF9A30099C9E0 /* HWAuthorizationService.m in Sources */,
+				580C3FC51D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
@@ -1349,15 +1410,18 @@
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				583F472C1D5E06300099C9E0 /* HWUserProfileService.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
+				580C3FB91D6B1CB800CC3BA8 /* HWCheckBoxButton.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */,
+				580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */,
 				44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */,
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
 				586AC8A41D61C9D000685CBA /* HWFetchUsersTask.m in Sources */,
+				580C3FBD1D6B1E9800CC3BA8 /* HWFetchRequestedFriendsTask.m in Sources */,
 				58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */,
 				58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */,
 				58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */,

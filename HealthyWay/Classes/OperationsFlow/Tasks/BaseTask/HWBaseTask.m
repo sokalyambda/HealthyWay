@@ -10,6 +10,9 @@
 
 @interface HWBaseTask ()
 
+@property (copy, nonatomic, readwrite) TaskSuccess successBlock;
+@property (copy, nonatomic, readwrite) TaskFailure failureBlock;
+
 @end
 
 @implementation HWBaseTask
@@ -27,7 +30,8 @@
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
-    return;
+    self.successBlock = success;
+    self.failureBlock = failure;
 }
 
 @end

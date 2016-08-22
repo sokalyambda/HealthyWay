@@ -13,5 +13,8 @@
 #import "HWFetchUsersTask.h"
 #import "HWCreateUpdateUserProfileTask.h"
 #import "HWAuthorizationTask.h"
+#import "HWSendOrDenyFriendsRequestTask.h"
+#import "HWFetchRequestedFriendsTask.h"
+#import "HWFetchRequestingFriendsTask.h"
 
 #endif /* HWTasks_h */

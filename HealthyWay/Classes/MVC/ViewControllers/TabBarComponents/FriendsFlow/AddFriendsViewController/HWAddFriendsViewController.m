@@ -27,7 +27,8 @@
     if (!_friendsDataSource) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.dimsBackgroundDuringPresentation = NO;
-        _friendsDataSource = [[HWFriendsDataSource alloc] initWithSearchController:searchController];
+        _friendsDataSource = [[HWFriendsDataSource alloc] initWithSearchController:searchController
+                                                                  resultsTableView:self.tableView];
     }
     return _friendsDataSource;
 }

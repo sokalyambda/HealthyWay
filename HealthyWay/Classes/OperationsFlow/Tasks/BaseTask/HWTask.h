@@ -13,6 +13,9 @@ typedef void(^TaskFailure)(NSError *error);
 
 @property (strong, nonatomic, readonly) NSError *error;
 
+@property (copy, nonatomic, readonly) TaskSuccess successBlock;
+@property (copy, nonatomic, readonly) TaskFailure failureBlock;
+
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure;
 

@@ -18,9 +18,6 @@
 
 @property (nonatomic) NSError *error;
 
-@property (copy, nonatomic) TaskSuccess success;
-@property (copy, nonatomic) TaskFailure failure;
-
 @end
 
 @implementation HWAuthorizationTask
@@ -75,9 +72,7 @@
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
-    self.success = success;
-    self.failure = failure;
-    
+    [super performCurrentTaskOnSuccess:success onFailure:failure];
     switch (self.authType) {
         case HWAuthTypeSignIn: {
             [self performSignIn];
@@ -106,11 +101,11 @@
         
         [HWAuthorizationService sendPasswordResetWithEmail:weakSelf.email completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
-            if (error && weakSelf.failure) {
-                return weakSelf.failure(error);
+            if (error && weakSelf.failureBlock) {
+                return weakSelf.failureBlock(error);
             }
-            if (!error && weakSelf.success) {
-                weakSelf.success();
+            if (!error && weakSelf.successBlock) {
+                weakSelf.successBlock();
             }
         }];
     } onFailure:^(NSMutableArray *errorArray) {
@@ -118,8 +113,8 @@
         NSError *validationError = [NSError errorWithDomain:@"com.validation.error" code:HWErrorCodeValidation userInfo:@{ErrorsArrayKey: errorArray}];
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
-        if (weakSelf.failure) {
-            weakSelf.failure(validationError);
+        if (weakSelf.failureBlock) {
+            weakSelf.failureBlock(validationError);
         }
     }];
 }
@@ -133,11 +128,11 @@
     [HWValidator validateEmail:self.email andPassword:self.password onSuccess:^{
         [HWAuthorizationService signInWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError *error) {
             weakSelf.error = error;
-            if (error && weakSelf.failure) {
-                return weakSelf.failure(error);
+            if (error && weakSelf.failureBlock) {
+                return weakSelf.failureBlock(error);
             }
-            if (!error && weakSelf.success) {
-                weakSelf.success();
+            if (!error && weakSelf.successBlock) {
+                weakSelf.successBlock();
             }
         }];
     } onFailure:^(NSMutableArray *errorArray) {
@@ -146,8 +141,8 @@
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
-        if (weakSelf.failure) {
-            weakSelf.failure(validationError);
+        if (weakSelf.failureBlock) {
+            weakSelf.failureBlock(validationError);
         }
     }];
 }
@@ -161,11 +156,11 @@
     [HWValidator validateEmail:self.email andPassword:self.password andConfirmPassword:self.confirmedPassword onSuccess:^{
         [HWAuthorizationService signUpWithEmail:weakSelf.email password:weakSelf.password completion:^(NSError * _Nullable error) {
             weakSelf.error = error;
-            if (error && weakSelf.failure) {
-                return weakSelf.failure(error);
+            if (error && weakSelf.failureBlock) {
+                return weakSelf.failureBlock(error);
             }
-            if (!error && weakSelf.success) {
-                weakSelf.success();
+            if (!error && weakSelf.successBlock) {
+                weakSelf.successBlock();
             }
         }];
         
@@ -175,8 +170,8 @@
         weakSelf.error = validationError;
         [HWValidator cleanValidationErrorArray];
         
-        if (weakSelf.failure) {
-            weakSelf.failure(validationError);
+        if (weakSelf.failureBlock) {
+            weakSelf.failureBlock(validationError);
         }
     }];
 }

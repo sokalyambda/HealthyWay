@@ -7,8 +7,7 @@
 //
 
 #import "HWFriendCell.h"
-
-#import "HWUserProfileData.h"
+#import "HWCheckBoxButton.h"
 
 #import "NSString+DecodeFromBase64.h"
 
@@ -16,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet HWCheckBoxButton *addFriendButton;
 
 @end
 
@@ -23,10 +23,27 @@
 
 #pragma mark - Actions
 
-- (void)configureWithUser:(HWUserProfileData *)user
+- (void)configureWithNameLabelText:(NSString *)nameLabelText
+                base64AvatarString:(NSString *)base64AvatarString
+                   andSearchedText:(NSString *)searchedText;
 {
-    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
-    self.avatarImageView.image = [user.avatarBase64 decodeBase64ToImage];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:nameLabelText];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:[attrString.string rangeOfString:searchedText]];
+    
+    self.nameLabel.attributedText = attrString;
+    self.avatarImageView.image = [base64AvatarString decodeBase64ToImage];
+}
+
+- (void)selectAddFriendButton:(BOOL)select
+{
+    self.addFriendButton.selected = select;
+}
+
+- (IBAction)addFriendClick:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(friendCell:didTapAddFriendButton:)]) {
+        [self.delegate friendCell:self didTapAddFriendButton:sender];
+    }
 }
 
 @end

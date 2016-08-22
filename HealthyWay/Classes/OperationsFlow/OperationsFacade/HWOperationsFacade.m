@@ -118,4 +118,54 @@
     return autologinOperation;
 }
 
++ (HWBaseOperation *)sendFriendsRequestToUserWithId:(NSString *)userId
+                                          onSuccess:(void(^)())success
+                                          onFailure:(TaskFailure)failure
+{
+    HWSendOrDenyFriendsRequestTask *task = [[HWSendOrDenyFriendsRequestTask alloc] initWithRemoteUserId:userId andType:HWSendOrDenyFriendsRequestTaskTypeSend];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success();
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
++ (HWBaseOperation *)denyFriendsRequestToUserWithId:(NSString *)userId
+                                          onSuccess:(void(^)())success
+                                          onFailure:(TaskFailure)failure
+{
+    HWSendOrDenyFriendsRequestTask *task = [[HWSendOrDenyFriendsRequestTask alloc] initWithRemoteUserId:userId andType:HWSendOrDenyFriendsRequestTaskTypeDeny];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success();
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
++ (HWBaseOperation *)fetchRequestedFriendsIdsOnSuccess:(void(^)(NSArray *requestedFriendsIds))success
+                                             onFailure:(TaskFailure)failure
+{
+    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] init];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success(task.requestedFriends);
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
 @end

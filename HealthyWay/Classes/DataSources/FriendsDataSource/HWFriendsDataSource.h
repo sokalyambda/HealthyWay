@@ -10,6 +10,7 @@
 
 @property (nonatomic, readonly) UISearchController *searchController;
 
-- (instancetype)initWithSearchController:(UISearchController *)searchController;
+- (instancetype)initWithSearchController:(UISearchController *)searchController
+                        resultsTableView:(UITableView *)tableView;
 
 @end

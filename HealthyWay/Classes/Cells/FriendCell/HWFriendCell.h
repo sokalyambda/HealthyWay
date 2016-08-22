@@ -6,10 +6,22 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@class HWUserProfileData;
+@protocol HWFriendCellDelegate;
 
 @interface HWFriendCell : UITableViewCell
 
-- (void)configureWithUser:(HWUserProfileData *)user;
+@property (weak, nonatomic) id<HWFriendCellDelegate> delegate;
+
+- (void)selectAddFriendButton:(BOOL)select;
+- (void)configureWithNameLabelText:(NSString *)nameLabelText
+                base64AvatarString:(NSString *)base64AvatarString
+                   andSearchedText:(NSString *)searchedText;
+
+@end
+
+@protocol HWFriendCellDelegate <NSObject>
+
+@optional
+- (void)friendCell:(HWFriendCell *)cell didTapAddFriendButton:(UIButton *)button;
 
 @end

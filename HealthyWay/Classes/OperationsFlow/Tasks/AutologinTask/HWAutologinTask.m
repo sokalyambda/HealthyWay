@@ -26,6 +26,7 @@
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
+    [super performCurrentTaskOnSuccess:success onFailure:failure];
     WEAK_SELF;
     [HWAuthorizationService getTokenWithCompletion:^(NSString *token, NSError *error) {
         weakSelf.token = token;

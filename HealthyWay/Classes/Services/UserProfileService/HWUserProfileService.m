@@ -10,9 +10,11 @@
 
 #import "HWUserProfileData+Mapping.h"
 
-static NSString *const kFirstName   = @"firstName";
-static NSString *const kLastName    = @"lastName";
-static NSString *const kDateOfBirth = @"dateOfBirth";
+static NSString *const kFirstName           = @"firstName";
+static NSString *const kLastName            = @"lastName";
+static NSString *const kDateOfBirth         = @"dateOfBirth";
+static NSString *const kUserId              = @"userId";
+static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
 
 @implementation HWUserProfileService
 
@@ -66,10 +68,7 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
             if (currentUserProfile && completion) {
                 completion(@[currentUserProfile], nil);
             } else if (completion) {
-                NSError *error = [NSError errorWithDomain:@"com.user.mapping.error" code:HWErrorCodeMapping userInfo:@{
-                                                                                                                       ErrorMessage: LOCALIZED(@"Error while mapping the current user")
-                                                                                                                       }];
-                completion(nil, error);
+                completion(@[], nil);
             }
         }];
     } else {
@@ -85,17 +84,22 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
 {
     FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
     
-    FIRDatabaseQuery *query = [[usersReference queryOrderedByChild:kFirstName] queryStartingAtValue:searchString];
+    FIRDatabaseQuery *query = [usersReference queryOrderedByChild:kFirstName];
     
+    WEAK_SELF;
     [query observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         
         NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
-        //GET all values from this dictw
-//        HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
-//        [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
         
-        if (userData && completion) {
-            completion(@[userData], nil);
+        // GET all values from this dict
+        NSArray *mappedUsers = [weakSelf mappedUserProfilesDataFromArray:userData.allValues];
+        
+        // Filter the data
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullName CONTAINS[cd] %@ && userId != %@", searchString, self.currentUserId];
+        NSArray *filteredArray = [mappedUsers filteredArrayUsingPredicate:predicate];
+        
+        if (filteredArray && completion) {
+            completion(filteredArray, nil);
         } else if (completion) {
             NSError *error = [NSError errorWithDomain:@"com.user.mapping.error" code:HWErrorCodeMapping userInfo:@{
                                                                                                                    ErrorMessage: LOCALIZED(@"Error while mapping the current user")
@@ -110,22 +114,86 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
 {
     NSString *currentUserId = self.currentUserId;
     FIRDatabaseReference *userReference = [[self.dataBaseReference child:UsersKey] child:currentUserId];
-    
+
     [userReference observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        
+        NSMutableDictionary *parameters = [userProfileParameters mutableCopy];
+        [parameters setObject:currentUserId forKey:kUserId];
         
         if (snapshot.exists) {
             /**
              *  Update current user because we already have one created
              */
-            [[[self.dataBaseReference child:UsersKey] child:currentUserId] updateChildValues:userProfileParameters];
+            [userReference updateChildValues:parameters];
         } else {
             /**
              *  Set the current user by his uid (it should be obtained after authorization)
              */
-            [[[self.dataBaseReference child:UsersKey] child:currentUserId] setValue:userProfileParameters];
+            [userReference setValue:parameters];
         }
         
-        [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", userProfileParameters[kFirstName], userProfileParameters[kLastName]] photoURL:nil withCompletion:completion];
+        [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", parameters[kFirstName], parameters[kLastName]] photoURL:nil withCompletion:completion];
+    }];
+}
+
++ (void)sendFriendsRequestForUserWithId:(NSString *)userId
+                           onCompletion:(void(^)(NSError *error))completion
+{
+    FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
+    
+    [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSMutableArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
+            if (![requestedFriends containsObject:userId]) {
+                [requestedFriends addObject:userId];
+            }
+            [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
+
+        } else {
+            
+            [requestedFriendsRef setValue:@{kRequestedFriendsIds: @[userId]}];
+        }
+    }];
+}
+
++ (void)denyFriendsRequestForUserWithId:(NSString *)userId
+                           onCompletion:(void(^)(NSError *error))completion
+{
+    FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
+    
+    [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSMutableArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
+            if ([requestedFriends containsObject:userId]) {
+                [requestedFriends removeObject:userId];
+            }
+            
+            [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
+        } else {
+            
+            return;
+        }
+    }];
+}
+
++ (void)fetchRequestedFriendsIdsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion
+{
+    FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
+    
+    [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
+            if (completion) {
+                completion(requestedFriends);
+            }
+            
+        } else if (completion) {
+            
+            completion(@[]);
+        }
     }];
 }
 
@@ -142,20 +210,31 @@ static NSString *const kDateOfBirth = @"dateOfBirth";
     HWUserProfileData *mappedUser = [EKMapper objectFromExternalRepresentation:user withMapping:mapping];
     NSTimeInterval dateOfBirthTimeStamp = [user[kDateOfBirth] doubleValue];
     NSDate *dateOfBirth = [NSDate dateWithTimeIntervalSince1970:dateOfBirthTimeStamp];
-    [mappedUser setValue:dateOfBirth forKey:@"dateOfBirth"];
+    [mappedUser setValue:dateOfBirth forKey:kDateOfBirth];
     
     return mappedUser;
 }
 
+/**
+ *  Map the array of users to entities
+ *
+ *  @param users Array for mapping
+ *
+ *  @return Array of mapped entities
+ */
 + (NSArray *)mappedUserProfilesDataFromArray:(NSArray *)users
 {
     EKObjectMapping *mapping = [HWUserProfileData defaultMapping];
     NSArray *mappedUsers = [EKMapper arrayOfObjectsFromExternalRepresentation:users withMapping:mapping];
-    return mappedUsers;
     
-//    NSTimeInterval dateOfBirthTimeStamp = [user[kDateOfBirth] doubleValue];
-//    NSDate *dateOfBirth = [NSDate dateWithTimeIntervalSince1970:dateOfBirthTimeStamp];
-//    [mappedUser setValue:dateOfBirth forKey:@"dateOfBirth"];
+    [mappedUsers enumerateObjectsUsingBlock:^(HWUserProfileData  *_Nonnull mappedUser, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *rawUserDict = users[idx];
+        NSTimeInterval dateOfBirthTimeStamp = [rawUserDict[kDateOfBirth] doubleValue];
+        NSDate *dateOfBirth = [NSDate dateWithTimeIntervalSince1970:dateOfBirthTimeStamp];
+        [mappedUser setValue:dateOfBirth forKey:kDateOfBirth];
+    }];
+    
+    return mappedUsers;
 }
 
 @end

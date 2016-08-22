@@ -40,4 +40,15 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
 + (HWBaseOperation *)performAutologinOnSuccess:(void(^)(NSArray *users, NSString *token))success
                                      onFailure:(FailureBlock)failure;
 
++ (HWBaseOperation *)sendFriendsRequestToUserWithId:(NSString *)userId
+                                          onSuccess:(void(^)())success
+                                          onFailure:(TaskFailure)failure;
+
++ (HWBaseOperation *)denyFriendsRequestToUserWithId:(NSString *)userId
+                                          onSuccess:(void(^)())success
+                                          onFailure:(TaskFailure)failure;
+
++ (HWBaseOperation *)fetchRequestedFriendsIdsOnSuccess:(void(^)(NSArray *requestedFriendsIds))success
+                                             onFailure:(TaskFailure)failure;
+
 @end

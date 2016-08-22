@@ -52,31 +52,34 @@
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
+    [super performCurrentTaskOnSuccess:success onFailure:failure];
     WEAK_SELF;
     switch (self.taskType) {
         case HWFetchUsersTaskTypeTypeAll: {
             [HWUserProfileService fetchUsersDataWithSearchString:self.searchedText onCompletion:^(NSArray *users, NSError *error) {
-                
+                [weakSelf completeTaskWithUsers:users error:error];
             }];
             break;
         }
         case HWFetchUsersTaskTypeCurrent: {
-            
             [HWUserProfileService fetchCurrentUserDataWithCompletion:^(NSArray *users, NSError *error) {
-                
-                weakSelf.users = users;
-                weakSelf.error = error;
-                
-                if (error && failure) {
-                    return failure(error);
-                }
-                if (!error && success) {
-                    return success(users);
-                }
-                
+                [weakSelf completeTaskWithUsers:users error:error];
             }];
             break;
         }
+    }
+}
+
+- (void)completeTaskWithUsers:(NSArray *)users error:(NSError *)error
+{
+    self.users = users;
+    self.error = error;
+    
+    if (error && self.failureBlock) {
+        return self.failureBlock(error);
+    }
+    if (!error && self.successBlock) {
+        return self.successBlock(users);
     }
 }
 

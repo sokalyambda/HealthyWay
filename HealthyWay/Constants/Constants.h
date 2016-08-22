@@ -18,6 +18,8 @@ static NSString *const IsFirstLaunch        = @"IsFirstLaunch";
 // Firebase Database Keys
 
 static NSString *const UsersKey = @"users";
+static NSString *const RequestedFriendsKey = @"requestedFriends";
+static NSString *const RequestingFriendsKey = @"requestingFriends";
 
 // Validation
 

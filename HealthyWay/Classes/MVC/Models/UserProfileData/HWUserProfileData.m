@@ -16,6 +16,14 @@
 @synthesize dateOfBirth = _dateOfBirth;
 @synthesize avatarBase64 = _avatarBase64;
 @synthesize isMale = _isMale;
+@synthesize userId = _userId;
+
+#pragma mark - Accessors
+
+- (NSString *)fullName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
 
 #pragma mark - Lifecycle
 

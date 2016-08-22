@@ -43,4 +43,26 @@
 + (void)createUpdateUserProfileWithParameters:(NSDictionary *)userProfileParameters
                                  onCompletion:(void(^)(NSError *error))completion;
 
+/**
+ *  Send friends request to specific user
+ *
+ *  @param userId     User to be friends with
+ *  @param completion Completion block
+ */
++ (void)sendFriendsRequestForUserWithId:(NSString *)userId
+                           onCompletion:(void(^)(NSError *error))completion;
+
+/**
+ *  Deny friends request to specific user
+ */
++ (void)denyFriendsRequestForUserWithId:(NSString *)userId
+                           onCompletion:(void(^)(NSError *error))completion;
+
+/**
+ *  Fetch current user's requested friends ids
+ *
+ *  @param completion Completion Block
+ */
++ (void)fetchRequestedFriendsIdsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion;
+
 @end

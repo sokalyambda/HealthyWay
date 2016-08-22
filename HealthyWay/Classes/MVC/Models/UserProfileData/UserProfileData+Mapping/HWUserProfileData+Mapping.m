@@ -13,6 +13,7 @@ static NSString *const lastNameKey      = @"lastName";
 static NSString *const nickNameKey      = @"nickName";
 static NSString *const avatarBase64Key  = @"avatarBase64";
 static NSString *const isMaleKey        = @"isMale";
+static NSString *const userIdKey        = @"userId";
 
 @implementation HWUserProfileData (Mapping)
 
@@ -24,7 +25,8 @@ static NSString *const isMaleKey        = @"isMale";
                                           lastNameKey,
                                           nickNameKey,
                                           avatarBase64Key,
-                                          isMaleKey]];
+                                          isMaleKey,
+                                          userIdKey]];
         
         
     }];

@@ -12,12 +12,12 @@
 
 #import "HWUserProfileService.h"
 
-NSString *const kFirstName           = @"firstName";
-NSString *const kLastName            = @"lastName";
-NSString *const kNickName            = @"nickName";
-NSString *const kIsMale              = @"isMale";
-NSString *const kDateOfBirth         = @"dateOfBirth";
-NSString *const kAvatarBase64String  = @"avatarBase64";
+static NSString *const kFirstName           = @"firstName";
+static NSString *const kLastName            = @"lastName";
+static NSString *const kNickName            = @"nickName";
+static NSString *const kIsMale              = @"isMale";
+static NSString *const kDateOfBirth         = @"dateOfBirth";
+static NSString *const kAvatarBase64String  = @"avatarBase64";
 
 @interface HWCreateUpdateUserProfileTask ()
 
@@ -94,6 +94,7 @@ NSString *const kAvatarBase64String  = @"avatarBase64";
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
+    [super performCurrentTaskOnSuccess:success onFailure:failure];
     WEAK_SELF;
     [HWValidator validateFirstName:self.firstName lastName:self.lastName nickName:self.nickName dateOfBirth:self.dateOfBirth onSuccess:^{
         NSDictionary *parameters = @{
