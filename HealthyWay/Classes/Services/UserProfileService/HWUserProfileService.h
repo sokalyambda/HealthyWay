@@ -71,6 +71,13 @@
  *
  *  @param completion Completion Block
  */
-+ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion;
++ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriends))completion;
+
+/**
+ *  Get arrat of requesting friends
+ *
+ *  @param completion Completion Block
+ */
++ (void)fetchRequestingFriendsOnCompletion:(void(^)(NSArray *requestingFriends))completion;
 
 @end

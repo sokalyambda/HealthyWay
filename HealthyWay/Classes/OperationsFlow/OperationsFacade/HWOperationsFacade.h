@@ -54,4 +54,7 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
 + (HWBaseOperation *)fetchRequestedFriendsOnSuccess:(void(^)(NSArray *requestedFriends))success
                                           onFailure:(TaskFailure)failure;
 
++ (HWBaseOperation *)fetchRequestingFriendsOnSuccess:(void(^)(NSArray *requestingFriends))success
+                                           onFailure:(TaskFailure)failure;
+
 @end

@@ -184,4 +184,20 @@
     return operation;
 }
 
++ (HWBaseOperation *)fetchRequestingFriendsOnSuccess:(void(^)(NSArray *requestingFriends))success
+                                           onFailure:(TaskFailure)failure
+{
+    HWFetchRequestingFriendsTask *task = [[HWFetchRequestingFriendsTask alloc] init];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success(task.requestingFriends);
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
 @end

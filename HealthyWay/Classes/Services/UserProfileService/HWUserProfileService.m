@@ -10,11 +10,12 @@
 
 #import "HWUserProfileData+Mapping.h"
 
-static NSString *const kFirstName           = @"firstName";
-static NSString *const kLastName            = @"lastName";
-static NSString *const kDateOfBirth         = @"dateOfBirth";
-static NSString *const kUserId              = @"userId";
-static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
+static NSString *const kFirstName            = @"firstName";
+static NSString *const kLastName             = @"lastName";
+static NSString *const kDateOfBirth          = @"dateOfBirth";
+static NSString *const kUserId               = @"userId";
+static NSString *const kRequestedFriendsIds  = @"requestedFriendsIds";
+static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
 
 @implementation HWUserProfileService
 
@@ -153,6 +154,8 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
 {
     FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
     
+    FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:userId];
+    
     [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
             
@@ -166,6 +169,24 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
             
             [requestedFriendsRef setValue:@{kRequestedFriendsIds: @[userId]}];
         }
+        
+        [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            
+            if (snapshot.exists) {
+                
+                NSMutableArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+                if (![requestingFriendsIds containsObject:self.currentUserId]) {
+                    [requestingFriendsIds addObject:self.currentUserId];
+                }
+                [requestingFriendsRef updateChildValues:@{kRequestingFriendsIds: requestingFriendsIds}];
+                
+            } else {
+                
+                [requestingFriendsRef setValue:@{kRequestingFriendsIds: @[self.currentUserId]}];
+            }
+            
+        }];
+        
     }];
 }
 
@@ -173,6 +194,7 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
                            onCompletion:(void(^)(NSError *error))completion
 {
     FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
+    FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:userId];
     
     [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
@@ -183,6 +205,21 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
             }
             
             [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
+        } else {
+            
+            return;
+        }
+    }];
+    
+    [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSMutableArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+            if ([requestingFriendsIds containsObject:self.currentUserId]) {
+                [requestingFriendsIds removeObject:self.currentUserId];
+            }
+            
+            [requestedFriendsRef updateChildValues:@{kRequestingFriendsIds: requestingFriendsIds}];
         } else {
             
             return;
@@ -209,7 +246,7 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
     }];
 }
 
-+ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion
++ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriends))completion
 {
     FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
     
@@ -228,6 +265,39 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId IN %@", requestedFriendsIds];
                 NSArray *requestedFriends = [mappedUsers filteredArrayUsingPredicate:predicate];
 
+                [self p_fetchAvatarsForUsers:requestedFriends withCompletion:^{
+                    if (completion) {
+                        completion(requestedFriends);
+                    }
+                }];
+            }];
+            
+        } else if (completion) {
+            
+            completion(@[]);
+        }
+    }];
+}
+
++ (void)fetchRequestingFriendsOnCompletion:(void(^)(NSArray *requestingFriends))completion
+{
+    FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:self.currentUserId];
+    
+    [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+            
+            FIRDatabaseQuery *usersQuery = [[self.dataBaseReference child:UsersKey] queryOrderedByKey];
+            
+            [usersQuery observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
+                
+                NSArray *mappedUsers = [self mappedUserProfilesDataFromArray:userData.allValues];
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId IN %@", requestingFriendsIds];
+                NSArray *requestedFriends = [mappedUsers filteredArrayUsingPredicate:predicate];
+                
                 [self p_fetchAvatarsForUsers:requestedFriends withCompletion:^{
                     if (completion) {
                         completion(requestedFriends);
