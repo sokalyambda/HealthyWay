@@ -8,9 +8,12 @@
 
 #import "HWSettingsFlowTableViewController.h"
 
+#import "HWChangeEmailController.h"
+#import "HWChangePasswordController.h"
+
 typedef enum : NSUInteger {
-    HWSettingsFlowTableViewCellTypeChangeEmaile,
     HWSettingsFlowTableViewCellTypeChangePassword,
+    HWSettingsFlowTableViewCellTypeChangeEmaile,
 } HWSettingsFlowTableViewCellType;
 
 @interface HWSettingsFlowTableViewController ()
@@ -33,9 +36,11 @@ typedef enum : NSUInteger {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == HWSettingsFlowTableViewCellTypeChangeEmaile) {
-        DLog(@"%lu", (unsigned long)HWSettingsFlowTableViewCellTypeChangeEmaile);
+        HWChangeEmailController *vc = [[HWChangeEmailController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (indexPath.row == HWSettingsFlowTableViewCellTypeChangePassword) {
-        DLog(@"%lu", (unsigned long)HWSettingsFlowTableViewCellTypeChangePassword);
+        HWChangePasswordController *vc = [[HWChangePasswordController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
