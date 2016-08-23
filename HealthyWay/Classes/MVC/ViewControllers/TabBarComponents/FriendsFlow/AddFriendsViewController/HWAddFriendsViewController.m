@@ -8,13 +8,13 @@
 
 #import "HWAddFriendsViewController.h"
 
-#import "HWAddFriendsDataSource.h"
+#import "HWBaseDataSource.h"
 
-@interface HWAddFriendsViewController ()<UISearchResultsUpdating>
+@interface HWAddFriendsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic) HWAddFriendsDataSource *friendsDataSource;
+@property (nonatomic) HWBaseDataSource *friendsDataSource;
 
 @end
 
@@ -22,24 +22,23 @@
 
 #pragma mark - Accessors
 
-- (HWAddFriendsDataSource *)friendsDataSource
+- (HWBaseDataSource *)friendsDataSource
 {
     if (!_friendsDataSource) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.dimsBackgroundDuringPresentation = NO;
-        _friendsDataSource = [[HWAddFriendsDataSource alloc] initWithSearchController:searchController
-                                                                  resultsTableView:self.tableView];
+        _friendsDataSource = [HWBaseDataSource dataSourceWithType:HWDataSourceTypeAddFriends
+                                                     forTableView:self.tableView
+                                              andSearchController:searchController];
     }
     return _friendsDataSource;
 }
 
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
-    
+    [super viewWillAppear:animated];
     
     self.definesPresentationContext = YES;
     self.tableView.tableHeaderView = self.friendsDataSource.searchController.searchBar;
@@ -50,13 +49,6 @@
 - (void)performAdditionalViewControllerAdjustments
 {
     self.navigationItem.title = LOCALIZED(@"Add Friend");
-}
-
-#pragma mark - UISearchResultsUpdating
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchControlle
-{
-    
 }
 
 @end

@@ -14,8 +14,7 @@
 
 @interface HWAddFriendsDataSource ()<HWFriendCellDelegate>
 
-@property (nonatomic) NSArray *friends;
-@property (nonatomic) UITableView *tableView;
+@property (nonatomic) NSArray *possibleFriends;
 
 @property (nonatomic) NSArray *requestedFriendsIds;
 
@@ -25,54 +24,27 @@
 
 #pragma mark - Accessors
 
-- (void)setFriends:(NSArray *)friends
+- (NSArray *)dataSourceArray
+{
+    return self.possibleFriends;
+}
+
+- (void)setPossibleFriends:(NSArray *)friends
 {
     WEAK_SELF;
     [self fetchRequestedFriendsIdsWithCompletion:^{
-        _friends = friends;
+        _possibleFriends = friends;
         
         [weakSelf.tableView reloadData];
     }];
 }
 
-- (void)setTableView:(UITableView *)tableView
-{
-    _tableView = tableView;
-    
-    [self adjustTableView];
-    
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-}
-
-#pragma mark - Lifecycle
-
-- (instancetype)initWithSearchController:(UISearchController *)searchController
-                        resultsTableView:(UITableView *)tableView
-{
-    self = [super init];
-    
-    if (self) {
-        _searchController = searchController;
-        _searchController.searchResultsUpdater = self;
-        
-        self.tableView = tableView;
-    }
-    
-    return self;
-}
-
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (UITableViewCell *)tableViewCellForIndexPath:(NSIndexPath *)indexPath
 {
-    return self.friends.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HWFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
-    HWUserProfileData *user = self.friends[indexPath.row];
+    HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
+    HWUserProfileData *user = self.possibleFriends[indexPath.row];
     [cell configureWithNameLabelText:user.fullName
                   base64AvatarString:user.avatarBase64
                      andSearchedText:self.searchController.searchBar.text];
@@ -82,30 +54,13 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewAutomaticDimension;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewAutomaticDimension;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 #pragma mark - UISearchResultsUpdating
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
     WEAK_SELF;
     [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeTypeAll searchString:searchController.searchBar.text onSuccess:^(NSArray *users) {
-        weakSelf.friends = users;
+        weakSelf.possibleFriends = users;
     } onFailure:^(NSError *error, BOOL isCancelled) {
         
     }];
@@ -134,23 +89,13 @@
     [self.tableView registerNib:friendCellNib forCellReuseIdentifier:NSStringFromClass([HWFriendCell class])];
 }
 
-- (void)adjustTableView
-{
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
-    
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    
-    [self registerNibs];
-}
-
 #pragma mark - HWFriendCellDelegate
 
 - (void)friendCell:(HWFriendCell *)cell didTapAddFriendButton:(UIButton *)button
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath) {
-        HWUserProfileData *userToBeAFriend = self.friends[indexPath.row];
+        HWUserProfileData *userToBeAFriend = self.possibleFriends[indexPath.row];
         if (button.selected) {
             [HWOperationsFacade sendFriendsRequestToUserWithId:userToBeAFriend.userId onSuccess:^{
                 

@@ -50,6 +50,7 @@
 		586AC8AA1D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8A91D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m */; };
 		586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AC1D61E8FE00685CBA /* HWAuthorizationTask.m */; };
 		586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AF1D61F85000685CBA /* HWBaseOperation.m */; };
+		58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -186,6 +187,8 @@
 		586AC8AF1D61F85000685CBA /* HWBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseOperation.m; path = Classes/OperationsFlow/BaseOperation/HWBaseOperation.m; sourceTree = "<group>"; };
 		586AC8B11D61F86800685CBA /* HWAuthTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthTypes.h; path = HealthyWay/Classes/OperationsFlow/Tasks/AuthorizationTask/AuthTypes/HWAuthTypes.h; sourceTree = SOURCE_ROOT; };
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
+		58A1FADD1D6C418E007EFB90 /* HWBaseDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseDataSource.h; path = Classes/DataSources/BaseDataSource/HWBaseDataSource.h; sourceTree = "<group>"; };
+		58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseDataSource.m; path = Classes/DataSources/BaseDataSource/HWBaseDataSource.m; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
 		58A2A7A21D4F88D9006DBC38 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 		44CE2ED41D64D07C0087FCD2 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				58A1FADC1D6C4133007EFB90 /* BaseDataSource */,
 				580C3FC61D6B494200CC3BA8 /* FriendsDataSource */,
 				44CE2ED51D64D0810087FCD2 /* AddFriendsDataSource */,
 			);
@@ -862,6 +866,15 @@
 				586AC8A91D61DFB100685CBA /* HWCreateUpdateUserProfileTask.m */,
 			);
 			name = CreateUpdateUserProfileTask;
+			sourceTree = "<group>";
+		};
+		58A1FADC1D6C4133007EFB90 /* BaseDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				58A1FADD1D6C418E007EFB90 /* HWBaseDataSource.h */,
+				58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */,
+			);
+			name = BaseDataSource;
 			sourceTree = "<group>";
 		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
@@ -1445,6 +1458,7 @@
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */,
+				58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */,
 				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,

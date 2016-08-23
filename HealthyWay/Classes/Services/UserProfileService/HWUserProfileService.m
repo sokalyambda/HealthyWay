@@ -182,10 +182,41 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
     [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
             
-            NSArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
+            NSArray *requestedFriendsIds = snapshot.value[kRequestedFriendsIds];
             if (completion) {
-                completion(requestedFriends);
+                completion(requestedFriendsIds);
             }
+            
+        } else if (completion) {
+            
+            completion(@[]);
+        }
+    }];
+}
+
++ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion
+{
+    FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
+    
+    [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSArray *requestedFriendsIds = snapshot.value[kRequestedFriendsIds];
+            
+            FIRDatabaseQuery *usersQuery = [[self.dataBaseReference child:UsersKey] queryOrderedByKey];
+            
+            [usersQuery observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
+
+                NSArray *mappedUsers = [self mappedUserProfilesDataFromArray:userData.allValues];
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId IN %@", requestedFriendsIds];
+                NSArray *requestedFriends = [mappedUsers filteredArrayUsingPredicate:predicate];
+
+                if (completion) {
+                    completion(requestedFriends);
+                }
+            }];
             
         } else if (completion) {
             

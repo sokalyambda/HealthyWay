@@ -155,7 +155,23 @@
 + (HWBaseOperation *)fetchRequestedFriendsIdsOnSuccess:(void(^)(NSArray *requestedFriendsIds))success
                                              onFailure:(TaskFailure)failure
 {
-    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] init];
+    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] initWithFetchType:HWFetchRequestedFriendsTaskTypeIds];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success(task.requestedFriendsIds);
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
++ (HWBaseOperation *)fetchRequestedFriendsOnSuccess:(void(^)(NSArray *requestedFriends))success
+                                          onFailure:(TaskFailure)failure
+{
+    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] initWithFetchType:HWFetchRequestedFriendsTaskTypeEntities];
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
             success(task.requestedFriends);

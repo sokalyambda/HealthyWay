@@ -6,8 +6,8 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@interface HWFriendsDataSource : NSObject<UITableViewDelegate, UITableViewDataSource>
+#import "HWBaseDataSource.h"
 
-- (instancetype)initWithTableView:(UITableView *)tableView;
+@interface HWFriendsDataSource : HWBaseDataSource
 
 @end

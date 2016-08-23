@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7ZF-8w-hQM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7ZF-8w-hQM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <!--Friends-->
         <scene sceneID="kYg-tk-NFv">
             <objects>
-                <viewController storyboardIdentifier="HWFriendsViewController" id="IkT-SM-uHi" customClass="HWFriendsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HWFriendsViewController" automaticallyAdjustsScrollViewInsets="NO" id="IkT-SM-uHi" customClass="HWFriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eeJ-x7-JOR"/>
                         <viewControllerLayoutGuide type="bottom" id="m4T-38-Oeh"/>
@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="Ms3-wC-0dl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.81176470590000005" green="0.36078431370000003" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nBB-6D-M5y">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nBB-6D-M5y" secondAttribute="trailing" id="B2X-I5-MuK"/>
+                            <constraint firstItem="nBB-6D-M5y" firstAttribute="leading" secondItem="Ms3-wC-0dl" secondAttribute="leading" id="FdK-tW-8Ry"/>
+                            <constraint firstItem="m4T-38-Oeh" firstAttribute="top" secondItem="nBB-6D-M5y" secondAttribute="bottom" id="KXc-nj-F2o"/>
+                            <constraint firstItem="nBB-6D-M5y" firstAttribute="top" secondItem="eeJ-x7-JOR" secondAttribute="bottom" id="bqh-Gk-u9K"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="3eu-Nl-mF6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NcJ-yY-2wM">
@@ -25,6 +37,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="nBB-6D-M5y" id="Hkl-cW-e5h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CO-Wy-fKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

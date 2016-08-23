@@ -65,4 +65,11 @@
  */
 + (void)fetchRequestedFriendsIdsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion;
 
+/**
+ *  Get array of requested friends
+ *
+ *  @param completion Completion Block
+ */
++ (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion;
+
 @end

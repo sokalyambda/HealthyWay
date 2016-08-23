@@ -6,11 +6,8 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@interface HWAddFriendsDataSource : NSObject<UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
+#import "HWBaseDataSource.h"
 
-@property (nonatomic, readonly) UISearchController *searchController;
-
-- (instancetype)initWithSearchController:(UISearchController *)searchController
-                        resultsTableView:(UITableView *)tableView;
+@interface HWAddFriendsDataSource : HWBaseDataSource
 
 @end

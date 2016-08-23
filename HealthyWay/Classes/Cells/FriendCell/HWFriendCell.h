@@ -16,6 +16,8 @@
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
                 base64AvatarString:(NSString *)base64AvatarString
                    andSearchedText:(NSString *)searchedText;
+- (void)configureWithNameLabelText:(NSString *)nameLabelText
+                base64AvatarString:(NSString *)base64AvatarString;
 
 @end
 
