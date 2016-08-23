@@ -24,8 +24,8 @@
 #pragma mark - Actions
 
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
-                base64AvatarString:(NSString *)base64AvatarString
-                   andSearchedText:(NSString *)searchedText;
+                         avatarURL:(NSURL *)avatarURL
+                   andSearchedText:(NSString *)searchedText
 {
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:nameLabelText];
     
@@ -34,15 +34,16 @@
     }
     
     self.nameLabel.attributedText = attrString;
-    self.avatarImageView.image = [base64AvatarString decodeBase64ToImage];
+    
+    [self.avatarImageView sd_setImageWithURL:avatarURL];
     
     self.addFriendButton.hidden = !searchedText;
 }
 
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
-                base64AvatarString:(NSString *)base64AvatarString
+                         avatarURL:(NSURL *)avatarURL
 {
-    [self configureWithNameLabelText:nameLabelText base64AvatarString:base64AvatarString andSearchedText:nil];
+    [self configureWithNameLabelText:nameLabelText avatarURL:avatarURL andSearchedText:nil];
 }
 
 - (void)selectAddFriendButton:(BOOL)select

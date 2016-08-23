@@ -10,11 +10,12 @@
 
 @interface HWUserProfileData : NSObject<HWUserProfile>
 
+- (void)setAvatarURLString:(NSString *)avatarURLString;
+
 - (instancetype)initWithFirstName:(NSString *)firstName
                          lastName:(NSString *)lastName
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
-                     avatarBase64:(NSString *)avatarBase64
                            isMale:(NSNumber *)isMale;
 
 @end

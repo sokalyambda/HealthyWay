@@ -70,7 +70,7 @@
                      lastName:(NSString *)lastName
                      nickName:(NSString *)nickName
                   dateOfBirth:(NSDate *)dateOfBirth
-                 avatarBase64:(NSString *)avatarBase64
+                   avatarData:(NSData *)avatarData
                        isMale:(NSNumber *)isMale
 {
     WEAK_SELF;
@@ -80,7 +80,7 @@
                                              lastName:lastName
                                              nickName:nickName
                                           dateOfBirth:dateOfBirth
-                                         avatarBase64:avatarBase64
+                                         avatarData:avatarData
                                                isMale:isMale onSuccess:^ {
                                                    [weakSelf hideProgressHud];
                                                    [weakSelf didUpdateUser];

@@ -14,7 +14,6 @@
 
 #import "UIView+MakeFromXib.h"
 #import "HWUserProfileController+ImagePicker.h"
-#import "UIImage+EncodeToBase64.h"
 
 @interface HWUserProfileController ()<HWBirthDatePickerDelegate>
 
@@ -87,13 +86,13 @@
 
 - (void)performCreateUpdateUser
 {
-    if ([self.delegate respondsToSelector:@selector(userProfileController:didPrepareUpdWithFirstName:lastName:nickName:dateOfBirth:avatarBase64:isMale:)]) {
+    if ([self.delegate respondsToSelector:@selector(userProfileController:didPrepareUpdWithFirstName:lastName:nickName:dateOfBirth:avatarData:isMale:)]) {
         [self.delegate userProfileController:self
                   didPrepareUpdWithFirstName:self.firstNameField.text
                                     lastName:self.lastNameField.text
                                     nickName:self.nickNameField.text
                                  dateOfBirth:self.dateOfBirth
-                                avatarBase64:[self.userAvatarImageView.image encodeToBase64String]
+                                  avatarData:UIImageJPEGRepresentation(self.userAvatarImageView.image, 1.f)
                                       isMale:@(self.genderSegmentedControl.selectedSegmentIndex)];
     }
 }

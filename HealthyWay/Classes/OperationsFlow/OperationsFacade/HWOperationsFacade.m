@@ -69,7 +69,7 @@
                                           lastName:(NSString *)lastName
                                           nickName:(NSString *)nickName
                                        dateOfBirth:(NSDate *)dateOfBirth
-                                      avatarBase64:(NSString *)avatarBase64
+                                        avatarData:(NSData *)avatarData
                                             isMale:(NSNumber *)isMale
                                          onSuccess:(void(^)())success
                                          onFailure:(FailureBlock)failure
@@ -78,7 +78,7 @@
                                                                                           lastName:lastName
                                                                                           nickName:nickName
                                                                                        dateOfBirth:dateOfBirth
-                                                                                      avatarBase64:avatarBase64
+                                                                                        avatarData:avatarData
                                                                                             isMale:isMale];
 
     return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {

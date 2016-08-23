@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
     
     HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
     [cell configureWithNameLabelText:userProfileData.fullName
-                  base64AvatarString:userProfileData.avatarBase64];
+                           avatarURL:[NSURL URLWithString:userProfileData.avatarURLString]];
     
     return cell;
 }

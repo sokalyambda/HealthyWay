@@ -14,9 +14,9 @@
 @synthesize lastName = _lastName;
 @synthesize nickName = _nickName;
 @synthesize dateOfBirth = _dateOfBirth;
-@synthesize avatarBase64 = _avatarBase64;
 @synthesize isMale = _isMale;
 @synthesize userId = _userId;
+@synthesize avatarURLString = _avatarURLString;
 
 #pragma mark - Accessors
 
@@ -25,13 +25,17 @@
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
+- (void)setAvatarURLString:(NSString *)avatarURLString
+{
+    _avatarURLString = avatarURLString;
+}
+
 #pragma mark - Lifecycle
 
 - (instancetype)initWithFirstName:(NSString *)firstName
                          lastName:(NSString *)lastName
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
-                     avatarBase64:(NSString *)avatarBase64
                            isMale:(NSNumber *)isMale
 {
     self = [super init];
@@ -41,7 +45,6 @@
         _nickName = nickName;
         _dateOfBirth = dateOfBirth;
         _isMale = isMale;
-        _avatarBase64 = avatarBase64;
     }
     return self;
 }

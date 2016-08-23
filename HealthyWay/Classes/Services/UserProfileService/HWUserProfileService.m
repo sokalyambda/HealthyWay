@@ -65,11 +65,14 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
             HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
             [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
             
-            if (currentUserProfile && completion) {
-                completion(@[currentUserProfile], nil);
-            } else if (completion) {
-                completion(@[], nil);
-            }
+            [self p_fetchAvatarsForUsers:@[currentUserProfile] withCompletion:^{
+                if (currentUserProfile && completion) {
+                    completion(@[currentUserProfile], nil);
+                } else if (completion) {
+                    completion(@[], nil);
+                }
+            }];
+            
         }];
     } else {
         NSError *error = [NSError errorWithDomain:@"com.fetchUsers.error" code:HWErrorCodeUserDoesntExist userInfo:@{ErrorMessage: @"User doesn't exist."}];
@@ -98,15 +101,19 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullName CONTAINS[cd] %@ && userId != %@", searchString, self.currentUserId];
         NSArray *filteredArray = [mappedUsers filteredArrayUsingPredicate:predicate];
         
-        if (filteredArray && completion) {
-            completion(filteredArray, nil);
-        } else if (completion) {
-            completion(@[], nil);
-        }
+        [self p_fetchAvatarsForUsers:filteredArray withCompletion:^{
+            if (filteredArray && completion) {
+                completion(filteredArray, nil);
+            } else if (completion) {
+                completion(@[], nil);
+            }
+        }];
+        
     }];
 }
 
 + (void)createUpdateUserProfileWithParameters:(NSDictionary *)userProfileParameters
+                                andAvatarData:(NSData *)data
                                  onCompletion:(void(^)(NSError *error))completion
 {
     NSString *currentUserId = self.currentUserId;
@@ -117,19 +124,27 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
         NSMutableDictionary *parameters = [userProfileParameters mutableCopy];
         [parameters setObject:currentUserId forKey:kUserId];
         
-        if (snapshot.exists) {
-            /**
-             *  Update current user because we already have one created
-             */
-            [userReference updateChildValues:parameters];
-        } else {
-            /**
-             *  Set the current user by his uid (it should be obtained after authorization)
-             */
-            [userReference setValue:parameters];
-        }
+        // Create storage reference
+        FIRStorage *storage = [FIRStorage storage];
+        // Create a storage reference from our storage service
+        FIRStorageReference *storageRef = [storage referenceForURL:StorageReferense];
         
-        [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", parameters[kFirstName], parameters[kLastName]] photoURL:nil withCompletion:completion];
+        FIRStorageReference *userAvatarRef = [storageRef child:[NSString stringWithFormat:@"%@/%@.jpg", AvatarsKey, parameters[kUserId]]];
+        FIRStorageUploadTask *uploadTask = [userAvatarRef putData:data metadata:nil completion:^(FIRStorageMetadata * _Nullable metadata, NSError * _Nullable error) {
+            if (snapshot.exists) {
+                /**
+                 *  Update current user because we already have one created
+                 */
+                [userReference updateChildValues:parameters];
+            } else {
+                /**
+                 *  Set the current user by his uid (it should be obtained after authorization)
+                 */
+                [userReference setValue:parameters];
+            }
+            
+            [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", parameters[kFirstName], parameters[kLastName]] photoURL:nil withCompletion:completion];
+        }];
     }];
 }
 
@@ -213,9 +228,11 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId IN %@", requestedFriendsIds];
                 NSArray *requestedFriends = [mappedUsers filteredArrayUsingPredicate:predicate];
 
-                if (completion) {
-                    completion(requestedFriends);
-                }
+                [self p_fetchAvatarsForUsers:requestedFriends withCompletion:^{
+                    if (completion) {
+                        completion(requestedFriends);
+                    }
+                }];
             }];
             
         } else if (completion) {
@@ -263,6 +280,32 @@ static NSString *const kRequestedFriendsIds = @"requestedFriendsIds";
     }];
     
     return mappedUsers;
+}
+
++ (void)p_fetchAvatarsForUsers:(NSArray *)users
+                withCompletion:(void(^)())completion
+{
+    // Create storage reference
+    FIRStorage *storage = [FIRStorage storage];
+    // Create a storage reference from our storage service
+    FIRStorageReference *storageRef = [storage referenceForURL:StorageReferense];
+    
+    dispatch_group_t avatarsGroup = dispatch_group_create();
+    
+    [users enumerateObjectsUsingBlock:^(HWUserProfileData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        FIRStorageReference *userAvatarRef = [storageRef child:[NSString stringWithFormat:@"%@/%@.jpg", AvatarsKey, obj.userId]];
+        dispatch_group_enter(avatarsGroup);
+        [userAvatarRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+            obj.avatarURLString = URL.absoluteString;
+            dispatch_group_leave(avatarsGroup);
+        }];
+    }];
+    
+    dispatch_group_notify(avatarsGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        if (completion) {
+            completion();
+        }
+    });
 }
 
 @end

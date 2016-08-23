@@ -46,7 +46,7 @@
     HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
     HWUserProfileData *user = self.possibleFriends[indexPath.row];
     [cell configureWithNameLabelText:user.fullName
-                  base64AvatarString:user.avatarBase64
+                           avatarURL:[NSURL URLWithString:user.avatarURLString]
                      andSearchedText:self.searchController.searchBar.text];
     [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:user.userId]];
     cell.delegate = self;

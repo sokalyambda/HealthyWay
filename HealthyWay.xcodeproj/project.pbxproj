@@ -51,6 +51,7 @@
 		586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AC1D61E8FE00685CBA /* HWAuthorizationTask.m */; };
 		586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AC8AF1D61F85000685CBA /* HWBaseOperation.m */; };
 		58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */; };
+		58A1FAE41D6C5EE9007EFB90 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1FAE31D6C5EE9007EFB90 /* NSData+Base64.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
@@ -76,11 +77,6 @@
 		58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727771D23D3BD00F5F85D /* HWValidator.m */; };
 		58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D774231D22C83B00CEE186 /* GoogleService-Info.plist */; };
 		58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */; };
-		58FDB0751D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */; };
-		58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */; };
-		58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */; };
-		58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */; };
-		58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */; };
 		58FDB09B1D5C995400908ADC /* SettingsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */; };
 		58FDB09D1D5C997000908ADC /* EditProfileBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */; };
 		58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09E1D5C998100908ADC /* MapBoard.storyboard */; };
@@ -189,6 +185,8 @@
 		587861291D22C2A800CD0179 /* HealthyWay-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HealthyWay-PrefixHeader.pch"; path = "PrecompiledHeader/HealthyWay-PrefixHeader.pch"; sourceTree = "<group>"; };
 		58A1FADD1D6C418E007EFB90 /* HWBaseDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseDataSource.h; path = Classes/DataSources/BaseDataSource/HWBaseDataSource.h; sourceTree = "<group>"; };
 		58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseDataSource.m; path = Classes/DataSources/BaseDataSource/HWBaseDataSource.m; sourceTree = "<group>"; };
+		58A1FAE21D6C5EE9007EFB90 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Classes/Categories/NSData/NSData+Base64/NSData+Base64.h"; sourceTree = "<group>"; };
+		58A1FAE31D6C5EE9007EFB90 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Classes/Categories/NSData/NSData+Base64/NSData+Base64.m"; sourceTree = "<group>"; };
 		58A2A79E1D4F859E006DBC38 /* HWKeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWKeychainHandler.h; path = Classes/Services/Keychain/HWKeychainHandler.h; sourceTree = "<group>"; };
 		58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWKeychainHandler.m; path = Classes/Services/Keychain/HWKeychainHandler.m; sourceTree = "<group>"; };
 		58A2A7A21D4F88D9006DBC38 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
@@ -235,16 +233,6 @@
 		58E337C11D22F42E00B3A280 /* HWBaseAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAppManager.h; path = Classes/Managers/BaseAppManager/HWBaseAppManager.h; sourceTree = "<group>"; };
 		58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAppManager.m; path = Classes/Managers/BaseAppManager/HWBaseAppManager.m; sourceTree = "<group>"; };
 		58FDB06B1D5C6EC000908ADC /* HWUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfile.h; path = Classes/Protocols/UserProfile/HWUserProfile.h; sourceTree = "<group>"; };
-		58FDB0741D5C74B200908ADC /* HealthyWayDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthyWayDataModel.xcdatamodel; sourceTree = "<group>"; };
-		58FDB0761D5C756800908ADC /* HWCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWCoreDataStorage.h; path = Classes/CoreData/CoreDataStorage/HWCoreDataStorage.h; sourceTree = "<group>"; };
-		58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCoreDataStorage.m; path = Classes/CoreData/CoreDataStorage/HWCoreDataStorage.m; sourceTree = "<group>"; };
-		58FDB0791D5C75BA00908ADC /* HWDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWDatabaseManager.h; path = Classes/CoreData/CoreDataManager/HWDatabaseManager.h; sourceTree = "<group>"; };
-		58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWDatabaseManager.m; path = Classes/CoreData/CoreDataManager/HWDatabaseManager.m; sourceTree = "<group>"; };
-		58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel"; sourceTree = "<group>"; };
-		58FDB08A1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ManagedUserProfileData+CoreDataProperties.h"; path = "Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData+CoreDataProperties.h"; sourceTree = "<group>"; };
-		58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ManagedUserProfileData+CoreDataProperties.m"; path = "Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData+CoreDataProperties.m"; sourceTree = "<group>"; };
-		58FDB08C1D5C7AD700908ADC /* ManagedUserProfileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedUserProfileData.h; path = Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData.h; sourceTree = "<group>"; };
-		58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedUserProfileData.m; path = Classes/CoreData/ManagerObjects/ManagedUserProfileData/ManagedUserProfileData.m; sourceTree = "<group>"; };
 		58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsBoard.storyboard; sourceTree = "<group>"; };
 		58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditProfileBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/EditProfileFlow/EditProfileBoard.storyboard; sourceTree = "<group>"; };
 		58FDB09E1D5C998100908ADC /* MapBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MapBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/MapFlow/MapBoard.storyboard; sourceTree = "<group>"; };
@@ -604,7 +592,6 @@
 				58104A041D1D3AA00082FF4B /* Protocols */,
 				58104A031D1D3A9C0082FF4B /* Categories */,
 				58104A021D1D3A970082FF4B /* Networking */,
-				58104A011D1D3A900082FF4B /* CoreData */,
 				581049FD1D1D3A550082FF4B /* MVC */,
 			);
 			name = Classes;
@@ -639,17 +626,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		58104A011D1D3A900082FF4B /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB06F1D5C740D00908ADC /* DataBaseModel */,
-				58FDB06E1D5C740700908ADC /* ManagedObjects */,
-				58FDB06D1D5C740300908ADC /* CoreDataStorage */,
-				58FDB06C1D5C73FF00908ADC /* CoreDataManager */,
-			);
-			name = CoreData;
-			sourceTree = "<group>";
-		};
 		58104A021D1D3A970082FF4B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +636,7 @@
 		58104A031D1D3A9C0082FF4B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				58A1FAE01D6C5ED6007EFB90 /* NSData */,
 				580C29691D5B4279009B5118 /* UIImage */,
 				5810FF0C1D58A99800AF5C96 /* CAAnimation */,
 				58A2A7A71D4F932E006DBC38 /* UIView */,
@@ -875,6 +852,23 @@
 				58A1FADE1D6C418E007EFB90 /* HWBaseDataSource.m */,
 			);
 			name = BaseDataSource;
+			sourceTree = "<group>";
+		};
+		58A1FAE01D6C5ED6007EFB90 /* NSData */ = {
+			isa = PBXGroup;
+			children = (
+				58A1FAE11D6C5ED8007EFB90 /* NSData+Base64 */,
+			);
+			name = NSData;
+			sourceTree = "<group>";
+		};
+		58A1FAE11D6C5ED8007EFB90 /* NSData+Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				58A1FAE21D6C5EE9007EFB90 /* NSData+Base64.h */,
+				58A1FAE31D6C5EE9007EFB90 /* NSData+Base64.m */,
+			);
+			name = "NSData+Base64";
 			sourceTree = "<group>";
 		};
 		58A2A7851D4F5454006DBC38 /* SignInView */ = {
@@ -1129,51 +1123,6 @@
 			name = UserProfile;
 			sourceTree = "<group>";
 		};
-		58FDB06C1D5C73FF00908ADC /* CoreDataManager */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB0791D5C75BA00908ADC /* HWDatabaseManager.h */,
-				58FDB07A1D5C75BA00908ADC /* HWDatabaseManager.m */,
-			);
-			name = CoreDataManager;
-			sourceTree = "<group>";
-		};
-		58FDB06D1D5C740300908ADC /* CoreDataStorage */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB0761D5C756800908ADC /* HWCoreDataStorage.h */,
-				58FDB0771D5C756800908ADC /* HWCoreDataStorage.m */,
-			);
-			name = CoreDataStorage;
-			sourceTree = "<group>";
-		};
-		58FDB06E1D5C740700908ADC /* ManagedObjects */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB0821D5C799500908ADC /* UserProfileData */,
-			);
-			name = ManagedObjects;
-			sourceTree = "<group>";
-		};
-		58FDB06F1D5C740D00908ADC /* DataBaseModel */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */,
-			);
-			name = DataBaseModel;
-			sourceTree = "<group>";
-		};
-		58FDB0821D5C799500908ADC /* UserProfileData */ = {
-			isa = PBXGroup;
-			children = (
-				58FDB08A1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.h */,
-				58FDB08B1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m */,
-				58FDB08C1D5C7AD700908ADC /* ManagedUserProfileData.h */,
-				58FDB08D1D5C7AD700908ADC /* ManagedUserProfileData.m */,
-			);
-			name = UserProfileData;
-			sourceTree = "<group>";
-		};
 		58FDB0941D5C989400908ADC /* EventsFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1407,12 +1356,12 @@
 				44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */,
 				586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */,
 				586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */,
+				58A1FAE41D6C5EE9007EFB90 /* NSData+Base64.m in Sources */,
 				580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
 				580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */,
 				580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */,
 				5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */,
-				58FDB07B1D5C75BA00908ADC /* HWDatabaseManager.m in Sources */,
 				583F47211D5DF9740099C9E0 /* HWOperationsManager.m in Sources */,
 				580C3FCC1D6B4C9900CC3BA8 /* HWAddFriendsDataSource.m in Sources */,
 				586AC89B1D61C3E200685CBA /* HWBaseTask.m in Sources */,
@@ -1425,11 +1374,9 @@
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
-				58FDB0751D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld in Sources */,
 				58B305531D508D550011F405 /* HWAutologinViewController.m in Sources */,
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
-				58FDB0781D5C756800908ADC /* HWCoreDataStorage.m in Sources */,
 				4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */,
 				586AC8AD1D61E8FE00685CBA /* HWAuthorizationTask.m in Sources */,
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
@@ -1457,12 +1404,10 @@
 				580C297F1D5B78AF009B5118 /* NSString+DecodeFromBase64.m in Sources */,
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
-				58FDB08E1D5C7AD700908ADC /* ManagedUserProfileData+CoreDataProperties.m in Sources */,
 				58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */,
 				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,
-				58FDB08F1D5C7AD700908ADC /* ManagedUserProfileData.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1662,21 +1607,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		58FDB0731D5C74B200908ADC /* HealthyWayDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */,
-				58FDB0741D5C74B200908ADC /* HealthyWayDataModel.xcdatamodel */,
-			);
-			currentVersion = 58FDB0831D5C7A1500908ADC /* HealthyWayDataModel 2 - The date of birth field type has been changed to Date.xcdatamodel */;
-			name = HealthyWayDataModel.xcdatamodeld;
-			path = Classes/CoreData/DataBaseModel/HealthyWayDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5802060E1D1D368300349B32 /* Project object */;
 }

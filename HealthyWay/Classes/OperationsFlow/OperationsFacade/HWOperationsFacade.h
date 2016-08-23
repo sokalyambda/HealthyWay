@@ -32,7 +32,7 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
                                           lastName:(NSString *)lastName
                                           nickName:(NSString *)nickName
                                        dateOfBirth:(NSDate *)dateOfBirth
-                                      avatarBase64:(NSString *)avatarBase64
+                                        avatarData:(NSData *)avatarData
                                             isMale:(NSNumber *)isMale
                                          onSuccess:(void(^)())success
                                          onFailure:(FailureBlock)failure;

@@ -13,7 +13,7 @@
 @property (strong, nonatomic, readonly) NSString *fullName;
 @property (strong, nonatomic, readonly) NSString *nickName;
 @property (strong, nonatomic, readonly) NSDate *dateOfBirth;
-@property (strong, nonatomic, readonly) NSString *avatarBase64;
+@property (strong, nonatomic, readonly) NSString *avatarURLString;
 @property (strong, nonatomic, readonly) NSNumber *isMale;
 @property (strong, nonatomic, readonly) NSString *userId;
 

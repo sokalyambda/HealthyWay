@@ -17,7 +17,6 @@ static NSString *const kLastName            = @"lastName";
 static NSString *const kNickName            = @"nickName";
 static NSString *const kIsMale              = @"isMale";
 static NSString *const kDateOfBirth         = @"dateOfBirth";
-static NSString *const kAvatarBase64String  = @"avatarBase64";
 
 @interface HWCreateUpdateUserProfileTask ()
 
@@ -25,8 +24,8 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
 @property (nonatomic) NSString *lastName;
 @property (nonatomic) NSString *nickName;
 @property (nonatomic) NSDate *dateOfBirth;
-@property (nonatomic) NSString *avatarBase64String;
 @property (nonatomic) NSNumber *isMale;
+@property (nonatomic) NSData *avatarData;
 
 @property (strong, nonatomic) NSError *error;
 
@@ -63,18 +62,13 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
     return self.userProfileData.isMale;
 }
 
-- (NSString *)avatarBase64String
-{
-    return self.userProfileData.avatarBase64;
-}
-
 #pragma mark - Lifecycle
 
 - (instancetype)initWithFirstName:(NSString *)firstName
                          lastName:(NSString *)lastName
                          nickName:(NSString *)nickName
                       dateOfBirth:(NSDate *)dateOfBirth
-                     avatarBase64:(NSString *)avatarBase64
+                       avatarData:(NSData *)avatarData
                            isMale:(NSNumber *)isMale
 {
     self = [super init];
@@ -83,8 +77,8 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
                                                                lastName:lastName
                                                                nickName:nickName
                                                             dateOfBirth:dateOfBirth
-                                                           avatarBase64:avatarBase64
                                                                  isMale:isMale];
+        _avatarData = avatarData;
     }
     return self;
 }
@@ -103,9 +97,8 @@ static NSString *const kAvatarBase64String  = @"avatarBase64";
                                      kNickName: weakSelf.nickName,
                                      kIsMale: weakSelf.isMale,
                                      kDateOfBirth: @([weakSelf.dateOfBirth timeIntervalSince1970]),
-                                     kAvatarBase64String: weakSelf.avatarBase64String
                                      };
-        [HWUserProfileService createUpdateUserProfileWithParameters:parameters onCompletion:^(NSError *error) {
+        [HWUserProfileService createUpdateUserProfileWithParameters:parameters andAvatarData:weakSelf.avatarData onCompletion:^(NSError *error) {
             
             weakSelf.error = error;
             

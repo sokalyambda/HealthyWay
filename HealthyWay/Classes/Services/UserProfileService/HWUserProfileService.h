@@ -41,6 +41,7 @@
  *  @param completion            CompletionBlock
  */
 + (void)createUpdateUserProfileWithParameters:(NSDictionary *)userProfileParameters
+                                andAvatarData:(NSData *)data
                                  onCompletion:(void(^)(NSError *error))completion;
 
 /**

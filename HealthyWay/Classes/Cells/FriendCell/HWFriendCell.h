@@ -14,10 +14,10 @@
 
 - (void)selectAddFriendButton:(BOOL)select;
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
-                base64AvatarString:(NSString *)base64AvatarString
+                         avatarURL:(NSURL *)avatarURL
                    andSearchedText:(NSString *)searchedText;
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
-                base64AvatarString:(NSString *)base64AvatarString;
+                         avatarURL:(NSURL *)avatarURL;
 
 @end
 

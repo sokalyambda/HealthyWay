@@ -11,7 +11,6 @@
 static NSString *const firstNameKey     = @"firstName";
 static NSString *const lastNameKey      = @"lastName";
 static NSString *const nickNameKey      = @"nickName";
-static NSString *const avatarBase64Key  = @"avatarBase64";
 static NSString *const isMaleKey        = @"isMale";
 static NSString *const userIdKey        = @"userId";
 
@@ -24,7 +23,6 @@ static NSString *const userIdKey        = @"userId";
         [mapping mapPropertiesFromArray:@[firstNameKey,
                                           lastNameKey,
                                           nickNameKey,
-                                          avatarBase64Key,
                                           isMaleKey,
                                           userIdKey]];
         
