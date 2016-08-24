@@ -16,6 +16,7 @@ static NSString *const kDateOfBirth          = @"dateOfBirth";
 static NSString *const kUserId               = @"userId";
 static NSString *const kRequestedFriendsIds  = @"requestedFriendsIds";
 static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
+static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
 
 @implementation HWUserProfileService
 
@@ -342,6 +343,54 @@ static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
             completion(@[]);
         }
     }];
+}
+
++ (void)fetchExistedFriendsOnCompletion:(void(^)(NSArray *existedFriends))completion
+{
+    FIRDatabaseReference *existedFriendsRef = [[self.dataBaseReference child:ExistedFriendsKey] child:self.currentUserId];
+    
+    [existedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            
+            NSArray *existedFriendsIds = snapshot.value[kRequestingFriendsIds];
+            
+            FIRDatabaseQuery *usersQuery = [[self.dataBaseReference child:UsersKey] queryOrderedByKey];
+            
+            [usersQuery observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
+                
+                NSArray *mappedUsers = [self mappedUserProfilesDataFromArray:userData.allValues];
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId IN %@", existedFriendsIds];
+                NSArray *existedFriends = [mappedUsers filteredArrayUsingPredicate:predicate];
+                
+                [self p_fetchAvatarsForUsers:existedFriends withCompletion:^{
+                    if (completion) {
+                        completion(existedFriends);
+                    }
+                }];
+            }];
+            
+        } else if (completion) {
+            
+            completion(@[]);
+        }
+    }];
+}
+
++ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
+{
+    
+}
+
++ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
+{
+    
+}
+
++ (void)removeUserFromRequestingFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
+{
+    
 }
 
 /**

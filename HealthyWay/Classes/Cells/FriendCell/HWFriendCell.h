@@ -6,11 +6,7 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, HWFriendCellType) {
-    HWFriendCellTypeRequestedFriend,
-    HWFriendCellTypeRequestingFriend,
-    HWFriendCellTypeExistedFriend
-};
+#import "HWFriendCellConfigurationStrategy.h"
 
 @protocol HWFriendCellDelegate;
 
@@ -18,16 +14,12 @@ typedef NS_ENUM(NSUInteger, HWFriendCellType) {
 
 @property (weak, nonatomic) id<HWFriendCellDelegate> delegate;
 
+@property (strong, nonatomic, readonly) id<HWFriendCellConfigurationStrategy> strategy;
+
 - (void)selectAddFriendButton:(BOOL)select;
 - (void)hideAddFriendButton:(BOOL)hide;
 
-- (void)configureWithNameLabelText:(NSString *)nameLabelText
-                         avatarURL:(NSURL *)avatarURL
-                      searchedText:(NSString *)searchedText
-                       forCellType:(HWFriendCellType)type;
-- (void)configureWithNameLabelText:(NSString *)nameLabelText
-                         avatarURL:(NSURL *)avatarURL
-                       forCellType:(HWFriendCellType)type;
+- (void)configureWithConfigurationStrategy:(id<HWFriendCellConfigurationStrategy>)strategy;
 
 @end
 

@@ -12,6 +12,8 @@
 
 #import "HWUserProfileData.h"
 
+#import "HWBaseFriendCellConfigurationStrategy.h"
+
 @interface HWAddFriendsDataSource ()<HWFriendCellDelegate>
 
 @property (nonatomic) NSArray *possibleFriends;
@@ -45,10 +47,13 @@
 {
     HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
     HWUserProfileData *user = self.possibleFriends[indexPath.row];
-    [cell configureWithNameLabelText:user.fullName
-                           avatarURL:[NSURL URLWithString:user.avatarURLString]
-                        searchedText:self.searchController.searchBar.text
-                         forCellType:HWFriendCellTypeRequestedFriend];
+    HWBaseFriendCellConfigurationStrategy *strategy = [HWBaseFriendCellConfigurationStrategy friendCellConfigurationStrategyWithType:HWFriendsStrategyTypeRequestedFriends
+                                                                                                                       nameLabelText:user.fullName
+                                                                                                                           avatarURL:[NSURL URLWithString:user.avatarURLString]
+                                                                                                                        searchedText:self.searchController.searchBar.text];
+    strategy.friendCell = cell;
+    [cell configureWithConfigurationStrategy:strategy];
+    
     [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:user.userId]];
     cell.delegate = self;
     

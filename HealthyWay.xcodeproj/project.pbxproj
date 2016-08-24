@@ -71,6 +71,10 @@
 		58B3056F1D508DE00011F405 /* HWSignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B3056D1D508DE00011F405 /* HWSignInView.xib */; };
 		58B305721D508DF90011F405 /* HWCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305711D508DF90011F405 /* HWCredentials.m */; };
 		58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B4572E1D5E3B87005ED79C /* HWFriendsViewController.m */; };
+		58B558AB1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B558AA1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m */; };
+		58B558AF1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B558AE1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.m */; };
+		58B558B31D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B558B21D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m */; };
+		58B558B71D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B558B61D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m */; };
 		58C727691D23D13400F5F85D /* HWAlertService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727681D23D13400F5F85D /* HWAlertService.m */; };
 		58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7276F1D23D30A00F5F85D /* HWErrorHandler.m */; };
 		58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727741D23D37E00F5F85D /* NSString+JSONRepresentation.m */; };
@@ -220,6 +224,15 @@
 		58B305711D508DF90011F405 /* HWCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWCredentials.m; path = Classes/MVC/Models/Credentials/HWCredentials.m; sourceTree = "<group>"; };
 		58B4572D1D5E3B87005ED79C /* HWFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsViewController/HWFriendsViewController.h; sourceTree = "<group>"; };
 		58B4572E1D5E3B87005ED79C /* HWFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsViewController/HWFriendsViewController.m; sourceTree = "<group>"; };
+		58B558A71D6E3D1400547762 /* HWFriendCellConfigurationStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendCellConfigurationStrategy.h; path = Classes/Cells/FriendCell/FriendCellConfigurationStrategy/HWFriendCellConfigurationStrategy.h; sourceTree = "<group>"; };
+		58B558A91D6E404600547762 /* HWRequestedFriendConfigurationStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWRequestedFriendConfigurationStrategy.h; path = Classes/Cells/FriendCell/RequestedFriendConfigurationStrategy/HWRequestedFriendConfigurationStrategy.h; sourceTree = "<group>"; };
+		58B558AA1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWRequestedFriendConfigurationStrategy.m; path = Classes/Cells/FriendCell/RequestedFriendConfigurationStrategy/HWRequestedFriendConfigurationStrategy.m; sourceTree = "<group>"; };
+		58B558AD1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseFriendCellConfigurationStrategy.h; path = Classes/Cells/FriendCell/BaseFriendCellConfigurationStrategy/HWBaseFriendCellConfigurationStrategy.h; sourceTree = "<group>"; };
+		58B558AE1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseFriendCellConfigurationStrategy.m; path = Classes/Cells/FriendCell/BaseFriendCellConfigurationStrategy/HWBaseFriendCellConfigurationStrategy.m; sourceTree = "<group>"; };
+		58B558B11D6E409700547762 /* HWRequestingFriendConfigurationStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWRequestingFriendConfigurationStrategy.h; path = Classes/Cells/FriendCell/RequestingFriendConfigurationStrategy/HWRequestingFriendConfigurationStrategy.h; sourceTree = "<group>"; };
+		58B558B21D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWRequestingFriendConfigurationStrategy.m; path = Classes/Cells/FriendCell/RequestingFriendConfigurationStrategy/HWRequestingFriendConfigurationStrategy.m; sourceTree = "<group>"; };
+		58B558B51D6E40B500547762 /* HWExistedFriendConfigurationStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWExistedFriendConfigurationStrategy.h; path = Classes/Cells/FriendCell/ExistedFriendConfigurationStrategy/HWExistedFriendConfigurationStrategy.h; sourceTree = "<group>"; };
+		58B558B61D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWExistedFriendConfigurationStrategy.m; path = Classes/Cells/FriendCell/ExistedFriendConfigurationStrategy/HWExistedFriendConfigurationStrategy.m; sourceTree = "<group>"; };
 		58C727621D23D0C000F5F85D /* HWMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMacros.h; path = Macros/HWMacros.h; sourceTree = "<group>"; };
 		58C727671D23D13400F5F85D /* HWAlertService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAlertService.h; path = Classes/Services/AlertService/HWAlertService.h; sourceTree = "<group>"; };
 		58C727681D23D13400F5F85D /* HWAlertService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAlertService.m; path = Classes/Services/AlertService/HWAlertService.m; sourceTree = "<group>"; };
@@ -365,6 +378,11 @@
 		44CE2EDA1D64D1090087FCD2 /* FriendCell */ = {
 			isa = PBXGroup;
 			children = (
+				58B558B41D6E409B00547762 /* ExistedFriendConfigurationStrategy */,
+				58B558B01D6E407500547762 /* RequestingFriendConfigurationStrategy */,
+				58B558AC1D6E405C00547762 /* BaseFriendCellConfigurationStrategy */,
+				58B558A81D6E402800547762 /* RequestedFriendConfigurationStrategy */,
+				58B558A61D6E3CE500547762 /* FriendCellConfigurationStrategy */,
 				44CE2EDB1D64D12A0087FCD2 /* HWFriendCell.h */,
 				44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */,
 				44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */,
@@ -970,6 +988,50 @@
 			name = FriendsViewController;
 			sourceTree = "<group>";
 		};
+		58B558A61D6E3CE500547762 /* FriendCellConfigurationStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				58B558A71D6E3D1400547762 /* HWFriendCellConfigurationStrategy.h */,
+			);
+			name = FriendCellConfigurationStrategy;
+			sourceTree = "<group>";
+		};
+		58B558A81D6E402800547762 /* RequestedFriendConfigurationStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				58B558A91D6E404600547762 /* HWRequestedFriendConfigurationStrategy.h */,
+				58B558AA1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m */,
+			);
+			name = RequestedFriendConfigurationStrategy;
+			sourceTree = "<group>";
+		};
+		58B558AC1D6E405C00547762 /* BaseFriendCellConfigurationStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				58B558AD1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.h */,
+				58B558AE1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.m */,
+			);
+			name = BaseFriendCellConfigurationStrategy;
+			sourceTree = "<group>";
+		};
+		58B558B01D6E407500547762 /* RequestingFriendConfigurationStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				58B558B11D6E409700547762 /* HWRequestingFriendConfigurationStrategy.h */,
+				58B558B21D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m */,
+			);
+			name = RequestingFriendConfigurationStrategy;
+			sourceTree = "<group>";
+		};
+		58B558B41D6E409B00547762 /* ExistedFriendConfigurationStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				58B558B51D6E40B500547762 /* HWExistedFriendConfigurationStrategy.h */,
+				58B558B61D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m */,
+			);
+			name = ExistedFriendConfigurationStrategy;
+			sourceTree = "<group>";
+		};
 		58C727611D23D0B200F5F85D /* Macros */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,12 +1430,15 @@
 				58C727701D23D30A00F5F85D /* HWErrorHandler.m in Sources */,
 				5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */,
 				4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */,
+				58B558AF1D6E407200547762 /* HWBaseFriendCellConfigurationStrategy.m in Sources */,
 				580C29711D5B50F1009B5118 /* HWUserProfileData.m in Sources */,
 				583F47281D5DF9A30099C9E0 /* HWAuthorizationService.m in Sources */,
 				580C3FC51D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
+				58B558B71D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
+				58B558AB1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m in Sources */,
 				58B305531D508D550011F405 /* HWAutologinViewController.m in Sources */,
 				58C727751D23D37E00F5F85D /* NSString+JSONRepresentation.m in Sources */,
 				58C727691D23D13400F5F85D /* HWAlertService.m in Sources */,
@@ -1407,6 +1472,7 @@
 				58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */,
 				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
+				58B558B31D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m in Sources */,
 				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);

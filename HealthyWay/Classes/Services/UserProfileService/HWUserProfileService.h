@@ -74,10 +74,17 @@
 + (void)fetchRequestedFriendsOnCompletion:(void(^)(NSArray *requestedFriends))completion;
 
 /**
- *  Get arrat of requesting friends
+ *  Get array of requesting friends
  *
  *  @param completion Completion Block
  */
 + (void)fetchRequestingFriendsOnCompletion:(void(^)(NSArray *requestingFriends))completion;
+
+/**
+ *  Get array of existed friends
+ *
+ *  @param completion Completion Block
+ */
++ (void)fetchExistedFriendsOnCompletion:(void(^)(NSArray *existedFriends))completion;
 
 @end

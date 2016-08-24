@@ -6,17 +6,13 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
-    HWFriendsDataSourceSectionRequestedFriends,
-    HWFriendsDataSourceSectionRequestingFriends,
-    HWFriendsDataSourceSectionAcceptedFriends
-};
-
 #import "HWFriendsDataSource.h"
 
 #import "HWFriendCell.h"
 
 #import "HWUserProfileData.h"
+
+#import "HWBaseFriendCellConfigurationStrategy.h"
 
 @interface HWFriendsDataSource ()<HWFriendCellDelegate>
 
@@ -41,17 +37,17 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return HWFriendsDataSourceSectionAcceptedFriends + 1;
+    return HWFriendsStrategyTypeAcceptedFriends + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case HWFriendsDataSourceSectionRequestedFriends:
+        case HWFriendsStrategyTypeRequestedFriends:
             return self.requestedFriends.count;
-        case HWFriendsDataSourceSectionRequestingFriends:
+        case HWFriendsStrategyTypeRequestingFriends:
             return self.requestingFriends.count;
-        case HWFriendsDataSourceSectionAcceptedFriends:
+        case HWFriendsStrategyTypeAcceptedFriends:
             return self.friends.count;
     }
     return 0;
@@ -59,35 +55,28 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 
 - (UITableViewCell *)tableViewCellForIndexPath:(NSIndexPath *)indexPath
 {
+    HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
+    cell.delegate = self;
+    
     HWUserProfileData *userProfileData = nil;
-    HWFriendCellType neededType = HWFriendCellTypeRequestedFriend;
     switch (indexPath.section) {
-        case HWFriendsDataSourceSectionRequestedFriends:
+        case HWFriendsStrategyTypeRequestedFriends:
             userProfileData = self.requestedFriends[indexPath.row];
-            neededType = HWFriendCellTypeRequestedFriend;
+            [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:userProfileData.userId]];
             break;
-        case HWFriendsDataSourceSectionRequestingFriends:
+        case HWFriendsStrategyTypeRequestingFriends:
             userProfileData = self.requestingFriends[indexPath.row];
-            neededType = HWFriendCellTypeRequestingFriend;
             break;
-        case HWFriendsDataSourceSectionAcceptedFriends:
+        case HWFriendsStrategyTypeAcceptedFriends:
             userProfileData = self.friends[indexPath.row];
-            neededType = HWFriendCellTypeExistedFriend;
             break;
     }
     if (!userProfileData) {
         return nil;
     }
-    
-    HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
-    cell.delegate = self;
-    [cell configureWithNameLabelText:userProfileData.fullName
-                           avatarURL:[NSURL URLWithString:userProfileData.avatarURLString]
-                         forCellType:neededType];
-    
-    if (neededType == HWFriendCellTypeRequestedFriend) {
-        [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:userProfileData.userId]];
-    }
+    HWBaseFriendCellConfigurationStrategy *strategy = [HWBaseFriendCellConfigurationStrategy friendCellConfigurationStrategyWithType:(HWFriendsStrategyType)indexPath.section nameLabelText:userProfileData.fullName avatarURL:[NSURL URLWithString:userProfileData.avatarURLString] searchedText:nil];
+    strategy.friendCell = cell;
+    [cell configureWithConfigurationStrategy:strategy];
     
     return cell;
 }
@@ -97,11 +86,11 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case HWFriendsDataSourceSectionRequestedFriends:
+        case HWFriendsStrategyTypeRequestedFriends:
             return !!self.requestedFriends.count ? LOCALIZED(@"Requested Friends") : nil;
-        case HWFriendsDataSourceSectionRequestingFriends:
+        case HWFriendsStrategyTypeRequestingFriends:
             return !!self.requestingFriends.count ? LOCALIZED(@"Requesting Friends") : nil;
-        case HWFriendsDataSourceSectionAcceptedFriends:
+        case HWFriendsStrategyTypeAcceptedFriends:
             return !!self.friends.count ? LOCALIZED(@"Existed Friends") : nil;
     }
     return nil;

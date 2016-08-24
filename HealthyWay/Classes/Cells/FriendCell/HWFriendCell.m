@@ -18,38 +18,18 @@
 @property (weak, nonatomic) IBOutlet HWCheckBoxButton *addFriendButton;
 @property (weak, nonatomic) IBOutlet UIView *requestingFriendButtonsContainer;
 
-@property (assign, nonatomic) HWFriendCellType cellType;
-
 @end
 
 @implementation HWFriendCell
 
 #pragma mark - Actions
 
-- (void)configureWithNameLabelText:(NSString *)nameLabelText
-                         avatarURL:(NSURL *)avatarURL
-                      searchedText:(NSString *)searchedText
-                       forCellType:(HWFriendCellType)type
+- (void)configureWithConfigurationStrategy:(id<HWFriendCellConfigurationStrategy>)strategy
 {
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:nameLabelText];
-    
-    if (searchedText) {
-        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:[attrString.string rangeOfString:searchedText options:NSCaseInsensitiveSearch]];
-    }
-    
-    self.nameLabel.attributedText = attrString;
-    
-    [self.avatarImageView sd_setImageWithURL:avatarURL];
-    
-    self.addFriendButton.hidden = type != HWFriendCellTypeRequestedFriend;
+    self.nameLabel.attributedText = strategy.attributedText;
+    [self.avatarImageView sd_setImageWithURL:strategy.avatarURL];
+    self.addFriendButton.hidden = strategy.hideAddFriendButton;
     self.requestingFriendButtonsContainer.hidden = !self.addFriendButton.isHidden;
-}
-
-- (void)configureWithNameLabelText:(NSString *)nameLabelText
-                         avatarURL:(NSURL *)avatarURL
-                       forCellType:(HWFriendCellType)type
-{
-    [self configureWithNameLabelText:nameLabelText avatarURL:avatarURL searchedText:nil forCellType:type];
 }
 
 - (void)selectAddFriendButton:(BOOL)select
