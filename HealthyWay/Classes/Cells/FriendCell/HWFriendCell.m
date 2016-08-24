@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet HWCheckBoxButton *addFriendButton;
+@property (weak, nonatomic) IBOutlet UIView *requestingFriendButtonsContainer;
+
+@property (assign, nonatomic) HWFriendCellType cellType;
 
 @end
 
@@ -25,7 +28,8 @@
 
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
                          avatarURL:(NSURL *)avatarURL
-                   andSearchedText:(NSString *)searchedText
+                      searchedText:(NSString *)searchedText
+                       forCellType:(HWFriendCellType)type
 {
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:nameLabelText];
     
@@ -37,18 +41,25 @@
     
     [self.avatarImageView sd_setImageWithURL:avatarURL];
     
-    self.addFriendButton.hidden = !searchedText;
+    self.addFriendButton.hidden = type != HWFriendCellTypeRequestedFriend;
+    self.requestingFriendButtonsContainer.hidden = !self.addFriendButton.isHidden;
 }
 
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
                          avatarURL:(NSURL *)avatarURL
+                       forCellType:(HWFriendCellType)type
 {
-    [self configureWithNameLabelText:nameLabelText avatarURL:avatarURL andSearchedText:nil];
+    [self configureWithNameLabelText:nameLabelText avatarURL:avatarURL searchedText:nil forCellType:type];
 }
 
 - (void)selectAddFriendButton:(BOOL)select
 {
     self.addFriendButton.selected = select;
+}
+
+- (void)hideAddFriendButton:(BOOL)hide
+{
+    self.addFriendButton.hidden = hide;
 }
 
 - (IBAction)addFriendClick:(id)sender

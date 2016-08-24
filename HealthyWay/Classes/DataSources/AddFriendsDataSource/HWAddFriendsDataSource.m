@@ -47,7 +47,8 @@
     HWUserProfileData *user = self.possibleFriends[indexPath.row];
     [cell configureWithNameLabelText:user.fullName
                            avatarURL:[NSURL URLWithString:user.avatarURLString]
-                     andSearchedText:self.searchController.searchBar.text];
+                        searchedText:self.searchController.searchBar.text
+                         forCellType:HWFriendCellTypeRequestedFriend];
     [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:user.userId]];
     cell.delegate = self;
     

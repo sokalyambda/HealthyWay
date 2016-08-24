@@ -6,6 +6,12 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
+typedef NS_ENUM(NSUInteger, HWFriendCellType) {
+    HWFriendCellTypeRequestedFriend,
+    HWFriendCellTypeRequestingFriend,
+    HWFriendCellTypeExistedFriend
+};
+
 @protocol HWFriendCellDelegate;
 
 @interface HWFriendCell : UITableViewCell
@@ -13,11 +19,15 @@
 @property (weak, nonatomic) id<HWFriendCellDelegate> delegate;
 
 - (void)selectAddFriendButton:(BOOL)select;
+- (void)hideAddFriendButton:(BOOL)hide;
+
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
                          avatarURL:(NSURL *)avatarURL
-                   andSearchedText:(NSString *)searchedText;
+                      searchedText:(NSString *)searchedText
+                       forCellType:(HWFriendCellType)type;
 - (void)configureWithNameLabelText:(NSString *)nameLabelText
-                         avatarURL:(NSURL *)avatarURL;
+                         avatarURL:(NSURL *)avatarURL
+                       forCellType:(HWFriendCellType)type;
 
 @end
 
@@ -25,5 +35,7 @@
 
 @optional
 - (void)friendCell:(HWFriendCell *)cell didTapAddFriendButton:(UIButton *)button;
+- (void)friendCellDidTapAcceptRequestingFriendButton:(HWFriendCell *)cell;
+- (void)friendCellDidTapDenyRequestingFriendButton:(HWFriendCell *)cell;
 
 @end

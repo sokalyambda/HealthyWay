@@ -144,7 +144,7 @@ static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
                 [userReference setValue:parameters];
             }
             
-            [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", parameters[kFirstName], parameters[kLastName]] photoURL:nil withCompletion:completion];
+            [self performProfileChangesRequestWithDisplayName:[NSString stringWithFormat:@"%@ %@", parameters[kFirstName], parameters[kLastName]] photoURL:metadata.downloadURL withCompletion:completion];
         }];
     }];
 }
@@ -153,41 +153,59 @@ static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
                            onCompletion:(void(^)(NSError *error))completion
 {
     FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
-    
     FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:userId];
     
+    dispatch_group_t sendRequestGroup = dispatch_group_create();
+    
+    dispatch_group_enter(sendRequestGroup);
     [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        
         if (snapshot.exists) {
-            
             NSMutableArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
-            if (![requestedFriends containsObject:userId]) {
-                [requestedFriends addObject:userId];
+            
+            if (requestedFriends) {
+                if (![requestedFriends containsObject:userId]) {
+                    [requestedFriends addObject:userId];
+                }
+                [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
+            } else {
+                [requestedFriendsRef setValue:@{kRequestedFriendsIds: @[userId]}];
             }
-            [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
 
         } else {
-            
             [requestedFriendsRef setValue:@{kRequestedFriendsIds: @[userId]}];
         }
+        dispatch_group_leave(sendRequestGroup);
+    }];
+    
+    dispatch_group_enter(sendRequestGroup);
+    [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         
-        [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
             
-            if (snapshot.exists) {
-                
-                NSMutableArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+            NSMutableArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+            
+            if (requestingFriendsIds) {
                 if (![requestingFriendsIds containsObject:self.currentUserId]) {
                     [requestingFriendsIds addObject:self.currentUserId];
                 }
                 [requestingFriendsRef updateChildValues:@{kRequestingFriendsIds: requestingFriendsIds}];
-                
             } else {
-                
                 [requestingFriendsRef setValue:@{kRequestingFriendsIds: @[self.currentUserId]}];
             }
             
-        }];
+        } else {
+            [requestingFriendsRef setValue:@{kRequestingFriendsIds: @[self.currentUserId]}];
+        }
         
+        dispatch_group_leave(sendRequestGroup);
     }];
+    
+    dispatch_group_notify(sendRequestGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        if (completion) {
+            completion(nil);
+        }
+    });
 }
 
 + (void)denyFriendsRequestForUserWithId:(NSString *)userId
@@ -196,35 +214,49 @@ static NSString *const kRequestingFriendsIds = @"requestingFriendsIds";
     FIRDatabaseReference *requestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:self.currentUserId];
     FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:userId];
     
+    dispatch_group_t denyFriendGroup = dispatch_group_create();
+    
+    dispatch_group_enter(denyFriendGroup);
     [requestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
             
             NSMutableArray *requestedFriends = snapshot.value[kRequestedFriendsIds];
-            if ([requestedFriends containsObject:userId]) {
-                [requestedFriends removeObject:userId];
+            
+            if (requestedFriends) {
+                if ([requestedFriends containsObject:userId]) {
+                    [requestedFriends removeObject:userId];
+                }
+                
+                [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
             }
-            
-            [requestedFriendsRef updateChildValues:@{kRequestedFriendsIds: requestedFriends}];
-        } else {
-            
-            return;
         }
+        
+        dispatch_group_leave(denyFriendGroup);
     }];
     
+    dispatch_group_enter(denyFriendGroup);
     [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
             
             NSMutableArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
-            if ([requestingFriendsIds containsObject:self.currentUserId]) {
-                [requestingFriendsIds removeObject:self.currentUserId];
+            
+            if (requestingFriendsIds) {
+                if ([requestingFriendsIds containsObject:self.currentUserId]) {
+                    [requestingFriendsIds removeObject:self.currentUserId];
+                }
+                
+                [requestedFriendsRef updateChildValues:@{kRequestingFriendsIds: requestingFriendsIds}];
             }
-            
-            [requestedFriendsRef updateChildValues:@{kRequestingFriendsIds: requestingFriendsIds}];
-        } else {
-            
-            return;
         }
+        
+        dispatch_group_leave(denyFriendGroup);
     }];
+    
+    dispatch_group_notify(denyFriendGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        if (completion) {
+            completion(nil);
+        }
+    });
 }
 
 + (void)fetchRequestedFriendsIdsOnCompletion:(void(^)(NSArray *requestedFriendsIds))completion

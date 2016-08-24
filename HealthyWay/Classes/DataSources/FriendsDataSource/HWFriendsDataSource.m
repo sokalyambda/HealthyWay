@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 
 #import "HWUserProfileData.h"
 
-@interface HWFriendsDataSource ()
+@interface HWFriendsDataSource ()<HWFriendCellDelegate>
 
 @property (strong, nonatomic) NSArray *friends;
 @property (strong, nonatomic) NSArray *requestingFriends;
@@ -60,15 +60,19 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 - (UITableViewCell *)tableViewCellForIndexPath:(NSIndexPath *)indexPath
 {
     HWUserProfileData *userProfileData = nil;
+    HWFriendCellType neededType = HWFriendCellTypeRequestedFriend;
     switch (indexPath.section) {
         case HWFriendsDataSourceSectionRequestedFriends:
             userProfileData = self.requestedFriends[indexPath.row];
+            neededType = HWFriendCellTypeRequestedFriend;
             break;
         case HWFriendsDataSourceSectionRequestingFriends:
             userProfileData = self.requestingFriends[indexPath.row];
+            neededType = HWFriendCellTypeRequestingFriend;
             break;
         case HWFriendsDataSourceSectionAcceptedFriends:
             userProfileData = self.friends[indexPath.row];
+            neededType = HWFriendCellTypeExistedFriend;
             break;
     }
     if (!userProfileData) {
@@ -76,8 +80,14 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
     }
     
     HWFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HWFriendCell class]) forIndexPath:indexPath];
+    cell.delegate = self;
     [cell configureWithNameLabelText:userProfileData.fullName
-                           avatarURL:[NSURL URLWithString:userProfileData.avatarURLString]];
+                           avatarURL:[NSURL URLWithString:userProfileData.avatarURLString]
+                         forCellType:neededType];
+    
+    if (neededType == HWFriendCellTypeRequestedFriend) {
+        [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:userProfileData.userId]];
+    }
     
     return cell;
 }
@@ -88,16 +98,31 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 {
     switch (section) {
         case HWFriendsDataSourceSectionRequestedFriends:
-            return LOCALIZED(@"Requested Friends");
+            return !!self.requestedFriends.count ? LOCALIZED(@"Requested Friends") : nil;
         case HWFriendsDataSourceSectionRequestingFriends:
-            return LOCALIZED(@"Requesting Friends");
+            return !!self.requestingFriends.count ? LOCALIZED(@"Requesting Friends") : nil;
         case HWFriendsDataSourceSectionAcceptedFriends:
-            return LOCALIZED(@"Existed Friends");
+            return !!self.friends.count ? LOCALIZED(@"Existed Friends") : nil;
     }
     return nil;
 }
 
 #pragma mark - Actions
+
+- (void)fetchRequestedFriendsIdsWithCompletion:(void(^)())completion
+{
+    WEAK_SELF;
+    [HWOperationsFacade fetchRequestedFriendsIdsOnSuccess:^(NSArray *requestedFriendsIds) {
+        weakSelf.requestedFriendsIds = requestedFriendsIds;
+        if (completion) {
+            completion();
+        }
+    } onFailure:^(NSError *error) {
+        if (completion) {
+            completion();
+        }
+    }];
+}
 
 - (void)performNeededUpdatingActions
 {
@@ -120,8 +145,13 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
         dispatch_group_leave(friendsGroup);
     }];
     
-    dispatch_group_notify(friendsGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
+    dispatch_group_enter(friendsGroup);
+    [self fetchRequestedFriendsIdsWithCompletion:^{
+        dispatch_group_leave(friendsGroup);
+    }];
+    
+    dispatch_group_notify(friendsGroup, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
     });
 }
 
@@ -129,6 +159,50 @@ typedef NS_ENUM(NSUInteger, HWFriendsDataSourceSection) {
 {
     UINib *friendCellNib = [UINib nibWithNibName:NSStringFromClass([HWFriendCell class]) bundle:[NSBundle mainBundle]];
     [self.tableView registerNib:friendCellNib forCellReuseIdentifier:NSStringFromClass([HWFriendCell class])];
+}
+
+- (UIActivityIndicatorView *)activityIndicatorForRect:(CGRect)rect
+{
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = rect;
+    return activityIndicator;
+}
+
+#pragma mark - HWFriendCellDelegate
+
+- (void)friendCell:(HWFriendCell *)cell didTapAddFriendButton:(UIButton *)button
+{
+    WEAK_SELF;
+    [cell hideAddFriendButton:YES];
+    UIActivityIndicatorView *activityIndicator = [self activityIndicatorForRect:button.frame];
+    [cell.contentView addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath) {
+        HWUserProfileData *userToBeAFriend = self.requestedFriends[indexPath.row];
+        if (!button.selected) {
+            [HWOperationsFacade denyFriendsRequestToUserWithId:userToBeAFriend.userId onSuccess:^{
+                [weakSelf performNeededUpdatingActions];
+                [activityIndicator removeFromSuperview];
+                [activityIndicator stopAnimating];
+            } onFailure:^(NSError *error) {
+                [cell hideAddFriendButton:NO];
+                [activityIndicator removeFromSuperview];
+                [activityIndicator stopAnimating];
+            }];
+        }
+    }
+}
+
+- (void)friendCellDidTapAcceptRequestingFriendButton:(HWFriendCell *)cell
+{
+    
+}
+
+- (void)friendCellDidTapDenyRequestingFriendButton:(HWFriendCell *)cell
+{
+    
 }
 
 @end

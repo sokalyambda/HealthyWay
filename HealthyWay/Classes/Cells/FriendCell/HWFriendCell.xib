@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geU-dT-Auc">
-                        <rect key="frame" x="66" y="10" width="216" height="50"/>
+                        <rect key="frame" x="66" y="10" width="178" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -38,28 +38,64 @@
                             <action selector="addFriendClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sbu-do-STs"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZD-Zr-EVj" userLabel="RequestingFriendButtonsContainer">
+                        <rect key="frame" x="252" y="10" width="60" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMt-dt-dmF" userLabel="Apply">
+                                <rect key="frame" x="2" y="12" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="2YF-nW-JF5"/>
+                                    <constraint firstAttribute="height" constant="25" id="sUx-6O-S5N"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="apply_icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-2m-TJ4" userLabel="Cancel">
+                                <rect key="frame" x="33" y="12" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="c44-Gg-XlN"/>
+                                    <constraint firstAttribute="width" constant="25" id="thh-7u-kp3"/>
+                                </constraints>
+                                <state key="normal" title="Button" backgroundImage="cancel_icon"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Ya-2m-TJ4" firstAttribute="leading" secondItem="vMt-dt-dmF" secondAttribute="trailing" constant="6" id="PPM-ac-KQv"/>
+                            <constraint firstItem="vMt-dt-dmF" firstAttribute="centerY" secondItem="5ZD-Zr-EVj" secondAttribute="centerY" id="VjD-Dq-2Rq"/>
+                            <constraint firstItem="vMt-dt-dmF" firstAttribute="leading" secondItem="5ZD-Zr-EVj" secondAttribute="leading" constant="2" id="jgV-40-3Y8"/>
+                            <constraint firstItem="1Ya-2m-TJ4" firstAttribute="centerY" secondItem="vMt-dt-dmF" secondAttribute="centerY" id="oG4-IK-wAB"/>
+                            <constraint firstAttribute="trailing" secondItem="1Ya-2m-TJ4" secondAttribute="trailing" constant="2" id="t80-q9-d3a"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="geU-dT-Auc" firstAttribute="top" secondItem="Jk0-Rh-hXn" secondAttribute="top" id="4jK-sM-pPP"/>
+                    <constraint firstItem="F72-gj-WVI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="geU-dT-Auc" secondAttribute="trailing" constant="8" id="6Fc-bQ-iyJ"/>
                     <constraint firstItem="geU-dT-Auc" firstAttribute="bottom" secondItem="Jk0-Rh-hXn" secondAttribute="bottom" id="7aC-zh-gi9"/>
                     <constraint firstItem="Jk0-Rh-hXn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="I9a-MO-m2b"/>
                     <constraint firstItem="geU-dT-Auc" firstAttribute="leading" secondItem="Jk0-Rh-hXn" secondAttribute="trailing" constant="8" id="Lcj-KN-UeA"/>
                     <constraint firstItem="F72-gj-WVI" firstAttribute="centerY" secondItem="geU-dT-Auc" secondAttribute="centerY" id="MXg-mR-xkd"/>
                     <constraint firstAttribute="bottom" secondItem="Jk0-Rh-hXn" secondAttribute="bottom" constant="10" id="PK4-3X-c2U"/>
                     <constraint firstAttribute="trailing" secondItem="F72-gj-WVI" secondAttribute="trailing" constant="8" id="Xox-uk-LZo"/>
-                    <constraint firstItem="F72-gj-WVI" firstAttribute="leading" secondItem="geU-dT-Auc" secondAttribute="trailing" constant="8" id="jor-lK-M3x"/>
+                    <constraint firstItem="5ZD-Zr-EVj" firstAttribute="bottom" secondItem="geU-dT-Auc" secondAttribute="bottom" id="Xw2-KE-ndA"/>
+                    <constraint firstItem="5ZD-Zr-EVj" firstAttribute="leading" secondItem="geU-dT-Auc" secondAttribute="trailing" constant="8" id="Yza-Cc-htq"/>
+                    <constraint firstAttribute="trailing" secondItem="5ZD-Zr-EVj" secondAttribute="trailing" constant="8" id="gYc-4S-GFa"/>
                     <constraint firstItem="Jk0-Rh-hXn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mkn-ql-nda"/>
+                    <constraint firstItem="5ZD-Zr-EVj" firstAttribute="top" secondItem="geU-dT-Auc" secondAttribute="top" id="t3f-PB-n9C"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addFriendButton" destination="F72-gj-WVI" id="JqU-vN-JMy"/>
                 <outlet property="avatarImageView" destination="Jk0-Rh-hXn" id="TGI-Nj-zKo"/>
                 <outlet property="nameLabel" destination="geU-dT-Auc" id="N0b-G6-Hft"/>
+                <outlet property="requestingFriendButtonsContainer" destination="5ZD-Zr-EVj" id="HDc-iA-7ai"/>
             </connections>
             <point key="canvasLocation" x="558" y="377.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="apply_icon" width="170" height="170"/>
+        <image name="cancel_icon" width="170" height="170"/>
         <image name="plus_icon" width="68" height="68"/>
     </resources>
 </document>
