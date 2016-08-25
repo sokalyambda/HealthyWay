@@ -6,17 +6,17 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-@class HWBaseTask;
+#import "HWTask.h"
 
 @interface HWBaseOperation : NSOperation
 
 typedef void (^SuccessOperationBlock)(HWBaseOperation* operation);
 typedef void (^FailureOperationBlock)(HWBaseOperation* operation, NSError* error, BOOL isCanceled);
 
-@property (strong, nonatomic, readonly) HWBaseTask *task;
+@property (strong, nonatomic, readonly)id<HWTask> task;
 
 @property (strong, nonatomic, readonly) NSError *error;
 
-+ (instancetype)operationWithTask:(HWBaseTask *)task;
++ (instancetype)operationWithTask:(id<HWTask>)task;
 
 @end

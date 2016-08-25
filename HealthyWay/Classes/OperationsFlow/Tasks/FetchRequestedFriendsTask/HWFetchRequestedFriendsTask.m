@@ -12,14 +12,15 @@
 
 @interface HWFetchRequestedFriendsTask ()
 
-@property (nonatomic, readwrite) NSArray *requestedFriendsIds;
-@property (nonatomic, readwrite) NSArray *requestedFriends;
-
 @property (assign, nonatomic) HWFetchRequestedFriendsTaskType type;
+
+@property (nonatomic, readwrite) NSDictionary *outputFields;
 
 @end
 
 @implementation HWFetchRequestedFriendsTask
+
+@synthesize outputFields = _outputFields;
 
 #pragma mark - Lifecycle
 
@@ -41,7 +42,10 @@
         case HWFetchRequestedFriendsTaskTypeIds: {
             WEAK_SELF;
             [HWUserProfileService fetchRequestedFriendsIdsOnCompletion:^(NSArray *requestedFriendsIds) {
-                weakSelf.requestedFriendsIds = requestedFriendsIds;
+
+                weakSelf.outputFields = @{
+                                          TaskKeyRequestedFriendsIds: requestedFriendsIds
+                                          };
                 if (success) {
                     success();
                 }
@@ -51,7 +55,9 @@
         case HWFetchRequestedFriendsTaskTypeEntities: {
             WEAK_SELF;
             [HWUserProfileService fetchRequestedFriendsOnCompletion:^(NSArray *requestedFriends) {
-                weakSelf.requestedFriends = requestedFriends;
+                weakSelf.outputFields = @{
+                                          TaskKeyRequestedFriends: requestedFriends
+                                          };
                 if (success) {
                     success();
                 }

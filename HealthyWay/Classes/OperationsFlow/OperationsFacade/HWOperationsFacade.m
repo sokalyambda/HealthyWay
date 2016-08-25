@@ -10,7 +10,9 @@
 
 #import "HWOperationsManager.h"
 
-#import "HWBaseOperation.h"
+#import "HWAuthorizationTasksFactory.h"
+#import "HWUserProfilesTasksFactory.h"
+#import "HWFriendsTasksFactory.h"
 
 @implementation HWOperationsFacade
 
@@ -26,11 +28,22 @@
                                                 onSuccess:(void(^)())success
                                                 onFailure:(FailureBlock)failure
 {
-
-    HWAuthorizationTask *task = [[HWAuthorizationTask alloc] initWithEmail:email
-                                                                  password:password
-                                                         confirmedPassword:confirmedPassword
-                                                                  authType:authType];
+    
+    HWAuthorizationTasksFactory *factory = [[HWAuthorizationTasksFactory alloc] init];
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    if (email) {
+        [parameters setObject:email forKey:TaskKeyEmail];
+    }
+    if (password) {
+        [parameters setObject:password forKey:TaskKeyPassword];
+    }
+    if (confirmedPassword) {
+        [parameters setObject:confirmedPassword forKey:TaskKeyConfirmedPassword];
+    }
+    [parameters setObject:@(authType) forKey:TaskKeyAuthType];
+    
+    id<HWTask> task = [factory taskWithType:HWTaskTypeAuthorization andParameters:parameters];
     
     return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         
@@ -50,12 +63,20 @@
                                       onSuccess:(void(^)(NSArray *users))success
                                       onFailure:(FailureBlock)failure
 {
-    HWFetchUsersTask *task = [[HWFetchUsersTask alloc] initWithUsersFetchingType:fetchType
-                                                                    searchString:searchedText];
+    HWUserProfilesTasksFactory *factory = [[HWUserProfilesTasksFactory alloc] init];
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    
+    if (searchedText) {
+        [parameters setObject:searchedText forKey:TaskKeyUsersSearchString];
+    }
+    [parameters setObject:@(fetchType) forKey:TaskKeyUsersFetchingType];
+    id<HWTask> task = [factory taskWithType:HWTaskTypeFetchUsers andParameters:parameters];
+
     return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         
         if (success) {
-            success(task.users);
+            success(task.outputFields[UsersKey]);
         }
         
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
@@ -74,12 +95,28 @@
                                          onSuccess:(void(^)())success
                                          onFailure:(FailureBlock)failure
 {
-    HWCreateUpdateUserProfileTask *task = [[HWCreateUpdateUserProfileTask alloc] initWithFirstName:firstName
-                                                                                          lastName:lastName
-                                                                                          nickName:nickName
-                                                                                       dateOfBirth:dateOfBirth
-                                                                                        avatarData:avatarData
-                                                                                            isMale:isMale];
+    HWUserProfilesTasksFactory *factory = [[HWUserProfilesTasksFactory alloc] init];
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    
+    if (firstName) {
+        [parameters setObject:firstName forKey:TaskKeyFirstName];
+    }
+    if (lastName) {
+        [parameters setObject:lastName forKey:TaskKeyLastName];
+    }
+    if (nickName) {
+        [parameters setObject:nickName forKey:TaskKeyNickName];
+    }
+    if (dateOfBirth) {
+        [parameters setObject:dateOfBirth forKey:TaskKeyDateOfBirthName];
+    }
+    if (avatarData) {
+        [parameters setObject:avatarData forKey:TaskKeyAvatarData];
+    }
+    [parameters setObject:isMale forKey:TaskKeyIsMale];
+    
+    id <HWTask> task = [factory taskWithType:HWTaskTypeCreateUpdateUserProfile andParameters:parameters];
 
     return [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
@@ -95,8 +132,12 @@
 + (HWBaseOperation *)performAutologinOnSuccess:(void(^)(NSArray *users, NSString *token))success
                                      onFailure:(FailureBlock)failure
 {
-    HWAutologinTask *autologinTask = [[HWAutologinTask alloc] init];
-    HWFetchUsersTask *fetchUsersTask = [[HWFetchUsersTask alloc] initWithUsersFetchingType:HWFetchUsersTaskTypeCurrent];
+    HWAuthorizationTasksFactory *authFactory = [[HWAuthorizationTasksFactory alloc] init];
+    HWUserProfilesTasksFactory *usersFactory = [[HWUserProfilesTasksFactory alloc] init];
+    
+    id<HWTask> autologinTask = [authFactory taskWithType:HWTaskTypeAutologin andParameters:nil];
+    id<HWTask> fetchUsersTask = [usersFactory taskWithType:HWTaskTypeFetchUsers andParameters:@{
+                                                                                                TaskKeyUsersFetchingType: @(HWFetchUsersTaskTypeCurrent)                                              }];
     
     HWBaseOperation *autologinOperation = [self.operationsManager enqueueOperationForTask:autologinTask onSuccess:nil onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
@@ -105,7 +146,7 @@
     }];
     HWBaseOperation *fetchUsersOperation = [self.operationsManager enqueueOperationForTask:fetchUsersTask onSuccess:^(HWBaseOperation *operation) {
         if (success) {
-            success(fetchUsersTask.users, autologinTask.token);
+            success(fetchUsersTask.outputFields[UsersKey], autologinTask.outputFields[TaskKeyToken]);
         }
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
@@ -122,7 +163,17 @@
                                           onSuccess:(void(^)())success
                                           onFailure:(TaskFailure)failure
 {
-    HWSendOrDenyFriendsRequestTask *task = [[HWSendOrDenyFriendsRequestTask alloc] initWithRemoteUserId:userId andType:HWSendOrDenyFriendsRequestTaskTypeSend];
+    HWFriendsTasksFactory *factory = [[HWFriendsTasksFactory alloc] init];
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    
+    if (userId) {
+        [parameters setObject:userId forKey:TaskKeyRemoteUserId];
+    }
+    [parameters setObject:@(HWSendOrDenyFriendsRequestTaskTypeSend) forKey:TaskKeyFriendRequestType];
+    
+    id <HWTask> task = [factory taskWithType:HWTaskTypeSendOrDenyFriendsRequest andParameters:parameters];
+    
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
             success();
@@ -139,7 +190,16 @@
                                           onSuccess:(void(^)())success
                                           onFailure:(TaskFailure)failure
 {
-    HWSendOrDenyFriendsRequestTask *task = [[HWSendOrDenyFriendsRequestTask alloc] initWithRemoteUserId:userId andType:HWSendOrDenyFriendsRequestTaskTypeDeny];
+    HWFriendsTasksFactory *factory = [[HWFriendsTasksFactory alloc] init];
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    
+    if (userId) {
+        [parameters setObject:userId forKey:TaskKeyRemoteUserId];
+    }
+    [parameters setObject:@(HWSendOrDenyFriendsRequestTaskTypeDeny) forKey:TaskKeyFriendRequestType];
+    id<HWTask> task = [factory taskWithType:HWTaskTypeSendOrDenyFriendsRequest andParameters:parameters];
+    
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
             success();
@@ -155,10 +215,13 @@
 + (HWBaseOperation *)fetchRequestedFriendsIdsOnSuccess:(void(^)(NSArray *requestedFriendsIds))success
                                              onFailure:(TaskFailure)failure
 {
-    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] initWithFetchType:HWFetchRequestedFriendsTaskTypeIds];
+    HWFriendsTasksFactory *facrory = [[HWFriendsTasksFactory alloc] init];
+    id<HWTask> task = [facrory taskWithType:HWTaskTypeFetchRequestedFriends andParameters:@{
+                                                                                            TaskKeyFriendRequestType: @(HWFetchRequestedFriendsTaskTypeIds)
+                                                                                            }];
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
-            success(task.requestedFriendsIds);
+            success(task.outputFields[TaskKeyRequestedFriendsIds]);
         }
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
@@ -171,10 +234,14 @@
 + (HWBaseOperation *)fetchRequestedFriendsOnSuccess:(void(^)(NSArray *requestedFriends))success
                                           onFailure:(TaskFailure)failure
 {
-    HWFetchRequestedFriendsTask *task = [[HWFetchRequestedFriendsTask alloc] initWithFetchType:HWFetchRequestedFriendsTaskTypeEntities];
+    HWFriendsTasksFactory *factory = [[HWFriendsTasksFactory alloc] init];
+    id<HWTask> task = [factory taskWithType:HWTaskTypeFetchRequestedFriends andParameters:@{
+                                                                                            TaskKeyFetchRequestedFriendsType: @(HWFetchRequestedFriendsTaskTypeEntities)
+                                                                                            }];
+    
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
-            success(task.requestedFriends);
+            success(task.outputFields[TaskKeyRequestedFriends]);
         }
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {
@@ -187,10 +254,12 @@
 + (HWBaseOperation *)fetchRequestingFriendsOnSuccess:(void(^)(NSArray *requestingFriends))success
                                            onFailure:(TaskFailure)failure
 {
-    HWFetchRequestingFriendsTask *task = [[HWFetchRequestingFriendsTask alloc] init];
+    HWFriendsTasksFactory *factory = [[HWFriendsTasksFactory alloc] init];
+    id<HWTask> task = [factory taskWithType:HWTaskTypeFetchRequestingFriends andParameters:nil];
+    
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
         if (success) {
-            success(task.requestingFriends);
+            success(task.outputFields[TaskKeyRequestingFriends]);
         }
     } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
         if (failure) {

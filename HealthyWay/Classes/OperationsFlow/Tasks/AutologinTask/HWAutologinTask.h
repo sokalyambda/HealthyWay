@@ -10,6 +10,4 @@
 
 @interface HWAutologinTask : HWBaseTask
 
-@property (nonatomic, readonly) NSString *token;
-
 @end

@@ -6,11 +6,6 @@
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, HWSendOrDenyFriendsRequestTaskType) {
-    HWSendOrDenyFriendsRequestTaskTypeSend,
-    HWSendOrDenyFriendsRequestTaskTypeDeny
-};
-
 #import "HWBaseTask.h"
 
 @interface HWSendOrDenyFriendsRequestTask : HWBaseTask

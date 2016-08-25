@@ -16,6 +16,9 @@
 
 @property (nonatomic) NSArray<id<HWUserProfile>> *users;
 
+@property (nonatomic) NSString *searchedText;
+
+@property (nonatomic, readwrite) NSDictionary *outputFields;
 @property (nonatomic) NSError *error;
 
 @end
@@ -23,6 +26,7 @@
 @implementation HWFetchUsersTask
 
 @synthesize error = _error;
+@synthesize outputFields = _outputFields;
 
 #pragma mark - Lifecycle
 
@@ -72,8 +76,11 @@
 
 - (void)completeTaskWithUsers:(NSArray *)users error:(NSError *)error
 {
-    self.users = users;
     self.error = error;
+    
+    if (users) {
+        self.outputFields = @{UsersKey: users};
+    }
     
     if (error && self.failureBlock) {
         return self.failureBlock(error);

@@ -12,11 +12,13 @@
 
 @interface HWFetchRequestingFriendsTask ()
 
-@property (nonatomic, readwrite) NSArray *requestingFriends;
+@property (nonatomic, readwrite) NSDictionary *outputFields;
 
 @end
 
 @implementation HWFetchRequestingFriendsTask
+
+@synthesize outputFields = _outputFields;
 
 #pragma mark - Actions
 
@@ -25,7 +27,9 @@
 {
     WEAK_SELF;
     [HWUserProfileService fetchRequestingFriendsOnCompletion:^(NSArray *requestingFriends) {
-        weakSelf.requestingFriends = requestingFriends;
+
+        weakSelf.outputFields = @{TaskKeyRequestingFriends: requestingFriends};
+        
         if (success) {
             success();
         }
