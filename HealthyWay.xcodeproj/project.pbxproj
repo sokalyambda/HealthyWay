@@ -40,8 +40,9 @@
 		5810FF0B1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0A1D589FEA00AF5C96 /* HWAuthorizationViewController+AuthViewTransitionSubtype.m */; };
 		5810FF101D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */; };
 		5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */; };
-		5817A3911D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817A3901D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.m */; };
-		5817A3951D6EEF3600DADAE4 /* HWFriendsTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817A3941D6EEF3600DADAE4 /* HWFriendsTasksFactory.m */; };
+		5817A3991D6F021300DADAE4 /* HWFriendsTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817A3981D6F021300DADAE4 /* HWFriendsTasksFactory.m */; };
+		5817A39C1D6F022600DADAE4 /* HWUserProfilesTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817A39B1D6F022600DADAE4 /* HWUserProfilesTasksFactory.m */; };
+		5817A39F1D6F023500DADAE4 /* HWAuthorizationTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817A39E1D6F023500DADAE4 /* HWAuthorizationTasksFactory.m */; };
 		583F47211D5DF9740099C9E0 /* HWOperationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47201D5DF9740099C9E0 /* HWOperationsManager.m */; };
 		583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47231D5DF97C0099C9E0 /* HWOperationsFacade.m */; };
 		583F47281D5DF9A30099C9E0 /* HWAuthorizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F47271D5DF9A30099C9E0 /* HWAuthorizationService.m */; };
@@ -83,7 +84,6 @@
 		58C727781D23D3BD00F5F85D /* HWValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C727771D23D3BD00F5F85D /* HWValidator.m */; };
 		58D774241D22C83B00CEE186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D774231D22C83B00CEE186 /* GoogleService-Info.plist */; };
 		58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */; };
-		58ECF6F81D6EE664006F84B6 /* HWAuthorizationTasksFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECF6F71D6EE664006F84B6 /* HWAuthorizationTasksFactory.m */; };
 		58FDB09B1D5C995400908ADC /* SettingsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */; };
 		58FDB09D1D5C997000908ADC /* EditProfileBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09C1D5C997000908ADC /* EditProfileBoard.storyboard */; };
 		58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09E1D5C998100908ADC /* MapBoard.storyboard */; };
@@ -166,10 +166,13 @@
 		5810FF0F1D58A9C500AF5C96 /* CAAnimation+CompletionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+CompletionBlock.m"; path = "Classes/Categories/CAAnimation/CAAnimation+CompletionBlock/CAAnimation+CompletionBlock.m"; sourceTree = "<group>"; };
 		5810FF131D58CCC300AF5C96 /* NSString+ErrorString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ErrorString.h"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.h"; sourceTree = "<group>"; };
 		5810FF141D58CCC300AF5C96 /* NSString+ErrorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ErrorString.m"; path = "Classes/Categories/NSString/NSString+ErrorString/NSString+ErrorString.m"; sourceTree = "<group>"; };
-		5817A38F1D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfilesTasksFactory.h; path = Classes/Factories/UserProfilesTasksFactory/HWUserProfilesTasksFactory.h; sourceTree = "<group>"; };
-		5817A3901D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfilesTasksFactory.m; path = Classes/Factories/UserProfilesTasksFactory/HWUserProfilesTasksFactory.m; sourceTree = "<group>"; };
-		5817A3931D6EEF3600DADAE4 /* HWFriendsTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsTasksFactory.h; path = Classes/Factories/FriendsTasksFactory/HWFriendsTasksFactory.h; sourceTree = "<group>"; };
-		5817A3941D6EEF3600DADAE4 /* HWFriendsTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsTasksFactory.m; path = Classes/Factories/FriendsTasksFactory/HWFriendsTasksFactory.m; sourceTree = "<group>"; };
+		5817A3971D6F021300DADAE4 /* HWFriendsTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendsTasksFactory.h; path = Classes/Factories/Tasks/FriendsTasksFactory/HWFriendsTasksFactory.h; sourceTree = "<group>"; };
+		5817A3981D6F021300DADAE4 /* HWFriendsTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendsTasksFactory.m; path = Classes/Factories/Tasks/FriendsTasksFactory/HWFriendsTasksFactory.m; sourceTree = "<group>"; };
+		5817A39A1D6F022600DADAE4 /* HWUserProfilesTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfilesTasksFactory.h; path = Classes/Factories/Tasks/UserProfilesTasksFactory/HWUserProfilesTasksFactory.h; sourceTree = "<group>"; };
+		5817A39B1D6F022600DADAE4 /* HWUserProfilesTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUserProfilesTasksFactory.m; path = Classes/Factories/Tasks/UserProfilesTasksFactory/HWUserProfilesTasksFactory.m; sourceTree = "<group>"; };
+		5817A39D1D6F023500DADAE4 /* HWAuthorizationTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationTasksFactory.h; path = Classes/Factories/Tasks/AuthorizationTasksFactory/HWAuthorizationTasksFactory.h; sourceTree = "<group>"; };
+		5817A39E1D6F023500DADAE4 /* HWAuthorizationTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationTasksFactory.m; path = Classes/Factories/Tasks/AuthorizationTasksFactory/HWAuthorizationTasksFactory.m; sourceTree = "<group>"; };
+		5817A3A01D6F024400DADAE4 /* HWTasksAbstractFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWTasksAbstractFactory.h; path = Classes/Factories/Tasks/TasksAbstractFactory/HWTasksAbstractFactory.h; sourceTree = "<group>"; };
 		583F471F1D5DF9740099C9E0 /* HWOperationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOperationsManager.h; path = Classes/OperationsFlow/OperationsManager/HWOperationsManager.h; sourceTree = "<group>"; };
 		583F47201D5DF9740099C9E0 /* HWOperationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWOperationsManager.m; path = Classes/OperationsFlow/OperationsManager/HWOperationsManager.m; sourceTree = "<group>"; };
 		583F47221D5DF97C0099C9E0 /* HWOperationsFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOperationsFacade.h; path = Classes/OperationsFlow/OperationsFacade/HWOperationsFacade.h; sourceTree = "<group>"; };
@@ -251,9 +254,6 @@
 		58D774231D22C83B00CEE186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58E337C11D22F42E00B3A280 /* HWBaseAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseAppManager.h; path = Classes/Managers/BaseAppManager/HWBaseAppManager.h; sourceTree = "<group>"; };
 		58E337C21D22F42E00B3A280 /* HWBaseAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseAppManager.m; path = Classes/Managers/BaseAppManager/HWBaseAppManager.m; sourceTree = "<group>"; };
-		58ECF6F41D6EE446006F84B6 /* HWTasksAbstractFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWTasksAbstractFactory.h; path = Classes/Factories/TasksAbstractFactory/HWTasksAbstractFactory.h; sourceTree = "<group>"; };
-		58ECF6F61D6EE664006F84B6 /* HWAuthorizationTasksFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthorizationTasksFactory.h; path = Classes/Factories/AuthorizationTasksFactory/HWAuthorizationTasksFactory.h; sourceTree = "<group>"; };
-		58ECF6F71D6EE664006F84B6 /* HWAuthorizationTasksFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAuthorizationTasksFactory.m; path = Classes/Factories/AuthorizationTasksFactory/HWAuthorizationTasksFactory.m; sourceTree = "<group>"; };
 		58ECF6FA1D6EEA3D006F84B6 /* HWTasksParametersKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HWTasksParametersKeys.h; path = Classes/OperationsFlow/Tasks/TasksParametersKeys/HWTasksParametersKeys.h; sourceTree = "<group>"; };
 		58FDB06B1D5C6EC000908ADC /* HWUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUserProfile.h; path = Classes/Protocols/UserProfile/HWUserProfile.h; sourceTree = "<group>"; };
 		58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsBoard.storyboard; sourceTree = "<group>"; };
@@ -769,8 +769,8 @@
 		5817A38E1D6EECC400DADAE4 /* UserProfilesTasksFactory */ = {
 			isa = PBXGroup;
 			children = (
-				5817A38F1D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.h */,
-				5817A3901D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.m */,
+				5817A39A1D6F022600DADAE4 /* HWUserProfilesTasksFactory.h */,
+				5817A39B1D6F022600DADAE4 /* HWUserProfilesTasksFactory.m */,
 			);
 			name = UserProfilesTasksFactory;
 			sourceTree = "<group>";
@@ -778,10 +778,21 @@
 		5817A3921D6EEF2600DADAE4 /* FriendsTasksFactory */ = {
 			isa = PBXGroup;
 			children = (
-				5817A3931D6EEF3600DADAE4 /* HWFriendsTasksFactory.h */,
-				5817A3941D6EEF3600DADAE4 /* HWFriendsTasksFactory.m */,
+				5817A3971D6F021300DADAE4 /* HWFriendsTasksFactory.h */,
+				5817A3981D6F021300DADAE4 /* HWFriendsTasksFactory.m */,
 			);
 			name = FriendsTasksFactory;
+			sourceTree = "<group>";
+		};
+		5817A3961D6F01D600DADAE4 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				5817A3921D6EEF2600DADAE4 /* FriendsTasksFactory */,
+				5817A38E1D6EECC400DADAE4 /* UserProfilesTasksFactory */,
+				58ECF6F51D6EE644006F84B6 /* AuthorizationTasksFactory */,
+				58ECF6F31D6EE415006F84B6 /* TasksAbstractFactory */,
+			);
+			name = Tasks;
 			sourceTree = "<group>";
 		};
 		583F46E91D5DA9BD0099C9E0 /* OperationsFacade */ = {
@@ -1209,10 +1220,7 @@
 		58ECF6F21D6EE412006F84B6 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				5817A3921D6EEF2600DADAE4 /* FriendsTasksFactory */,
-				5817A38E1D6EECC400DADAE4 /* UserProfilesTasksFactory */,
-				58ECF6F51D6EE644006F84B6 /* AuthorizationTasksFactory */,
-				58ECF6F31D6EE415006F84B6 /* TasksAbstractFactory */,
+				5817A3961D6F01D600DADAE4 /* Tasks */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -1220,7 +1228,7 @@
 		58ECF6F31D6EE415006F84B6 /* TasksAbstractFactory */ = {
 			isa = PBXGroup;
 			children = (
-				58ECF6F41D6EE446006F84B6 /* HWTasksAbstractFactory.h */,
+				5817A3A01D6F024400DADAE4 /* HWTasksAbstractFactory.h */,
 			);
 			name = TasksAbstractFactory;
 			sourceTree = "<group>";
@@ -1228,8 +1236,8 @@
 		58ECF6F51D6EE644006F84B6 /* AuthorizationTasksFactory */ = {
 			isa = PBXGroup;
 			children = (
-				58ECF6F61D6EE664006F84B6 /* HWAuthorizationTasksFactory.h */,
-				58ECF6F71D6EE664006F84B6 /* HWAuthorizationTasksFactory.m */,
+				5817A39D1D6F023500DADAE4 /* HWAuthorizationTasksFactory.h */,
+				5817A39E1D6F023500DADAE4 /* HWAuthorizationTasksFactory.m */,
 			);
 			name = AuthorizationTasksFactory;
 			sourceTree = "<group>";
@@ -1485,6 +1493,7 @@
 				586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */,
 				58A1FAE41D6C5EE9007EFB90 /* NSData+Base64.m in Sources */,
 				580C295D1D5B3D2C009B5118 /* HWBirthDatePicker.m in Sources */,
+				5817A39C1D6F022600DADAE4 /* HWUserProfilesTasksFactory.m in Sources */,
 				58B3056E1D508DE00011F405 /* HWSignInView.m in Sources */,
 				580C29631D5B400A009B5118 /* HWCommonDateFormatter.m in Sources */,
 				580C29671D5B421A009B5118 /* HWUserProfileController+ImagePicker.m in Sources */,
@@ -1512,14 +1521,13 @@
 				580C29841D5B8126009B5118 /* HWUserProfileData+Mapping.m in Sources */,
 				44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */,
 				583F472C1D5E06300099C9E0 /* HWUserProfileService.m in Sources */,
-				58ECF6F81D6EE664006F84B6 /* HWAuthorizationTasksFactory.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				580C3FB91D6B1CB800CC3BA8 /* HWCheckBoxButton.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
 				5810FF151D58CCC300AF5C96 /* NSString+ErrorString.m in Sources */,
-				5817A3951D6EEF3600DADAE4 /* HWFriendsTasksFactory.m in Sources */,
+				5817A3991D6F021300DADAE4 /* HWFriendsTasksFactory.m in Sources */,
 				580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */,
 				44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */,
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
@@ -1537,10 +1545,10 @@
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */,
+				5817A39F1D6F023500DADAE4 /* HWAuthorizationTasksFactory.m in Sources */,
 				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				58B558B31D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m in Sources */,
-				5817A3911D6EECDE00DADAE4 /* HWUserProfilesTasksFactory.m in Sources */,
 				58B4572F1D5E3B87005ED79C /* HWFriendsViewController.m in Sources */,
 				44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */,
 			);
