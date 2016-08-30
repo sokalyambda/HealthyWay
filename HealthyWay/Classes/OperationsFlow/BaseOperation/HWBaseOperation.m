@@ -8,6 +8,8 @@
 
 #import "HWBaseOperation.h"
 
+#import "HWBaseTask.h"
+
 @implementation HWBaseOperation {
     BOOL _isFinished;
     BOOL _isExecuting;
@@ -43,12 +45,12 @@
 
 #pragma mark - Lifecycle
 
-+ (instancetype)operationWithTask:(id<HWTask>)task
++ (instancetype)operationWithTask:(HWBaseTask *)task
 {
     return  [[self alloc] initWithTask:task];
 }
 
-- (instancetype)initWithTask:(id<HWTask>)task
+- (instancetype)initWithTask:(HWBaseTask *)task
 {
     self = [super init];
     if (self) {

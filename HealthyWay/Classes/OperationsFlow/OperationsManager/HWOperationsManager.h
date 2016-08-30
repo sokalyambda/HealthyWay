@@ -12,7 +12,7 @@
 
 + (instancetype)sharedManager;
 
-- (HWBaseOperation *)enqueueOperationForTask:(id<HWTask>)task
+- (HWBaseOperation *)enqueueOperationForTask:(HWBaseTask *)task
                                    onSuccess:(SuccessOperationBlock)success
                                    onFailure:(FailureOperationBlock)failure;
 

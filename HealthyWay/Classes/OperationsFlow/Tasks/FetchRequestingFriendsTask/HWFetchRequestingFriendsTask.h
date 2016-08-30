@@ -13,4 +13,6 @@
  */
 @interface HWFetchRequestingFriendsTask : HWBaseTask
 
+@property (strong, nonatomic, readonly) NSArray *requestingFriends;
+
 @end

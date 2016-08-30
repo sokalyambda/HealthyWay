@@ -8,7 +8,7 @@
 
 #import "HWAuthTypes.h"
 
-#import "HWTask.h"
+#import "HWTasks.h"
 
 @class HWBaseOperation;
 

@@ -13,14 +13,13 @@
 @interface HWAutologinTask ()
 
 @property (nonatomic) NSError *error;
-@property (nonatomic, readwrite) NSDictionary *outputFields;
+@property (nonatomic) NSString *token;
 
 @end
 
 @implementation HWAutologinTask
 
 @synthesize error = _error;
-@synthesize outputFields = _outputFields;
 
 #pragma mark - HWTask
 
@@ -30,12 +29,8 @@
     [super performCurrentTaskOnSuccess:success onFailure:failure];
     WEAK_SELF;
     [HWAuthorizationService getTokenWithCompletion:^(NSString *token, NSError *error) {
-        
+        weakSelf.token = token;
         weakSelf.error = error;
-        
-        if (token) {
-            weakSelf.outputFields = @{TaskKeyToken: token};
-        }
         
         if (error && failure) {
             return failure(error);

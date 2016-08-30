@@ -10,9 +10,19 @@
 
 #import "HWBaseTask.h"
 
+typedef NS_ENUM(NSUInteger, HWFetchUsersTaskType) {
+    HWFetchUsersTaskTypeCurrent,
+    HWFetchUsersTaskTypeTypeAll
+};
+
 @interface HWFetchUsersTask : HWBaseTask
 
+@property (nonatomic, readonly) NSArray<id<HWUserProfile>> *users;
+
+@property (nonatomic, readonly) NSString *searchedText;
+
 - (instancetype)initWithUsersFetchingType:(HWFetchUsersTaskType)fetchType;
+
 - (instancetype)initWithUsersFetchingType:(HWFetchUsersTaskType)fetchType
                              searchString:(NSString *)searchedText;
 
