@@ -200,4 +200,21 @@
     return operation;
 }
 
++ (HWBaseOperation *)addUserToFriendsWithId:(NSString *)userId
+                                  onSuccess:(void(^)())success
+                                  onFailure:(TaskFailure)failure
+{
+    HWAddToFriendTask *task = [[HWAddToFriendTask alloc] initWithUserId:userId];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success();
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
 @end

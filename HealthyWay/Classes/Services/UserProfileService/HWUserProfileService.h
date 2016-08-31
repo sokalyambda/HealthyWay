@@ -87,4 +87,15 @@
  */
 + (void)fetchExistedFriendsOnCompletion:(void(^)(NSArray *existedFriends))completion;
 
+/**
+ *  Methods for adding/removing friends
+ *
+ *  @param userId
+ *  @param completion
+ */
++ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
++ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
++ (void)removeUserFromRequestingFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
++ (void)removeFromFriendRequestedIds:(NSString *)userId onCompletion:(void(^)())completion;
+
 @end

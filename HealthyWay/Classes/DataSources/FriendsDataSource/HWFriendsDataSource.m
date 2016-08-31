@@ -186,7 +186,13 @@
 
 - (void)friendCellDidTapAcceptRequestingFriendButton:(HWFriendCell *)cell
 {
-    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    HWUserProfileData *user = self.requestingFriends[indexPath.row];
+    [HWOperationsFacade addUserToFriendsWithId:user.userId onSuccess:^{
+        
+    } onFailure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)friendCellDidTapDenyRequestingFriendButton:(HWFriendCell *)cell

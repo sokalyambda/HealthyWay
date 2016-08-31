@@ -54,6 +54,7 @@
 		58A1FAE41D6C5EE9007EFB90 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1FAE31D6C5EE9007EFB90 /* NSData+Base64.m */; };
 		58A2A7A01D4F859E006DBC38 /* HWKeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A79F1D4F859E006DBC38 /* HWKeychainHandler.m */; };
 		58A2A7AB1D4F938E006DBC38 /* UIView+MakeFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */; };
+		58A8EB541D76E8F900D86158 /* HWAddToFriendTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8EB531D76E8F900D86158 /* HWAddToFriendTask.m */; };
 		58B305481D508D1A0011F405 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B305471D508D1A0011F405 /* HWBaseViewController.m */; };
 		58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3054A1D508D280011F405 /* HWBaseNavigationController.m */; };
 		58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3054D1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m */; };
@@ -196,6 +197,8 @@
 		58A2A7A21D4F88D9006DBC38 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
 		58A2A7A91D4F938E006DBC38 /* UIView+MakeFromXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+MakeFromXib.h"; path = "Classes/Categories/UIView/UIView+MakeFromXib/UIView+MakeFromXib.h"; sourceTree = "<group>"; };
 		58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+MakeFromXib.m"; path = "Classes/Categories/UIView/UIView+MakeFromXib/UIView+MakeFromXib.m"; sourceTree = "<group>"; };
+		58A8EB521D76E8F900D86158 /* HWAddToFriendTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddToFriendTask.h; path = Classes/OperationsFlow/Tasks/AddToFriendTask/HWAddToFriendTask.h; sourceTree = "<group>"; };
+		58A8EB531D76E8F900D86158 /* HWAddToFriendTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddToFriendTask.m; path = Classes/OperationsFlow/Tasks/AddToFriendTask/HWAddToFriendTask.m; sourceTree = "<group>"; };
 		58B305461D508D1A0011F405 /* HWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseViewController.h; path = Classes/MVC/ViewControllers/BaseViewController/HWBaseViewController.h; sourceTree = "<group>"; };
 		58B305471D508D1A0011F405 /* HWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBaseViewController.m; path = Classes/MVC/ViewControllers/BaseViewController/HWBaseViewController.m; sourceTree = "<group>"; };
 		58B305491D508D280011F405 /* HWBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBaseNavigationController.h; path = Classes/MVC/ViewControllers/BaseNavigationController/HWBaseNavigationController.h; sourceTree = "<group>"; };
@@ -804,6 +807,7 @@
 		586AC8971D61C3AE00685CBA /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				58A8EB511D76E8DC00D86158 /* AddToFriendTask */,
 				580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */,
 				580C3FBE1D6B1E9B00CC3BA8 /* FetchRequestingFriendsTask */,
 				580C3FBA1D6B1E7D00CC3BA8 /* FetchRequestedFriendsTask */,
@@ -951,6 +955,15 @@
 				58A2A7AA1D4F938E006DBC38 /* UIView+MakeFromXib.m */,
 			);
 			name = "UIView+MakeFromXib";
+			sourceTree = "<group>";
+		};
+		58A8EB511D76E8DC00D86158 /* AddToFriendTask */ = {
+			isa = PBXGroup;
+			children = (
+				58A8EB521D76E8F900D86158 /* HWAddToFriendTask.h */,
+				58A8EB531D76E8F900D86158 /* HWAddToFriendTask.m */,
+			);
+			name = AddToFriendTask;
 			sourceTree = "<group>";
 		};
 		58B305441D508BD30011F405 /* ViewControllers */ = {
@@ -1436,6 +1449,7 @@
 				580C3FC51D6B203C00CC3BA8 /* HWSendOrDenyFriendsRequestTask.m in Sources */,
 				58B3055F1D508DA60011F405 /* HWUserProfileController.m in Sources */,
 				58B305721D508DF90011F405 /* HWCredentials.m in Sources */,
+				58A8EB541D76E8F900D86158 /* HWAddToFriendTask.m in Sources */,
 				58B558B71D6E40B500547762 /* HWExistedFriendConfigurationStrategy.m in Sources */,
 				58B3054B1D508D280011F405 /* HWBaseNavigationController.m in Sources */,
 				58B558AB1D6E404600547762 /* HWRequestedFriendConfigurationStrategy.m in Sources */,

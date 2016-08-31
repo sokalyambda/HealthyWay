@@ -48,6 +48,9 @@
                                     <constraint firstAttribute="height" constant="25" id="sUx-6O-S5N"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="apply_icon"/>
+                                <connections>
+                                    <action selector="applyFriendRequestClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KGi-xm-L7Q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-2m-TJ4" userLabel="Cancel">
                                 <rect key="frame" x="33" y="12" width="25" height="25"/>
@@ -56,6 +59,9 @@
                                     <constraint firstAttribute="width" constant="25" id="thh-7u-kp3"/>
                                 </constraints>
                                 <state key="normal" title="Button" backgroundImage="cancel_icon"/>
+                                <connections>
+                                    <action selector="denyFriendRequestClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UNb-Co-086"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,7 +96,7 @@
                 <outlet property="nameLabel" destination="geU-dT-Auc" id="N0b-G6-Hft"/>
                 <outlet property="requestingFriendButtonsContainer" destination="5ZD-Zr-EVj" id="HDc-iA-7ai"/>
             </connections>
-            <point key="canvasLocation" x="558" y="377.5"/>
+            <point key="canvasLocation" x="333" y="352.5"/>
         </tableViewCell>
     </objects>
     <resources>

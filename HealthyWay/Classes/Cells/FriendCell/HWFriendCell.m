@@ -49,4 +49,18 @@
     }
 }
 
+- (IBAction)applyFriendRequestClick:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(friendCellDidTapAcceptRequestingFriendButton:)]) {
+        [self.delegate friendCellDidTapAcceptRequestingFriendButton:self];
+    }
+}
+
+- (IBAction)denyFriendRequestClick:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(friendCellDidTapDenyRequestingFriendButton:)]) {
+        [self.delegate friendCellDidTapDenyRequestingFriendButton:self];
+    }
+}
+
 @end

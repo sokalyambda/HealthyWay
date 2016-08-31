@@ -8,16 +8,12 @@
 
 #import "HWBaseFriendCellConfigurationStrategy.h"
 
-#import "HWExistedFriendConfigurationStrategy.h"
-#import "HWRequestingFriendConfigurationStrategy.h"
-#import "HWRequestedFriendConfigurationStrategy.h"
-
 #import "HWFriendCell.h"
 
 @interface HWBaseFriendCellConfigurationStrategy ()
 
 @property (strong, nonatomic, readwrite) NSAttributedString *attributedText;
-@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic, readwrite) NSString *text;
 
 @end
 
@@ -63,14 +59,19 @@
                                               avatarURL:(NSURL *)avatarURL
                                            searchedText:(NSString *)searchedText
 {
+    Class StrategyClass;
     switch (type) {
         case HWFriendsStrategyTypeAcceptedFriends:
-            return [[HWExistedFriendConfigurationStrategy alloc] initWithNameLabelText:text avatarURL:avatarURL searchedText:searchedText];
+            StrategyClass = NSClassFromString(@"HWExistedFriendConfigurationStrategy");
+            break;
         case HWFriendsStrategyTypeRequestedFriends:
-            return [[HWRequestedFriendConfigurationStrategy alloc] initWithNameLabelText:text avatarURL:avatarURL searchedText:searchedText];
+            StrategyClass = NSClassFromString(@"HWRequestedFriendConfigurationStrategy");
+            break;
         case HWFriendsStrategyTypeRequestingFriends:
-            return [[HWRequestingFriendConfigurationStrategy alloc] initWithNameLabelText:text avatarURL:avatarURL searchedText:searchedText];
+            StrategyClass = NSClassFromString(@"HWRequestingFriendConfigurationStrategy");
+            break;
     }
+    return [[StrategyClass alloc] initWithNameLabelText:text avatarURL:avatarURL searchedText:searchedText];
 }
 
 #pragma mark - Private
