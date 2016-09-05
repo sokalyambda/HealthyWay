@@ -2,7 +2,7 @@
 //  HWChangePasswordController.h
 //  HealthyWay
 //
-//  Created by Anastasia Mark on 23.08.16.
+//  Created by Anastasia Mark on 02.09.16.
 //  Copyright © 2016 Eugenity. All rights reserved.
 //
 

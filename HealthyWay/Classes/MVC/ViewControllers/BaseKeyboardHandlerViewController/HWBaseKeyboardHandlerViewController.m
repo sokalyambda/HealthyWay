@@ -62,9 +62,9 @@
  *
  *  @param notification KeyboardWillShowNotification
  */
-- (void)keyboardWillShow:(NSNotification*) notification
+- (void)keyboardWillShow:(NSNotification*)notification
 {
-    NSDictionary* info = [notification userInfo];
+    NSDictionary *info = [notification userInfo];
     CGRect keyBoardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     keyBoardFrame = [self.view convertRect:keyBoardFrame fromView:nil];
@@ -77,7 +77,7 @@
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     
-    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin)) {
         [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
     }
 }
