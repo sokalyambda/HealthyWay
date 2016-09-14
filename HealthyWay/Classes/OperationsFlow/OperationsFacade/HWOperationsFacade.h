@@ -61,4 +61,8 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
                                   onSuccess:(void(^)())success
                                   onFailure:(TaskFailure)failure;
 
++(HWBaseOperation *)updateUserWithEmail:(NSString *)email
+                              onSuccess:(void(^)())success
+                              onFailure:(TaskFailure)failure;
+
 @end

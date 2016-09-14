@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
+		4450AE3F1D80391A00EC325C /* HWUpdateEmailTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */; };
 		446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */; };
 		4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */; };
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
@@ -106,6 +107,8 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
+		4450AE3D1D80391A00EC325C /* HWUpdateEmailTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUpdateEmailTask.h; path = Classes/OperationsFlow/Tasks/UpdateEmailTask/HWUpdateEmailTask.h; sourceTree = "<group>"; };
+		4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUpdateEmailTask.m; path = Classes/OperationsFlow/Tasks/UpdateEmailTask/HWUpdateEmailTask.m; sourceTree = "<group>"; };
 		446796471D5DE77F0004DA1D /* HWSettingsFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.h; sourceTree = "<group>"; };
 		446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSettingsFlowController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.m; sourceTree = "<group>"; };
 		4467964B1D5E091D0004DA1D /* HWSettingsFlowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowTableViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowTableViewController/HWSettingsFlowTableViewController.h; sourceTree = "<group>"; };
@@ -305,6 +308,15 @@
 				583F46E91D5DA9BD0099C9E0 /* OperationsFacade */,
 			);
 			name = OperationsFlow;
+			sourceTree = "<group>";
+		};
+		4450AE3C1D80388F00EC325C /* UpdateEmailTask */ = {
+			isa = PBXGroup;
+			children = (
+				4450AE3D1D80391A00EC325C /* HWUpdateEmailTask.h */,
+				4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */,
+			);
+			name = UpdateEmailTask;
 			sourceTree = "<group>";
 		};
 		446796461D5DE7290004DA1D /* SettingsFlowController */ = {
@@ -837,6 +849,7 @@
 		586AC8971D61C3AE00685CBA /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				4450AE3C1D80388F00EC325C /* UpdateEmailTask */,
 				58A8EB511D76E8DC00D86158 /* AddToFriendTask */,
 				580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */,
 				580C3FBE1D6B1E9B00CC3BA8 /* FetchRequestingFriendsTask */,
@@ -1505,6 +1518,7 @@
 				580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */,
 				44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */,
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
+				4450AE3F1D80391A00EC325C /* HWUpdateEmailTask.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
 				586AC8A41D61C9D000685CBA /* HWFetchUsersTask.m in Sources */,

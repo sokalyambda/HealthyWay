@@ -217,4 +217,21 @@
     return operation;
 }
 
++(HWBaseOperation *)updateUserWithEmail:(NSString *)email
+                              onSuccess:(void(^)())success
+                              onFailure:(TaskFailure)failure
+{
+    HWUpdateEmailTask *task = [[HWUpdateEmailTask alloc] initWithEmail:email];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success();
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
 @end
