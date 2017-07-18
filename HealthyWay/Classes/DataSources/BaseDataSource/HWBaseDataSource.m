@@ -25,6 +25,11 @@
 
 #pragma mark - Accessors
 
+- (void)setResultDataHandler:(HWResultHandler)resultDataHandler
+{
+    _resultDataHandler = resultDataHandler;
+}
+
 - (void)setTableView:(UITableView *)tableView
 {
     _tableView = tableView;
@@ -34,7 +39,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     
-    [self performNeededUpdatingActions];
+    [self performNeededUpdatingActionsWithCompletion:nil];
 }
 
 #pragma mark - Lifecycle
@@ -60,7 +65,7 @@
 
 + (instancetype)dataSourceWithType:(HWDataSourceType)dataSourceType
                       forTableView:(UITableView *)tableView
-               andSearchController:(UISearchController *)searchController
+               searchController:(UISearchController *)searchController
 {
     HWBaseDataSource *dataSource = [self dataSourceWithType:dataSourceType forTableView:tableView];
     
@@ -103,9 +108,9 @@
 
 #pragma mark - Actions
 
-- (void)performNeededUpdatingActions
+- (void)performNeededUpdatingActionsWithCompletion:(HWResultHandler)completion
 {
-    return;
+    _resultDataHandler = completion;
 }
 
 //Abstract

@@ -382,6 +382,8 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
 {
     FIRDatabaseReference *friendsRef = [[self.dataBaseReference child:ExistedFriendsKey] child:self.currentUserId];
     FIRDatabaseReference *userFriendsRef = [[self.dataBaseReference child:ExistedFriendsKey] child:userId];
+    FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:self.currentUserId];
+    FIRDatabaseReference *userRequestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:userId];
     
     // Add userId to current user's existed friends
     [friendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
@@ -393,7 +395,7 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
                 if (![existedFriendsIds containsObject:userId]) {
                     NSMutableArray *mutableIds = [NSMutableArray arrayWithArray:existedFriendsIds];
                     [mutableIds addObject:userId];
-                    [friendsRef updateChildValues:@{kExistedFriendsIds: mutableIds}];
+                    [friendsRef updateChildValues:@{kExistedFriendsIds: [NSArray arrayWithArray:mutableIds]}];
                 }
             } else {
                 NSArray *existedFriendsIds = @[userId];
@@ -428,8 +430,29 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
         }
     }];
     
-    //TODO: 1) Remove userId from requesting friends ids of current user
-    //      2) Remove self.currentFriendId from requested friends ids of user with userId
+    // 1) Remove userId from requesting friends ids of current user
+    [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            NSArray *requestingFriendsIds = snapshot.value[kRequestingFriendsIds];
+            if ([requestingFriendsIds containsObject:userId]) {
+                NSMutableArray *mutableIds = [NSMutableArray arrayWithArray:requestingFriendsIds];
+                [mutableIds removeObject:userId];
+                [requestingFriendsRef updateChildValues:@{kRequestingFriendsIds: [NSArray arrayWithArray:mutableIds]}];
+            }
+        }
+    }];
+    
+    // 2) Remove self.currentFriendId from requested friends ids of user with userId
+    [userRequestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if (snapshot.exists) {
+            NSArray *userRequestedFriendsIds = snapshot.value[kRequestedFriendsIds];
+            if ([userRequestedFriendsIds containsObject:self.currentUserId]) {
+                NSMutableArray *mutableIds = [NSMutableArray arrayWithArray:userRequestedFriendsIds];
+                [mutableIds removeObject:self.currentUserId];
+                [userRequestedFriendsRef updateChildValues:@{kRequestedFriendsIds: [NSArray arrayWithArray:mutableIds]}];
+            }
+        }
+    }];
 }
 
 + (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion

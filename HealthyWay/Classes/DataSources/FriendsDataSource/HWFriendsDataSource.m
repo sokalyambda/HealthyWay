@@ -59,7 +59,9 @@
     cell.delegate = self;
     
     HWUserProfileData *userProfileData = nil;
-    switch (indexPath.section) {
+    
+    HWFriendsStrategyType strategyType = (HWFriendsStrategyType)indexPath.section;
+    switch (strategyType) {
         case HWFriendsStrategyTypeRequestedFriends:
             userProfileData = self.requestedFriends[indexPath.row];
             [cell selectAddFriendButton:[self.requestedFriendsIds containsObject:userProfileData.userId]];
@@ -85,7 +87,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    switch (section) {
+    HWFriendsStrategyType strategyType = (HWFriendsStrategyType)section;
+    switch (strategyType) {
         case HWFriendsStrategyTypeRequestedFriends:
             return !!self.requestedFriends.count ? LOCALIZED(@"Requested Friends") : nil;
         case HWFriendsStrategyTypeRequestingFriends:
@@ -113,7 +116,7 @@
     }];
 }
 
-- (void)performNeededUpdatingActions
+- (void)performNeededUpdatingActionsWithCompletion:(HWResultHandler)completion
 {
     dispatch_group_t friendsGroup = dispatch_group_create();
     
@@ -141,6 +144,9 @@
     
     dispatch_group_notify(friendsGroup, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        if (completion) {
+            completion(nil);
+        }
     });
 }
 
@@ -172,13 +178,14 @@
         HWUserProfileData *userToBeAFriend = self.requestedFriends[indexPath.row];
         if (!button.selected) {
             [HWOperationsFacade denyFriendsRequestToUserWithId:userToBeAFriend.userId onSuccess:^{
-                [weakSelf performNeededUpdatingActions];
-                [activityIndicator removeFromSuperview];
-                [activityIndicator stopAnimating];
+                [weakSelf performNeededUpdatingActionsWithCompletion:^(id resultData) {
+                    [activityIndicator stopAnimating];
+                    [activityIndicator removeFromSuperview];
+                }];
             } onFailure:^(NSError *error) {
                 [cell hideAddFriendButton:NO];
-                [activityIndicator removeFromSuperview];
                 [activityIndicator stopAnimating];
+                [activityIndicator removeFromSuperview];
             }];
         }
     }

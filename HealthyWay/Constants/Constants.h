@@ -16,7 +16,6 @@ static NSString *const UserCredentialsKey   = @"UserCredentialsKey";
 static NSString *const IsFirstLaunch        = @"IsFirstLaunch";
 
 // Firebase Database Keys
-
 static NSString *const UsersKey = @"users";
 static NSString *const RequestedFriendsKey = @"requestedFriends";
 static NSString *const RequestingFriendsKey = @"requestingFriends";
@@ -25,10 +24,11 @@ static NSString *const StorageReferense = @"gs://healthyway-cd141.appspot.com";
 static NSString *const AvatarsKey = @"avatars";
 
 // Validation
-
 static NSString *const ErrorsArrayKey = @"ErrorsArray";
 
 static NSString *const ErrorMessage = @"Error";
 static NSString *const ErrorCode = @"ErrorCode";
+
+// Notifications
 
 #endif /* Constants_h */

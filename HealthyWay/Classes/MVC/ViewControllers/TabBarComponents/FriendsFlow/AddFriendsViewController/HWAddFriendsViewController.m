@@ -29,7 +29,7 @@
         searchController.dimsBackgroundDuringPresentation = NO;
         _friendsDataSource = [HWBaseDataSource dataSourceWithType:HWDataSourceTypeAddFriends
                                                      forTableView:self.tableView
-                                              andSearchController:searchController];
+                                                 searchController:searchController];
     }
     return _friendsDataSource;
 }

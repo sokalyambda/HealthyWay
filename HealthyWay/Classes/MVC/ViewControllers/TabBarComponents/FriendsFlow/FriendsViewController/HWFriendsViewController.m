@@ -20,29 +20,25 @@
 
 @implementation HWFriendsViewController
 
-#pragma mark - View Lifecycle
+#pragma mark - Accessors
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self setupDataSource];
+- (HWBaseDataSource *)friendsDataSource {
+    if (!_friendsDataSource) {
+        _friendsDataSource = [HWBaseDataSource dataSourceWithType:HWDataSourceTypeFriends
+                                                     forTableView:self.tableView];
+    }
+    return _friendsDataSource;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.friendsDataSource performNeededUpdatingActions];
-}
-
-#pragma mark - Actions
-
-- (void)setupDataSource
-{
-    self.friendsDataSource = [HWBaseDataSource dataSourceWithType:HWDataSourceTypeFriends
-                                                     forTableView:self.tableView];
-    
+    [self showProgressHud];
+    WEAK_SELF;
+    [self.friendsDataSource performNeededUpdatingActionsWithCompletion:^(id resultData) {
+        [weakSelf hideProgressHud];
+    }];
 }
 
 @end
