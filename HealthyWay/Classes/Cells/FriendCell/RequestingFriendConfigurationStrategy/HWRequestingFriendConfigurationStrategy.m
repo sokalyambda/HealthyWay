@@ -17,4 +17,9 @@
     return YES;
 }
 
+- (BOOL)hideFriendRequestButtons
+{
+    return NO;
+}
+
 @end

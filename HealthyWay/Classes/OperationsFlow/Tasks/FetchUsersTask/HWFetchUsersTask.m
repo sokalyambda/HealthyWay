@@ -67,6 +67,12 @@
             }];
             break;
         }
+        case HWFetchUsersTaskTypeTypeAllExceptExistedFriends: {
+            [HWUserProfileService fetchUsersDataExceptExistedFriendsWithSearchString:self.searchedText onCompletion:^(NSArray *users, NSError *error) {
+                [weakSelf completeTaskWithUsers:users error:error];
+            }];
+            break;
+        }
     }
 }
 

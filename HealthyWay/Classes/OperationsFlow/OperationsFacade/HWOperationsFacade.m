@@ -200,6 +200,22 @@
     return operation;
 }
 
++ (HWBaseOperation *)fetchExistedFriendsOnSuccess:(void(^)(NSArray *existedFriends))success
+                                        onFailure:(TaskFailure)failure
+{
+    HWFetchExistedFriendsTask *task = [[HWFetchExistedFriendsTask alloc] init];
+    HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {
+        if (success) {
+            success(task.existedFriends);
+        }
+    } onFailure:^(HWBaseOperation *operation, NSError *error, BOOL isCanceled) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return operation;
+}
+
 + (HWBaseOperation *)addUserToFriendsWithId:(NSString *)userId
                                   onSuccess:(void(^)())success
                                   onFailure:(TaskFailure)failure
@@ -217,9 +233,9 @@
     return operation;
 }
 
-+(HWBaseOperation *)updateUserWithEmail:(NSString *)email
-                              onSuccess:(void(^)())success
-                              onFailure:(TaskFailure)failure
++ (HWBaseOperation *)updateUserWithEmail:(NSString *)email
+                               onSuccess:(void(^)())success
+                               onFailure:(TaskFailure)failure
 {
     HWUpdateEmailTask *task = [[HWUpdateEmailTask alloc] initWithEmail:email];
     HWBaseOperation *operation = [self.operationsManager enqueueOperationForTask:task onSuccess:^(HWBaseOperation *operation) {

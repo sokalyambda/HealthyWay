@@ -29,7 +29,7 @@
     self.nameLabel.attributedText = strategy.attributedText;
     [self.avatarImageView sd_setImageWithURL:strategy.avatarURL];
     self.addFriendButton.hidden = strategy.hideAddFriendButton;
-    self.requestingFriendButtonsContainer.hidden = !self.addFriendButton.isHidden;
+    self.requestingFriendButtonsContainer.hidden = !self.addFriendButton.isHidden || strategy.hideFriendRequestButtons;
 }
 
 - (void)selectAddFriendButton:(BOOL)select

@@ -20,6 +20,9 @@ typedef NS_ENUM(NSUInteger, HWFriendsStrategyType) {
 
 @property (assign, nonatomic, readonly) BOOL hideAddFriendButton;
 
+// (Apply/Decline buttons container) For existed friends we have to hide all action buttons
+@property (assign, nonatomic, readonly) BOOL hideFriendRequestButtons;
+
 + (instancetype)friendCellConfigurationStrategyWithType:(HWFriendsStrategyType)type
                                           nameLabelText:(NSString *)text
                                               avatarURL:(NSURL *)avatarURL

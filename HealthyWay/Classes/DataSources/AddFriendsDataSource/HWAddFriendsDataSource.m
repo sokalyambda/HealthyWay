@@ -65,7 +65,7 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
     WEAK_SELF;
-    [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeTypeAll searchString:searchController.searchBar.text onSuccess:^(NSArray *users) {
+    [HWOperationsFacade fetchUsersWithFetchingType:HWFetchUsersTaskTypeTypeAllExceptExistedFriends searchString:searchController.searchBar.text onSuccess:^(NSArray *users) {
         weakSelf.possibleFriends = users;
     } onFailure:^(NSError *error, BOOL isCancelled) {
         

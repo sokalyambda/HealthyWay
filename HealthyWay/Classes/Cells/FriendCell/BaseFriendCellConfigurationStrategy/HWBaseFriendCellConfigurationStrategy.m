@@ -23,6 +23,7 @@
 @synthesize avatarURL = _avatarURL;
 @synthesize searchedText = _searchedText;
 @synthesize hideAddFriendButton = _hideAddFriendButton;
+@synthesize hideFriendRequestButtons = _hideFriendRequestButtons;
 
 - (NSAttributedString *)attributedText
 {

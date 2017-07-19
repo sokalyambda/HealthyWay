@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, HWFetchUsersTaskType) {
     HWFetchUsersTaskTypeCurrent,
-    HWFetchUsersTaskTypeTypeAll
+    HWFetchUsersTaskTypeTypeAll,
+    HWFetchUsersTaskTypeTypeAllExceptExistedFriends
 };
 
 @interface HWFetchUsersTask : HWBaseTask

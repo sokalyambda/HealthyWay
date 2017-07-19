@@ -57,12 +57,15 @@ typedef void(^FailureBlock)(NSError *error, BOOL isCancelled);
 + (HWBaseOperation *)fetchRequestingFriendsOnSuccess:(void(^)(NSArray *requestingFriends))success
                                            onFailure:(TaskFailure)failure;
 
++ (HWBaseOperation *)fetchExistedFriendsOnSuccess:(void(^)(NSArray *existedFriends))success
+                                        onFailure:(TaskFailure)failure;
+
 + (HWBaseOperation *)addUserToFriendsWithId:(NSString *)userId
                                   onSuccess:(void(^)())success
                                   onFailure:(TaskFailure)failure;
 
-+(HWBaseOperation *)updateUserWithEmail:(NSString *)email
-                              onSuccess:(void(^)())success
-                              onFailure:(TaskFailure)failure;
++ (HWBaseOperation *)updateUserWithEmail:(NSString *)email
+                               onSuccess:(void(^)())success
+                               onFailure:(TaskFailure)failure;
 
 @end

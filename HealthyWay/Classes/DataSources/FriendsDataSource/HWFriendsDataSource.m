@@ -138,6 +138,14 @@
     }];
     
     dispatch_group_enter(friendsGroup);
+    [HWOperationsFacade fetchExistedFriendsOnSuccess:^(NSArray *existedFriends) {
+        weakSelf.friends = existedFriends;
+        dispatch_group_leave(friendsGroup);
+    } onFailure:^(NSError *error) {
+        dispatch_group_leave(friendsGroup);
+    }];
+    
+    dispatch_group_enter(friendsGroup);
     [self fetchRequestedFriendsIdsWithCompletion:^{
         dispatch_group_leave(friendsGroup);
     }];
@@ -195,10 +203,11 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     HWUserProfileData *user = self.requestingFriends[indexPath.row];
+    __weak typeof(self) weakSelf = self;
     [HWOperationsFacade addUserToFriendsWithId:user.userId onSuccess:^{
-        
+        [weakSelf performNeededUpdatingActionsWithCompletion:nil];
     } onFailure:^(NSError *error) {
-        
+
     }];
 }
 

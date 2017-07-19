@@ -67,13 +67,17 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
             HWUserProfileData *currentUserProfile = [self mappedUserProfileDataFromDictionary:userData];
             [[HWBaseAppManager sharedManager] setUserProfileData:currentUserProfile];
             
-            [self p_fetchAvatarsForUsers:@[currentUserProfile] withCompletion:^{
-                if (currentUserProfile && completion) {
-                    completion(@[currentUserProfile], nil);
-                } else if (completion) {
-                    completion(@[], nil);
-                }
-            }];
+            if (currentUserProfile) {
+                [self p_fetchAvatarsForUsers:@[currentUserProfile] withCompletion:^{
+                    if (currentUserProfile && completion) {
+                        completion(@[currentUserProfile], nil);
+                    } else if (completion) {
+                        completion(@[], nil);
+                    }
+                }];
+            } else if (completion) {
+                completion(@[], nil);
+            }
             
         }];
     } else {
@@ -111,6 +115,39 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
             }
         }];
         
+    }];
+}
+
++ (void)fetchUsersDataExceptExistedFriendsWithSearchString:(NSString *)searchString
+                                              onCompletion:(void(^)(NSArray *users, NSError *error))completion
+{
+    FIRDatabaseReference *usersReference = [self.dataBaseReference child:UsersKey];
+    
+    FIRDatabaseQuery *query = [usersReference queryOrderedByChild:kFirstName];
+    
+    WEAK_SELF;
+    [self fetchExistedFriendsOnCompletion:^(NSArray *existedFriends) {
+        [query observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            
+            NSDictionary *userData = [snapshot exists] ? snapshot.value : nil;
+            
+            // GET all values from this dict
+            NSArray *mappedUsers = [weakSelf mappedUserProfilesDataFromArray:userData.allValues];
+            
+            // Filter the data
+            NSArray *existedFriendIds = [existedFriends valueForKeyPath:@"userId"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullName CONTAINS[cd] %@ && userId != %@ && (NOT userId IN %@)", searchString, self.currentUserId, existedFriendIds];
+            NSArray *filteredArray = [mappedUsers filteredArrayUsingPredicate:predicate];
+            
+            [self p_fetchAvatarsForUsers:filteredArray withCompletion:^{
+                if (filteredArray && completion) {
+                    completion(filteredArray, nil);
+                } else if (completion) {
+                    completion(@[], nil);
+                }
+            }];
+            
+        }];
     }];
 }
 
@@ -378,13 +415,18 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
     }];
 }
 
-+ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
++ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion
 {
+    __block NSError *error = nil;
+    
     FIRDatabaseReference *friendsRef = [[self.dataBaseReference child:ExistedFriendsKey] child:self.currentUserId];
     FIRDatabaseReference *userFriendsRef = [[self.dataBaseReference child:ExistedFriendsKey] child:userId];
     FIRDatabaseReference *requestingFriendsRef = [[self.dataBaseReference child:RequestingFriendsKey] child:self.currentUserId];
     FIRDatabaseReference *userRequestedFriendsRef = [[self.dataBaseReference child:RequestedFriendsKey] child:userId];
     
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
     // Add userId to current user's existed friends
     [friendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
@@ -397,16 +439,23 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
                     [mutableIds addObject:userId];
                     [friendsRef updateChildValues:@{kExistedFriendsIds: [NSArray arrayWithArray:mutableIds]}];
                 }
+                
+                dispatch_group_leave(group);
             } else {
                 NSArray *existedFriendsIds = @[userId];
                 [friendsRef setValue:@{kExistedFriendsIds: existedFriendsIds}];
+                
+                dispatch_group_leave(group);
             }
         } else {
             NSArray *existedFriendsIds = @[userId];
             [friendsRef setValue:@{kExistedFriendsIds: existedFriendsIds}];
+            
+            dispatch_group_leave(group);
         }
     }];
     
+    dispatch_group_enter(group);
     // Add self.currentUserId to user's (with userId) existedFriends
     [userFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
@@ -420,16 +469,23 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
                     [mutableIds addObject:self.currentUserId];
                     [userFriendsRef updateChildValues:@{kExistedFriendsIds: mutableIds}];
                 }
+                
+                dispatch_group_leave(group);
             } else {
                 NSArray *existedFriendsIds = @[self.currentUserId];
                 [userFriendsRef setValue:@{kExistedFriendsIds: existedFriendsIds}];
+                
+                dispatch_group_leave(group);
             }
         } else {
             NSArray *existedFriendsIds = @[self.currentUserId];
             [userFriendsRef setValue:@{kExistedFriendsIds: existedFriendsIds}];
+            
+            dispatch_group_leave(group);
         }
     }];
     
+    dispatch_group_enter(group);
     // 1) Remove userId from requesting friends ids of current user
     [requestingFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
@@ -438,10 +494,19 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
                 NSMutableArray *mutableIds = [NSMutableArray arrayWithArray:requestingFriendsIds];
                 [mutableIds removeObject:userId];
                 [requestingFriendsRef updateChildValues:@{kRequestingFriendsIds: [NSArray arrayWithArray:mutableIds]}];
+                
+                dispatch_group_leave(group);
+            } else {
+                error = [NSError errorWithDomain:@"com.healthyway" code:9998 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@: %@", LOCALIZED(@"User with userId not found in requesting friends of current user"), userId]}];
+                dispatch_group_leave(group);
             }
+        } else {
+            error = [NSError errorWithDomain:@"com.healthyway" code:9997 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@: %@", LOCALIZED(@"No requesting friends for current user"), self.currentUserId]}];
+            dispatch_group_leave(group);
         }
     }];
     
+    dispatch_group_enter(group);
     // 2) Remove self.currentFriendId from requested friends ids of user with userId
     [userRequestedFriendsRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if (snapshot.exists) {
@@ -450,22 +515,34 @@ static NSString *const kExistedFriendsIds    = @"existedFriendsIds";
                 NSMutableArray *mutableIds = [NSMutableArray arrayWithArray:userRequestedFriendsIds];
                 [mutableIds removeObject:self.currentUserId];
                 [userRequestedFriendsRef updateChildValues:@{kRequestedFriendsIds: [NSArray arrayWithArray:mutableIds]}];
+                
+                dispatch_group_leave(group);
+            } else {
+                error = [NSError errorWithDomain:@"com.healthyway" code:9996 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@: %@", LOCALIZED(@"Current user is not in the requested friends of user with userId"), userId]}];
+                dispatch_group_leave(group);
             }
+        } else {
+            dispatch_group_leave(group);
+            error = [NSError errorWithDomain:@"com.healthyway" code:9995 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@: %@", LOCALIZED(@"No requested friends for user with userId"), userId]}];
         }
     }];
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        if (completion) {
+            completion(error);
+        }
+    });
 }
 
-+ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
++ (void)declineIncomingFriendsRequestFromUserWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion
 {
     
 }
 
-+ (void)removeUserFromRequestingFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion
-{
-    
-}
-
-+ (void)removeFromFriendRequestedIds:(NSString *)userId onCompletion:(void(^)())completion
+/**
+ In this case we would like to delete user from existed friends. If user's existed friends contain the userId => requestingFriends and requestedFriends arrays are not contained either userId or currentUserId. In other words if users are friends => friends requests are cleared.
+ */
++ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion
 {
     
 }

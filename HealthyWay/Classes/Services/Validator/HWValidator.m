@@ -9,7 +9,7 @@
 #import "HWValidator.h"
 
 static const NSInteger kMinPasswordSymbols = 6.f;
-static const NSInteger kMaxPasswordSymbols = 16.f;
+static const NSInteger kMaxPasswordSymbols = 20.f;
 static const NSInteger kMaxNameCharacters = 30.f;
 
 static NSString *const kEmailErrorImageName = @"";
@@ -84,7 +84,7 @@ static NSMutableArray *_errorArray;
         [self setErrorMessage:LOCALIZED(@"This field is required for filling.\n")];
         return NO;
     } else if (!isMatchSuccess) {
-        [self setErrorMessage:LOCALIZED(@"Количество символов не менее 6.\n")];
+        [self setErrorMessage:LOCALIZED(@"Количество символов не менее 6 и не более 16.\n")];
         return NO;
     }
     

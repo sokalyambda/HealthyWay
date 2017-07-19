@@ -92,6 +92,7 @@
 		58FDB09F1D5C998100908ADC /* MapBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB09E1D5C998100908ADC /* MapBoard.storyboard */; };
 		58FDB0A11D5C999200908ADC /* FriendsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */; };
 		58FDB0A31D5C99A400908ADC /* EventsBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDB0A21D5C99A400908ADC /* EventsBoard.storyboard */; };
+		9276F07B1F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276F07A1F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,6 +268,8 @@
 		58FDB09E1D5C998100908ADC /* MapBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MapBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/MapFlow/MapBoard.storyboard; sourceTree = "<group>"; };
 		58FDB0A01D5C999200908ADC /* FriendsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/FriendsBoard.storyboard; sourceTree = "<group>"; };
 		58FDB0A21D5C99A400908ADC /* EventsBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EventsBoard.storyboard; path = Classes/MVC/ViewControllers/TabBarComponents/EventsFlow/EventsBoard.storyboard; sourceTree = "<group>"; };
+		9276F0791F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFetchExistedFriendsTask.h; path = Classes/OperationsFlow/Tasks/FetchExistedFriendsTask/HWFetchExistedFriendsTask.h; sourceTree = "<group>"; };
+		9276F07A1F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFetchExistedFriendsTask.m; path = Classes/OperationsFlow/Tasks/FetchExistedFriendsTask/HWFetchExistedFriendsTask.m; sourceTree = "<group>"; };
 		BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthyWay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -849,6 +852,7 @@
 		586AC8971D61C3AE00685CBA /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				9276F0781F1F9DCE00A4CE7D /* FetchExistedFriendsTask */,
 				4450AE3C1D80388F00EC325C /* UpdateEmailTask */,
 				58A8EB511D76E8DC00D86158 /* AddToFriendTask */,
 				580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */,
@@ -1307,6 +1311,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9276F0781F1F9DCE00A4CE7D /* FetchExistedFriendsTask */ = {
+			isa = PBXGroup;
+			children = (
+				9276F0791F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.h */,
+				9276F07A1F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.m */,
+			);
+			name = FetchExistedFriendsTask;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1360,6 +1373,7 @@
 				TargetAttributes = {
 					580206151D1D368400349B32 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = MBEY6KPZ6J;
 					};
 					5802062E1D1D368400349B32 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1465,7 +1479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1511,6 +1525,7 @@
 				583F472C1D5E06300099C9E0 /* HWUserProfileService.m in Sources */,
 				5802061E1D1D368400349B32 /* AppDelegate.m in Sources */,
 				580C3FB91D6B1CB800CC3BA8 /* HWCheckBoxButton.m in Sources */,
+				9276F07B1F1F9E0700A4CE7D /* HWFetchExistedFriendsTask.m in Sources */,
 				58B305641D508DC40011F405 /* HWForgotPasswordView.m in Sources */,
 				58B3054E1D508D380011F405 /* HWBaseKeyboardHandlerViewController.m in Sources */,
 				58E337C31D22F42E00B3A280 /* HWBaseAppManager.m in Sources */,
@@ -1659,6 +1674,7 @@
 			baseConfigurationReference = 3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MBEY6KPZ6J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthyWay/PrecompiledHeader/HealthyWay-PrefixHeader.pch";
 				INFOPLIST_FILE = HealthyWay/Info.plist;
@@ -1673,6 +1689,7 @@
 			baseConfigurationReference = 0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MBEY6KPZ6J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthyWay/PrecompiledHeader/HealthyWay-PrefixHeader.pch";
 				INFOPLIST_FILE = HealthyWay/Info.plist;

@@ -34,8 +34,12 @@
 - (void)performCurrentTaskOnSuccess:(TaskSuccess)success
                           onFailure:(TaskFailure)failure
 {
-    [HWUserProfileService addUserToFriendsWithId:self.userId onCompletion:^{
-        
+    [HWUserProfileService addUserToFriendsWithId:self.userId onCompletion:^(NSError *error) {
+        if (!error && success) {
+            success();
+        } else if (error && failure) {
+            failure(error);
+        }
     }];
 }
 

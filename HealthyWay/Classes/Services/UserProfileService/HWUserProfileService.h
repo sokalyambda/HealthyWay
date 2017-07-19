@@ -35,6 +35,14 @@
                           onCompletion:(void(^)(NSArray *users, NSError *error))completion;
 
 /**
+ *  Fetch all users except existed friends
+ *
+ *  @param completion CompletionBlock
+ */
++ (void)fetchUsersDataExceptExistedFriendsWithSearchString:(NSString *)searchString
+                                              onCompletion:(void(^)(NSArray *users, NSError *error))completion;
+
+/**
  *  Create or update current user profile
  *
  *  @param userProfileParameters Parameters for updation
@@ -93,9 +101,8 @@
  *  @param userId
  *  @param completion
  */
-+ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
-+ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
-+ (void)removeUserFromRequestingFriendsWithId:(NSString *)userId onCompletion:(void(^)())completion;
-+ (void)removeFromFriendRequestedIds:(NSString *)userId onCompletion:(void(^)())completion;
++ (void)addUserToFriendsWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion;
++ (void)declineIncomingFriendsRequestFromUserWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion;
++ (void)removeUserFromFriendsWithId:(NSString *)userId onCompletion:(void(^)(NSError *error))completion;
 
 @end
