@@ -17,5 +17,6 @@
 #import "HWFetchRequestedFriendsTask.h"
 #import "HWFetchRequestingFriendsTask.h"
 #import "HWAddToFriendTask.h"
+#import "HWUpdateEmailTask.h"
 
 #endif /* HWTasks_h */

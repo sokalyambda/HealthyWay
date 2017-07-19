@@ -56,5 +56,22 @@
                password:(NSString *)password
              completion:(void(^)(NSError *error))completion;
 
+/**
+ *  Update user email
+ *
+ *  @param email      Email
+ *  @param completion Completion Block
+ */
++ (void)updateEmail:(NSString *)email
+         completion:(void(^)(NSError *error))completion;
+
+/**
+ *  Update user password
+ *
+ *  @param password   Password
+ *  @param completion Completion Block
+ */
++ (void)updatePassword:(NSString *)password
+            completion:(void(^)(NSError *error))completion;
 
 @end

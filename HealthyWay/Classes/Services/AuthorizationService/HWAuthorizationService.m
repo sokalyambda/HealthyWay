@@ -91,4 +91,25 @@
     }];
 }
 
++ (void)updateEmail:(NSString *)email
+         completion:(void(^)(NSError *error))completion
+{
+    [self.currentUser updateEmail:email completion:^(NSError * _Nullable error) {
+        if (completion) {
+            DLog(@"%@", error);
+            completion(error);
+        }
+    }];
+}
+
++ (void)updatePassword:(NSString *)password
+            completion:(void(^)(NSError *error))completion
+{
+    [self.currentUser updatePassword:password completion:^(NSError * _Nullable error) {
+        if (completion) {
+            completion(error);
+        }
+    }];
+}
+
 @end

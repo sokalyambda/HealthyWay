@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0E21C24B42EE3D4F591EC569 /* libPods-HealthyWay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA484E84199F6DCBDAC57AFF /* libPods-HealthyWay.a */; };
+		4450AE3F1D80391A00EC325C /* HWUpdateEmailTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */; };
 		446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */; };
 		4467964D1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467964C1D5E091D0004DA1D /* HWSettingsFlowTableViewController.m */; };
 		4490E4241D5B42AF00DFF882 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490E4231D5B42AF00DFF882 /* HWTabBarController.m */; };
 		44930B491D54C0FD007A4D41 /* HWBaseAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B481D54C0FD007A4D41 /* HWBaseAuthView.m */; };
 		44930B4C1D54DF8B007A4D41 /* HWSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */; };
+		44ABF8421D79831A00571CB1 /* HWChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ABF8401D79831A00571CB1 /* HWChangePasswordController.m */; };
+		44ABF8431D79831A00571CB1 /* HWChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44ABF8411D79831A00571CB1 /* HWChangePasswordController.xib */; };
 		44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */; };
 		44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */; };
 		44CE2EDF1D64D12A0087FCD2 /* HWFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */; };
+		44E001401D6C5FBF00AE04C2 /* HWChangeEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E0013E1D6C5FBF00AE04C2 /* HWChangeEmailController.m */; };
+		44E001411D6C5FBF00AE04C2 /* HWChangeEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E0013F1D6C5FBF00AE04C2 /* HWChangeEmailController.xib */; };
 		5802061B1D1D368400349B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061A1D1D368400349B32 /* main.m */; };
 		5802061E1D1D368400349B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802061D1D1D368400349B32 /* AppDelegate.m */; };
 		580206261D1D368400349B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580206251D1D368400349B32 /* Assets.xcassets */; };
@@ -102,6 +107,8 @@
 /* Begin PBXFileReference section */
 		0D6832D0B10F075E049BCAFE /* Pods-HealthyWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.release.xcconfig"; sourceTree = "<group>"; };
 		3CCE95E83D318FA9D7DFA3BC /* Pods-HealthyWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyWay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyWay/Pods-HealthyWay.debug.xcconfig"; sourceTree = "<group>"; };
+		4450AE3D1D80391A00EC325C /* HWUpdateEmailTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWUpdateEmailTask.h; path = Classes/OperationsFlow/Tasks/UpdateEmailTask/HWUpdateEmailTask.h; sourceTree = "<group>"; };
+		4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWUpdateEmailTask.m; path = Classes/OperationsFlow/Tasks/UpdateEmailTask/HWUpdateEmailTask.m; sourceTree = "<group>"; };
 		446796471D5DE77F0004DA1D /* HWSettingsFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.h; sourceTree = "<group>"; };
 		446796481D5DE77F0004DA1D /* HWSettingsFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSettingsFlowController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowController/HWSettingsFlowController.m; sourceTree = "<group>"; };
 		4467964B1D5E091D0004DA1D /* HWSettingsFlowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSettingsFlowTableViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/SettingsFlowTableViewController/HWSettingsFlowTableViewController.h; sourceTree = "<group>"; };
@@ -113,11 +120,17 @@
 		44930B4A1D54DF8B007A4D41 /* HWSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSignUpView.h; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.h; sourceTree = "<group>"; };
 		44930B4B1D54DF8B007A4D41 /* HWSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSignUpView.m; path = Classes/MVC/Views/Auth/SignUpView/HWSignUpView.m; sourceTree = "<group>"; };
 		44930B4E1D54FAC8007A4D41 /* HWAuthViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAuthViews.h; path = Classes/MVC/Views/Auth/HWAuthViews.h; sourceTree = "<group>"; };
+		44ABF83F1D79831A00571CB1 /* HWChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWChangePasswordController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangePasswordController/HWChangePasswordController.h; sourceTree = "<group>"; };
+		44ABF8401D79831A00571CB1 /* HWChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWChangePasswordController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangePasswordController/HWChangePasswordController.m; sourceTree = "<group>"; };
+		44ABF8411D79831A00571CB1 /* HWChangePasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWChangePasswordController.xib; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangePasswordController/HWChangePasswordController.xib; sourceTree = "<group>"; };
 		44CE2ED11D64C8FD0087FCD2 /* HWAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddFriendsViewController.h; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.h; sourceTree = "<group>"; };
 		44CE2ED21D64C8FD0087FCD2 /* HWAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddFriendsViewController.m; path = Classes/MVC/ViewControllers/TabBarComponents/FriendsFlow/AddFriendsViewController/HWAddFriendsViewController.m; sourceTree = "<group>"; };
 		44CE2EDB1D64D12A0087FCD2 /* HWFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFriendCell.h; path = Classes/Cells/FriendCell/HWFriendCell.h; sourceTree = "<group>"; };
 		44CE2EDC1D64D12A0087FCD2 /* HWFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFriendCell.m; path = Classes/Cells/FriendCell/HWFriendCell.m; sourceTree = "<group>"; };
 		44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFriendCell.xib; path = Classes/Cells/FriendCell/HWFriendCell.xib; sourceTree = "<group>"; };
+		44E0013D1D6C5FBF00AE04C2 /* HWChangeEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWChangeEmailController.h; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangeEmailController/HWChangeEmailController.h; sourceTree = "<group>"; };
+		44E0013E1D6C5FBF00AE04C2 /* HWChangeEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWChangeEmailController.m; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangeEmailController/HWChangeEmailController.m; sourceTree = "<group>"; };
+		44E0013F1D6C5FBF00AE04C2 /* HWChangeEmailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWChangeEmailController.xib; path = Classes/MVC/ViewControllers/TabBarComponents/SettingsFlow/ChangeEmailController/HWChangeEmailController.xib; sourceTree = "<group>"; };
 		580206161D1D368400349B32 /* HealthyWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5802061A1D1D368400349B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5802061C1D1D368400349B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -297,6 +310,15 @@
 			name = OperationsFlow;
 			sourceTree = "<group>";
 		};
+		4450AE3C1D80388F00EC325C /* UpdateEmailTask */ = {
+			isa = PBXGroup;
+			children = (
+				4450AE3D1D80391A00EC325C /* HWUpdateEmailTask.h */,
+				4450AE3E1D80391A00EC325C /* HWUpdateEmailTask.m */,
+			);
+			name = UpdateEmailTask;
+			sourceTree = "<group>";
+		};
 		446796461D5DE7290004DA1D /* SettingsFlowController */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +413,26 @@
 				44CE2EDD1D64D12A0087FCD2 /* HWFriendCell.xib */,
 			);
 			name = FriendCell;
+			sourceTree = "<group>";
+		};
+		44E001341D6C5CB500AE04C2 /* ChangeEmailController */ = {
+			isa = PBXGroup;
+			children = (
+				44E0013D1D6C5FBF00AE04C2 /* HWChangeEmailController.h */,
+				44E0013E1D6C5FBF00AE04C2 /* HWChangeEmailController.m */,
+				44E0013F1D6C5FBF00AE04C2 /* HWChangeEmailController.xib */,
+			);
+			name = ChangeEmailController;
+			sourceTree = "<group>";
+		};
+		44E001431D6C5FE200AE04C2 /* ChangePasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				44ABF83F1D79831A00571CB1 /* HWChangePasswordController.h */,
+				44ABF8401D79831A00571CB1 /* HWChangePasswordController.m */,
+				44ABF8411D79831A00571CB1 /* HWChangePasswordController.xib */,
+			);
+			name = ChangePasswordController;
 			sourceTree = "<group>";
 		};
 		5802060D1D1D368300349B32 = {
@@ -807,6 +849,7 @@
 		586AC8971D61C3AE00685CBA /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				4450AE3C1D80388F00EC325C /* UpdateEmailTask */,
 				58A8EB511D76E8DC00D86158 /* AddToFriendTask */,
 				580C3FC21D6B200100CC3BA8 /* SendOrDenyFriendsRequestTask */,
 				580C3FBE1D6B1E9B00CC3BA8 /* FetchRequestingFriendsTask */,
@@ -1250,6 +1293,8 @@
 				58FDB09A1D5C995400908ADC /* SettingsBoard.storyboard */,
 				446796461D5DE7290004DA1D /* SettingsFlowController */,
 				4467964A1D5E086B0004DA1D /* SettingsFlowTableViewController */,
+				44E001341D6C5CB500AE04C2 /* ChangeEmailController */,
+				44E001431D6C5FE200AE04C2 /* ChangePasswordController */,
 			);
 			name = SettingsFlow;
 			sourceTree = "<group>";
@@ -1347,6 +1392,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B305601D508DA60011F405 /* HWUserProfileController.xib in Resources */,
+				44E001411D6C5FBF00AE04C2 /* HWChangeEmailController.xib in Resources */,
+				44ABF8431D79831A00571CB1 /* HWChangePasswordController.xib in Resources */,
 				58FDB0A11D5C999200908ADC /* FriendsBoard.storyboard in Resources */,
 				58B305501D508D460011F405 /* AuthStoryBoard.storyboard in Resources */,
 				580C295F1D5B3D3E009B5118 /* HWBirthDatePicker.xib in Resources */,
@@ -1429,6 +1476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44CE2EDE1D64D12A0087FCD2 /* HWFriendCell.m in Sources */,
+				44E001401D6C5FBF00AE04C2 /* HWChangeEmailController.m in Sources */,
 				586AC8B01D61F85000685CBA /* HWBaseOperation.m in Sources */,
 				586AC8A01D61C7C000685CBA /* HWAutologinTask.m in Sources */,
 				58A1FAE41D6C5EE9007EFB90 /* NSData+Base64.m in Sources */,
@@ -1470,6 +1518,7 @@
 				580C3FC11D6B1EB100CC3BA8 /* HWFetchRequestingFriendsTask.m in Sources */,
 				44CE2ED31D64C8FD0087FCD2 /* HWAddFriendsViewController.m in Sources */,
 				580C297B1D5B7865009B5118 /* UIImage+EncodeToBase64.m in Sources */,
+				4450AE3F1D80391A00EC325C /* HWUpdateEmailTask.m in Sources */,
 				5802061B1D1D368400349B32 /* main.m in Sources */,
 				58B305561D508D690011F405 /* HWAuthorizationViewController.m in Sources */,
 				586AC8A41D61C9D000685CBA /* HWFetchUsersTask.m in Sources */,
@@ -1484,6 +1533,7 @@
 				583F47241D5DF97C0099C9E0 /* HWOperationsFacade.m in Sources */,
 				58B3055B1D508D950011F405 /* HWCreateUserProfileContainerController.m in Sources */,
 				58A1FADF1D6C418E007EFB90 /* HWBaseDataSource.m in Sources */,
+				44ABF8421D79831A00571CB1 /* HWChangePasswordController.m in Sources */,
 				446796491D5DE77F0004DA1D /* HWSettingsFlowController.m in Sources */,
 				580C296D1D5B42A2009B5118 /* UIImage+Scale.m in Sources */,
 				58B558B31D6E409700547762 /* HWRequestingFriendConfigurationStrategy.m in Sources */,
